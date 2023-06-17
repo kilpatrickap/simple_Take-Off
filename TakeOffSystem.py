@@ -18,5 +18,3 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         ui.setupUi(dialog)
         dialog.exec()
-
-        # sys.exit(dialog.exec())

@@ -113,7 +113,7 @@ class NewProject_Dialog(object):
         self.pushButton_cancel.setObjectName("pushButton_cancel")
 
         # Connect signal
-        self.pushButton_cancel.clicked.connect(self.cancel_project_setup)
+        self.pushButton_cancel.clicked.connect(lambda: self.cancel_project_setup(Dialog))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -196,9 +196,8 @@ class NewProject_Dialog(object):
         )
         self.lineEdit_prjtFolder.setText(folder_path)
 
-    def cancel_project_setup(self):
-        # sys.exit(app.exec())
-        return
+    def cancel_project_setup(self, Dialog):
+        Dialog.close()
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
