@@ -106,7 +106,9 @@ class NewProject_Dialog(object):
 
         # Connect signal
         # self.pushButton_OK.setText(_translate("Dialog", "OK"))
-        self.pushButton_OK.clicked.connect(self.save_project_details)
+        # self.pushButton_OK.clicked.connect(self.save_project_details)
+        self.pushButton_OK.clicked.connect(lambda: self.save_project_details(Dialog))
+
 
         self.pushButton_cancel = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_cancel.setGeometry(QtCore.QRect(410, 320, 80, 26))
@@ -140,7 +142,7 @@ class NewProject_Dialog(object):
 
         return project_details
 
-    def save_project_details(self):
+    def save_project_details(self, Dialog):
         project_details = self.get_project_details()
         print(project_details)
 
@@ -183,7 +185,8 @@ class NewProject_Dialog(object):
                 file.write(json_data)
 
         self.pushButton_OK.setText("Ok")    # Update the button text after saving
-        # sys.exit(app.exec())    # Close the application
+
+        Dialog.close()    # Close the application
 
     def open_folder_dialog(self):
         options = QFileDialog.Option.ShowDirsOnly
