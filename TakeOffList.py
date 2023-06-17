@@ -40,7 +40,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Add root item to treeWidget
         self.root_item = QtWidgets.QTreeWidgetItem(self.treeWidget)
-        self.root_item.setText(0, "Todo")
+        self.root_item.setText(0, "Work items :")
         self.root_item.setExpanded(True)
 
         # Load database in treeWidget when App runs.
@@ -244,7 +244,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("TakeOffList_Widget", "Take-Off List"))
-        self.treeWidget.headerItem().setText(0, _translate("TakeOffList_Widget", "WBS"))
+        self.treeWidget.headerItem().setText(0, _translate("TakeOffList_Widget", "Take-Off List"))
         self.lineEdit.setPlaceholderText(_translate("TakeOffList_Widget", "Type in work item and hit enter."))
         self.pushButton_insertSubItem.setText(_translate("TakeOffList_Widget", "Insert Sub-Item"))
         self.pushButton_delete.setText(_translate("TakeOffList_Widget", "    Delete Item    "))
