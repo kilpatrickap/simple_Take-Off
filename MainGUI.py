@@ -72,7 +72,8 @@ class Ui_MainWindow(object):
         self.comboBox_m.addItem("")
         self.comboBox_m.addItem("")
         self.horizontalLayout_3.addWidget(self.comboBox_m)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                           QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem)
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
@@ -83,12 +84,14 @@ class Ui_MainWindow(object):
         self.label_code_m = QtWidgets.QLabel(parent=self.groupBox_m)
         self.label_code_m.setObjectName("label_code_m")
         self.horizontalLayout_4.addWidget(self.label_code_m)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem1)
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem2)
         self.pushButton_m_add = QtWidgets.QPushButton(parent=self.groupBox_m)
         icon1 = QtGui.QIcon()
@@ -119,7 +122,8 @@ class Ui_MainWindow(object):
         self.pushButton_m_sqr.setIcon(icon4)
         self.pushButton_m_sqr.setObjectName("pushButton_m_sqr")
         self.horizontalLayout_6.addWidget(self.pushButton_m_sqr)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem3)
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)
         self.tableWidget_m = QtWidgets.QTableWidget(parent=self.groupBox_m)
@@ -147,7 +151,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.tableWidget_m)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem4)
         self.pushButton_m_clear = QtWidgets.QPushButton(parent=self.groupBox_m)
         icon5 = QtGui.QIcon()
@@ -161,7 +166,8 @@ class Ui_MainWindow(object):
         self.pushButton_m_insert.setIcon(icon6)
         self.pushButton_m_insert.setObjectName("pushButton_m_insert")
         self.horizontalLayout_5.addWidget(self.pushButton_m_insert)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem5)
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
         icon7 = QtGui.QIcon()
@@ -213,7 +219,8 @@ class Ui_MainWindow(object):
         self.comboBox_m2.addItem("")
         self.comboBox_m2.addItem("")
         self.horizontalLayout_9.addWidget(self.comboBox_m2)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_9.addItem(spacerItem6)
         self.verticalLayout_3.addLayout(self.horizontalLayout_9)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
@@ -224,12 +231,14 @@ class Ui_MainWindow(object):
         self.label_code_m2 = QtWidgets.QLabel(parent=self.groupBox_m2)
         self.label_code_m2.setObjectName("label_code_m2")
         self.horizontalLayout_10.addWidget(self.label_code_m2)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem7)
         self.verticalLayout_3.addLayout(self.horizontalLayout_10)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem8)
         self.pushButton_m2_add = QtWidgets.QPushButton(parent=self.groupBox_m2)
         self.pushButton_m2_add.setIcon(icon1)
@@ -252,7 +261,8 @@ class Ui_MainWindow(object):
         self.pushButton_m2_sqr.setIcon(icon4)
         self.pushButton_m2_sqr.setObjectName("pushButton_m2_sqr")
         self.horizontalLayout_11.addWidget(self.pushButton_m2_sqr)
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem9)
         self.verticalLayout_3.addLayout(self.horizontalLayout_11)
         self.tableWidget_m2 = QtWidgets.QTableWidget(parent=self.groupBox_m2)
@@ -280,7 +290,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.tableWidget_m2)
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_12.addItem(spacerItem10)
         self.pushButton_m2_clear = QtWidgets.QPushButton(parent=self.groupBox_m2)
         self.pushButton_m2_clear.setIcon(icon5)
@@ -290,7 +301,8 @@ class Ui_MainWindow(object):
         self.pushButton_m2_insert.setIcon(icon6)
         self.pushButton_m2_insert.setObjectName("pushButton_m2_insert")
         self.horizontalLayout_12.addWidget(self.pushButton_m2_insert)
-        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_12.addItem(spacerItem11)
         self.verticalLayout_3.addLayout(self.horizontalLayout_12)
         icon8 = QtGui.QIcon()
@@ -342,7 +354,8 @@ class Ui_MainWindow(object):
         self.comboBox_m3.addItem("")
         self.comboBox_m3.addItem("")
         self.horizontalLayout_14.addWidget(self.comboBox_m3)
-        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_14.addItem(spacerItem12)
         self.verticalLayout_4.addLayout(self.horizontalLayout_14)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
@@ -353,12 +366,14 @@ class Ui_MainWindow(object):
         self.label_code_m3 = QtWidgets.QLabel(parent=self.groupBox_m3)
         self.label_code_m3.setObjectName("label_code_m3")
         self.horizontalLayout_15.addWidget(self.label_code_m3)
-        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_15.addItem(spacerItem13)
         self.verticalLayout_4.addLayout(self.horizontalLayout_15)
         self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_16.addItem(spacerItem14)
         self.pushButton_m3_add = QtWidgets.QPushButton(parent=self.groupBox_m3)
         self.pushButton_m3_add.setIcon(icon1)
@@ -381,7 +396,8 @@ class Ui_MainWindow(object):
         self.pushButton_m3_sqr.setIcon(icon4)
         self.pushButton_m3_sqr.setObjectName("pushButton_m3_sqr")
         self.horizontalLayout_16.addWidget(self.pushButton_m3_sqr)
-        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_16.addItem(spacerItem15)
         self.verticalLayout_4.addLayout(self.horizontalLayout_16)
         self.tableWidget_m3 = QtWidgets.QTableWidget(parent=self.groupBox_m3)
@@ -409,7 +425,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.tableWidget_m3)
         self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_17.setObjectName("horizontalLayout_17")
-        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_17.addItem(spacerItem16)
         self.pushButton_m3_clear = QtWidgets.QPushButton(parent=self.groupBox_m3)
         self.pushButton_m3_clear.setIcon(icon5)
@@ -419,7 +436,8 @@ class Ui_MainWindow(object):
         self.pushButton_m3_insert.setIcon(icon6)
         self.pushButton_m3_insert.setObjectName("pushButton_m3_insert")
         self.horizontalLayout_17.addWidget(self.pushButton_m3_insert)
-        spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_17.addItem(spacerItem17)
         self.verticalLayout_4.addLayout(self.horizontalLayout_17)
         icon9 = QtGui.QIcon()
@@ -471,7 +489,8 @@ class Ui_MainWindow(object):
         self.comboBox_nr.addItem("")
         self.comboBox_nr.addItem("")
         self.horizontalLayout_19.addWidget(self.comboBox_nr)
-        spacerItem18 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem18 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_19.addItem(spacerItem18)
         self.verticalLayout_5.addLayout(self.horizontalLayout_19)
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
@@ -482,12 +501,14 @@ class Ui_MainWindow(object):
         self.label_code_nr = QtWidgets.QLabel(parent=self.groupBox_nr)
         self.label_code_nr.setObjectName("label_code_nr")
         self.horizontalLayout_20.addWidget(self.label_code_nr)
-        spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_20.addItem(spacerItem19)
         self.verticalLayout_5.addLayout(self.horizontalLayout_20)
         self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
-        spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_21.addItem(spacerItem20)
         self.pushButton_nr_add = QtWidgets.QPushButton(parent=self.groupBox_nr)
         self.pushButton_nr_add.setIcon(icon1)
@@ -510,7 +531,8 @@ class Ui_MainWindow(object):
         self.pushButton_nr_sqr.setIcon(icon4)
         self.pushButton_nr_sqr.setObjectName("pushButton_nr_sqr")
         self.horizontalLayout_21.addWidget(self.pushButton_nr_sqr)
-        spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_21.addItem(spacerItem21)
         self.verticalLayout_5.addLayout(self.horizontalLayout_21)
         self.tableWidget_nr = QtWidgets.QTableWidget(parent=self.groupBox_nr)
@@ -538,7 +560,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addWidget(self.tableWidget_nr)
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_22.setObjectName("horizontalLayout_22")
-        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_22.addItem(spacerItem22)
         self.pushButton_nr_clear = QtWidgets.QPushButton(parent=self.groupBox_nr)
         self.pushButton_nr_clear.setIcon(icon5)
@@ -548,7 +571,8 @@ class Ui_MainWindow(object):
         self.pushButton_nr_insert.setIcon(icon6)
         self.pushButton_nr_insert.setObjectName("pushButton_nr_insert")
         self.horizontalLayout_22.addWidget(self.pushButton_nr_insert)
-        spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_22.addItem(spacerItem23)
         self.verticalLayout_5.addLayout(self.horizontalLayout_22)
         icon10 = QtGui.QIcon()
@@ -600,7 +624,8 @@ class Ui_MainWindow(object):
         self.comboBox_rft.addItem("")
         self.comboBox_rft.addItem("")
         self.horizontalLayout_24.addWidget(self.comboBox_rft)
-        spacerItem24 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem24 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_24.addItem(spacerItem24)
         self.label = QtWidgets.QLabel(parent=self.groupBox_rft)
         self.label.setObjectName("label")
@@ -617,12 +642,14 @@ class Ui_MainWindow(object):
         self.label_code_rft = QtWidgets.QLabel(parent=self.groupBox_rft)
         self.label_code_rft.setObjectName("label_code_rft")
         self.horizontalLayout_25.addWidget(self.label_code_rft)
-        spacerItem25 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem25 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_25.addItem(spacerItem25)
         self.verticalLayout_6.addLayout(self.horizontalLayout_25)
         self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_26.setObjectName("horizontalLayout_26")
-        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_26.addItem(spacerItem26)
         self.pushButton_rft_add = QtWidgets.QPushButton(parent=self.groupBox_rft)
         self.pushButton_rft_add.setIcon(icon1)
@@ -645,7 +672,8 @@ class Ui_MainWindow(object):
         self.pushButton_rft_sqr.setIcon(icon4)
         self.pushButton_rft_sqr.setObjectName("pushButton_rft_sqr")
         self.horizontalLayout_26.addWidget(self.pushButton_rft_sqr)
-        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_26.addItem(spacerItem27)
         self.verticalLayout_6.addLayout(self.horizontalLayout_26)
         self.tableWidget_rft = QtWidgets.QTableWidget(parent=self.groupBox_rft)
@@ -673,7 +701,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addWidget(self.tableWidget_rft)
         self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_27.setObjectName("horizontalLayout_27")
-        spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_27.addItem(spacerItem28)
         self.pushButton_rft_clear = QtWidgets.QPushButton(parent=self.groupBox_rft)
         self.pushButton_rft_clear.setIcon(icon5)
@@ -683,7 +712,8 @@ class Ui_MainWindow(object):
         self.pushButton_rft_insert.setIcon(icon6)
         self.pushButton_rft_insert.setObjectName("pushButton_rft_insert")
         self.horizontalLayout_27.addWidget(self.pushButton_rft_insert)
-        spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_27.addItem(spacerItem29)
         self.verticalLayout_6.addLayout(self.horizontalLayout_27)
         icon11 = QtGui.QIcon()
@@ -711,7 +741,8 @@ class Ui_MainWindow(object):
         self.pushButton_edit.setIcon(icon13)
         self.pushButton_edit.setObjectName("pushButton_edit")
         self.horizontalLayout_38.addWidget(self.pushButton_edit)
-        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_38.addItem(spacerItem30)
         self.pushButton_abstract = QtWidgets.QPushButton(parent=self.groupBox)
         icon14 = QtGui.QIcon()
@@ -760,6 +791,8 @@ class Ui_MainWindow(object):
         # Insert the project_Widget() class here
         self.projectWidgetTree = Project_Widget()
 
+        # TODO ---INSERT TakeOff-List App Class HERE to replace treeWidget_takeOffList---
+
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.treeWidget_takeOffList = QtWidgets.QTreeWidget(parent=self.layoutWidget)
@@ -772,11 +805,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.pushButton_insertSubItem = QtWidgets.QPushButton(parent=self.layoutWidget)
         icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap("images/node-insert-previous.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon16.addPixmap(QtGui.QPixmap("images/node-insert-previous.png"), QtGui.QIcon.Mode.Normal,
+                         QtGui.QIcon.State.Off)
         self.pushButton_insertSubItem.setIcon(icon16)
         self.pushButton_insertSubItem.setObjectName("pushButton_insertSubItem")
         self.horizontalLayout.addWidget(self.pushButton_insertSubItem)
-        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem31)
         self.pushButton_deleteItem = QtWidgets.QPushButton(parent=self.layoutWidget)
         self.pushButton_deleteItem.setIcon(icon3)
@@ -888,7 +923,8 @@ class Ui_MainWindow(object):
         self.comboBox_m.setItemText(13, _translate("MainWindow", "Q - Paving/Planting/Fencing/Site furniture"))
         self.comboBox_m.setItemText(14, _translate("MainWindow", "R - Disposal systems"))
         self.comboBox_m.setItemText(15, _translate("MainWindow", "S - Piped Supply systems"))
-        self.comboBox_m.setItemText(16, _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox_m.setItemText(16,
+                                    _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
         self.comboBox_m.setItemText(17, _translate("MainWindow", "U - Ventilation/Air conditioning systems"))
         self.comboBox_m.setItemText(18, _translate("MainWindow", "V - Electrical supply/power/lighting systems"))
         self.comboBox_m.setItemText(19, _translate("MainWindow", "W - Communications/Security/Control systems"))
@@ -940,7 +976,8 @@ class Ui_MainWindow(object):
         self.comboBox_m2.setItemText(13, _translate("MainWindow", "Q - Paving/Planting/Fencing/Site furniture"))
         self.comboBox_m2.setItemText(14, _translate("MainWindow", "R - Disposal systems"))
         self.comboBox_m2.setItemText(15, _translate("MainWindow", "S - Piped Supply systems"))
-        self.comboBox_m2.setItemText(16, _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox_m2.setItemText(16,
+                                     _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
         self.comboBox_m2.setItemText(17, _translate("MainWindow", "U - Ventilation/Air conditioning systems"))
         self.comboBox_m2.setItemText(18, _translate("MainWindow", "V - Electrical supply/power/lighting systems"))
         self.comboBox_m2.setItemText(19, _translate("MainWindow", "W - Communications/Security/Control systems"))
@@ -992,7 +1029,8 @@ class Ui_MainWindow(object):
         self.comboBox_m3.setItemText(13, _translate("MainWindow", "Q - Paving/Planting/Fencing/Site furniture"))
         self.comboBox_m3.setItemText(14, _translate("MainWindow", "R - Disposal systems"))
         self.comboBox_m3.setItemText(15, _translate("MainWindow", "S - Piped Supply systems"))
-        self.comboBox_m3.setItemText(16, _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox_m3.setItemText(16,
+                                     _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
         self.comboBox_m3.setItemText(17, _translate("MainWindow", "U - Ventilation/Air conditioning systems"))
         self.comboBox_m3.setItemText(18, _translate("MainWindow", "V - Electrical supply/power/lighting systems"))
         self.comboBox_m3.setItemText(19, _translate("MainWindow", "W - Communications/Security/Control systems"))
@@ -1044,7 +1082,8 @@ class Ui_MainWindow(object):
         self.comboBox_nr.setItemText(13, _translate("MainWindow", "Q - Paving/Planting/Fencing/Site furniture"))
         self.comboBox_nr.setItemText(14, _translate("MainWindow", "R - Disposal systems"))
         self.comboBox_nr.setItemText(15, _translate("MainWindow", "S - Piped Supply systems"))
-        self.comboBox_nr.setItemText(16, _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox_nr.setItemText(16,
+                                     _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
         self.comboBox_nr.setItemText(17, _translate("MainWindow", "U - Ventilation/Air conditioning systems"))
         self.comboBox_nr.setItemText(18, _translate("MainWindow", "V - Electrical supply/power/lighting systems"))
         self.comboBox_nr.setItemText(19, _translate("MainWindow", "W - Communications/Security/Control systems"))
@@ -1096,12 +1135,14 @@ class Ui_MainWindow(object):
         self.comboBox_rft.setItemText(13, _translate("MainWindow", "Q - Paving/Planting/Fencing/Site furniture"))
         self.comboBox_rft.setItemText(14, _translate("MainWindow", "R - Disposal systems"))
         self.comboBox_rft.setItemText(15, _translate("MainWindow", "S - Piped Supply systems"))
-        self.comboBox_rft.setItemText(16, _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox_rft.setItemText(16,
+                                      _translate("MainWindow", "T - Mechanical heating/Cooling/Refrigeration systems"))
         self.comboBox_rft.setItemText(17, _translate("MainWindow", "U - Ventilation/Air conditioning systems"))
         self.comboBox_rft.setItemText(18, _translate("MainWindow", "V - Electrical supply/power/lighting systems"))
         self.comboBox_rft.setItemText(19, _translate("MainWindow", "W - Communications/Security/Control systems"))
         self.comboBox_rft.setItemText(20, _translate("MainWindow", "X - Transport systems"))
-        self.comboBox_rft.setItemText(21, _translate("MainWindow", "Y - Mechanical and electrical services measurement"))
+        self.comboBox_rft.setItemText(21,
+                                      _translate("MainWindow", "Y - Mechanical and electrical services measurement"))
         self.label.setText(_translate("MainWindow", "Factor :"))
         self.label_18.setText(_translate("MainWindow", "Code :  "))
         self.label_code_rft.setText(_translate("MainWindow", "\"code shows up here\""))
@@ -1177,6 +1218,3 @@ class Ui_MainWindow(object):
         self.actionRedo.setText(_translate("MainWindow", "Redo"))
         self.actionRedo.setShortcut(_translate("MainWindow", "Ctrl+Y"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
-
-
-

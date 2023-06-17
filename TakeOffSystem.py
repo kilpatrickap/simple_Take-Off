@@ -11,11 +11,10 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.show()
 
-        self.actionNew.triggered.connect(self.new_project)
-
         self.projectWidgetTree = Project_Widget()
         self.horizontalLayout_2.addWidget(self.projectWidgetTree)
 
+        self.actionNew.triggered.connect(self.new_project)
 
     def new_project(self):
         dialog = QDialog()

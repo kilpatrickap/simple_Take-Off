@@ -105,8 +105,6 @@ class NewProject_Dialog(object):
         self.pushButton_OK.setObjectName("pushButton_OK")
 
         # Connect signal
-        # self.pushButton_OK.setText(_translate("Dialog", "OK"))
-        # self.pushButton_OK.clicked.connect(self.save_project_details)
         self.pushButton_OK.clicked.connect(lambda: self.save_project_details(Dialog))
 
 
