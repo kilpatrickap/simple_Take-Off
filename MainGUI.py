@@ -8,6 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from ProjectTreeWidget import Project_Widget
+from TakeOffList import TakeOffList_Widget
 
 
 class Ui_MainWindow(object):
@@ -791,34 +792,8 @@ class Ui_MainWindow(object):
         # Insert the project_Widget() class here
         self.projectWidgetTree = Project_Widget()
 
-        # TODO ---INSERT TakeOff-List App Class HERE to replace treeWidget_takeOffList---
-
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.treeWidget_takeOffList = QtWidgets.QTreeWidget(parent=self.layoutWidget)
-        self.treeWidget_takeOffList.setObjectName("treeWidget_takeOffList")
-        self.verticalLayout.addWidget(self.treeWidget_takeOffList)
-        self.lineEdit_takeOffList = QtWidgets.QLineEdit(parent=self.layoutWidget)
-        self.lineEdit_takeOffList.setObjectName("lineEdit_takeOffList")
-        self.verticalLayout.addWidget(self.lineEdit_takeOffList)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_insertSubItem = QtWidgets.QPushButton(parent=self.layoutWidget)
-        icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap("images/node-insert-previous.png"), QtGui.QIcon.Mode.Normal,
-                         QtGui.QIcon.State.Off)
-        self.pushButton_insertSubItem.setIcon(icon16)
-        self.pushButton_insertSubItem.setObjectName("pushButton_insertSubItem")
-        self.horizontalLayout.addWidget(self.pushButton_insertSubItem)
-        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                             QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem31)
-        self.pushButton_deleteItem = QtWidgets.QPushButton(parent=self.layoutWidget)
-        self.pushButton_deleteItem.setIcon(icon3)
-        self.pushButton_deleteItem.setObjectName("pushButton_deleteItem")
-        self.horizontalLayout.addWidget(self.pushButton_deleteItem)
-        self.verticalLayout.addLayout(self.horizontalLayout)
-        self.horizontalLayout_2.addLayout(self.verticalLayout)
+        # Insert the TakeOffList_Widget() class here
+        self.takeOffList = TakeOffList_Widget()
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
@@ -1195,10 +1170,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "unit"))
         item = self.tableWidget_takeOff.horizontalHeaderItem(8)
         item.setText(_translate("MainWindow", "sign post"))
-        self.treeWidget_takeOffList.headerItem().setText(0, _translate("MainWindow", "Take-Off List"))
-        self.lineEdit_takeOffList.setPlaceholderText(_translate("MainWindow", "Type in work item and hit enter."))
-        self.pushButton_insertSubItem.setText(_translate("MainWindow", "Insert Sub-Item"))
-        self.pushButton_deleteItem.setText(_translate("MainWindow", "Delete Item      "))
+
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
