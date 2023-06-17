@@ -58,7 +58,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.pushButton_insertSubItem = QtWidgets.QPushButton(parent=self)
         icon1 = QtGui.QIcon()
-        image_path_icon1 = os.path.join(os.path.dirname(__file__), "images", "plus.png")
+        image_path_icon1 = os.path.join(os.path.dirname(__file__), "images", "node-insert-previous.png")
         icon1.addPixmap(QtGui.QPixmap(image_path_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_insertSubItem.setIcon(icon1)
         self.pushButton_insertSubItem.setObjectName("pushButton_insertSubItem")
