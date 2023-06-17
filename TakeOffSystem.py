@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QMainWindow, QDialog
 from MainGUI import Ui_MainWindow
 from NewProject import NewProject_Dialog
-from ProjectTreeWidget import ProjectWidgetTree_Widget
+from ProjectTreeWidget import Project_Widget
 
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
@@ -13,7 +13,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         self.actionNew.triggered.connect(self.new_project)
 
-        self.projectWidgetTree = ProjectWidgetTree_Widget()
+        self.projectWidgetTree = Project_Widget()
         self.horizontalLayout_2.addWidget(self.projectWidgetTree)
 
 

@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from ProjectTreeWidget import ProjectWidgetTree_Widget
+from ProjectTreeWidget import Project_Widget
 
 
 class Ui_MainWindow(object):
@@ -756,14 +756,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        # self.treeWidget_project = QtWidgets.QTreeWidget(parent=self.layoutWidget)
-        # self.treeWidget_project.setObjectName("treeWidget_project")
-        # self.horizontalLayout_2.addWidget(self.treeWidget_project)
 
-        # Insert the projectWidgetTree_Widget() class here
-        self.projectWidgetTree = ProjectWidgetTree_Widget()
-        self.horizontalLayout_2.addWidget(self.projectWidgetTree)
-
+        # Insert the project_Widget() class here
+        self.projectWidgetTree = Project_Widget()
 
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
@@ -789,6 +784,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.pushButton_deleteItem)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1650, 17))
@@ -1158,15 +1154,6 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "unit"))
         item = self.tableWidget_takeOff.horizontalHeaderItem(8)
         item.setText(_translate("MainWindow", "sign post"))
-
-
-
-
-        # self.treeWidget_project.headerItem().setText(0, _translate("MainWindow", "Project Folder"))
-
-
-
-
         self.treeWidget_takeOffList.headerItem().setText(0, _translate("MainWindow", "Take-Off List"))
         self.lineEdit_takeOffList.setPlaceholderText(_translate("MainWindow", "Type in work item and hit enter."))
         self.pushButton_insertSubItem.setText(_translate("MainWindow", "Insert Sub-Item"))
