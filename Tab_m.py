@@ -172,18 +172,18 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
 
         # MainWindow.setCentralWidget(self.centralwidget)
-        MainWindow.setCentralWidget(self)
-        self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        # MainWindow.setCentralWidget(self)
+        # self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
+        # self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
+        # self.menubar.setObjectName("menubar")
+        # MainWindow.setMenuBar(self.menubar)
+        # self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
+        # self.statusbar.setObjectName("statusbar")
+        # MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi()
         self.tabWidget_m.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(self)
 
     def desc(self):
         desc_text = self.lineEdit_desc.text()
@@ -421,9 +421,9 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Activate comboBox item
         self.comboBox.setEnabled(True)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.setWindowTitle(_translate("tabWidget_m", "tabWidget_m"))
 
 
 
