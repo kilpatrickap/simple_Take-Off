@@ -3,27 +3,41 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem
 
 
-class Ui_MainWindow(object):
+class Tab_m_Widget(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1375, 786)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(12)
-        MainWindow.setFont(font)
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
+        # MainWindow.setObjectName("MainWindow")
+        # MainWindow.resize(600, 450)
+        # font = QtGui.QFont()
+        # font.setFamily("Helvetica")
+        # font.setPointSize(12)
+        # MainWindow.setFont(font)
+
+
+        # self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+        # self.centralwidget.setObjectName("centralwidget")
+        #
+        # self.tabWidget_m = QtWidgets.QTabWidget(parent=self.centralwidget)
 
 
 
-        self.tabWidget_m = QtWidgets.QTabWidget(parent=self.centralwidget)
+
+
+        self.tabWidget_m = QtWidgets.QTabWidget(self)
         self.tabWidget_m.setGeometry(QtCore.QRect(10, 10, 571, 421))
         self.tabWidget_m.setObjectName("tabWidget_m")
+
+
         self.tab_m = QtWidgets.QWidget()
         self.tab_m.setObjectName("tab_m")
+
         self.groupBox_m = QtWidgets.QGroupBox(parent=self.tab_m)
         self.groupBox_m.setGeometry(QtCore.QRect(10, 10, 551, 381))
         self.groupBox_m.setObjectName("groupBox_m_2")
+
+
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_m)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
@@ -157,7 +171,8 @@ class Ui_MainWindow(object):
         # self.tabWidget_m.addTab(self.tab_2, "")
 
 
-        MainWindow.setCentralWidget(self.centralwidget)
+        # MainWindow.setCentralWidget(self.centralwidget)
+        MainWindow.setCentralWidget(self)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
         self.menubar.setObjectName("menubar")
@@ -724,7 +739,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Tab_m_Widget()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())

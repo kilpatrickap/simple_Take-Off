@@ -21,9 +21,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.takeOffListWidget = TakeOffList_Widget()
         self.horizontalLayout_2.addWidget(self.takeOffListWidget)
 
-        # Insert Tab_m_Widget() class and add widget
+        # Insert Tab_m_Widget() class and add widget to tabWidget
         self.tab_m_widget = Tab_m_Widget()
-        # self.tab_m_widget.show()
+        self.tabWidget.addTab(self.tab_m_widget, "tab_m-TEST")
 
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
