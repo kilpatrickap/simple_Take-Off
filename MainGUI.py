@@ -27,6 +27,17 @@ class Ui_MainWindow(object):
         self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
         self.tabWidget.setGeometry(QtCore.QRect(10, 280, 771, 561))
         self.tabWidget.setObjectName("tabWidget")
+
+
+
+
+
+
+
+
+
+        #---TAB_M WIDGET STARTS HERE---
+
         self.tab_m = QtWidgets.QWidget()
         self.tab_m.setObjectName("tab_m")
         self.groupBox_m = QtWidgets.QGroupBox(parent=self.tab_m)
@@ -174,6 +185,18 @@ class Ui_MainWindow(object):
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap("images/len.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_m, icon7, "")
+
+
+
+
+
+
+
+
+
+
+        #---TAB_M2 WIDGET STARTS HERE---
+
         self.tab_m2 = QtWidgets.QWidget()
         self.tab_m2.setObjectName("tab_m2")
         self.groupBox_m2 = QtWidgets.QGroupBox(parent=self.tab_m2)

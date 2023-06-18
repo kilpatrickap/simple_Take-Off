@@ -147,7 +147,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         current_dir = os.getcwd()
 
         # Construct the file path relative to the current directory
-        file_path = os.path.join(current_dir, file_name)
+        file_path = os.path.join(current_dir, file_name)    #TODO write to project folder
 
         # Write the tree data to the JSON file
         with open(file_path, 'w') as file:
@@ -171,7 +171,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
             parent_item.setExpanded(True)  # Expand the parent item to show child items
 
-    def load_database(self, file_name='takeOffList_DB.json'):
+    def load_database(self, file_name='takeOffList_DB.json'):   #TODO Load from project folder
         # Get the current directory
         current_dir = os.getcwd()
 
