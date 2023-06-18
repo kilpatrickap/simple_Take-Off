@@ -28,8 +28,6 @@ class Ui_MainWindow(object):
 
 
 
-        # Insert the Tab_m_Widget() class here
-        self.tab_m = Tab_m_Widget()
 
 
 
@@ -41,15 +39,19 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
 
+        self.tabWidget.setGeometry(QtCore.QRect(10, 280, 771, 561))
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab_m = QtWidgets.QWidget()
+        self.tab_m.setObjectName("tab_m")
+
+
+
+        # Insert the Tab_m_Widget() class here
+        self.tab_m = Tab_m_Widget()
 
 
 
 
-
-        # self.tabWidget.setGeometry(QtCore.QRect(10, 280, 771, 561))
-        # self.tabWidget.setObjectName("tabWidget")
-        # self.tab_m = QtWidgets.QWidget()
-        # self.tab_m.setObjectName("tab_m")
         # self.groupBox_m = QtWidgets.QGroupBox(parent=self.tab_m)
         # self.groupBox_m.setGeometry(QtCore.QRect(10, 10, 751, 501))
         # self.groupBox_m.setObjectName("groupBox_m")
