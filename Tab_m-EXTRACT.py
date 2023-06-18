@@ -13,9 +13,63 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-
-
-
+        # self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
+        # self.groupBox.setGeometry(QtCore.QRect(590, 40, 771, 711))
+        # self.groupBox.setObjectName("groupBox")
+        # self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
+        # self.verticalLayout_2.setObjectName("verticalLayout_2")
+        # self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        # self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        # self.lineEdit_code = QtWidgets.QLineEdit(parent=self.groupBox)
+        # self.lineEdit_code.setObjectName("lineEdit_code")
+        # self.horizontalLayout_2.addWidget(self.lineEdit_code)
+        # self.pushButton_search = QtWidgets.QPushButton(parent=self.groupBox)
+        # self.pushButton_search.setObjectName("pushButton_search")
+        #
+        # # Connect signal
+        # self.pushButton_search.clicked.connect(self.search_code)
+        #
+        # self.horizontalLayout_2.addWidget(self.pushButton_search)
+        # self.pushButton_edit = QtWidgets.QPushButton(parent=self.groupBox)
+        # self.pushButton_edit.setObjectName("pushButton_edit")
+        #
+        # # Connect signal
+        # self.pushButton_edit.clicked.connect(self.edit_code)
+        #
+        # self.horizontalLayout_2.addWidget(self.pushButton_edit)
+        # spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+        #                                    QtWidgets.QSizePolicy.Policy.Minimum)
+        # self.horizontalLayout_2.addItem(spacerItem)
+        # self.pushButton = QtWidgets.QPushButton(parent=self.groupBox)
+        # self.pushButton.setObjectName("pushButton")
+        # self.horizontalLayout_2.addWidget(self.pushButton)
+        # self.pushButton_print = QtWidgets.QPushButton(parent=self.groupBox)
+        # self.pushButton_print.setObjectName("pushButton_print")
+        # self.horizontalLayout_2.addWidget(self.pushButton_print)
+        # self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+        # self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=self.groupBox)
+        # self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
+        # self.tableWidget_takeOff.setColumnCount(9)
+        # self.tableWidget_takeOff.setRowCount(0)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(0, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(1, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(2, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(3, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(4, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(5, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(6, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(7, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.tableWidget_takeOff.setHorizontalHeaderItem(8, item)
+        # self.verticalLayout_2.addWidget(self.tableWidget_takeOff)
         self.tabWidget_m = QtWidgets.QTabWidget(parent=self.centralwidget)
         self.tabWidget_m.setGeometry(QtCore.QRect(10, 10, 571, 421))
         self.tabWidget_m.setObjectName("tabWidget_m")
@@ -149,14 +203,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
         self.verticalLayout.addLayout(self.horizontalLayout_11)
         self.tabWidget_m.addTab(self.tab_m, "")
-
-        #---TAB_2 REMOVED---
-
-        # self.tab_2 = QtWidgets.QWidget()
-        # self.tab_2.setObjectName("tab_2")
-        # self.tabWidget_m.addTab(self.tab_2, "")
-
-
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.tabWidget_m.addTab(self.tab_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
@@ -409,8 +458,39 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-
-
+        # self.groupBox.setTitle(_translate("MainWindow", "Take Off"))
+        # self.lineEdit_code.setPlaceholderText(_translate("MainWindow", "Enter code"))
+        # self.pushButton_search.setText(_translate("MainWindow", "Search"))
+        # self.pushButton_edit.setText(_translate("MainWindow", "Edit"))
+        # self.pushButton.setText(_translate("MainWindow", "Abstract"))
+        # self.pushButton_print.setText(_translate("MainWindow", "Print"))
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(0)
+        # item.setText(_translate("MainWindow", "code"))
+        # self.tableWidget_takeOff.setColumnWidth(0, 60)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(1)
+        # item.setText(_translate("MainWindow", "trade"))
+        # self.tableWidget_takeOff.setColumnWidth(1, 60)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(2)
+        # item.setText(_translate("MainWindow", "desc"))
+        # self.tableWidget_takeOff.setColumnWidth(2, 160)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(3)
+        # item.setText(_translate("MainWindow", "ref"))
+        # self.tableWidget_takeOff.setColumnWidth(3, 60)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(4)
+        # item.setText(_translate("MainWindow", "times"))
+        # self.tableWidget_takeOff.setColumnWidth(4, 60)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(5)
+        # item.setText(_translate("MainWindow", "dims"))
+        # self.tableWidget_takeOff.setColumnWidth(5, 60)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(6)
+        # item.setText(_translate("MainWindow", "square"))
+        # self.tableWidget_takeOff.setColumnWidth(6, 60)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(7)
+        # item.setText(_translate("MainWindow", "unit"))
+        # self.tableWidget_takeOff.setColumnWidth(7, 30)
+        # item = self.tableWidget_takeOff.horizontalHeaderItem(8)
+        # item.setText(_translate("MainWindow", "sign post"))
+        # self.tableWidget_takeOff.setColumnWidth(8, 160)
 
         self.groupBox_m.setTitle(_translate("MainWindow", "m"))
         self.label_4.setText(_translate("MainWindow", "Desc :"))
@@ -455,7 +535,7 @@ class Ui_MainWindow(object):
         self.pushButton_m_clear.setText(_translate("MainWindow", "Clear"))
         self.pushButton_m_insert.setText(_translate("MainWindow", "Insert"))
         self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_m), _translate("MainWindow", "m"))
-        # self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+        self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
 
     def save_table_data(self):
         # Import the return of self.code here as code_string

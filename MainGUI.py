@@ -44,17 +44,20 @@ class Ui_MainWindow(object):
         self.tab_m = QtWidgets.QWidget()
         self.tab_m.setObjectName("tab_m")
 
+        self.groupBox_m = QtWidgets.QGroupBox(parent=self.tab_m)
+        self.groupBox_m.setGeometry(QtCore.QRect(10, 10, 751, 501))
+        self.groupBox_m.setObjectName("groupBox_m")
 
 
         # Insert the Tab_m_Widget() class here
-        self.tab_m = Tab_m_Widget()
+        # self.tab_m = Tab_m_Widget()
 
 
 
 
-        # self.groupBox_m = QtWidgets.QGroupBox(parent=self.tab_m)
-        # self.groupBox_m.setGeometry(QtCore.QRect(10, 10, 751, 501))
-        # self.groupBox_m.setObjectName("groupBox_m")
+
+
+
         # self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_m)
         # self.verticalLayout_2.setObjectName("verticalLayout_2")
         # self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
@@ -944,7 +947,7 @@ class Ui_MainWindow(object):
 
 
 
-        # self.groupBox_m.setTitle(_translate("MainWindow", "Linear measurement"))
+        self.groupBox_m.setTitle(_translate("MainWindow", "Linear measurement"))
         # self.label_4.setText(_translate("MainWindow", "Desc :  "))
         # self.label_5.setText(_translate("MainWindow", "Trade : "))
         # self.comboBox_m.setItemText(0, _translate("MainWindow", "A - Preliminaries/General conditions"))

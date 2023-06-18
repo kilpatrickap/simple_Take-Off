@@ -23,7 +23,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Insert Tab_m_Widget() class and add widget
         self.tab_m_widget = Tab_m_Widget()
-        self.tab_m_widget.show()
+        # self.tab_m_widget.show()
 
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
