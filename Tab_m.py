@@ -3,22 +3,25 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(600, 500)
+class Tab_m_Widget(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+
+    def setupUi(self):
+        self.setObjectName("Tab_m_Widget")
+        self.resize(600, 500)
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
-        MainWindow.setFont(font)
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
-
+        self.setFont(font)
 
 
         # --- tabWidget_m starts here---
 
+
+        self.centralwidget = QtWidgets.QWidget(parent=self)
+        self.centralwidget.setObjectName("centralwidget")
+        self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
         self.tabWidget_m = QtWidgets.QTabWidget(parent=self.centralwidget)
         self.tabWidget_m.setGeometry(QtCore.QRect(10, 10, 571, 421))
         self.tabWidget_m.setObjectName("tabWidget_m")
@@ -154,18 +157,18 @@ class Ui_MainWindow(object):
         self.tabWidget_m.addTab(self.tab_m, "")
 
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        # self.setCentralWidget(self.centralwidget)
+        # self.menubar = QtWidgets.QMenuBar(parent=self)
+        # self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
+        # self.menubar.setObjectName("menubar")
+        # self.setMenuBar(self.menubar)
+        # self.statusbar = QtWidgets.QStatusBar(parent=self)
+        # self.statusbar.setObjectName("statusbar")
+        # self.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi()
         self.tabWidget_m.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(self)
 
     def desc(self):
         desc_text = self.lineEdit_desc.text()
@@ -403,52 +406,52 @@ class Ui_MainWindow(object):
         # Activate comboBox item
         self.comboBox.setEnabled(True)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.groupBox_m.setTitle(_translate("MainWindow", "m"))
-        self.label_4.setText(_translate("MainWindow", "Desc :"))
-        self.label_5.setText(_translate("MainWindow", "Trade : "))
-        self.comboBox.setItemText(0, _translate("MainWindow", "--- Select Trade ---"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "D - GROUNDWORK"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "M - SURFACE FINISHES"))
-        self.label_6.setText(_translate("MainWindow", "Code :"))
-        self.label_code.setText(_translate("MainWindow", "\"code shows up here\""))
-        self.pushButton_m_add.setText(_translate("MainWindow", "Add"))
-        self.pushButton_m_ddt.setText(_translate("MainWindow", "Ddt"))
-        self.pushButton_m_del.setText(_translate("MainWindow", "Del"))
-        self.pushButton_m_sqr.setText(_translate("MainWindow", "Sqr"))
+        self.setWindowTitle(_translate("Tab_m_Widget", "self"))
+        self.groupBox_m.setTitle(_translate("Tab_m_Widget", "m"))
+        self.label_4.setText(_translate("Tab_m_Widget", "Desc :"))
+        self.label_5.setText(_translate("Tab_m_Widget", "Trade : "))
+        self.comboBox.setItemText(0, _translate("Tab_m_Widget", "--- Select Trade ---"))
+        self.comboBox.setItemText(1, _translate("Tab_m_Widget", "D - GROUNDWORK"))
+        self.comboBox.setItemText(2, _translate("Tab_m_Widget", "M - SURFACE FINISHES"))
+        self.label_6.setText(_translate("Tab_m_Widget", "Code :"))
+        self.label_code.setText(_translate("Tab_m_Widget", "\"code shows up here\""))
+        self.pushButton_m_add.setText(_translate("Tab_m_Widget", "Add"))
+        self.pushButton_m_ddt.setText(_translate("Tab_m_Widget", "Ddt"))
+        self.pushButton_m_del.setText(_translate("Tab_m_Widget", "Del"))
+        self.pushButton_m_sqr.setText(_translate("Tab_m_Widget", "Sqr"))
         item = self.tableWidget_m.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "code"))
+        item.setText(_translate("Tab_m_Widget", "code"))
         self.tableWidget_m.setColumnWidth(0, 60)
         item = self.tableWidget_m.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "trade"))
+        item.setText(_translate("Tab_m_Widget", "trade"))
         self.tableWidget_m.setColumnWidth(1, 40)
         item = self.tableWidget_m.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "desc"))
+        item.setText(_translate("Tab_m_Widget", "desc"))
         self.tableWidget_m.setColumnWidth(2, 160)
         item = self.tableWidget_m.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "ref"))
+        item.setText(_translate("Tab_m_Widget", "ref"))
         self.tableWidget_m.setColumnWidth(3, 60)
         item = self.tableWidget_m.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "times"))
+        item.setText(_translate("Tab_m_Widget", "times"))
         self.tableWidget_m.setColumnWidth(4, 60)
         item = self.tableWidget_m.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "dims"))
+        item.setText(_translate("Tab_m_Widget", "dims"))
         self.tableWidget_m.setColumnWidth(5, 60)
         item = self.tableWidget_m.horizontalHeaderItem(6)
-        item.setText(_translate("MainWindow", "square"))
+        item.setText(_translate("Tab_m_Widget", "square"))
         self.tableWidget_m.setColumnWidth(6, 60)
         item = self.tableWidget_m.horizontalHeaderItem(7)
-        item.setText(_translate("MainWindow", "unit"))
+        item.setText(_translate("Tab_m_Widget", "unit"))
         self.tableWidget_m.setColumnWidth(7, 30)
         item = self.tableWidget_m.horizontalHeaderItem(8)
-        item.setText(_translate("MainWindow", "sign post"))
+        item.setText(_translate("Tab_m_Widget", "sign post"))
         self.tableWidget_m.setColumnWidth(8, 160)
 
-        self.pushButton_m_clear.setText(_translate("MainWindow", "Clear"))
-        self.pushButton_m_insert.setText(_translate("MainWindow", "Insert"))
-        self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_m), _translate("MainWindow", "m"))
+        self.pushButton_m_clear.setText(_translate("Tab_m_Widget", "Clear"))
+        self.pushButton_m_insert.setText(_translate("Tab_m_Widget", "Insert"))
+        self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_m), _translate("Tab_m_Widget", "m"))
 
     def save_table_data(self):
         # Import the return of self.code here as code_string
@@ -712,12 +715,12 @@ class Ui_MainWindow(object):
         conn.close()
 
 
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())
+# if __name__ == "__main__":
+#     import sys
+#
+#     app = QtWidgets.QApplication(sys.argv)
+#     self = QtWidgets.QWidget()
+#     ui = Tab_m_Widget()
+#     ui.setupUi(self)
+#     self.show()
+#     sys.exit(app.exec())
