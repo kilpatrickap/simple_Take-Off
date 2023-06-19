@@ -44,6 +44,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.label_4 = QtWidgets.QLabel(parent=self.groupBox_m)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_7.addWidget(self.label_4)
+
         self.lineEdit_desc = QtWidgets.QLineEdit(parent=self.groupBox_m)
         self.lineEdit_desc.setObjectName("lineEdit_desc")
 
@@ -57,6 +58,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.label_5 = QtWidgets.QLabel(parent=self.groupBox_m)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
+
         self.comboBox = QtWidgets.QComboBox(parent=self.groupBox_m)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
@@ -104,6 +106,12 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+
+        # Horizontal spacer
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem1)
+
         self.pushButton_m_add = QtWidgets.QPushButton(parent=self.groupBox_m)
 
         # Add button icon with relative path
@@ -165,7 +173,14 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Connect signal
         self.pushButton_m_sqr.clicked.connect(self.square)
 
+
         self.horizontalLayout_10.addWidget(self.pushButton_m_sqr)
+
+        # Horizontal spacer
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem2)
+
         self.verticalLayout.addLayout(self.horizontalLayout_10)
         self.tableWidget_m = QtWidgets.QTableWidget(parent=self.groupBox_m)
         self.tableWidget_m.setObjectName("tableWidget_m")
@@ -192,6 +207,11 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.verticalLayout.addWidget(self.tableWidget_m)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+
+        # Horizontal spacer
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem3)
 
         self.pushButton_m_clear = QtWidgets.QPushButton(parent=self.groupBox_m)
 
@@ -223,6 +243,12 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
+
+        # Horizontal spacer
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem4)
+
         self.verticalLayout.addLayout(self.horizontalLayout_11)
         # self.tabWidget_m.addTab(self.tab_m, "")
 
@@ -551,8 +577,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         self.pushButton_m_clear.setText(_translate("tabWidget_m", "Clear"))
         self.pushButton_m_insert.setText(_translate("tabWidget_m", "Insert"))
-        # self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_m), _translate("tabWidget_m", "m"))
-        # self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
 
     def save_table_data(self):
         # Import the return of self.code here as code_string

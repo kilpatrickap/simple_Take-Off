@@ -25,16 +25,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowIcon(icon)
 
 
-
-
-
-
-
-
-
         #---TAB_M WIDGET STARTS HERE---
-
-
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
