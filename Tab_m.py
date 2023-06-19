@@ -189,6 +189,13 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_clear)
         self.pushButton_m_insert = QtWidgets.QPushButton(parent=self.groupBox_m)
+
+        # Insert button icon with relative path
+        icon6 = QtGui.QIcon()
+        image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "table-export.png")
+        icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_insert.setIcon(icon6)
+
         self.pushButton_m_insert.setObjectName("pushButton_m_insert")
 
         # Connect signals
