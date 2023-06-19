@@ -132,7 +132,15 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.pushButton_m_del.clicked.connect(self.delete_row)
 
         self.horizontalLayout_10.addWidget(self.pushButton_m_del)
+
         self.pushButton_m_sqr = QtWidgets.QPushButton(parent=self.groupBox_m)
+
+        # Square button icon with relative path
+        icon4 = QtGui.QIcon()
+        image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "calculator.png")
+        icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_sqr.setIcon(icon4)
+
         self.pushButton_m_sqr.setObjectName("pushButton_m_sqr")
 
         # Connect signal
