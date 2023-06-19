@@ -25,15 +25,15 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
 
 
-        self.tabWidget_m = QtWidgets.QTabWidget(self)
-        self.tabWidget_m.setGeometry(QtCore.QRect(10, 10, 571, 421))
-        self.tabWidget_m.setObjectName("tabWidget_m")
+        # self.tabWidget_m = QtWidgets.QTabWidget(self)
+        # self.tabWidget_m.setGeometry(QtCore.QRect(10, 10, 571, 421))
+        # self.tabWidget_m.setObjectName("tabWidget_m")
+        #
+        #
+        # self.tab_m = QtWidgets.QWidget()
+        # self.tab_m.setObjectName("tab_m")
 
-
-        self.tab_m = QtWidgets.QWidget()
-        self.tab_m.setObjectName("tab_m")
-
-        self.groupBox_m = QtWidgets.QGroupBox(parent=self.tab_m)
+        self.groupBox_m = QtWidgets.QGroupBox(parent=self)
         self.groupBox_m.setGeometry(QtCore.QRect(10, 10, 551, 381))
         self.groupBox_m.setObjectName("groupBox_m_2")
 
@@ -162,7 +162,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
         self.verticalLayout.addLayout(self.horizontalLayout_11)
-        self.tabWidget_m.addTab(self.tab_m, "")
+        # self.tabWidget_m.addTab(self.tab_m, "")
 
         #---TAB_2 REMOVED---
 
@@ -182,7 +182,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi()
-        self.tabWidget_m.setCurrentIndex(0)
+        # self.tabWidget_m.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def desc(self):
@@ -469,7 +469,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         self.pushButton_m_clear.setText(_translate("tabWidget_m", "Clear"))
         self.pushButton_m_insert.setText(_translate("tabWidget_m", "Insert"))
-        self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_m), _translate("tabWidget_m", "m"))
+        # self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_m), _translate("tabWidget_m", "m"))
 
 
         # self.tabWidget_m.setTabText(self.tabWidget_m.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
