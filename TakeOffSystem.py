@@ -1,4 +1,7 @@
+import os
 import sys
+
+from PyQt6 import QtGui
 from PyQt6.QtWidgets import QMainWindow, QDialog
 from MainGUI import Ui_MainWindow
 from NewProject import NewProject_Dialog
@@ -23,11 +26,17 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Insert Tab_m_Widget() class and add widget to tabWidget
         self.tab_m_widget = Tab_m_Widget()
-        self.tabWidget.addTab(self.tab_m_widget, "m")
+        icon1 = QtGui.QIcon()   # Add button icon with relative path
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "len.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.tab_m_widget, icon1, "m")
 
         # # Insert Tab_m2_Widget() class and add widget to tabWidget
         # self.tab_m_widget = Tab_m_Widget()
-        # self.tabWidget.addTab(self.tab_m_widget, "m2")
+        # icon1 = QtGui.QIcon()  # Add button icon with relative path
+        # image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "len.png")
+        # icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        # self.tabWidget.addTab(self.tab_m_widget, icon1, "m2")
 
 
         # Connect signal of new_project
