@@ -470,7 +470,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
 
 
-        self.groupBox_m.setTitle(_translate("tabWidget_m", "m"))
+        self.groupBox_m.setTitle(_translate("tabWidget_m", "Linear measurement"))
         self.label_4.setText(_translate("tabWidget_m", "Desc :"))
         self.label_5.setText(_translate("tabWidget_m", "Trade : "))
         self.comboBox.setItemText(0, _translate("tabWidget_m", "--- Select Trade ---"))
