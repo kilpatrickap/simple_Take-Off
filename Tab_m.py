@@ -100,6 +100,13 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         self.horizontalLayout_10.addWidget(self.pushButton_m_add)
         self.pushButton_m_ddt = QtWidgets.QPushButton(parent=self.groupBox_m)
+
+        # Deduct button icon with relative path
+        icon2 = QtGui.QIcon()
+        image_path_to_icon2 = os.path.join(os.path.dirname(__file__), "images", "minus.png")
+        icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_ddt.setIcon(icon2)
+
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -442,7 +449,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.label_6.setText(_translate("tabWidget_m", "Code :"))
         self.label_code.setText(_translate("tabWidget_m", "\"code shows up here\""))
         self.pushButton_m_add.setText(_translate("tabWidget_m", "Add"))
-        self.pushButton_m_ddt.setText(_translate("tabWidget_m", "Ddt"))
+        self.pushButton_m_ddt.setText(_translate("tabWidget_m", "Deduct"))
         self.pushButton_m_del.setText(_translate("tabWidget_m", "Del"))
         self.pushButton_m_sqr.setText(_translate("tabWidget_m", "Sqr"))
         item = self.tableWidget_m.horizontalHeaderItem(0)
