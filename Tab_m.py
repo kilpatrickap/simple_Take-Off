@@ -173,7 +173,15 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.verticalLayout.addWidget(self.tableWidget_m)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+
         self.pushButton_m_clear = QtWidgets.QPushButton(parent=self.groupBox_m)
+
+        # Clear button icon with relative path
+        icon5 = QtGui.QIcon()
+        image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "application-blue.png")
+        icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_clear.setIcon(icon5)
+
         self.pushButton_m_clear.setObjectName("pushButton_m_clear")
 
         # Connect signal
