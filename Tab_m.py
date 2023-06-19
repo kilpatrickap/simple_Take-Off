@@ -119,6 +119,13 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         self.horizontalLayout_10.addWidget(self.pushButton_m_ddt)
         self.pushButton_m_del = QtWidgets.QPushButton(parent=self.groupBox_m)
+
+        # Delete button icon with relative path
+        icon3 = QtGui.QIcon()
+        image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "cross.png")
+        icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_del.setIcon(icon3)
+
         self.pushButton_m_del.setObjectName("pushButton_m_del")
 
         # Connect signal
@@ -450,8 +457,8 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.label_code.setText(_translate("tabWidget_m", "\"code shows up here\""))
         self.pushButton_m_add.setText(_translate("tabWidget_m", "Add"))
         self.pushButton_m_ddt.setText(_translate("tabWidget_m", "Deduct"))
-        self.pushButton_m_del.setText(_translate("tabWidget_m", "Del"))
-        self.pushButton_m_sqr.setText(_translate("tabWidget_m", "Sqr"))
+        self.pushButton_m_del.setText(_translate("tabWidget_m", "Delete"))
+        self.pushButton_m_sqr.setText(_translate("tabWidget_m", "Square"))
         item = self.tableWidget_m.horizontalHeaderItem(0)
         item.setText(_translate("tabWidget_m", "code"))
         self.tableWidget_m.setColumnWidth(0, 60)
