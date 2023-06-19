@@ -1,3 +1,4 @@
+import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem
@@ -85,6 +86,13 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.pushButton_m_add = QtWidgets.QPushButton(parent=self.groupBox_m)
+
+        # Add button icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "plus.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_add.setIcon(icon1)
+
         self.pushButton_m_add.setObjectName("pushButton_m_add")
 
         # Connect signal
@@ -154,9 +162,9 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.pushButton_m_insert.setObjectName("pushButton_m_insert")
 
         # Connect signals
-        self.pushButton_m_insert.clicked.connect(self.save_table_data)
-        self.pushButton_m_insert.clicked.connect(self.load_table_data)
-        self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
+        # self.pushButton_m_insert.clicked.connect(self.save_table_data)
+        # self.pushButton_m_insert.clicked.connect(self.load_table_data)
+        # self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
         self.verticalLayout.addLayout(self.horizontalLayout_11)
@@ -607,137 +615,137 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Close the database connection
         conn.close()
 
-    def save_takeOff_database(self):
-        conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
-        cursor = conn.cursor()
-
-        # Create the "takeOff" table if it doesn't exist
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS takeOff (
-                id     INTEGER PRIMARY KEY AUTOINCREMENT,
-                code   TEXT,
-                trade  TEXT,
-                desc   TEXT,
-                ref    TEXT,
-                times  TEXT,
-                dims   TEXT,
-                square INTEGER,
-                unit   TEXT,
-                sign_post TEXT,
-                UNIQUE(id)
-            )
-        """)
-
-        rows = self.tableWidget_takeOff.rowCount()
-        for row in range(rows):
-            code = self.tableWidget_takeOff.item(row, 0).text()
-            trade = self.tableWidget_takeOff.item(row, 1).text()
-            desc = self.tableWidget_takeOff.item(row, 2).text()
-            ref = self.tableWidget_takeOff.item(row, 3).text()
-            times = self.tableWidget_takeOff.item(row, 4).text()
-            dims = self.tableWidget_takeOff.item(row, 5).text()
-            square = self.tableWidget_takeOff.item(row, 6).text()
-            unit = self.tableWidget_takeOff.item(row, 7).text()
-            sign_post = self.tableWidget_takeOff.item(row, 8).text()
-
-            # Check if the row already exists in the table
-            cursor.execute("""
-                SELECT * FROM takeOff WHERE code = ? AND trade = ? AND desc = ? AND ref = ? AND times = ? AND dims = ?
-                AND square = ? AND unit = ? AND sign_post = ?
-            """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
-
-            existing_row = cursor.fetchone()
-            if existing_row is None:
-                # Row does not exist, insert it into the table
-                cursor.execute("""
-                    INSERT INTO takeOff (code, trade, desc, ref, times, dims, square, unit, sign_post)
-                    VALUES (?,?,?,?,?,?,?,?,?)
-                """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
-
-        conn.commit()  # Save the changes
-        conn.close()  # Close the connection
-
-        print("Data is saved to takeOff.db")
-
-    # def search_code(self):
-    #     entered_code = self.lineEdit_code.text()
-    #     print(entered_code)
-    #
-    #     conn = sqlite3.connect('takeOff.db')  # Connect to the "takeOff.db" database
-    #     cursor = conn.cursor()
-    #
-    #     # Execute a query to search for the entered code in all the columns of the 'takeOff' table
-    #     cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
-    #     rows = cursor.fetchall()
-    #
-    #     # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
-    #     rows = [row[1:] for row in rows]
-    #
-    #     # Clear the existing data in the tableWidget_takeOff
-    #     self.tableWidget_takeOff.clearContents()
-    #     self.tableWidget_takeOff.setRowCount(0)
-    #
-    #     if rows:
-    #         print("Matching rows:")
-    #         for row in rows:
-    #             print(row)
-    #             # Add a new row to the tableWidget_takeOff
-    #             self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
-    #
-    #             # # Populate the cells of the new row with the fetched data
-    #             for column, value in enumerate(row):
-    #                 item = QTableWidgetItem(str(value))
-    #                 self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column, item)
-    #     else:
-    #         print("No matching rows")
-    #
-    #     conn.close()
-
-#     def edit_code(self):  # TODO edit_code() should be in a separate tableWidget window
-#         entered_code = self.lineEdit_code.text()
-#         print("Entered code:", entered_code)
-#
-#         # Connect to the 'takeOff.db' database
-#         conn = sqlite3.connect('takeOff.db')  # TODO only edit tables in (m_data, m2_data, m3_data, item_data etc)
+#     def save_takeOff_database(self):
+#         conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
 #         cursor = conn.cursor()
 #
-#         # Execute a query to search for the entered code in the 'takeOff' table
-#         cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
-#         rows = cursor.fetchall()
+#         # Create the "takeOff" table if it doesn't exist
+#         cursor.execute("""
+#             CREATE TABLE IF NOT EXISTS takeOff (
+#                 id     INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 code   TEXT,
+#                 trade  TEXT,
+#                 desc   TEXT,
+#                 ref    TEXT,
+#                 times  TEXT,
+#                 dims   TEXT,
+#                 square INTEGER,
+#                 unit   TEXT,
+#                 sign_post TEXT,
+#                 UNIQUE(id)
+#             )
+#         """)
 #
-#         # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
-#         rows = [row[1:] for row in rows]
+#         rows = self.tableWidget_takeOff.rowCount()
+#         for row in range(rows):
+#             code = self.tableWidget_takeOff.item(row, 0).text()
+#             trade = self.tableWidget_takeOff.item(row, 1).text()
+#             desc = self.tableWidget_takeOff.item(row, 2).text()
+#             ref = self.tableWidget_takeOff.item(row, 3).text()
+#             times = self.tableWidget_takeOff.item(row, 4).text()
+#             dims = self.tableWidget_takeOff.item(row, 5).text()
+#             square = self.tableWidget_takeOff.item(row, 6).text()
+#             unit = self.tableWidget_takeOff.item(row, 7).text()
+#             sign_post = self.tableWidget_takeOff.item(row, 8).text()
 #
-#         if rows:
-#             print(f"Code '{entered_code}' found:")
+#             # Check if the row already exists in the table
+#             cursor.execute("""
+#                 SELECT * FROM takeOff WHERE code = ? AND trade = ? AND desc = ? AND ref = ? AND times = ? AND dims = ?
+#                 AND square = ? AND unit = ? AND sign_post = ?
+#             """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
 #
-#             # Set the label_code text to the entered code
-#             self.label_code.setText(entered_code)
+#             existing_row = cursor.fetchone()
+#             if existing_row is None:
+#                 # Row does not exist, insert it into the table
+#                 cursor.execute("""
+#                     INSERT INTO takeOff (code, trade, desc, ref, times, dims, square, unit, sign_post)
+#                     VALUES (?,?,?,?,?,?,?,?,?)
+#                 """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
 #
-#             for row in rows:
-#                 print(row)
-#                 # Add a new row to the tableWidget_m
-#                 self.tableWidget_m.insertRow(self.tableWidget_m.rowCount())
+#         conn.commit()  # Save the changes
+#         conn.close()  # Close the connection
 #
-#                 # Populate the cells of the new row with the fetched data
-#                 for column, value in enumerate(row):
-#                     item = QTableWidgetItem(str(value))
-#                     self.tableWidget_m.setItem(self.tableWidget_m.rowCount() - 1, column, item)
-#         else:
-#             print(f"Code '{entered_code}' not found")
+#         print("Data is saved to takeOff.db")
 #
-#             # Clear the label_code text
-#             self.label_code.setText(f"'{entered_code}' not found!")
+#     # def search_code(self):
+#     #     entered_code = self.lineEdit_code.text()
+#     #     print(entered_code)
+#     #
+#     #     conn = sqlite3.connect('takeOff.db')  # Connect to the "takeOff.db" database
+#     #     cursor = conn.cursor()
+#     #
+#     #     # Execute a query to search for the entered code in all the columns of the 'takeOff' table
+#     #     cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
+#     #     rows = cursor.fetchall()
+#     #
+#     #     # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
+#     #     rows = [row[1:] for row in rows]
+#     #
+#     #     # Clear the existing data in the tableWidget_takeOff
+#     #     self.tableWidget_takeOff.clearContents()
+#     #     self.tableWidget_takeOff.setRowCount(0)
+#     #
+#     #     if rows:
+#     #         print("Matching rows:")
+#     #         for row in rows:
+#     #             print(row)
+#     #             # Add a new row to the tableWidget_takeOff
+#     #             self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
+#     #
+#     #             # # Populate the cells of the new row with the fetched data
+#     #             for column, value in enumerate(row):
+#     #                 item = QTableWidgetItem(str(value))
+#     #                 self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column, item)
+#     #     else:
+#     #         print("No matching rows")
+#     #
+#     #     conn.close()
 #
-#         conn.close()
-#
-#
-# # if __name__ == "__main__":
-# #     import sys
+# #     def edit_code(self):  # TODO edit_code() should be in a separate tableWidget window
+# #         entered_code = self.lineEdit_code.text()
+# #         print("Entered code:", entered_code)
 # #
-# #     app = QtWidgets.QApplication(sys.argv)
-# #     MainWindow = QtWidgets.QMainWindow()
-# #     ui = Tab_m_Widget()
-# #     # ui.setupUi(MainWindow)
-# #     MainWindow.show()
-# #     sys.exit(app.exec())
+# #         # Connect to the 'takeOff.db' database
+# #         conn = sqlite3.connect('takeOff.db')  # TODO only edit tables in (m_data, m2_data, m3_data, item_data etc)
+# #         cursor = conn.cursor()
+# #
+# #         # Execute a query to search for the entered code in the 'takeOff' table
+# #         cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
+# #         rows = cursor.fetchall()
+# #
+# #         # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
+# #         rows = [row[1:] for row in rows]
+# #
+# #         if rows:
+# #             print(f"Code '{entered_code}' found:")
+# #
+# #             # Set the label_code text to the entered code
+# #             self.label_code.setText(entered_code)
+# #
+# #             for row in rows:
+# #                 print(row)
+# #                 # Add a new row to the tableWidget_m
+# #                 self.tableWidget_m.insertRow(self.tableWidget_m.rowCount())
+# #
+# #                 # Populate the cells of the new row with the fetched data
+# #                 for column, value in enumerate(row):
+# #                     item = QTableWidgetItem(str(value))
+# #                     self.tableWidget_m.setItem(self.tableWidget_m.rowCount() - 1, column, item)
+# #         else:
+# #             print(f"Code '{entered_code}' not found")
+# #
+# #             # Clear the label_code text
+# #             self.label_code.setText(f"'{entered_code}' not found!")
+# #
+# #         conn.close()
+# #
+# #
+# # # if __name__ == "__main__":
+# # #     import sys
+# # #
+# # #     app = QtWidgets.QApplication(sys.argv)
+# # #     MainWindow = QtWidgets.QMainWindow()
+# # #     ui = Tab_m_Widget()
+# # #     # ui.setupUi(MainWindow)
+# # #     MainWindow.show()
+# # #     sys.exit(app.exec())

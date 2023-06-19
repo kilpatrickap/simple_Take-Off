@@ -52,7 +52,7 @@ class Ui_MainWindow(object):
 
 
         # Insert the Tab_m_Widget() class here
-        self.tab_m = Tab_m_Widget()
+        # self.tab_m = Tab_m_Widget()
 
 
 
@@ -856,10 +856,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
 
         # Insert the project_Widget() class here
-        self.projectWidgetTree = Project_Widget()
+        # self.projectWidgetTree = Project_Widget()
 
         # Insert the TakeOffList_Widget() class here
-        self.takeOffList = TakeOffList_Widget()
+        # self.takeOffList = TakeOffList_Widget()
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
