@@ -8,7 +8,9 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
-    # def setupUi(self, MainWindow):
+        self.setupUi()
+
+    def setupUi(self):
     #     MainWindow.setObjectName("MainWindow")
     #     MainWindow.resize(1375, 786)
     #     font = QtGui.QFont()
@@ -19,6 +21,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
     #
         # self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         # self.centralwidget.setObjectName("centralwidget")
+
 
         self.groupBox = QtWidgets.QGroupBox(parent=self)
         self.groupBox.setGeometry(QtCore.QRect(779, 0, 851, 830))
@@ -877,6 +880,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 #     app = QtWidgets.QApplication(sys.argv)
 #     MainWindow = QtWidgets.QMainWindow()
 #     ui = TakeOffSheet_Widget()
-#     # ui.setupUi(MainWindow)
+#     ui.setupUi(MainWindow)
 #     MainWindow.show()
 #     sys.exit(app.exec())

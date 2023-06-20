@@ -8,8 +8,7 @@ from NewProject import NewProject_Dialog
 from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
-from TakeOffSheet import TakeOffSheet_Widget
-
+from TakeOffSheetREV import TakeOffSheet_Widget
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -46,12 +45,8 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
 
         # Insert TakeOffSheet_Widget() class and add widget to centralwidget
-        # self.takeOff_sheet_widget = TakeOffSheet_Widget()
-        # layout = QtWidgets.QVBoxLayout()  # Create a QVBoxLayout instance
-        # layout.addWidget(self.takeOff_sheet_widget)  # Add the takeOff_sheet_widget to the layout
-        # # self.centralwidget.setLayout(layout)  # Set the layout for the centralwidget
-        #
-        # self.layoutWidget_takeOffSheet.setLayout(layout)
+        self.takeOff_sheet_widget = TakeOffSheet_Widget()
+        self.verticalLayout_1.addWidget(self.takeOff_sheet_widget)
 
 
 
