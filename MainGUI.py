@@ -7,6 +7,8 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QLabel
+
 from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
@@ -28,10 +30,28 @@ class Ui_MainWindow(object):
         #---TAB_M WIDGET STARTS HERE---
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
 
+        self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
         self.tabWidget.setGeometry(QtCore.QRect(10, 280, 781, 561))
         self.tabWidget.setObjectName("tabWidget")
+
+
+        # --- Setup Vert layout to contain TakeOff sheet here ---
+        self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
+        self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(900, 0, 900, 900))
+        self.layoutWidget_takeOffSheet.setObjectName("layoutWidget_takeOffSheet")
+
+        self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.layoutWidget_takeOffSheet)
+        self.verticalLayout_1.setObjectName("verticalLayout_1")
+
+        self.label = QtWidgets.QLabel(parent=self.layoutWidget_takeOffSheet)
+        self.label.setObjectName("Test6")
+        self.label.setText("Testing")
+
+        self.verticalLayout_1.addWidget(self.label)
+
+
+
 
 
         #---TAKE OFF SHEET STARTS HERE---
@@ -41,6 +61,11 @@ class Ui_MainWindow(object):
         # ...
         # #---TAKE OFF SHEET ENDS HERE---
 
+
+
+
+
+
         self.layoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 771, 261))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -48,6 +73,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
+
+
+
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)

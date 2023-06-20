@@ -19,7 +19,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
     #
         # self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         # self.centralwidget.setObjectName("centralwidget")
-    #
 
         self.groupBox = QtWidgets.QGroupBox(parent=self)
         self.groupBox.setGeometry(QtCore.QRect(779, 0, 851, 830))
@@ -79,6 +78,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.horizontalLayout_2.addWidget(self.pushButton_abstract)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+
         self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=self.groupBox)
         self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
         self.tableWidget_takeOff.setColumnCount(9)
@@ -102,6 +102,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_takeOff.setHorizontalHeaderItem(8, item)
         self.verticalLayout_2.addWidget(self.tableWidget_takeOff)
+
 
 
         # self.tabWidget_m = QtWidgets.QTabWidget(parent=self.centralwidget)
