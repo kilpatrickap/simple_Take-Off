@@ -7,11 +7,6 @@
 import os
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QLabel
-from ProjectTreeWidget import Project_Widget
-from TakeOffList import TakeOffList_Widget
-from Tab_m import Tab_m_Widget
-from TakeOffSheet import TakeOffSheet_Widget
 
 
 class Ui_MainWindow(object):
@@ -31,16 +26,11 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
 
         #---TAB_M WIDGET STARTS HERE---
-        self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 280, 781, 561))
+        self.tabWidget = QtWidgets.QTabWidget(parent=self)
+        self.tabWidget.setGeometry(QtCore.QRect(10, 327, 781, 561))
         self.tabWidget.setObjectName("tabWidget")
-
         # #---TAB_M WIDGET ENDS HERE---
 
-
-
-
-        #---TAKE OFF SHEET STARTS HERE---
 
         # --- Setup Vert layout to contain TakeOff sheet here ---
         self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
@@ -50,109 +40,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.layoutWidget_takeOffSheet)
         self.verticalLayout_1.setObjectName("verticalLayout_1")
 
-        # self.label = QtWidgets.QLabel(parent=self.layoutWidget_takeOffSheet)
-        # self.label.setObjectName("label")
-        # self.label.setText("Testing Six")
-        #
-        # self.verticalLayout_1.addWidget(self.label)
-
-
-
-        # # --- COPY to TakeOffSheet-REV ---
-        #
-        #
-        # self.groupBox = QtWidgets.QGroupBox(self.layoutWidget_takeOffSheet)
-        # self.groupBox.setGeometry(QtCore.QRect(779, 0, 851, 830))
-        # self.groupBox.setObjectName("groupBox")
-        #
-        # self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
-        # self.verticalLayout_2.setObjectName("verticalLayout_2")
-        # self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        # self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        # self.lineEdit_code = QtWidgets.QLineEdit(parent=self.groupBox)
-        # self.lineEdit_code.setObjectName("lineEdit_code")
-        # self.horizontalLayout_2.addWidget(self.lineEdit_code)
-        #
-        # self.pushButton_search = QtWidgets.QPushButton(parent=self.groupBox)
-        #
-        # # Add button icon with relative path
-        # icon1 = QtGui.QIcon()
-        # image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "magnifier-left.png")
-        # icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_search.setIcon(icon1)
-        #
-        # self.pushButton_search.setObjectName("pushButton_search")
-        #
-        # # Connect signal
-        # # self.pushButton_search.clicked.connect(self.search_code)
-        #
-        # self.horizontalLayout_2.addWidget(self.pushButton_search)
-        #
-        # self.pushButton_edit = QtWidgets.QPushButton(parent=self.groupBox)
-        #
-        # # Add button icon with relative path
-        # icon2 = QtGui.QIcon()
-        # image_path_to_icon2 = os.path.join(os.path.dirname(__file__), "images", "pencil.png")
-        # icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_edit.setIcon(icon2)
-        #
-        # self.pushButton_edit.setObjectName("pushButton_edit")
-        #
-        # # Connect signal
-        # # self.pushButton_edit.clicked.connect(self.edit_code)
-        #
-        # self.horizontalLayout_2.addWidget(self.pushButton_edit)
-        # spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-        #                                    QtWidgets.QSizePolicy.Policy.Minimum)
-        # self.horizontalLayout_2.addItem(spacerItem)
-        #
-        # self.pushButton_abstract = QtWidgets.QPushButton(parent=self.groupBox)
-        #
-        # # Add button icon with relative path
-        # icon3 = QtGui.QIcon()
-        # image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "notebook.png")
-        # icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_abstract.setIcon(icon3)
-        #
-        # self.pushButton_abstract.setObjectName("pushButton_abstract")
-        # self.horizontalLayout_2.addWidget(self.pushButton_abstract)
-        #
-        # self.verticalLayout_2.addLayout(self.horizontalLayout_2)
-        #
-        # self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=self.groupBox)
-        # self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
-        # self.tableWidget_takeOff.setColumnCount(9)
-        # self.tableWidget_takeOff.setRowCount(0)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(0, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(1, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(2, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(3, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(4, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(5, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(6, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(7, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(8, item)
-        # self.verticalLayout_2.addWidget(self.tableWidget_takeOff)
-        #
-        #
-        #
-        #
-        # # #---TAKE OFF SHEET ENDS HERE---
-
-
-
-
-
-
         self.layoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 771, 261))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -160,10 +47,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-
-
-
-
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
@@ -250,14 +133,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Traditional Take-Off v1.0"))
 
-
-        # #---TAKE OFF SHEET STARTS HERE---
-        # self.groupBox.setTitle(_translate("MainWindow", "Take Off sheet"))
-        # self.lineEdit_takeOff.setPlaceholderText(_translate("MainWindow", "Enter code"))
-        #...
-        # #---TAKE OFF SHEET ENDS HERE---
-
-
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
@@ -277,45 +152,3 @@ class Ui_MainWindow(object):
         self.actionRedo.setText(_translate("MainWindow", "Redo"))
         self.actionRedo.setShortcut(_translate("MainWindow", "Ctrl+Y"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
-
-        #
-        # # --- TAKE OFF SHEET CONTINUES HERE -----
-        #
-        # self.setWindowTitle(_translate("groupBox", "groupBox"))
-        #
-        # self.groupBox.setTitle(_translate("groupBox", "Take Off sheet"))
-        #
-        # self.lineEdit_code.setPlaceholderText(_translate("groupBox", "Enter code"))
-        # self.pushButton_search.setText(_translate("groupBox", "Search"))
-        # self.pushButton_edit.setText(_translate("groupBox", "Edit"))
-        # self.pushButton_abstract.setText(_translate("groupBox", "Abstract"))
-        #
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(0)
-        # item.setText(_translate("groupBox", "code"))
-        # self.tableWidget_takeOff.setColumnWidth(0, 60)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(1)
-        # item.setText(_translate("groupBox", "trade"))
-        # self.tableWidget_takeOff.setColumnWidth(1, 60)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(2)
-        # item.setText(_translate("groupBox", "desc"))
-        # self.tableWidget_takeOff.setColumnWidth(2, 160)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(3)
-        # item.setText(_translate("groupBox", "ref"))
-        # self.tableWidget_takeOff.setColumnWidth(3, 60)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(4)
-        # item.setText(_translate("groupBox", "times"))
-        # self.tableWidget_takeOff.setColumnWidth(4, 60)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(5)
-        # item.setText(_translate("groupBox", "dims"))
-        # self.tableWidget_takeOff.setColumnWidth(5, 60)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(6)
-        # item.setText(_translate("groupBox", "square"))
-        # self.tableWidget_takeOff.setColumnWidth(6, 60)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(7)
-        # item.setText(_translate("groupBox", "unit"))
-        # self.tableWidget_takeOff.setColumnWidth(7, 30)
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(8)
-        # item.setText(_translate("groupBox", "sign post"))
-        # self.tableWidget_takeOff.setColumnWidth(8, 160)
-        #
-        # # --- TAKE OFF SHEET ENDS HERE -----

@@ -8,7 +8,7 @@ from NewProject import NewProject_Dialog
 from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
-from TakeOffSheetREV import TakeOffSheet_Widget
+from TakeOffSheet import TakeOffSheet_Widget
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -39,24 +39,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # self.tabWidget.addTab(self.tab_m_widget, icon1, "m2")
 
 
-
-
-
-
-
         # Insert TakeOffSheet_Widget() class and add widget to centralwidget
         self.takeOff_sheet_widget = TakeOffSheet_Widget()
         self.verticalLayout_1.addWidget(self.takeOff_sheet_widget)
-
-
-
-
-
-
-
-
-
-
 
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
