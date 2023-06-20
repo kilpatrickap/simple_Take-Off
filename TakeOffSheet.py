@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem
@@ -32,14 +33,30 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.lineEdit_code = QtWidgets.QLineEdit(parent=self.groupBox)
         self.lineEdit_code.setObjectName("lineEdit_code")
         self.horizontalLayout_2.addWidget(self.lineEdit_code)
+
         self.pushButton_search = QtWidgets.QPushButton(parent=self.groupBox)
+
+        # Add button icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "magnifier-left.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_search.setIcon(icon1)
+
         self.pushButton_search.setObjectName("pushButton_search")
 
         # Connect signal
         self.pushButton_search.clicked.connect(self.search_code)
 
         self.horizontalLayout_2.addWidget(self.pushButton_search)
+
         self.pushButton_edit = QtWidgets.QPushButton(parent=self.groupBox)
+
+        # Add button icon with relative path
+        icon2 = QtGui.QIcon()
+        image_path_to_icon2 = os.path.join(os.path.dirname(__file__), "images", "pencil.png")
+        icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_edit.setIcon(icon2)
+
         self.pushButton_edit.setObjectName("pushButton_edit")
 
         # Connect signal
@@ -49,12 +66,18 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.pushButton = QtWidgets.QPushButton(parent=self.groupBox)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_2.addWidget(self.pushButton)
-        self.pushButton_print = QtWidgets.QPushButton(parent=self.groupBox)
-        self.pushButton_print.setObjectName("pushButton_print")
-        self.horizontalLayout_2.addWidget(self.pushButton_print)
+
+        self.pushButton_abstract = QtWidgets.QPushButton(parent=self.groupBox)
+
+        # Add button icon with relative path
+        icon3 = QtGui.QIcon()
+        image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "notebook.png")
+        icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_abstract.setIcon(icon3)
+
+        self.pushButton_abstract.setObjectName("pushButton_abstract")
+        self.horizontalLayout_2.addWidget(self.pushButton_abstract)
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=self.groupBox)
         self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
@@ -484,8 +507,8 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.lineEdit_code.setPlaceholderText(_translate("groupBox", "Enter code"))
         self.pushButton_search.setText(_translate("groupBox", "Search"))
         self.pushButton_edit.setText(_translate("groupBox", "Edit"))
-        self.pushButton.setText(_translate("groupBox", "Abstract"))
-        self.pushButton_print.setText(_translate("groupBox", "Print"))
+        self.pushButton_abstract.setText(_translate("groupBox", "Abstract"))
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(0)
         item.setText(_translate("groupBox", "code"))
         self.tableWidget_takeOff.setColumnWidth(0, 60)

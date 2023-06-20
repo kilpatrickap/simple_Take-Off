@@ -39,24 +39,11 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         # self.tabWidget.addTab(self.tab_m_widget, icon1, "m2")
 
-
-
-
         # Insert TakeOffSheet_Widget() class and add widget to centralwidget
         self.takeOff_sheet_widget = TakeOffSheet_Widget()
         layout = QtWidgets.QVBoxLayout()    # Create a QVBoxLayout instance
         layout.addWidget(self.takeOff_sheet_widget) # Add the takeOff_sheet_widget to the layout
         self.centralwidget.setLayout(layout)    # Set the layout for the centralwidget
-
-
-
-
-
-
-
-
-
-
 
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
