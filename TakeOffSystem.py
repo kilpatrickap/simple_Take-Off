@@ -1,7 +1,7 @@
 import os
 import sys
 
-from PyQt6 import QtGui
+from PyQt6 import QtGui, QtWidgets
 from PyQt6.QtWidgets import QMainWindow, QDialog
 from MainGUI import Ui_MainWindow
 from NewProject import NewProject_Dialog
@@ -42,8 +42,11 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
 
 
-        # Insert TakeOffSheet_Widget() class and add widget to tabWidget
-        # self.takeOff_sheet_widget = TakeOffSheet_Widget()
+        # Insert TakeOffSheet_Widget() class and add widget to centralwidget
+        self.takeOff_sheet_widget = TakeOffSheet_Widget()
+        layout = QtWidgets.QVBoxLayout()    # Create a QVBoxLayout instance
+        layout.addWidget(self.takeOff_sheet_widget) # Add the takeOff_sheet_widget to the layout
+        self.centralwidget.setLayout(layout)    # Set the layout for the centralwidget
 
 
 
