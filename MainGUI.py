@@ -34,80 +34,12 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
 
 
-
-
-
         #---TAKE OFF SHEET STARTS HERE---
-
         # self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
         # self.groupBox.setGeometry(QtCore.QRect(790, 10, 851, 831))
         # self.groupBox.setObjectName("groupBox")
-
-        # self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.groupBox)
-        # self.verticalLayout_9.setObjectName("verticalLayout_9")
-        # self.horizontalLayout_38 = QtWidgets.QHBoxLayout()
-        # self.horizontalLayout_38.setObjectName("horizontalLayout_38")
-        # self.lineEdit_takeOff = QtWidgets.QLineEdit(parent=self.groupBox)
-        # self.lineEdit_takeOff.setObjectName("lineEdit_takeOff")
-        # self.horizontalLayout_38.addWidget(self.lineEdit_takeOff)
-        # self.pushButton_search = QtWidgets.QPushButton(parent=self.groupBox)
-        # icon12 = QtGui.QIcon()
-        # icon12.addPixmap(QtGui.QPixmap("images/magnifier-left.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_search.setIcon(icon12)
-        # self.pushButton_search.setObjectName("pushButton_search")
-        # self.horizontalLayout_38.addWidget(self.pushButton_search)
-        # self.pushButton_edit = QtWidgets.QPushButton(parent=self.groupBox)
-        # icon13 = QtGui.QIcon()
-        # icon13.addPixmap(QtGui.QPixmap("images/pencil.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_edit.setIcon(icon13)
-        # self.pushButton_edit.setObjectName("pushButton_edit")
-        # self.horizontalLayout_38.addWidget(self.pushButton_edit)
-        # spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-        #                                      QtWidgets.QSizePolicy.Policy.Minimum)
-        # self.horizontalLayout_38.addItem(spacerItem30)
-        # self.pushButton_abstract = QtWidgets.QPushButton(parent=self.groupBox)
-        # icon14 = QtGui.QIcon()
-        # icon14.addPixmap(QtGui.QPixmap("images/wand.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_abstract.setIcon(icon14)
-        # self.pushButton_abstract.setObjectName("pushButton_abstract")
-        # self.horizontalLayout_38.addWidget(self.pushButton_abstract)
-        # self.pushButton_print = QtWidgets.QPushButton(parent=self.groupBox)
-        # icon15 = QtGui.QIcon()
-        # icon15.addPixmap(QtGui.QPixmap("images/printer.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # self.pushButton_print.setIcon(icon15)
-        # self.pushButton_print.setObjectName("pushButton_print")
-        # self.horizontalLayout_38.addWidget(self.pushButton_print)
-        # self.verticalLayout_9.addLayout(self.horizontalLayout_38)
-        # self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=self.groupBox)
-        # self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
-        # self.tableWidget_takeOff.setColumnCount(9)
-        # self.tableWidget_takeOff.setRowCount(0)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(0, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(1, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(2, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(3, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(4, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(5, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(6, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(7, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # self.tableWidget_takeOff.setHorizontalHeaderItem(8, item)
-        # self.verticalLayout_9.addWidget(self.tableWidget_takeOff)
-
-
+        # ...
         # #---TAKE OFF SHEET ENDS HERE---
-
-
-
-
 
         self.layoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 771, 261))
@@ -203,41 +135,11 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Traditional Take-Off v1.0"))
 
 
-
-
-
-
-
         # #---TAKE OFF SHEET STARTS HERE---
-        #
         # self.groupBox.setTitle(_translate("MainWindow", "Take Off sheet"))
         # self.lineEdit_takeOff.setPlaceholderText(_translate("MainWindow", "Enter code"))
-        # self.pushButton_search.setText(_translate("MainWindow", "Search"))
-        # self.pushButton_edit.setText(_translate("MainWindow", "Edit"))
-        # self.pushButton_abstract.setText(_translate("MainWindow", "Abstract"))
-        # self.pushButton_print.setText(_translate("MainWindow", "Print"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(0)
-        # item.setText(_translate("MainWindow", "code"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(1)
-        # item.setText(_translate("MainWindow", "trade"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(2)
-        # item.setText(_translate("MainWindow", "desc"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(3)
-        # item.setText(_translate("MainWindow", "ref"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(4)
-        # item.setText(_translate("MainWindow", "times"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(5)
-        # item.setText(_translate("MainWindow", "dims"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(6)
-        # item.setText(_translate("MainWindow", "square"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(7)
-        # item.setText(_translate("MainWindow", "unit"))
-        # item = self.tableWidget_takeOff.horizontalHeaderItem(8)
-        # item.setText(_translate("MainWindow", "sign post"))
-        #
-        #
+        #...
         # #---TAKE OFF SHEET ENDS HERE---
-
 
 
         self.menuFile.setTitle(_translate("MainWindow", "File"))
