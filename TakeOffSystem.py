@@ -45,6 +45,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         layout.addWidget(self.takeOff_sheet_widget) # Add the takeOff_sheet_widget to the layout
         self.centralwidget.setLayout(layout)    # Set the layout for the centralwidget
 
+
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
 
