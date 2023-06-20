@@ -37,11 +37,12 @@ class Ui_MainWindow(object):
 
 
 
-        # #---TAKE OFF SHEET STARTS HERE---
-        #
-        # self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
-        # self.groupBox.setGeometry(QtCore.QRect(790, 10, 851, 831))
-        # self.groupBox.setObjectName("groupBox")
+        #---TAKE OFF SHEET STARTS HERE---
+
+        self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
+        self.groupBox.setGeometry(QtCore.QRect(790, 10, 851, 831))
+        self.groupBox.setObjectName("groupBox")
+
         # self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.groupBox)
         # self.verticalLayout_9.setObjectName("verticalLayout_9")
         # self.horizontalLayout_38 = QtWidgets.QHBoxLayout()
@@ -115,12 +116,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-
-
-
-
-
-
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)

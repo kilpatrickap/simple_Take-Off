@@ -3,19 +3,28 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1375, 786)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(12)
-        MainWindow.setFont(font)
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
+class TakeOffSheet_Widget(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+
+    # def setupUi(self, MainWindow):
+    #     MainWindow.setObjectName("MainWindow")
+    #     MainWindow.resize(1375, 786)
+    #     font = QtGui.QFont()
+    #     font.setFamily("Helvetica")
+    #     font.setPointSize(12)
+    #     MainWindow.setFont(font)
+    #
+    #
+        # self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+        # self.centralwidget.setObjectName("centralwidget")
+    #
+
+        self.groupBox = QtWidgets.QGroupBox(parent=self)
         self.groupBox.setGeometry(QtCore.QRect(590, 40, 771, 711))
         self.groupBox.setObjectName("groupBox")
+
+
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -212,18 +221,18 @@ class Ui_MainWindow(object):
 
 
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        # MainWindow.setCentralWidget(self.centralwidget)
+        # self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
+        # self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
+        # self.menubar.setObjectName("menubar")
+        # MainWindow.setMenuBar(self.menubar)
+        # self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
+        # self.statusbar.setObjectName("statusbar")
+        # MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi()
         # self.tabWidget_m.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(self)
 
 
 
@@ -466,41 +475,43 @@ class Ui_MainWindow(object):
     #     # Activate comboBox item
     #     self.comboBox.setEnabled(True)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.groupBox.setTitle(_translate("MainWindow", "Take Off"))
-        self.lineEdit_code.setPlaceholderText(_translate("MainWindow", "Enter code"))
-        self.pushButton_search.setText(_translate("MainWindow", "Search"))
-        self.pushButton_edit.setText(_translate("MainWindow", "Edit"))
-        self.pushButton.setText(_translate("MainWindow", "Abstract"))
-        self.pushButton_print.setText(_translate("MainWindow", "Print"))
+        self.setWindowTitle(_translate("groupBox", "groupBox"))
+
+        self.groupBox.setTitle(_translate("groupBox", "Take Off sheet"))
+
+        self.lineEdit_code.setPlaceholderText(_translate("groupBox", "Enter code"))
+        self.pushButton_search.setText(_translate("groupBox", "Search"))
+        self.pushButton_edit.setText(_translate("groupBox", "Edit"))
+        self.pushButton.setText(_translate("groupBox", "Abstract"))
+        self.pushButton_print.setText(_translate("groupBox", "Print"))
         item = self.tableWidget_takeOff.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "code"))
+        item.setText(_translate("groupBox", "code"))
         self.tableWidget_takeOff.setColumnWidth(0, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "trade"))
+        item.setText(_translate("groupBox", "trade"))
         self.tableWidget_takeOff.setColumnWidth(1, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "desc"))
+        item.setText(_translate("groupBox", "desc"))
         self.tableWidget_takeOff.setColumnWidth(2, 160)
         item = self.tableWidget_takeOff.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "ref"))
+        item.setText(_translate("groupBox", "ref"))
         self.tableWidget_takeOff.setColumnWidth(3, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "times"))
+        item.setText(_translate("groupBox", "times"))
         self.tableWidget_takeOff.setColumnWidth(4, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "dims"))
+        item.setText(_translate("groupBox", "dims"))
         self.tableWidget_takeOff.setColumnWidth(5, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(6)
-        item.setText(_translate("MainWindow", "square"))
+        item.setText(_translate("groupBox", "square"))
         self.tableWidget_takeOff.setColumnWidth(6, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(7)
-        item.setText(_translate("MainWindow", "unit"))
+        item.setText(_translate("groupBox", "unit"))
         self.tableWidget_takeOff.setColumnWidth(7, 30)
         item = self.tableWidget_takeOff.horizontalHeaderItem(8)
-        item.setText(_translate("MainWindow", "sign post"))
+        item.setText(_translate("groupBox", "sign post"))
         self.tableWidget_takeOff.setColumnWidth(8, 160)
 
 
@@ -836,12 +847,12 @@ class Ui_MainWindow(object):
     #     conn.close()
 
 
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())
+# if __name__ == "__main__":
+#     import sys
+#
+#     app = QtWidgets.QApplication(sys.argv)
+#     MainWindow = QtWidgets.QMainWindow()
+#     ui = TakeOffSheet_Widget()
+#     # ui.setupUi(MainWindow)
+#     MainWindow.show()
+#     sys.exit(app.exec())
