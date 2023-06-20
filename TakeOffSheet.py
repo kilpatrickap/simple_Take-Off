@@ -144,11 +144,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         item.setText(_translate("groupBox", "sign post"))
         self.tableWidget_takeOff.setColumnWidth(8, 160)
 
-
-
-
-
-
     def load_table_data(self):
         # Connect to the SQLite database
         conn = sqlite3.connect('m_data.db')
@@ -225,13 +220,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Close the database connection
         conn.close()
-
-
-
-
-
-
-
 
     def save_takeOff_database(self):
         conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
@@ -319,12 +307,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         conn.close()
 
-
-
-
-
-
-
     #
     # def edit_code(self):  # TODO edit_code() should be in a separate tableWidget window
     #     entered_code = self.lineEdit_code.text()
@@ -364,13 +346,3 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
     #
     #     conn.close()
 
-
-# if __name__ == "__main__":
-#     import sys
-#
-#     app = QtWidgets.QApplication(sys.argv)
-#     MainWindow = QtWidgets.QMainWindow()
-#     ui = TakeOffSheet_Widget()
-#     ui.setupUi(MainWindow)
-#     MainWindow.show()
-#     sys.exit(app.exec())

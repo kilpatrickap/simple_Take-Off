@@ -8,34 +8,9 @@ class Tab_m_Widget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
-    # def setupUi(self, MainWindow):
-        # MainWindow.setObjectName("MainWindow")
-        # MainWindow.resize(600, 450)
-        # font = QtGui.QFont()
-        # font.setFamily("Helvetica")
-        # font.setPointSize(12)
-        # MainWindow.setFont(font)
-
-
-        # self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
-        # self.centralwidget.setObjectName("centralwidget")
-        #
-
-        # self.tabWidget_m = QtWidgets.QTabWidget(parent=self.centralwidget)
-
-
-        # self.tabWidget_m = QtWidgets.QTabWidget(self)
-        # self.tabWidget_m.setGeometry(QtCore.QRect(10, 10, 571, 421))
-        # self.tabWidget_m.setObjectName("tabWidget_m")
-        #
-        #
-        # self.tab_m = QtWidgets.QWidget()
-        # self.tab_m.setObjectName("tab_m")
-
         self.groupBox_m = QtWidgets.QGroupBox(parent=self)
         self.groupBox_m.setGeometry(QtCore.QRect(10, 10, 751, 501))
         self.groupBox_m.setObjectName("groupBox_m")
-
 
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_m)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -173,7 +148,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Connect signal
         self.pushButton_m_sqr.clicked.connect(self.square)
 
-
         self.horizontalLayout_10.addWidget(self.pushButton_m_sqr)
 
         # Horizontal spacer
@@ -250,24 +224,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.horizontalLayout_11.addItem(spacerItem4)
 
         self.verticalLayout.addLayout(self.horizontalLayout_11)
-        # self.tabWidget_m.addTab(self.tab_m, "")
-
-        #---TAB_2 REMOVED---
-
-        # self.tab_2 = QtWidgets.QWidget()
-        # self.tab_2.setObjectName("tab_2")
-        # self.tabWidget_m.addTab(self.tab_2, "")
-
-
-        # MainWindow.setCentralWidget(self.centralwidget)
-        # MainWindow.setCentralWidget(self)
-        # self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        # self.menubar.setGeometry(QtCore.QRect(0, 0, 1375, 17))
-        # self.menubar.setObjectName("menubar")
-        # MainWindow.setMenuBar(self.menubar)
-        # self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
-        # self.statusbar.setObjectName("statusbar")
-        # MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi()
         # self.tabWidget_m.setCurrentIndex(0)
@@ -838,14 +794,4 @@ class Tab_m_Widget(QtWidgets.QWidget):
 # #             self.label_code.setText(f"'{entered_code}' not found!")
 # #
 # #         conn.close()
-# #
-# #
-# # # if __name__ == "__main__":
-# # #     import sys
-# # #
-# # #     app = QtWidgets.QApplication(sys.argv)
-# # #     MainWindow = QtWidgets.QMainWindow()
-# # #     ui = Tab_m_Widget()
-# # #     # ui.setupUi(MainWindow)
-# # #     MainWindow.show()
-# # #     sys.exit(app.exec())
+

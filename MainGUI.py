@@ -21,7 +21,6 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap("images/MetiQs.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
 
-
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
