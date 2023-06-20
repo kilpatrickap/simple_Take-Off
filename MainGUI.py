@@ -1207,7 +1207,7 @@ class Ui_MainWindow(object):
         # self.pushButton_rft_clear.setText(_translate("MainWindow", "Clear"))
         # self.pushButton_rft_insert.setText(_translate("MainWindow", "Insert"))
         # self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_rft), _translate("MainWindow", "Rft"))
-        # self.groupBox.setTitle(_translate("MainWindow", "Take Off sheet"))
+        self.groupBox.setTitle(_translate("MainWindow", "Take Off sheet"))
 
 
 
