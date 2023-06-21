@@ -1,7 +1,8 @@
 import os
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem
+from PyQt6.QtGui import QColor
+from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget, QVBoxLayout
 
 
 class TakeOffSheet_Widget(QtWidgets.QWidget):
