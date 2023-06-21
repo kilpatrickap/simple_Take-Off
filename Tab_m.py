@@ -1,7 +1,7 @@
 import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
+from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget, QVBoxLayout
 from TakeOffSheet import TakeOffSheet_Widget
 
 
@@ -632,7 +632,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff = TakeOffSheet_Widget().tableWidget_takeOff
         self.tableWidget_takeOff = QTableWidget(self)   # `self` is important
 
-
         # Set the number of rows and columns in the QTableWidget
         self.tableWidget_takeOff.setRowCount(len(all_data))
         self.tableWidget_takeOff.setColumnCount(len(all_data[9]) - 1)  # Exclude ID
@@ -674,6 +673,13 @@ class Tab_m_Widget(QtWidgets.QWidget):
                 for col in range(self.tableWidget_takeOff.columnCount()):
                     cell_item = self.tableWidget_takeOff.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('blue'))
+
+        # Add the QTableWidget to the layout or set it as the central widget, depending on your application's design
+        # For example:
+        layout = QVBoxLayout()
+        layout.addWidget(self.tableWidget_takeOff)
+        self.setLayout(layout)
+
 
         # Close the database connection
         conn.close()
