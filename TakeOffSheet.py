@@ -142,6 +142,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Run method
         self.load_table_data()
+        self.tableWidget_takeOff.update()
 
     def load_table_data(self):
         # Connect to the SQLite database
