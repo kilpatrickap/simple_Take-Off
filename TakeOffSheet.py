@@ -99,7 +99,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # #---TAKE OFF SHEET ENDS HERE---
         self.retranslateUi()
-        # self.tabWidget_m.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def retranslateUi(self):
@@ -121,7 +120,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff.setColumnWidth(1, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(2)
         item.setText(_translate("groupBox", "desc"))
-        self.tableWidget_takeOff.setColumnWidth(2, 160)
+        self.tableWidget_takeOff.setColumnWidth(2, 300)
         item = self.tableWidget_takeOff.horizontalHeaderItem(3)
         item.setText(_translate("groupBox", "ref"))
         self.tableWidget_takeOff.setColumnWidth(3, 60)
@@ -177,7 +176,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Set the number of rows and columns in the QTableWidget
         self.tableWidget_takeOff.setRowCount(len(all_data))
-        self.tableWidget_takeOff.setColumnCount(len(all_data[9]) - 1)  # Exclude ID
+        self.tableWidget_takeOff.setColumnCount(len(all_data[10]) - 1)
 
         # Populate the QTableWidget with the retrieved data
         for row_num, row_data in enumerate(all_data):
@@ -216,6 +215,10 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
                 for col in range(self.tableWidget_takeOff.columnCount()):
                     cell_item = self.tableWidget_takeOff.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('blue'))
+
+        # Update UI
+        self.tableWidget_takeOff.update()
+        self.tableWidget_takeOff.viewport().update()
 
         # Close the database connection
         conn.close()
