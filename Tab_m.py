@@ -1,7 +1,8 @@
 import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem
+from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
+from TakeOffSheet import TakeOffSheet_Widget
 
 
 class Tab_m_Widget(QtWidgets.QWidget):
@@ -212,8 +213,12 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.pushButton_m_insert.setObjectName("pushButton_m_insert")
 
         # Connect signals
-        # self.pushButton_m_insert.clicked.connect(self.save_table_data)
-        # self.pushButton_m_insert.clicked.connect(self.load_table_data)
+        self.pushButton_m_insert.clicked.connect(self.save_table_data)
+
+
+
+
+        self.pushButton_m_insert.clicked.connect(self.load_table_data)
         # self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
@@ -622,6 +627,11 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Check if the all_data list is empty
         if not all_data:
             return
+
+        # Instance of tableWidget_takeOff
+        self.tableWidget_takeOff = TakeOffSheet_Widget().tableWidget_takeOff
+        self.tableWidget_takeOff = QTableWidget(self)   # `self` is important
+
 
         # Set the number of rows and columns in the QTableWidget
         self.tableWidget_takeOff.setRowCount(len(all_data))
