@@ -140,7 +140,8 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         item.setText(_translate("groupBox", "sign post"))
         self.tableWidget_takeOff.setColumnWidth(8, 160)
 
-
+        # Run method
+        self.load_table_data()
 
     def load_table_data(self):
         # Connect to the SQLite database
@@ -176,7 +177,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Set the number of rows and columns in the QTableWidget
         self.tableWidget_takeOff.setRowCount(len(all_data))
-        self.tableWidget_takeOff.setColumnCount(len(all_data[10]) - 1)
+        self.tableWidget_takeOff.setColumnCount(len(all_data[9]) - 1)
 
         # Populate the QTableWidget with the retrieved data
         for row_num, row_data in enumerate(all_data):
@@ -215,10 +216,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
                 for col in range(self.tableWidget_takeOff.columnCount()):
                     cell_item = self.tableWidget_takeOff.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('blue'))
-
-        # Update UI
-        self.tableWidget_takeOff.update()
-        self.tableWidget_takeOff.viewport().update()
 
         # Close the database connection
         conn.close()
