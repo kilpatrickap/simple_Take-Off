@@ -281,14 +281,11 @@ class Tab_m_Widget(QtWidgets.QWidget):
         selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
         first_letter = selected_item[0]  # Get the first letter of the selected item
 
-        tab_name = self.tabWidget_m.currentWidget().objectName()  # Get the name of the current tab
-        last_letter = tab_name[-1]  # Get the last letter of the tab name
-
         # Retrieve the current highest code number for the given tab and increment it by 1
         next_code_number = self.get_highest_code_number() + 1
 
         # Concatenate the tab name, first letter, last letter, and the incremented code number
-        code_string = f"{last_letter}_{first_letter}{next_code_number}"
+        code_string = f"m_{first_letter}{next_code_number}"
         self.label_code.setText(code_string)  # Update the label "code shows up here" with the generated code
 
         # Set the code in the code column of the tableWidget_m
@@ -511,7 +508,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.tableWidget_m.setColumnWidth(1, 40)
         item = self.tableWidget_m.horizontalHeaderItem(2)
         item.setText(_translate("tabWidget_m", "desc"))
-        self.tableWidget_m.setColumnWidth(2, 160)
+        self.tableWidget_m.setColumnWidth(2, 250)
         item = self.tableWidget_m.horizontalHeaderItem(3)
         item.setText(_translate("tabWidget_m", "ref"))
         self.tableWidget_m.setColumnWidth(3, 60)
@@ -529,7 +526,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.tableWidget_m.setColumnWidth(7, 30)
         item = self.tableWidget_m.horizontalHeaderItem(8)
         item.setText(_translate("tabWidget_m", "sign post"))
-        self.tableWidget_m.setColumnWidth(8, 160)
+        self.tableWidget_m.setColumnWidth(8, 100)
 
         self.pushButton_m_clear.setText(_translate("tabWidget_m", "Clear"))
         self.pushButton_m_insert.setText(_translate("tabWidget_m", "Insert"))
