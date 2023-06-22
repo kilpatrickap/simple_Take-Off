@@ -9,6 +9,7 @@ from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
 from TakeOffSheet import TakeOffSheet_Widget
+from Edit import Edit_Dialog
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -46,8 +47,18 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
 
+        # Connect signal of edit
+        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit)
+        # self.actionNew.triggered.connect(self.new_project)
+
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
         ui = NewProject_Dialog()
+        ui.setupUi(dialog)
+        dialog.exec()
+
+    def edit(self):
+        dialog = QDialog()
+        ui = Edit_Dialog()
         ui.setupUi(dialog)
         dialog.exec()
