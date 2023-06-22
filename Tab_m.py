@@ -458,6 +458,9 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # If all rows are cleared, activate the lineEdit_desc item
         self.lineEdit_desc.setEnabled(True)
 
+        # Reset to ---Select Trade---
+        self.comboBox.setCurrentIndex(0)
+
         # Activate comboBox item
         self.comboBox.setEnabled(True)
 
