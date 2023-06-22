@@ -117,7 +117,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff.setColumnWidth(0, 60)
         item = self.tableWidget_takeOff.horizontalHeaderItem(1)
         item.setText(_translate("groupBox", "trade"))
-        self.tableWidget_takeOff.setColumnWidth(1, 60)
+        self.tableWidget_takeOff.setColumnWidth(1, 40)
         item = self.tableWidget_takeOff.horizontalHeaderItem(2)
         item.setText(_translate("groupBox", "desc"))
         self.tableWidget_takeOff.setColumnWidth(2, 300)
