@@ -24,6 +24,29 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.lineEdit_code = QtWidgets.QLineEdit(parent=self.groupBox)
+
+        self.pushButton_refresh = QtWidgets.QPushButton(parent=self.groupBox)
+        # Add button icon with relative path
+        icon4 = QtGui.QIcon()
+        image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "arrow-circle-double-135.png")
+        icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_refresh.setIcon(icon4)
+
+        self.pushButton_refresh.setObjectName("pushButton_refresh")
+
+        # Connect signal
+        # self.pushButton_refresh.clicked.connect(self.refresh_table)
+
+        self.horizontalLayout_2.addWidget(self.pushButton_refresh)
+
+
+
+
+
+
+
+
+
         self.lineEdit_code.setObjectName("lineEdit_code")
         self.horizontalLayout_2.addWidget(self.lineEdit_code)
 
@@ -107,6 +130,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         self.groupBox.setTitle(_translate("groupBox", "Take Off sheet"))
 
+        self.pushButton_refresh.setText(_translate("groupBox", "Refresh"))
         self.lineEdit_code.setPlaceholderText(_translate("groupBox", "Enter code"))
         self.pushButton_search.setText(_translate("groupBox", "Search"))
         self.pushButton_edit.setText(_translate("groupBox", "Edit"))
