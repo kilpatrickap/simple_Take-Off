@@ -260,7 +260,29 @@ class Tab_m_Widget(QtWidgets.QWidget):
         cursor = conn.cursor()
 
         # Execute query to retrieve table names ending with a number
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'm_M%' OR name LIKE 'm_D%'")
+        cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' 
+                        AND name LIKE 'm_A%' 
+                        OR name LIKE 'm_C%'
+                        OR name LIKE 'm_D%'
+                        OR name LIKE 'm_E%'
+                        OR name LIKE 'm_F%'
+                        OR name LIKE 'm_G%'
+                        OR name LIKE 'm_H%'
+                        OR name LIKE 'm_J%'
+                        OR name LIKE 'm_K%'
+                        OR name LIKE 'm_L%'
+                        OR name LIKE 'm_M%'
+                        OR name LIKE 'm_N%'
+                        OR name LIKE 'm_P%'
+                        OR name LIKE 'm_Q%'
+                        OR name LIKE 'm_R%'
+                        OR name LIKE 'm_S%'
+                        OR name LIKE 'm_T%'
+                        OR name LIKE 'm_U%'
+                        OR name LIKE 'm_V%'
+                        OR name LIKE 'm_W%'
+                        OR name LIKE 'm_X%'
+                        """)
         tables = cursor.fetchall()
 
         # Find the table with the highest number
