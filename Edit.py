@@ -653,3 +653,50 @@ class Edit_Dialog(object):
     def save_takeOff_database(self):
         take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
         take_off_sheet.save_takeOff_database()  # Call the method to save data from table
+
+
+
+    def edit_msmt(self):
+        take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+        entered_code = take_off_sheet.lineEdit_code.text()
+
+        self.label_code.setText(entered_code)  # Update the label "code shows up here" with the generated code
+
+
+        print("Entered code:", entered_code)
+
+        # # Connect to the 'takeOff.db' database
+        # conn = sqlite3.connect('takeOff.db')  # TODO only edit tables in (m_data, m2_data, m3_data, item_data etc)
+        # cursor = conn.cursor()
+        #
+        # # Execute a query to search for the entered code in the 'takeOff' table
+        # cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
+        # rows = cursor.fetchall()
+        #
+        # # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
+        # rows = [row[1:] for row in rows]
+        #
+        # if rows:
+        #     print(f"Code '{entered_code}' found:")
+        #
+        #     # Set the label_code text to the entered code
+        #     self.label_code.setText(entered_code)
+        #
+        #     for row in rows:
+        #         print(row)
+        #         # Add a new row to the tableWidget_m
+        #         self.tableWidget_m.insertRow(self.tableWidget_m.rowCount())
+        #
+        #         # Populate the cells of the new row with the fetched data
+        #         for column, value in enumerate(row):
+        #             item = QTableWidgetItem(str(value))
+        #             self.tableWidget_m.setItem(self.tableWidget_m.rowCount() - 1, column, item)
+        # else:
+        #     print(f"Code '{entered_code}' not found")
+        #
+        #     # Clear the label_code text
+        #     self.label_code.setText(f"'{entered_code}' not found!")
+        #
+        # conn.close()
+
+

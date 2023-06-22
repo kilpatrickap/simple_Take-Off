@@ -68,7 +68,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.pushButton_edit.setObjectName("pushButton_edit")
 
         # Connect signal
-        # self.pushButton_edit.clicked.connect(self.edit_code)
+        # self.pushButton_edit.clicked.connect(self.edit_msmt)
 
         self.horizontalLayout_2.addWidget(self.pushButton_edit)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -322,43 +322,3 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
             print("No matching rows")
 
         conn.close()
-    #
-    #
-    # def edit_code(self):  # TODO edit_code() should be in a separate tableWidget window
-    #     entered_code = self.lineEdit_code.text()
-    #     print("Entered code:", entered_code)
-    #
-    #     # Connect to the 'takeOff.db' database
-    #     conn = sqlite3.connect('takeOff.db')  # TODO only edit tables in (m_data, m2_data, m3_data, item_data etc)
-    #     cursor = conn.cursor()
-    #
-    #     # Execute a query to search for the entered code in the 'takeOff' table
-    #     cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
-    #     rows = cursor.fetchall()
-    #
-    #     # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
-    #     rows = [row[1:] for row in rows]
-    #
-    #     if rows:
-    #         print(f"Code '{entered_code}' found:")
-    #
-    #         # Set the label_code text to the entered code
-    #         self.label_code.setText(entered_code)
-    #
-    #         for row in rows:
-    #             print(row)
-    #             # Add a new row to the tableWidget_m
-    #             self.tableWidget_m.insertRow(self.tableWidget_m.rowCount())
-    #
-    #             # Populate the cells of the new row with the fetched data
-    #             for column, value in enumerate(row):
-    #                 item = QTableWidgetItem(str(value))
-    #                 self.tableWidget_m.setItem(self.tableWidget_m.rowCount() - 1, column, item)
-    #     else:
-    #         print(f"Code '{entered_code}' not found")
-    #
-    #         # Clear the label_code text
-    #         self.label_code.setText(f"'{entered_code}' not found!")
-    #
-    #     conn.close()
-    #
