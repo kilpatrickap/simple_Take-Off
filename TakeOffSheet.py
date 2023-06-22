@@ -35,17 +35,9 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.pushButton_refresh.setObjectName("pushButton_refresh")
 
         # Connect signal
-        # self.pushButton_refresh.clicked.connect(self.refresh_table)
+        self.pushButton_refresh.clicked.connect(self.load_table_data)
 
         self.horizontalLayout_2.addWidget(self.pushButton_refresh)
-
-
-
-
-
-
-
-
 
         self.lineEdit_code.setObjectName("lineEdit_code")
         self.horizontalLayout_2.addWidget(self.lineEdit_code)
@@ -61,7 +53,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.pushButton_search.setObjectName("pushButton_search")
 
         # Connect signal
-        # self.pushButton_search.clicked.connect(self.search_code)
+        self.pushButton_search.clicked.connect(self.search_code)
 
         self.horizontalLayout_2.addWidget(self.pushButton_search)
 
@@ -298,39 +290,39 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         print("Data is saved to takeOff.db")
 
 
-    # def search_code(self):
-    #     entered_code = self.lineEdit_code.text()
-    #     print(entered_code)
-    #
-    #     conn = sqlite3.connect('takeOff.db')  # Connect to the "takeOff.db" database
-    #     cursor = conn.cursor()
-    #
-    #     # Execute a query to search for the entered code in all the columns of the 'takeOff' table
-    #     cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
-    #     rows = cursor.fetchall()
-    #
-    #     # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
-    #     rows = [row[1:] for row in rows]
-    #
-    #     # Clear the existing data in the tableWidget_takeOff
-    #     self.tableWidget_takeOff.clearContents()
-    #     self.tableWidget_takeOff.setRowCount(0)
-    #
-    #     if rows:
-    #         print("Matching rows:")
-    #         for row in rows:
-    #             print(row)
-    #             # Add a new row to the tableWidget_takeOff
-    #             self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
-    #
-    #             # # Populate the cells of the new row with the fetched data
-    #             for column, value in enumerate(row):
-    #                 item = QTableWidgetItem(str(value))
-    #                 self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column, item)
-    #     else:
-    #         print("No matching rows")
-    #
-    #     conn.close()
+    def search_code(self):
+        entered_code = self.lineEdit_code.text()
+        print(entered_code)
+
+        conn = sqlite3.connect('takeOff.db')  # Connect to the "takeOff.db" database
+        cursor = conn.cursor()
+
+        # Execute a query to search for the entered code in all the columns of the 'takeOff' table
+        cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
+        rows = cursor.fetchall()
+
+        # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
+        rows = [row[1:] for row in rows]
+
+        # Clear the existing data in the tableWidget_takeOff
+        self.tableWidget_takeOff.clearContents()
+        self.tableWidget_takeOff.setRowCount(0)
+
+        if rows:
+            print("Matching rows:")
+            for row in rows:
+                print(row)
+                # Add a new row to the tableWidget_takeOff
+                self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
+
+                # # Populate the cells of the new row with the fetched data
+                for column, value in enumerate(row):
+                    item = QTableWidgetItem(str(value))
+                    self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column, item)
+        else:
+            print("No matching rows")
+
+        conn.close()
     #
     #
     # def edit_code(self):  # TODO edit_code() should be in a separate tableWidget window
