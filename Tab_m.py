@@ -596,8 +596,13 @@ class Tab_m_Widget(QtWidgets.QWidget):
     def insert_dialog(self):
         msg_box = QtWidgets.QMessageBox()
         msg_box.setWindowTitle("Insert")
-        msg_box.setText("Click OK to insert into Take Off sheet and click Refresh.")
-        msg_box.setIcon(QtWidgets.QMessageBox.Icon.Information)
+        msg_box.setText("Click OK to insert into the Take Off sheet and click Refresh to show.")
+
+        # Add button icon with relative path
+        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
+        icon_pixmap = QtGui.QPixmap(icon_path)
+        msg_box.setIconPixmap(icon_pixmap)
+
         msg_box.setStandardButtons(
             QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
         )
