@@ -273,6 +273,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         print("Data is saved to takeOff.db")
 
+
     # def search_code(self):
     #     entered_code = self.lineEdit_code.text()
     #     print(entered_code)
