@@ -142,6 +142,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Run load_tabel_data method
         self.load_table_data()
+        self.save_takeOff_database()
 
     def load_table_data(self):
         # Connect to the SQLite database
@@ -220,61 +221,58 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         # Close the database connection
         conn.close()
 
+    def save_takeOff_database(self):
+        conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
+        cursor = conn.cursor()
 
+        # Create the "takeOff" table if it doesn't exist
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS takeOff (
+                id     INTEGER PRIMARY KEY AUTOINCREMENT,
+                code   TEXT,
+                trade  TEXT,
+                desc   TEXT,
+                ref    TEXT,
+                times  TEXT,
+                dims   TEXT,
+                square INTEGER,
+                unit   TEXT,
+                sign_post TEXT,
+                UNIQUE(id)
+            )
+        """)
 
+        rows = self.tableWidget_takeOff.rowCount()
+        for row in range(rows):
+            code = self.tableWidget_takeOff.item(row, 0).text()
+            trade = self.tableWidget_takeOff.item(row, 1).text()
+            desc = self.tableWidget_takeOff.item(row, 2).text()
+            ref = self.tableWidget_takeOff.item(row, 3).text()
+            times = self.tableWidget_takeOff.item(row, 4).text()
+            dims = self.tableWidget_takeOff.item(row, 5).text()
+            square = self.tableWidget_takeOff.item(row, 6).text()
+            unit = self.tableWidget_takeOff.item(row, 7).text()
+            sign_post = self.tableWidget_takeOff.item(row, 8).text()
 
-    # def save_takeOff_database(self):
-    #     conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
-    #     cursor = conn.cursor()
-    #
-    #     # Create the "takeOff" table if it doesn't exist
-    #     cursor.execute("""
-    #         CREATE TABLE IF NOT EXISTS takeOff (
-    #             id     INTEGER PRIMARY KEY AUTOINCREMENT,
-    #             code   TEXT,
-    #             trade  TEXT,
-    #             desc   TEXT,
-    #             ref    TEXT,
-    #             times  TEXT,
-    #             dims   TEXT,
-    #             square INTEGER,
-    #             unit   TEXT,
-    #             sign_post TEXT,
-    #             UNIQUE(id)
-    #         )
-    #     """)
-    #
-    #     rows = self.tableWidget_takeOff.rowCount()
-    #     for row in range(rows):
-    #         code = self.tableWidget_takeOff.item(row, 0).text()
-    #         trade = self.tableWidget_takeOff.item(row, 1).text()
-    #         desc = self.tableWidget_takeOff.item(row, 2).text()
-    #         ref = self.tableWidget_takeOff.item(row, 3).text()
-    #         times = self.tableWidget_takeOff.item(row, 4).text()
-    #         dims = self.tableWidget_takeOff.item(row, 5).text()
-    #         square = self.tableWidget_takeOff.item(row, 6).text()
-    #         unit = self.tableWidget_takeOff.item(row, 7).text()
-    #         sign_post = self.tableWidget_takeOff.item(row, 8).text()
-    #
-    #         # Check if the row already exists in the table
-    #         cursor.execute("""
-    #             SELECT * FROM takeOff WHERE code = ? AND trade = ? AND desc = ? AND ref = ? AND times = ? AND dims = ?
-    #             AND square = ? AND unit = ? AND sign_post = ?
-    #         """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
-    #
-    #         existing_row = cursor.fetchone()
-    #         if existing_row is None:
-    #             # Row does not exist, insert it into the table
-    #             cursor.execute("""
-    #                 INSERT INTO takeOff (code, trade, desc, ref, times, dims, square, unit, sign_post)
-    #                 VALUES (?,?,?,?,?,?,?,?,?)
-    #             """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
-    #
-    #     conn.commit()  # Save the changes
-    #     conn.close()  # Close the connection
-    #
-    #     print("Data is saved to takeOff.db")
-    #
+            # Check if the row already exists in the table
+            cursor.execute("""
+                SELECT * FROM takeOff WHERE code = ? AND trade = ? AND desc = ? AND ref = ? AND times = ? AND dims = ?
+                AND square = ? AND unit = ? AND sign_post = ?
+            """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
+
+            existing_row = cursor.fetchone()
+            if existing_row is None:
+                # Row does not exist, insert it into the table
+                cursor.execute("""
+                    INSERT INTO takeOff (code, trade, desc, ref, times, dims, square, unit, sign_post)
+                    VALUES (?,?,?,?,?,?,?,?,?)
+                """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
+
+        conn.commit()  # Save the changes
+        conn.close()  # Close the connection
+
+        print("Data is saved to takeOff.db")
+
     # def search_code(self):
     #     entered_code = self.lineEdit_code.text()
     #     print(entered_code)

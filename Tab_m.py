@@ -215,6 +215,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Connect signals
         self.pushButton_m_insert.clicked.connect(self.save_table_data)
         self.pushButton_m_insert.clicked.connect(self.load_table_data)
+        self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
 
@@ -594,3 +595,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
     def load_table_data(self):
         take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
         take_off_sheet.load_table_data()  # Call the method to load data from table
+
+    def save_takeOff_database(self):
+        take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+        take_off_sheet.save_takeOff_database()  # Call the method to save data from table
