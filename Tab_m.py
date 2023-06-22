@@ -213,9 +213,10 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.pushButton_m_insert.setObjectName("pushButton_m_insert")
 
         # Connect signals
-        self.pushButton_m_insert.clicked.connect(self.save_table_data)
-        self.pushButton_m_insert.clicked.connect(self.load_table_data)
-        self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
+        self.pushButton_m_insert.clicked.connect(self.insert_dialog)
+        # self.pushButton_m_insert.clicked.connect(self.save_table_data)
+        # self.pushButton_m_insert.clicked.connect(self.load_table_data)
+        # self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
 
@@ -591,6 +592,26 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Commit the changes and close the database connection
         conn.commit()
         conn.close()
+
+    def insert_dialog(self):
+        msg_box = QtWidgets.QMessageBox()
+        msg_box.setWindowTitle("Insert")
+        msg_box.setText("Click OK to insert into Take Off sheet and click Refresh.")
+        msg_box.setIcon(QtWidgets.QMessageBox.Icon.Information)
+        msg_box.setStandardButtons(
+            QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
+        )
+        result = msg_box.exec()
+
+        if result == QtWidgets.QMessageBox.StandardButton.Ok:
+            # Perform the insertion into the TakeOff sheet
+            self.save_table_data()
+            self.load_table_data()
+            self.save_takeOff_database()
+
+        else:
+            # User clicked Cancel, do nothing or perform any desired action
+            pass
 
     def load_table_data(self):
         take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
