@@ -214,9 +214,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         # Connect signals
         self.pushButton_m_insert.clicked.connect(self.insert_dialog)
-        # self.pushButton_m_insert.clicked.connect(self.save_table_data)
-        # self.pushButton_m_insert.clicked.connect(self.load_table_data)
-        # self.pushButton_m_insert.clicked.connect(self.save_takeOff_database)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
 

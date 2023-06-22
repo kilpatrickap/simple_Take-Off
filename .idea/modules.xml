@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Model_A/.idea/Model_A.iml" filepath="$PROJECT_DIR$/../Model_A/.idea/Model_A.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Simpe Take-Off.iml" filepath="$PROJECT_DIR$/.idea/Simpe Take-Off.iml" />
     </modules>
   </component>
