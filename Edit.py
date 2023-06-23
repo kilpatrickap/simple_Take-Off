@@ -24,17 +24,7 @@ class Edit_Dialog(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        # self.label_4 = QtWidgets.QLabel(parent=Dialog)
-        # self.label_4.setObjectName("label_4")
-        # self.horizontalLayout_7.addWidget(self.label_4)
 
-        # self.lineEdit_desc = QtWidgets.QLineEdit(parent=Dialog)
-        # self.lineEdit_desc.setObjectName("lineEdit_desc")
-
-        # Connect signal
-        # self.lineEdit_desc.returnPressed.connect(self.desc)
-
-        # self.horizontalLayout_7.addWidget(self.lineEdit_desc)
         self.verticalLayout.addLayout(self.horizontalLayout_7)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -42,35 +32,6 @@ class Edit_Dialog(object):
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
 
-        # self.comboBox = QtWidgets.QComboBox(parent=Dialog)
-        # self.comboBox.setObjectName("comboBox")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-        # self.comboBox.addItem("")
-
-        # Connect signal
-        # self.comboBox.currentIndexChanged.connect(self.trade)
-
-        # self.horizontalLayout.addWidget(self.comboBox)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
@@ -84,14 +45,6 @@ class Edit_Dialog(object):
         self.label_code = QtWidgets.QLabel(parent=Dialog)
         self.label_code.setObjectName("label_code")
         self.horizontalLayout_3.addWidget(self.label_code)
-        #
-        #
-        # # Access the code_string from takeOffSystem() class
-        # self.takeOff_sheet_widget = TakeOffSheet_Widget()
-        # entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
-        # print(f"Edit code is now : {entered_code}")
-        #
-
 
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
@@ -243,114 +196,6 @@ class Edit_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
-    # def desc(self):
-    #     desc_text = self.lineEdit_desc.text()
-    #
-    #     # Set the entered string in the "desc" column of the new row
-    #     desc_item = QtWidgets.QTableWidgetItem(desc_text)
-    #     self.tableWidget_m.setItem(0, 2, desc_item)
-    #
-    #     # de-activate lineEdit_desc item
-    #     self.lineEdit_desc.setEnabled(False)
-    #
-    # def trade(self):
-    #     selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
-    #     first_letter = selected_item[0]  # Get the first letter of the selected item
-    #
-    #     row_index = 0  # the row index of the selected item
-    #
-    #     # Set the first letter in the trade column of the tableWidget_m
-    #     trade_item = QtWidgets.QTableWidgetItem(first_letter)
-    #     self.tableWidget_m.setItem(row_index, 1, trade_item)
-    #
-    #     # Execute the code method
-    #     self.code()
-    #
-    #     # de-activate comboBox item
-    #     self.comboBox.setEnabled(False)
-    #
-    # def get_highest_code_number(self):
-    #     # Connect to the SQLite database
-    #     conn = sqlite3.connect('m_data.db')
-    #     cursor = conn.cursor()
-    #
-    #     # Execute query to retrieve table names ending with a number
-    #     cursor.execute("""SELECT name FROM sqlite_master WHERE type='table'
-    #                     AND name LIKE 'm_A%'
-    #                     OR name LIKE 'm_C%'
-    #                     OR name LIKE 'm_D%'
-    #                     OR name LIKE 'm_E%'
-    #                     OR name LIKE 'm_F%'
-    #                     OR name LIKE 'm_G%'
-    #                     OR name LIKE 'm_H%'
-    #                     OR name LIKE 'm_J%'
-    #                     OR name LIKE 'm_K%'
-    #                     OR name LIKE 'm_L%'
-    #                     OR name LIKE 'm_M%'
-    #                     OR name LIKE 'm_N%'
-    #                     OR name LIKE 'm_P%'
-    #                     OR name LIKE 'm_Q%'
-    #                     OR name LIKE 'm_R%'
-    #                     OR name LIKE 'm_S%'
-    #                     OR name LIKE 'm_T%'
-    #                     OR name LIKE 'm_U%'
-    #                     OR name LIKE 'm_V%'
-    #                     OR name LIKE 'm_W%'
-    #                     OR name LIKE 'm_X%'
-    #                     """)
-    #     tables = cursor.fetchall()
-    #
-    #     # Find the table with the highest number
-    #     highest_number = 0
-    #     for table in tables:
-    #         table_name = table[0]
-    #         number = int(table_name.split('_')[-1][1:])
-    #         if number > highest_number:
-    #             highest_number = number
-    #
-    #     # Close the database connection
-    #     conn.close()
-    #
-    #     return highest_number
-
-    def code(self):
-        # selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
-        # first_letter = selected_item[0]  # Get the first letter of the selected item
-        #
-        # # Retrieve the current highest code number for the given tab and increment it by 1
-        # next_code_number = self.get_highest_code_number() + 1
-        #
-        # # Concatenate the tab name, first letter, last letter, and the incremented code number
-        # code_string = f"m_{first_letter}{next_code_number}"
-        # self.label_code.setText(code_string)  # Update the label "code shows up here" with the generated code
-        #
-        # # Set the code in the code column of the tableWidget_m
-        # code_item = QtWidgets.QTableWidgetItem(code_string)
-        # self.tableWidget_m.setItem(0, 0, code_item)
-        #
-        # return code_string  # returns e.g m_M1, m_D1 etc as type str
-
-        pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     def add_row(self):
         current_row = self.tableWidget_m.currentRow()  # Get the current row index
@@ -514,51 +359,12 @@ class Edit_Dialog(object):
         self.tableWidget_m.clearContents()
         self.tableWidget_m.setRowCount(0)
 
-        # If all rows are cleared, activate the lineEdit_desc item
-        # self.lineEdit_desc.setEnabled(True)
-
-        # Reset to ---Select Trade---
-        # self.comboBox.setCurrentIndex(0)
-
-        # Activate comboBox item
-        # self.comboBox.setEnabled(True)
-
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-
         self.groupBox_m.setTitle(_translate("Dialog", "Edit Linear measurement"))
-
-        # self.label_4.setText(_translate("Dialog", "Desc :"))
-        # self.label_5.setText(_translate("Dialog", "Trade : "))
-        # self.comboBox.setItemText(0, _translate("Dialog", "--- Select Trade ---"))
-        # self.comboBox.setItemText(1, _translate("Dialog", "A - Preliminaries/General conditions"))
-        # self.comboBox.setItemText(2, _translate("Dialog", "C - Existing site/buildings/services"))
-        # self.comboBox.setItemText(3, _translate("Dialog", "D - Groundwork"))
-        # self.comboBox.setItemText(4, _translate("Dialog", "E - In situ concrete/Large precast concrete"))
-        # self.comboBox.setItemText(5, _translate("Dialog", "F - Masonry"))
-        # self.comboBox.setItemText(6, _translate("Dialog", "G - Structural/Carcassing metal/timber"))
-        # self.comboBox.setItemText(7, _translate("Dialog", "H - Cladding"))
-        # self.comboBox.setItemText(8, _translate("Dialog", "J - Waterproofing"))
-        # self.comboBox.setItemText(9, _translate("Dialog", "K - Linings/Sheathing/Dry partitioning"))
-        # self.comboBox.setItemText(10, _translate("Dialog", "L - Windows/Doors/Stairs"))
-        # self.comboBox.setItemText(11, _translate("Dialog", "M - Surface finishes"))
-        # self.comboBox.setItemText(12, _translate("Dialog", "N - Furniture/Equipment"))
-        # self.comboBox.setItemText(13, _translate("Dialog", "P - Building fabric sundries"))
-        # self.comboBox.setItemText(14, _translate("Dialog", "Q - Paving/Planting/Fencing/Site furniture"))
-        # self.comboBox.setItemText(15, _translate("Dialog", "R - Disposal systems"))
-        # self.comboBox.setItemText(16, _translate("Dialog", "S - Piped Supply systems"))
-        # self.comboBox.setItemText(17, _translate("Dialog", "T - Mechanical heating/Cooling/Refrigeration systems"))
-        # self.comboBox.setItemText(18, _translate("Dialog", "U - Ventilation/Air conditioning systems"))
-        # self.comboBox.setItemText(19, _translate("Dialog", "V - Electrical supply/power/lighting systems"))
-        # self.comboBox.setItemText(20, _translate("Dialog", "W - Communications/Security/Control systems"))
-        # self.comboBox.setItemText(21, _translate("Dialog", "X - Transport systems"))
-        # self.comboBox.setItemText(22, _translate("Dialog", "Y - Mechanical and electrical services measurement"))
-
         self.label_6.setText(_translate("Dialog", "Code :"))
-
-        self.label_code.setText(_translate("Dialog", "\"code shows up here\""))
-
+        self.label_code.setText(_translate("Dialog", "\"code from TakeOff Sheet shows up here\""))
         self.pushButton_m_add.setText(_translate("Dialog", "Add"))
         self.pushButton_m_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_m_del.setText(_translate("Dialog", "Delete"))
@@ -594,9 +400,11 @@ class Edit_Dialog(object):
         self.pushButton_m_clear.setText(_translate("Dialog", "Clear"))
         self.pushButton_m_insert.setText(_translate("Dialog", "Insert"))
 
+    def code(self):
+        pass
+
     def save_table_data(self):
-        # Import the return of self.code here as code_string
-        code_string = self.code()
+        code_string = self.code()   # TakeOff sheet entered_code appears here
 
         # Check if code_string is valid
         if not code_string:
@@ -657,7 +465,7 @@ class Edit_Dialog(object):
     # def insert_dialog(self):
     #     msg_box = QtWidgets.QMessageBox()
     #     msg_box.setWindowTitle("Insert")
-    #     msg_box.setText("Click OK to insert into the Take Off sheet and click Refresh to show.")
+    #     msg_box.setText("Click OK to insert into the TakeOff sheet and click Refresh to show.")
     #
     #     # Add button icon with relative path
     #     icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
