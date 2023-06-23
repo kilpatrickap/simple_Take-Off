@@ -50,9 +50,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_msmt)
 
-        # Create an instance of the Edit_Widget() class and initialize as None.
-        self.edit_dialog = None
-
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
         ui = NewProject_Dialog()
@@ -66,6 +63,4 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         ui = Edit_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
 
         ui.setupUi(dialog)
-        self.edit_dialog = ui   # Set the instance of Edit_Dialog
-
         dialog.exec()
