@@ -32,7 +32,7 @@ class Edit_Dialog(object):
         self.lineEdit_desc.setObjectName("lineEdit_desc")
 
         # Connect signal
-        self.lineEdit_desc.returnPressed.connect(self.desc)
+        # self.lineEdit_desc.returnPressed.connect(self.desc)
 
         self.horizontalLayout_7.addWidget(self.lineEdit_desc)
         self.verticalLayout.addLayout(self.horizontalLayout_7)
@@ -68,7 +68,7 @@ class Edit_Dialog(object):
         self.comboBox.addItem("")
 
         # Connect signal
-        self.comboBox.currentIndexChanged.connect(self.trade)
+        # self.comboBox.currentIndexChanged.connect(self.trade)
 
         self.horizontalLayout.addWidget(self.comboBox)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -84,6 +84,13 @@ class Edit_Dialog(object):
         self.label_code = QtWidgets.QLabel(parent=Dialog)
         self.label_code.setObjectName("label_code")
         self.horizontalLayout_3.addWidget(self.label_code)
+
+        # Access the code_string from takeOffSystem() class
+        # self.takeOff_System = TakeOffSystem()
+        # entered_code = self.takeOff_System.edit()
+        self.takeOff_sheet_widget = TakeOffSheet_Widget()
+        entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
+        print(f"Edit code is now : {entered_code}")
 
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
@@ -222,7 +229,7 @@ class Edit_Dialog(object):
         self.pushButton_m_insert.setObjectName("pushButton_m_insert")
 
         # Connect signals
-        self.pushButton_m_insert.clicked.connect(self.insert_dialog)
+        # self.pushButton_m_insert.clicked.connect(self.insert_dialog)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
 
@@ -236,92 +243,113 @@ class Edit_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def desc(self):
-        desc_text = self.lineEdit_desc.text()
-
-        # Set the entered string in the "desc" column of the new row
-        desc_item = QtWidgets.QTableWidgetItem(desc_text)
-        self.tableWidget_m.setItem(0, 2, desc_item)
-
-        # de-activate lineEdit_desc item
-        self.lineEdit_desc.setEnabled(False)
-
-    def trade(self):
-        selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
-        first_letter = selected_item[0]  # Get the first letter of the selected item
-
-        row_index = 0  # the row index of the selected item
-
-        # Set the first letter in the trade column of the tableWidget_m
-        trade_item = QtWidgets.QTableWidgetItem(first_letter)
-        self.tableWidget_m.setItem(row_index, 1, trade_item)
-
-        # Execute the code method
-        self.code()
-
-        # de-activate comboBox item
-        self.comboBox.setEnabled(False)
-
-    def get_highest_code_number(self):
-        # Connect to the SQLite database
-        conn = sqlite3.connect('m_data.db')
-        cursor = conn.cursor()
-
-        # Execute query to retrieve table names ending with a number
-        cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' 
-                        AND name LIKE 'm_A%' 
-                        OR name LIKE 'm_C%'
-                        OR name LIKE 'm_D%'
-                        OR name LIKE 'm_E%'
-                        OR name LIKE 'm_F%'
-                        OR name LIKE 'm_G%'
-                        OR name LIKE 'm_H%'
-                        OR name LIKE 'm_J%'
-                        OR name LIKE 'm_K%'
-                        OR name LIKE 'm_L%'
-                        OR name LIKE 'm_M%'
-                        OR name LIKE 'm_N%'
-                        OR name LIKE 'm_P%'
-                        OR name LIKE 'm_Q%'
-                        OR name LIKE 'm_R%'
-                        OR name LIKE 'm_S%'
-                        OR name LIKE 'm_T%'
-                        OR name LIKE 'm_U%'
-                        OR name LIKE 'm_V%'
-                        OR name LIKE 'm_W%'
-                        OR name LIKE 'm_X%'
-                        """)
-        tables = cursor.fetchall()
-
-        # Find the table with the highest number
-        highest_number = 0
-        for table in tables:
-            table_name = table[0]
-            number = int(table_name.split('_')[-1][1:])
-            if number > highest_number:
-                highest_number = number
-
-        # Close the database connection
-        conn.close()
-
-        return highest_number
+    # def desc(self):
+    #     desc_text = self.lineEdit_desc.text()
+    #
+    #     # Set the entered string in the "desc" column of the new row
+    #     desc_item = QtWidgets.QTableWidgetItem(desc_text)
+    #     self.tableWidget_m.setItem(0, 2, desc_item)
+    #
+    #     # de-activate lineEdit_desc item
+    #     self.lineEdit_desc.setEnabled(False)
+    #
+    # def trade(self):
+    #     selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
+    #     first_letter = selected_item[0]  # Get the first letter of the selected item
+    #
+    #     row_index = 0  # the row index of the selected item
+    #
+    #     # Set the first letter in the trade column of the tableWidget_m
+    #     trade_item = QtWidgets.QTableWidgetItem(first_letter)
+    #     self.tableWidget_m.setItem(row_index, 1, trade_item)
+    #
+    #     # Execute the code method
+    #     self.code()
+    #
+    #     # de-activate comboBox item
+    #     self.comboBox.setEnabled(False)
+    #
+    # def get_highest_code_number(self):
+    #     # Connect to the SQLite database
+    #     conn = sqlite3.connect('m_data.db')
+    #     cursor = conn.cursor()
+    #
+    #     # Execute query to retrieve table names ending with a number
+    #     cursor.execute("""SELECT name FROM sqlite_master WHERE type='table'
+    #                     AND name LIKE 'm_A%'
+    #                     OR name LIKE 'm_C%'
+    #                     OR name LIKE 'm_D%'
+    #                     OR name LIKE 'm_E%'
+    #                     OR name LIKE 'm_F%'
+    #                     OR name LIKE 'm_G%'
+    #                     OR name LIKE 'm_H%'
+    #                     OR name LIKE 'm_J%'
+    #                     OR name LIKE 'm_K%'
+    #                     OR name LIKE 'm_L%'
+    #                     OR name LIKE 'm_M%'
+    #                     OR name LIKE 'm_N%'
+    #                     OR name LIKE 'm_P%'
+    #                     OR name LIKE 'm_Q%'
+    #                     OR name LIKE 'm_R%'
+    #                     OR name LIKE 'm_S%'
+    #                     OR name LIKE 'm_T%'
+    #                     OR name LIKE 'm_U%'
+    #                     OR name LIKE 'm_V%'
+    #                     OR name LIKE 'm_W%'
+    #                     OR name LIKE 'm_X%'
+    #                     """)
+    #     tables = cursor.fetchall()
+    #
+    #     # Find the table with the highest number
+    #     highest_number = 0
+    #     for table in tables:
+    #         table_name = table[0]
+    #         number = int(table_name.split('_')[-1][1:])
+    #         if number > highest_number:
+    #             highest_number = number
+    #
+    #     # Close the database connection
+    #     conn.close()
+    #
+    #     return highest_number
 
     def code(self):
-        selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
-        first_letter = selected_item[0]  # Get the first letter of the selected item
+        # selected_item = self.comboBox.currentText()  # Retrieve the selected item from the comboBox
+        # first_letter = selected_item[0]  # Get the first letter of the selected item
+        #
+        # # Retrieve the current highest code number for the given tab and increment it by 1
+        # next_code_number = self.get_highest_code_number() + 1
+        #
+        # # Concatenate the tab name, first letter, last letter, and the incremented code number
+        # code_string = f"m_{first_letter}{next_code_number}"
+        # self.label_code.setText(code_string)  # Update the label "code shows up here" with the generated code
+        #
+        # # Set the code in the code column of the tableWidget_m
+        # code_item = QtWidgets.QTableWidgetItem(code_string)
+        # self.tableWidget_m.setItem(0, 0, code_item)
+        #
+        # return code_string  # returns e.g m_M1, m_D1 etc as type str
 
-        # Retrieve the current highest code number for the given tab and increment it by 1
-        next_code_number = self.get_highest_code_number() + 1
+        pass
 
-        # Concatenate the tab name, first letter, last letter, and the incremented code number
-        code_string = f"m_{first_letter}{next_code_number}"
-        self.label_code.setText(code_string)  # Update the label "code shows up here" with the generated code
 
-        # Set the code in the code column of the tableWidget_m
-        code_item = QtWidgets.QTableWidgetItem(code_string)
-        self.tableWidget_m.setItem(0, 0, code_item)
 
-        return code_string  # returns e.g m_M1, m_D1 etc as type str
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def add_row(self):
         current_row = self.tableWidget_m.currentRow()  # Get the current row index
@@ -625,82 +653,35 @@ class Edit_Dialog(object):
         conn.commit()
         conn.close()
 
-    def insert_dialog(self):
-        msg_box = QtWidgets.QMessageBox()
-        msg_box.setWindowTitle("Insert")
-        msg_box.setText("Click OK to insert into the Take Off sheet and click Refresh to show.")
-
-        # Add button icon with relative path
-        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
-        icon_pixmap = QtGui.QPixmap(icon_path)
-        msg_box.setIconPixmap(icon_pixmap)
-
-        msg_box.setStandardButtons(
-            QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
-        )
-        result = msg_box.exec()
-
-        if result == QtWidgets.QMessageBox.StandardButton.Ok:
-            # Perform the insertion into the TakeOff sheet
-            self.save_table_data()
-            self.load_table_data()
-            self.save_takeOff_database()
-
-        else:
-            # User clicked Cancel, do nothing or perform any desired action
-            pass
-
-    def load_table_data(self):
-        take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-        take_off_sheet.load_table_data()  # Call the method to load data from table
-
-    def save_takeOff_database(self):
-        take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-        take_off_sheet.save_takeOff_database()  # Call the method to save data from table
-
-
-
-    # def edit_msmt(self):
-    #     takeOff_system = TakeOffSystem()  # Create an instance of TakeOffSheet_Widget
-    #     # entered_code = take_off_sheet.lineEdit_code.text()
-    #     #
-    #     # self.label_code.setText(entered_code)  # Update the label "code shows up here" with the generated code
-    #     entered_code = takeOff_system.entered_code
+    # def insert_dialog(self):
+    #     msg_box = QtWidgets.QMessageBox()
+    #     msg_box.setWindowTitle("Insert")
+    #     msg_box.setText("Click OK to insert into the Take Off sheet and click Refresh to show.")
     #
-    #     print("Entered code:", entered_code)
-
-        # # Connect to the 'takeOff.db' database
-        # conn = sqlite3.connect('takeOff.db')  # TODO only edit tables in (m_data, m2_data, m3_data, item_data etc)
-        # cursor = conn.cursor()
-        #
-        # # Execute a query to search for the entered code in the 'takeOff' table
-        # cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
-        # rows = cursor.fetchall()
-        #
-        # # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
-        # rows = [row[1:] for row in rows]
-        #
-        # if rows:
-        #     print(f"Code '{entered_code}' found:")
-        #
-        #     # Set the label_code text to the entered code
-        #     self.label_code.setText(entered_code)
-        #
-        #     for row in rows:
-        #         print(row)
-        #         # Add a new row to the tableWidget_m
-        #         self.tableWidget_m.insertRow(self.tableWidget_m.rowCount())
-        #
-        #         # Populate the cells of the new row with the fetched data
-        #         for column, value in enumerate(row):
-        #             item = QTableWidgetItem(str(value))
-        #             self.tableWidget_m.setItem(self.tableWidget_m.rowCount() - 1, column, item)
-        # else:
-        #     print(f"Code '{entered_code}' not found")
-        #
-        #     # Clear the label_code text
-        #     self.label_code.setText(f"'{entered_code}' not found!")
-        #
-        # conn.close()
-
-
+    #     # Add button icon with relative path
+    #     icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
+    #     icon_pixmap = QtGui.QPixmap(icon_path)
+    #     msg_box.setIconPixmap(icon_pixmap)
+    #
+    #     msg_box.setStandardButtons(
+    #         QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
+    #     )
+    #     result = msg_box.exec()
+    #
+    #     if result == QtWidgets.QMessageBox.StandardButton.Ok:
+    #         # Perform the insertion into the TakeOff sheet
+    #         self.save_table_data()
+    #         self.load_table_data()
+    #         self.save_takeOff_database()
+    #
+    #     else:
+    #         # User clicked Cancel, do nothing or perform any desired action
+    #         pass
+    #
+    # # def load_table_data(self):
+    # #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+    # #     take_off_sheet.load_table_data()  # Call the method to load data from table
+    #
+    # # def save_takeOff_database(self):
+    # #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+    # #     take_off_sheet.save_takeOff_database()  # Call the method to save data from table
