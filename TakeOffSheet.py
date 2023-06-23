@@ -4,6 +4,8 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget, QVBoxLayout
 
+from Edit import Edit_Dialog
+
 
 class TakeOffSheet_Widget(QtWidgets.QWidget):
     def __init__(self):
@@ -325,3 +327,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         conn.close()
 
         return entered_code
+
+    def entered_code(self):
+        ui = Edit_Dialog(entered_code=self.lineEdit_code.text())

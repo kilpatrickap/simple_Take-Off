@@ -2,10 +2,15 @@ import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
-from TakeOffSheet import TakeOffSheet_Widget
+# from TakeOffSheet import TakeOffSheet_Widget
 
 
 class Edit_Dialog(object):
+    def __init__(self, entered_code):   # entered_code is initialized as an argument
+        # Initialize the class attributes and perform necessary operations
+        self.entered_code = entered_code
+        print("Entered code from TakeOff Sheet is : " + entered_code)   # test to see if it works.
+
     def setupUi(self, Dialog):
 
         Dialog.setObjectName("Dialog")
@@ -361,10 +366,10 @@ class Edit_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", self.entered_code))  # entered_code shows here
         self.groupBox_m.setTitle(_translate("Dialog", "Edit Linear measurement"))
         self.label_6.setText(_translate("Dialog", "Code :"))
-        self.label_code.setText(_translate("Dialog", "\"code from TakeOff Sheet shows up here\""))
+        self.label_code.setText(_translate("Dialog", self.entered_code))    # entered_code shows here
         self.pushButton_m_add.setText(_translate("Dialog", "Add"))
         self.pushButton_m_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_m_del.setText(_translate("Dialog", "Delete"))

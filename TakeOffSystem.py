@@ -51,7 +51,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_msmt)
 
         # Create an instance of the Edit_Widget() class
-        self.edit_dialog = Edit_Dialog()
+        self.edit_dialog = None
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
@@ -59,19 +59,13 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         ui.setupUi(dialog)
         dialog.exec()
 
-    def edit_msmt(self):    # When edit is clicked in TakeOffSheet, run this code.
+    def edit_msmt(self):
         dialog = QDialog()
-        ui = Edit_Dialog()
+
+        # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
+        ui = Edit_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
+
         ui.setupUi(dialog)
-
-        # Access the entered_code from TakeOffSheet_Widget() class
-        entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
-        print(entered_code)
-
-        # # Make the entered_code accessible to Edit_Dialog()
-        # edit_dialog_label_code = self.edit_dialog.label_code.text()
-        # print(edit_dialog_label_code)
+        self.edit_dialog = ui   # Set the instance of Edit_Dialog
 
         dialog.exec()
-
-        return entered_code
