@@ -74,4 +74,4 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         dialog.exec()
 
-        # return entered_code
+        return entered_code
