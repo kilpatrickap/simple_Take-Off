@@ -327,6 +327,3 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         conn.close()
 
         return entered_code
-
-    def entered_code(self):
-        ui = Edit_Dialog(entered_code=self.lineEdit_code.text())
