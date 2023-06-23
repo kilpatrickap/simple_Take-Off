@@ -49,7 +49,16 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit)
-        # self.actionNew.triggered.connect(self.new_project)
+
+        # Make the entered_code accessible to Edit()
+        self.takeOffSheetObject = TakeOffSheet_Widget()
+        self.entered_code = self.takeOffSheetObject.lineEdit_code.text()
+        print(self.entered_code)
+
+        self.editDialog = Edit_Dialog()
+        # self.edit_code = self.editDialog.label_code.setText(self.entered_code)
+
+
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()

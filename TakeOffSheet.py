@@ -172,7 +172,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         # Extract table names from the fetched data and store them in a list
         table_list = [table[0] for table in tables[1:]]  # Exclude the first table 'sqlite_sequence'
 
-        print(table_list)
+        # print(table_list)
 
         # Initialize an empty list to store all the retrieved data
         all_data = []
@@ -186,7 +186,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
             # Append the retrieved data to the all_data list
             all_data.extend(data)
 
-        print(all_data)
+        # print(all_data)
 
         # Check if the all_data list is empty
         if not all_data:
@@ -287,11 +287,11 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         conn.commit()  # Save the changes
         conn.close()  # Close the connection
 
-        print("Data is saved to takeOff.db")
+        # print("Data is saved to takeOff.db")
 
     def search_code(self):
         entered_code = self.lineEdit_code.text()
-        print(entered_code)
+        # print(entered_code)
 
         conn = sqlite3.connect('takeOff.db')  # Connect to the "takeOff.db" database
         cursor = conn.cursor()
@@ -308,9 +308,9 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff.setRowCount(0)
 
         if rows:
-            print("Matching rows:")
+            # print("Matching rows:")
             for row in rows:
-                print(row)
+                # print(row)
                 # Add a new row to the tableWidget_takeOff
                 self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
 
@@ -319,6 +319,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
                     item = QTableWidgetItem(str(value))
                     self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column, item)
         else:
-            print("No matching rows")
+            # print("No matching rows")
+            pass
 
         conn.close()

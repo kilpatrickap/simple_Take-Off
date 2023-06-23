@@ -656,14 +656,14 @@ class Edit_Dialog(object):
 
 
 
-    def edit_msmt(self):
-        take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-        entered_code = take_off_sheet.lineEdit_code.text()
-
-        self.label_code.setText(entered_code)  # Update the label "code shows up here" with the generated code
-
-
-        print("Entered code:", entered_code)
+    # def edit_msmt(self):
+    #     takeOff_system = TakeOffSystem()  # Create an instance of TakeOffSheet_Widget
+    #     # entered_code = take_off_sheet.lineEdit_code.text()
+    #     #
+    #     # self.label_code.setText(entered_code)  # Update the label "code shows up here" with the generated code
+    #     entered_code = takeOff_system.entered_code
+    #
+    #     print("Entered code:", entered_code)
 
         # # Connect to the 'takeOff.db' database
         # conn = sqlite3.connect('takeOff.db')  # TODO only edit tables in (m_data, m2_data, m3_data, item_data etc)
