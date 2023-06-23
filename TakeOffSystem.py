@@ -40,7 +40,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # self.tabWidget.addTab(self.tab_m_widget, icon1, "m2")
 
 
-        # Insert TakeOffSheet_Widget() class and add widget to centralwidget
+        # Create an instance of the TakeOffSheet_Widget() class
         self.takeOff_sheet_widget = TakeOffSheet_Widget()
         self.verticalLayout_1.addWidget(self.takeOff_sheet_widget)
 
@@ -48,8 +48,10 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.actionNew.triggered.connect(self.new_project)
 
         # Connect signal of edit
-        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit)
+        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_msmt)
 
+        # Create an instance of the Edit_Widget() class
+        self.edit_dialog = Edit_Dialog()
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
@@ -57,14 +59,19 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         ui.setupUi(dialog)
         dialog.exec()
 
-    def edit(self):
+    def edit_msmt(self):    # When edit is clicked in TakeOffSheet, run this code.
         dialog = QDialog()
         ui = Edit_Dialog()
         ui.setupUi(dialog)
 
-        # Make the entered_code accessible to Edit_Dialog()
+        # Access the entered_code from TakeOffSheet_Widget() class
         entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
         print(entered_code)
+
+        # # Make the entered_code accessible to Edit_Dialog()
+        # edit_dialog_label_code = self.edit_dialog.label_code.text()
+        # print(edit_dialog_label_code)
+
         dialog.exec()
 
-        return entered_code
+        # return entered_code

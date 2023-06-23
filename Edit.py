@@ -24,17 +24,17 @@ class Edit_Dialog(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.label_4 = QtWidgets.QLabel(parent=Dialog)
-        self.label_4.setObjectName("label_4")
-        self.horizontalLayout_7.addWidget(self.label_4)
+        # self.label_4 = QtWidgets.QLabel(parent=Dialog)
+        # self.label_4.setObjectName("label_4")
+        # self.horizontalLayout_7.addWidget(self.label_4)
 
-        self.lineEdit_desc = QtWidgets.QLineEdit(parent=Dialog)
-        self.lineEdit_desc.setObjectName("lineEdit_desc")
+        # self.lineEdit_desc = QtWidgets.QLineEdit(parent=Dialog)
+        # self.lineEdit_desc.setObjectName("lineEdit_desc")
 
         # Connect signal
         # self.lineEdit_desc.returnPressed.connect(self.desc)
 
-        self.horizontalLayout_7.addWidget(self.lineEdit_desc)
+        # self.horizontalLayout_7.addWidget(self.lineEdit_desc)
         self.verticalLayout.addLayout(self.horizontalLayout_7)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -42,35 +42,35 @@ class Edit_Dialog(object):
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
 
-        self.comboBox = QtWidgets.QComboBox(parent=Dialog)
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        # self.comboBox = QtWidgets.QComboBox(parent=Dialog)
+        # self.comboBox.setObjectName("comboBox")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
 
         # Connect signal
         # self.comboBox.currentIndexChanged.connect(self.trade)
 
-        self.horizontalLayout.addWidget(self.comboBox)
+        # self.horizontalLayout.addWidget(self.comboBox)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
@@ -84,13 +84,14 @@ class Edit_Dialog(object):
         self.label_code = QtWidgets.QLabel(parent=Dialog)
         self.label_code.setObjectName("label_code")
         self.horizontalLayout_3.addWidget(self.label_code)
+        #
+        #
+        # # Access the code_string from takeOffSystem() class
+        # self.takeOff_sheet_widget = TakeOffSheet_Widget()
+        # entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
+        # print(f"Edit code is now : {entered_code}")
+        #
 
-        # Access the code_string from takeOffSystem() class
-        # self.takeOff_System = TakeOffSystem()
-        # entered_code = self.takeOff_System.edit()
-        self.takeOff_sheet_widget = TakeOffSheet_Widget()
-        entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
-        print(f"Edit code is now : {entered_code}")
 
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
@@ -419,10 +420,10 @@ class Edit_Dialog(object):
         self.tableWidget_m.removeRow(current_row)
 
         # If all rows are deleted, activate the lineEdit_desc item
-        self.lineEdit_desc.setEnabled(True)
+        # self.lineEdit_desc.setEnabled(True)
 
         # Activate comboBox item
-        self.comboBox.setEnabled(True)
+        # self.comboBox.setEnabled(True)
 
     def square(self):
         try:
@@ -514,45 +515,45 @@ class Edit_Dialog(object):
         self.tableWidget_m.setRowCount(0)
 
         # If all rows are cleared, activate the lineEdit_desc item
-        self.lineEdit_desc.setEnabled(True)
+        # self.lineEdit_desc.setEnabled(True)
 
         # Reset to ---Select Trade---
-        self.comboBox.setCurrentIndex(0)
+        # self.comboBox.setCurrentIndex(0)
 
         # Activate comboBox item
-        self.comboBox.setEnabled(True)
+        # self.comboBox.setEnabled(True)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
 
-        self.groupBox_m.setTitle(_translate("Dialog", "Linear measurement"))
+        self.groupBox_m.setTitle(_translate("Dialog", "Edit Linear measurement"))
 
-        self.label_4.setText(_translate("Dialog", "Desc :"))
-        self.label_5.setText(_translate("Dialog", "Trade : "))
-        self.comboBox.setItemText(0, _translate("Dialog", "--- Select Trade ---"))
-        self.comboBox.setItemText(1, _translate("Dialog", "A - Preliminaries/General conditions"))
-        self.comboBox.setItemText(2, _translate("Dialog", "C - Existing site/buildings/services"))
-        self.comboBox.setItemText(3, _translate("Dialog", "D - Groundwork"))
-        self.comboBox.setItemText(4, _translate("Dialog", "E - In situ concrete/Large precast concrete"))
-        self.comboBox.setItemText(5, _translate("Dialog", "F - Masonry"))
-        self.comboBox.setItemText(6, _translate("Dialog", "G - Structural/Carcassing metal/timber"))
-        self.comboBox.setItemText(7, _translate("Dialog", "H - Cladding"))
-        self.comboBox.setItemText(8, _translate("Dialog", "J - Waterproofing"))
-        self.comboBox.setItemText(9, _translate("Dialog", "K - Linings/Sheathing/Dry partitioning"))
-        self.comboBox.setItemText(10, _translate("Dialog", "L - Windows/Doors/Stairs"))
-        self.comboBox.setItemText(11, _translate("Dialog", "M - Surface finishes"))
-        self.comboBox.setItemText(12, _translate("Dialog", "N - Furniture/Equipment"))
-        self.comboBox.setItemText(13, _translate("Dialog", "P - Building fabric sundries"))
-        self.comboBox.setItemText(14, _translate("Dialog", "Q - Paving/Planting/Fencing/Site furniture"))
-        self.comboBox.setItemText(15, _translate("Dialog", "R - Disposal systems"))
-        self.comboBox.setItemText(16, _translate("Dialog", "S - Piped Supply systems"))
-        self.comboBox.setItemText(17, _translate("Dialog", "T - Mechanical heating/Cooling/Refrigeration systems"))
-        self.comboBox.setItemText(18, _translate("Dialog", "U - Ventilation/Air conditioning systems"))
-        self.comboBox.setItemText(19, _translate("Dialog", "V - Electrical supply/power/lighting systems"))
-        self.comboBox.setItemText(20, _translate("Dialog", "W - Communications/Security/Control systems"))
-        self.comboBox.setItemText(21, _translate("Dialog", "X - Transport systems"))
-        self.comboBox.setItemText(22, _translate("Dialog", "Y - Mechanical and electrical services measurement"))
+        # self.label_4.setText(_translate("Dialog", "Desc :"))
+        # self.label_5.setText(_translate("Dialog", "Trade : "))
+        # self.comboBox.setItemText(0, _translate("Dialog", "--- Select Trade ---"))
+        # self.comboBox.setItemText(1, _translate("Dialog", "A - Preliminaries/General conditions"))
+        # self.comboBox.setItemText(2, _translate("Dialog", "C - Existing site/buildings/services"))
+        # self.comboBox.setItemText(3, _translate("Dialog", "D - Groundwork"))
+        # self.comboBox.setItemText(4, _translate("Dialog", "E - In situ concrete/Large precast concrete"))
+        # self.comboBox.setItemText(5, _translate("Dialog", "F - Masonry"))
+        # self.comboBox.setItemText(6, _translate("Dialog", "G - Structural/Carcassing metal/timber"))
+        # self.comboBox.setItemText(7, _translate("Dialog", "H - Cladding"))
+        # self.comboBox.setItemText(8, _translate("Dialog", "J - Waterproofing"))
+        # self.comboBox.setItemText(9, _translate("Dialog", "K - Linings/Sheathing/Dry partitioning"))
+        # self.comboBox.setItemText(10, _translate("Dialog", "L - Windows/Doors/Stairs"))
+        # self.comboBox.setItemText(11, _translate("Dialog", "M - Surface finishes"))
+        # self.comboBox.setItemText(12, _translate("Dialog", "N - Furniture/Equipment"))
+        # self.comboBox.setItemText(13, _translate("Dialog", "P - Building fabric sundries"))
+        # self.comboBox.setItemText(14, _translate("Dialog", "Q - Paving/Planting/Fencing/Site furniture"))
+        # self.comboBox.setItemText(15, _translate("Dialog", "R - Disposal systems"))
+        # self.comboBox.setItemText(16, _translate("Dialog", "S - Piped Supply systems"))
+        # self.comboBox.setItemText(17, _translate("Dialog", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        # self.comboBox.setItemText(18, _translate("Dialog", "U - Ventilation/Air conditioning systems"))
+        # self.comboBox.setItemText(19, _translate("Dialog", "V - Electrical supply/power/lighting systems"))
+        # self.comboBox.setItemText(20, _translate("Dialog", "W - Communications/Security/Control systems"))
+        # self.comboBox.setItemText(21, _translate("Dialog", "X - Transport systems"))
+        # self.comboBox.setItemText(22, _translate("Dialog", "Y - Mechanical and electrical services measurement"))
 
         self.label_6.setText(_translate("Dialog", "Code :"))
 
