@@ -49,14 +49,17 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit)
+        # self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_msmt)
 
-        # Make the entered_code accessible to Edit()
-        self.takeOffSheetObject = TakeOffSheet_Widget()
-        self.entered_code = self.takeOffSheetObject.lineEdit_code.text()
-        print(self.entered_code)
+        # # Make the entered_code accessible to Edit_Dialog()
+        # self.takeOffSheetObject = TakeOffSheet_Widget()
+        # self.entered_code = self.takeOffSheetObject.lineEdit_code.text()
+        # print(self.entered_code)
+        #
+        # # SetText to label_code in Edit_Dialog()
+        # self.editDialog = Edit_Dialog()
+        # # self.edit_code = self.editDialog.label_code.setText(self.entered_code)
 
-        self.editDialog = Edit_Dialog()
-        # self.edit_code = self.editDialog.label_code.setText(self.entered_code)
 
 
 
@@ -70,4 +73,15 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         dialog = QDialog()
         ui = Edit_Dialog()
         ui.setupUi(dialog)
+
+        # Make the entered_code accessible to Edit_Dialog()
+        entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
+        print(entered_code)
+
+        # # SetText to label_code in Edit_Dialog()
+        # self.editDialog = Edit_Dialog()
+        # self.edit_code = self.editDialog.label_code.setText(self.entered_code)
+
         dialog.exec()
+
+    # def edit_msmt(self, entered_code):

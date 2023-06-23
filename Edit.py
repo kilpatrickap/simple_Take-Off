@@ -80,9 +80,11 @@ class Edit_Dialog(object):
         self.label_6 = QtWidgets.QLabel(parent=Dialog)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_3.addWidget(self.label_6)
+
         self.label_code = QtWidgets.QLabel(parent=Dialog)
         self.label_code.setObjectName("label_code")
         self.horizontalLayout_3.addWidget(self.label_code)
+
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem2)
@@ -525,7 +527,9 @@ class Edit_Dialog(object):
         self.comboBox.setItemText(22, _translate("Dialog", "Y - Mechanical and electrical services measurement"))
 
         self.label_6.setText(_translate("Dialog", "Code :"))
+
         self.label_code.setText(_translate("Dialog", "\"code shows up here\""))
+
         self.pushButton_m_add.setText(_translate("Dialog", "Add"))
         self.pushButton_m_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_m_del.setText(_translate("Dialog", "Delete"))

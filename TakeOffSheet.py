@@ -323,3 +323,5 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
             pass
 
         conn.close()
+
+        return entered_code
