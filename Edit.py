@@ -387,7 +387,7 @@ class Edit_Dialog(object):
         self.tableWidget_m.setColumnWidth(8, 100)
 
         self.pushButton_m_clear.setText(_translate("Dialog", "Clear"))
-        self.pushButton_m_edit.setText(_translate("Dialog", "Edit Measurement"))
+        self.pushButton_m_edit.setText(_translate("Dialog", "Edit"))
 
     def code(self):
         code = self.entered_code
@@ -459,7 +459,7 @@ class Edit_Dialog(object):
         conn.close()
 
     def save_table_data(self):
-        code_string = self.code()   # TakeOff sheet entered_code appears here
+        code_string = self.code()  # TakeOff sheet entered_code appears here
 
         # Check if code_string is valid
         if not code_string:
@@ -489,6 +489,9 @@ class Edit_Dialog(object):
             ''')
         except sqlite3.OperationalError:
             return
+
+        # Delete all existing rows from the table
+        cursor.execute(f'DELETE FROM {code_string}')
 
         # Get the number of rows and columns in the table widget
         num_rows = self.tableWidget_m.rowCount()
