@@ -113,6 +113,21 @@ class Edit_Dialog(object):
 
         self.horizontalLayout_10.addWidget(self.pushButton_m_sqr)
 
+        self.pushButton_m_destroy = QtWidgets.QPushButton(parent=Dialog)
+
+        # Add button icon with relative path
+        icon7 = QtGui.QIcon()
+        image_path_to_icon7 = os.path.join(os.path.dirname(__file__), "images", "exit.png")
+        icon7.addPixmap(QtGui.QPixmap(image_path_to_icon7), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_m_destroy.setIcon(icon7)
+
+        self.pushButton_m_destroy.setObjectName("pushButton_m_destroy")
+
+        # Connect signal
+        self.pushButton_m_destroy.clicked.connect(self.destroy_code)
+
+        self.horizontalLayout_10.addWidget(self.pushButton_m_destroy)
+
         # Horizontal spacer
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
@@ -359,6 +374,7 @@ class Edit_Dialog(object):
         self.pushButton_m_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_m_del.setText(_translate("Dialog", "Delete"))
         self.pushButton_m_sqr.setText(_translate("Dialog", "Square"))
+        self.pushButton_m_destroy.setText(_translate("Dialog", "Destroy"))
         item = self.tableWidget_m.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "code"))
         self.tableWidget_m.setColumnWidth(0, 60)
@@ -551,10 +567,31 @@ class Edit_Dialog(object):
             # Perform the insertion into the TakeOff sheet
             self.save_table_data()
 
-            # Close the Edit_Dialog     #TODO To close the QMessageBox when OK is pressed
-            # self.reject()
-            # self.close()
+            # Close the Edit_Dialog     #TODO To close the Edit_Dialog when OK is pressed
 
         else:
             # User clicked Cancel, do nothing or perform any desired action
             pass
+
+    def destroy_code(self):
+        # Find the entered_code and delete it from 'm_data.db'
+        entered_code = self.entered_code
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('m_data.db')
+        cursor = conn.cursor()
+
+        # Check if the table exists
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (entered_code,))
+        table_exists = cursor.fetchone()
+
+        if table_exists:
+            # Delete the table if it exists
+            cursor.execute(f"DROP TABLE {entered_code}")
+            print(f"Table '{entered_code}' deleted successfully.")
+        else:
+            print(f"Table '{entered_code}' does not exist.")
+
+        # Commit the changes and close the connection
+        conn.commit()
+        conn.close()
