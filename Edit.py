@@ -7,8 +7,8 @@ from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
 
 class Edit_Dialog(object):
     def __init__(self, entered_code):   # entered_code is initialized as an argument
-        # Initialize the class attributes and perform necessary operations
-        self.entered_code = entered_code
+
+        self.entered_code = entered_code    # Initialize the class attributes
         print("Entered code from TakeOff Sheet is : " + entered_code)   # test to see if it works.
 
     def setupUi(self, Dialog):
@@ -30,17 +30,6 @@ class Edit_Dialog(object):
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
 
-        self.verticalLayout.addLayout(self.horizontalLayout_7)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label_5 = QtWidgets.QLabel(parent=Dialog)
-        self.label_5.setObjectName("label_5")
-        self.horizontalLayout.addWidget(self.label_5)
-
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.label_6 = QtWidgets.QLabel(parent=Dialog)
