@@ -81,7 +81,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Add button icon with relative path
         icon3 = QtGui.QIcon()
-        image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "notebook.png")
+        image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "wand.png")
         icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_abstract.setIcon(icon3)
 

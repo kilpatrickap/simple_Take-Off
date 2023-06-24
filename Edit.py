@@ -164,20 +164,20 @@ class Edit_Dialog(object):
         self.pushButton_m_clear.clicked.connect(self.clear_table)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_clear)
-        self.pushButton_m_edit = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_m_update = QtWidgets.QPushButton(parent=Dialog)
 
         # Insert button icon with relative path
         icon6 = QtGui.QIcon()
-        image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "pencil.png")
+        image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "disk.png")
         icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m_edit.setIcon(icon6)
+        self.pushButton_m_update.setIcon(icon6)
 
-        self.pushButton_m_edit.setObjectName("pushButton_m_edit")
+        self.pushButton_m_update.setObjectName("pushButton_m_update")
 
         # Connect signals
-        self.pushButton_m_edit.clicked.connect(self.insert_dialog)
+        self.pushButton_m_update.clicked.connect(self.update_msmt)
 
-        self.horizontalLayout_11.addWidget(self.pushButton_m_edit)
+        self.horizontalLayout_11.addWidget(self.pushButton_m_update)
 
         # Horizontal spacer
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -388,7 +388,7 @@ class Edit_Dialog(object):
         self.tableWidget_m.setColumnWidth(8, 100)
 
         self.pushButton_m_clear.setText(_translate("Dialog", "Clear"))
-        self.pushButton_m_edit.setText(_translate("Dialog", "Edit"))
+        self.pushButton_m_update.setText(_translate("Dialog", "Update"))
 
     def code(self):
         code = self.entered_code
@@ -532,7 +532,7 @@ class Edit_Dialog(object):
         conn.commit()
         conn.close()
 
-    def insert_dialog(self):
+    def update_msmt(self):
         msg_box = QtWidgets.QMessageBox()
         msg_box.setWindowTitle("Insert")
         msg_box.setText("Click OK to update the TakeOff sheet and click Refresh to show.")
