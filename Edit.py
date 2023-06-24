@@ -337,6 +337,7 @@ class Edit_Dialog(object):
             total_item.setFlags(flags)
             self.tableWidget_m.setItem(last_row, 6, total_item)
 
+
         except ValueError:
             return
         except AttributeError:
@@ -438,6 +439,17 @@ class Edit_Dialog(object):
                     formatted_value = str(col_data)
 
                 item.setText(formatted_value)
+
+                if col_num == 1:  # Freeze the code column (index 1)
+                    flags = item.flags()
+                    flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                    item.setFlags(flags)
+
+                if col_num == 2:  # Freeze the trade column (index 2)
+                    flags = item.flags()
+                    flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                    item.setFlags(flags)
+
                 self.tableWidget_m.setItem(row_num, col_num - 1, item)  # Adjust column index
 
                 if col_num == 9:  # "sign_post" column is at index 9
@@ -538,20 +550,11 @@ class Edit_Dialog(object):
         if result == QtWidgets.QMessageBox.StandardButton.Ok:
             # Perform the insertion into the TakeOff sheet
             self.save_table_data()
-            # self.load_table_data()
-            # self.save_takeOff_database()
 
-            # Close the Edit_Dialog
-
+            # Close the Edit_Dialog     #TODO To close the QMessageBox when OK is pressed
+            # self.reject()
+            # self.close()
 
         else:
             # User clicked Cancel, do nothing or perform any desired action
             pass
-
-    # def load_table_data(self):
-    #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-    #     take_off_sheet.load_table_data()  # Call the method to load data from table
-
-    # def save_takeOff_database(self):
-    #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-    #     take_off_sheet.save_takeOff_database()  # Call the method to save data from table
