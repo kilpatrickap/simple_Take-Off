@@ -400,29 +400,19 @@ class Edit_Dialog(object):
         conn = sqlite3.connect('m_data.db')
         cursor = conn.cursor()
 
-        # Get the list of table names from the database
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-        tables = cursor.fetchall()
+        # Check if the 'self.entered_code' table exists
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (self.entered_code,))
+        if cursor.fetchone() is None:
+            conn.close()
+            return
 
-        # Extract table names from the fetched data and store them in a list
-        table_list = [table[0] for table in tables[1:]]  # Exclude the first table 'sqlite_sequence'
+        # Retrieve the data from the 'self.entered_code' table
+        cursor.execute(f'SELECT * FROM {self.entered_code}')
+        all_data = cursor.fetchall()
 
-        # Initialize an empty list to store all the retrieved data
-        all_data = []
-
-        # Iterate over each table in table_list
-        for table_name in table_list:
-            # Retrieve the data from the table
-            cursor.execute(f'SELECT * FROM {table_name}')
-            data = cursor.fetchall()
-
-            # Append the retrieved data to the all_data list
-            all_data.extend(data)
-
-            print(all_data)
-
-        # Check if the all_data list is empty
+        # Check if the retrieved data is empty
         if not all_data:
+            conn.close()
             return
 
         # Set the number of rows and columns in the QTableWidget
