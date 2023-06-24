@@ -554,7 +554,7 @@ class Edit_Dialog(object):
         msg_box.setText("Click OK to update the TakeOff sheet and click Refresh to show.")
 
         # Add button icon with relative path
-        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
+        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-circle.png")
         icon_pixmap = QtGui.QPixmap(icon_path)
         msg_box.setIconPixmap(icon_pixmap)
 
@@ -586,11 +586,28 @@ class Edit_Dialog(object):
         table_exists = cursor.fetchone()
 
         if table_exists:
-            # Delete the table if it exists
-            cursor.execute(f"DROP TABLE {entered_code}")
-            print(f"Table '{entered_code}' deleted successfully.")
-        else:
-            print(f"Table '{entered_code}' does not exist.")
+
+            # Show a messageBox warning
+            msg_box = QtWidgets.QMessageBox()
+            msg_box.setWindowTitle("Destroy")
+            msg_box.setText("Click OK to PERMANENTLY DELETE the measurement.")
+
+            # Add button icon with relative path
+            icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-red.png")
+            icon_pixmap = QtGui.QPixmap(icon_path)
+            msg_box.setIconPixmap(icon_pixmap)
+
+            msg_box.setStandardButtons(
+                QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
+            )
+            result = msg_box.exec()
+
+            if result == QtWidgets.QMessageBox.StandardButton.Ok:
+                # Delete the table if it exists
+                cursor.execute(f"DROP TABLE {entered_code}")
+                print(f"Table '{entered_code}' deleted successfully.")
+            else:
+                print(f"Table '{entered_code}' does not exist.")
 
         # Commit the changes and close the connection
         conn.commit()

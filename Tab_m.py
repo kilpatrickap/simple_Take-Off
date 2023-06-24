@@ -621,7 +621,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         msg_box.setText("Click OK to insert into the Take Off sheet and click Refresh to show.")
 
         # Add button icon with relative path
-        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
+        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-circle.png")
         icon_pixmap = QtGui.QPixmap(icon_path)
         msg_box.setIconPixmap(icon_pixmap)
 
