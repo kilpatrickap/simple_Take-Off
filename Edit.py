@@ -2,8 +2,6 @@ import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
-# from TakeOffSheet import TakeOffSheet_Widget
-
 
 class Edit_Dialog(object):
     def __init__(self, entered_code):   # entered_code is initialized as an argument
@@ -177,7 +175,7 @@ class Edit_Dialog(object):
         self.pushButton_m_edit.setObjectName("pushButton_m_edit")
 
         # Connect signals
-        # self.pushButton_m_edit.clicked.connect(self.insert_dialog)
+        self.pushButton_m_edit.clicked.connect(self.insert_dialog)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_edit)
 
@@ -519,35 +517,38 @@ class Edit_Dialog(object):
         conn.commit()
         conn.close()
 
-    # def insert_dialog(self):
-    #     msg_box = QtWidgets.QMessageBox()
-    #     msg_box.setWindowTitle("Insert")
-    #     msg_box.setText("Click OK to insert into the TakeOff sheet and click Refresh to show.")
-    #
-    #     # Add button icon with relative path
-    #     icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
-    #     icon_pixmap = QtGui.QPixmap(icon_path)
-    #     msg_box.setIconPixmap(icon_pixmap)
-    #
-    #     msg_box.setStandardButtons(
-    #         QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
-    #     )
-    #     result = msg_box.exec()
-    #
-    #     if result == QtWidgets.QMessageBox.StandardButton.Ok:
-    #         # Perform the insertion into the TakeOff sheet
-    #         self.save_table_data()
-    #         self.load_table_data()
-    #         self.save_takeOff_database()
-    #
-    #     else:
-    #         # User clicked Cancel, do nothing or perform any desired action
-    #         pass
-    #
-    # # def load_table_data(self):
-    # #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-    # #     take_off_sheet.load_table_data()  # Call the method to load data from table
-    #
-    # # def save_takeOff_database(self):
-    # #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-    # #     take_off_sheet.save_takeOff_database()  # Call the method to save data from table
+    def insert_dialog(self):
+        msg_box = QtWidgets.QMessageBox()
+        msg_box.setWindowTitle("Insert")
+        msg_box.setText("Click OK to update the TakeOff sheet and click Refresh to show.")
+
+        # Add button icon with relative path
+        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation.png")
+        icon_pixmap = QtGui.QPixmap(icon_path)
+        msg_box.setIconPixmap(icon_pixmap)
+
+        msg_box.setStandardButtons(
+            QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
+        )
+        result = msg_box.exec()
+
+        if result == QtWidgets.QMessageBox.StandardButton.Ok:
+            # Perform the insertion into the TakeOff sheet
+            self.save_table_data()
+            # self.load_table_data()
+            # self.save_takeOff_database()
+
+            # Close the Edit_Dialog
+
+
+        else:
+            # User clicked Cancel, do nothing or perform any desired action
+            pass
+
+    # def load_table_data(self):
+    #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+    #     take_off_sheet.load_table_data()  # Call the method to load data from table
+
+    # def save_takeOff_database(self):
+    #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+    #     take_off_sheet.save_takeOff_database()  # Call the method to save data from table
