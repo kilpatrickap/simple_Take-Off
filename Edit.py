@@ -166,20 +166,20 @@ class Edit_Dialog(object):
         self.pushButton_m_clear.clicked.connect(self.clear_table)
 
         self.horizontalLayout_11.addWidget(self.pushButton_m_clear)
-        self.pushButton_m_insert = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_m_edit = QtWidgets.QPushButton(parent=Dialog)
 
         # Insert button icon with relative path
         icon6 = QtGui.QIcon()
-        image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "table-export.png")
+        image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "pencil.png")
         icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m_insert.setIcon(icon6)
+        self.pushButton_m_edit.setIcon(icon6)
 
-        self.pushButton_m_insert.setObjectName("pushButton_m_insert")
+        self.pushButton_m_edit.setObjectName("pushButton_m_edit")
 
         # Connect signals
-        # self.pushButton_m_insert.clicked.connect(self.insert_dialog)
+        # self.pushButton_m_edit.clicked.connect(self.insert_dialog)
 
-        self.horizontalLayout_11.addWidget(self.pushButton_m_insert)
+        self.horizontalLayout_11.addWidget(self.pushButton_m_edit)
 
         # Horizontal spacer
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -389,7 +389,7 @@ class Edit_Dialog(object):
         self.tableWidget_m.setColumnWidth(8, 100)
 
         self.pushButton_m_clear.setText(_translate("Dialog", "Clear"))
-        self.pushButton_m_insert.setText(_translate("Dialog", "Insert"))
+        self.pushButton_m_edit.setText(_translate("Dialog", "Edit Measurement"))
 
     def code(self):
         code = self.entered_code
