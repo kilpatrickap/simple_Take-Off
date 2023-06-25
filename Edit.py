@@ -551,7 +551,7 @@ class Edit_Dialog(object):
     def update_msmt(self):
         msg_box = QtWidgets.QMessageBox()
         msg_box.setWindowTitle("Insert")
-        msg_box.setText("Click OK to update the TakeOff sheet and click Refresh to show.")
+        msg_box.setText("Click OK to update the Take Off sheet and click Refresh to show.")
 
         # Add button icon with relative path
         icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-circle.png")
