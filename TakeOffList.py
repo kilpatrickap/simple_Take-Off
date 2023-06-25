@@ -72,7 +72,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.horizontalLayout.addItem(spacerItem)
         self.pushButton_delete = QtWidgets.QPushButton(parent=self)
         icon2 = QtGui.QIcon()
-        image_path_icon2 = os.path.join(os.path.dirname(__file__), "images", "cross.png")
+        image_path_icon2 = os.path.join(os.path.dirname(__file__), "images", "node-delete.png")
         icon2.addPixmap(QtGui.QPixmap(image_path_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_delete.setIcon(icon2)
         self.pushButton_delete.setObjectName("pushButton_delete")
