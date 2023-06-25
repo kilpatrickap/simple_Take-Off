@@ -1,7 +1,8 @@
 import os
 import sys
 
-from PyQt6 import QtGui, QtWidgets
+from PyQt6 import QtGui, QtWidgets, QtCore
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QMainWindow, QDialog
 from MainGUI import Ui_MainWindow
 from NewProject import NewProject_Dialog
@@ -58,6 +59,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
     def edit_msmt(self):
         dialog = QDialog()
+
+        # Set the window flags to make the dialog stay on top
+        dialog.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
         # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
         ui = Edit_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
