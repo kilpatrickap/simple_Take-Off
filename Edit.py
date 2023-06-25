@@ -612,4 +612,3 @@ class Edit_Dialog(object):
         # Commit the changes and close the connection
         conn.commit()
         conn.close()
-        
