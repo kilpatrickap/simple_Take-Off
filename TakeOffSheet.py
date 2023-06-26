@@ -262,15 +262,33 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         rows = self.tableWidget_takeOff.rowCount()
         for row in range(rows):
-            code = self.tableWidget_takeOff.item(row, 0).text()
-            trade = self.tableWidget_takeOff.item(row, 1).text()
-            desc = self.tableWidget_takeOff.item(row, 2).text()
-            ref = self.tableWidget_takeOff.item(row, 3).text()
-            times = self.tableWidget_takeOff.item(row, 4).text()
-            dims = self.tableWidget_takeOff.item(row, 5).text()
-            square = self.tableWidget_takeOff.item(row, 6).text()
-            unit = self.tableWidget_takeOff.item(row, 7).text()
-            sign_post = self.tableWidget_takeOff.item(row, 8).text()
+            code_item = self.tableWidget_takeOff.item(row, 0)
+            trade_item = self.tableWidget_takeOff.item(row, 1)
+            desc_item = self.tableWidget_takeOff.item(row, 2)
+            ref_item = self.tableWidget_takeOff.item(row, 3)
+            times_item = self.tableWidget_takeOff.item(row, 4)
+            dims_item = self.tableWidget_takeOff.item(row, 5)
+            square_item = self.tableWidget_takeOff.item(row, 6)
+            unit_item = self.tableWidget_takeOff.item(row, 7)
+            sign_post_item = self.tableWidget_takeOff.item(row, 8)
+
+            # Check if any of the items are None
+            if (
+                    code_item is None or trade_item is None or desc_item is None or ref_item is None
+                    or times_item is None or dims_item is None or square_item is None
+                    or unit_item is None or sign_post_item is None
+            ):
+                continue  # Skip the current row if any item is None
+
+            code = code_item.text()
+            trade = trade_item.text()
+            desc = desc_item.text()
+            ref = ref_item.text()
+            times = times_item.text()
+            dims = dims_item.text()
+            square = square_item.text()
+            unit = unit_item.text()
+            sign_post = sign_post_item.text()
 
             # Check if the row already exists in the table
             cursor.execute("""
@@ -288,6 +306,8 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         conn.commit()  # Save the changes
         conn.close()  # Close the connection
+
+        # print("Data is saved to takeOff.db")
 
         # print("Data is saved to takeOff.db")
 
