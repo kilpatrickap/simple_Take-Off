@@ -164,7 +164,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
     def load_table_data(self):
         # Connect to the SQLite database
-        conn = sqlite3.connect('m_data.db')
+        conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
 
         # Get the list of table names from the database

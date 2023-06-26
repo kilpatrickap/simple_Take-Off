@@ -255,7 +255,7 @@ class Tab_nr_Widget(QtWidgets.QWidget):
 
     def get_highest_code_number(self):
         # Connect to the SQLite database
-        conn = sqlite3.connect('m_data.db')
+        conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
 
         # Execute query to retrieve table names ending with a number
@@ -564,7 +564,7 @@ class Tab_nr_Widget(QtWidgets.QWidget):
             return
 
         # Connect to the SQLite database
-        conn = sqlite3.connect('nr_data.db')
+        conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
 
         # Create the table if it doesn't exist

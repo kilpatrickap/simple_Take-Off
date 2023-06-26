@@ -412,7 +412,7 @@ class Edit_Dialog(object):
 
     def load_entered_code_data(self):
         # Connect to the SQLite database
-        conn = sqlite3.connect('m_data.db')
+        conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
 
         # Check if the 'self.entered_code' table exists
@@ -495,7 +495,7 @@ class Edit_Dialog(object):
             return
 
         # Connect to the SQLite database
-        conn = sqlite3.connect('m_data.db')
+        conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
 
         # Create the table if it doesn't exist
@@ -574,11 +574,11 @@ class Edit_Dialog(object):
             pass
 
     def destroy_code(self):
-        # Find the entered_code and delete it from 'm_data.db'
+        # Find the entered_code and delete it from 'data.db'
         entered_code = self.entered_code
 
         # Connect to the SQLite database
-        conn = sqlite3.connect('m_data.db')
+        conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
 
         # Check if the table exists
