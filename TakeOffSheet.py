@@ -172,9 +172,9 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         tables = cursor.fetchall()
 
         # Extract table names from the fetched data and store them in a list
-        table_list = [table[0] for table in tables[1:]]  # Exclude the first table 'sqlite_sequence'
+        table_list = [table[0] for table in tables if table[0] != 'sqlite_sequence']  # Exclude the 'sqlite_sequence'
 
-        # print(table_list)
+        print(table_list)
 
         # Initialize an empty list to store all the retrieved data
         all_data = []
@@ -306,8 +306,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         conn.commit()  # Save the changes
         conn.close()  # Close the connection
-
-        # print("Data is saved to takeOff.db")
 
         # print("Data is saved to takeOff.db")
 
