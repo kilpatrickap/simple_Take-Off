@@ -478,6 +478,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.tableWidget_m.setRowCount(0)
 
         # If all rows are cleared, activate the lineEdit_desc item
+        self.lineEdit_desc.clear()
         self.lineEdit_desc.setEnabled(True)
 
         # Reset to ---Select Trade---
