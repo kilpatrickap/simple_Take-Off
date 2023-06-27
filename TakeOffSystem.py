@@ -10,8 +10,10 @@ from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
 from Tab_nr import Tab_nr_Widget
+from Tab_rft import Tab_rft_Widget
 from TakeOffSheet import TakeOffSheet_Widget
 from Edit import Edit_Dialog
+
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -41,6 +43,12 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_nr_widget, icon2, "nr")
 
+        # Insert Tab_nr_Widget() class and add widget to tabWidget
+        self.tab_rft_widget = Tab_rft_Widget()
+        icon3 = QtGui.QIcon()  # Add button icon with relative path
+        image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "rft.png")
+        icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.tab_rft_widget, icon3, "rft")
 
         # Create an instance of the TakeOffSheet_Widget() class
         self.takeOff_sheet_widget = TakeOffSheet_Widget()
