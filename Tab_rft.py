@@ -40,25 +40,6 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
 
         # Connect signal
         self.comboBox.currentIndexChanged.connect(self.trade)
@@ -260,27 +241,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
         # Execute query to retrieve table names ending with a number
         cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' 
-                        AND name LIKE 'rft_A%' 
-                        OR name LIKE 'rft_C%'
-                        OR name LIKE 'rft_D%'
                         OR name LIKE 'rft_E%'
-                        OR name LIKE 'rft_F%'
                         OR name LIKE 'rft_G%'
-                        OR name LIKE 'rft_H%'
-                        OR name LIKE 'rft_J%'
-                        OR name LIKE 'rft_K%'
-                        OR name LIKE 'rft_L%'
-                        OR name LIKE 'rft_M%'
-                        OR name LIKE 'rft_N%'
-                        OR name LIKE 'rft_P%'
-                        OR name LIKE 'rft_Q%'
-                        OR name LIKE 'rft_R%'
-                        OR name LIKE 'rft_S%'
-                        OR name LIKE 'rft_T%'
-                        OR name LIKE 'rft_U%'
-                        OR name LIKE 'rft_V%'
-                        OR name LIKE 'rft_W%'
-                        OR name LIKE 'rft_X%'
                         """)
         tables = cursor.fetchall()
 
@@ -495,28 +457,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.label_4.setText(_translate("tabWidget_rft", "Desc :"))
         self.label_5.setText(_translate("tabWidget_rft", "Trade : "))
         self.comboBox.setItemText(0, _translate("tabWidget_rft", "--- Select Trade ---"))
-        self.comboBox.setItemText(1, _translate("tabWidget_rft", "A - Preliminaries/General conditions"))
-        self.comboBox.setItemText(2, _translate("tabWidget_rft", "C - Existing site/buildings/services"))
-        self.comboBox.setItemText(3, _translate("tabWidget_rft", "D - Groundwork"))
-        self.comboBox.setItemText(4, _translate("tabWidget_rft", "E - In situ concrete/Large precast concrete"))
-        self.comboBox.setItemText(5, _translate("tabWidget_rft", "F - Masonry"))
-        self.comboBox.setItemText(6, _translate("tabWidget_rft", "G - Structural/Carcassing metal/timber"))
-        self.comboBox.setItemText(7, _translate("tabWidget_rft", "H - Cladding"))
-        self.comboBox.setItemText(8, _translate("tabWidget_rft", "J - Waterproofing"))
-        self.comboBox.setItemText(9, _translate("tabWidget_rft", "K - Linings/Sheathing/Dry partitioning"))
-        self.comboBox.setItemText(10, _translate("tabWidget_rft", "L - Windows/Doors/Stairs"))
-        self.comboBox.setItemText(11, _translate("tabWidget_rft", "M - Surface finishes"))
-        self.comboBox.setItemText(12, _translate("tabWidget_rft", "N - Furniture/Equipment"))
-        self.comboBox.setItemText(13, _translate("tabWidget_rft", "P - Building fabric sundries"))
-        self.comboBox.setItemText(14, _translate("tabWidget_rft", "Q - Paving/Planting/Fencing/Site furniture"))
-        self.comboBox.setItemText(15, _translate("tabWidget_rft", "R - Disposal systems"))
-        self.comboBox.setItemText(16, _translate("tabWidget_rft", "S - Piped Supply systems"))
-        self.comboBox.setItemText(17, _translate("tabWidget_rft", "T - Mechanical heating/Cooling/Refrigeration systems"))
-        self.comboBox.setItemText(18, _translate("tabWidget_rft", "U - Ventilation/Air conditioning systems"))
-        self.comboBox.setItemText(19, _translate("tabWidget_rft", "V - Electrical supply/power/lighting systems"))
-        self.comboBox.setItemText(20, _translate("tabWidget_rft", "W - Communications/Security/Control systems"))
-        self.comboBox.setItemText(21, _translate("tabWidget_rft", "X - Transport systems"))
-        self.comboBox.setItemText(22, _translate("tabWidget_rft", "Y - Mechanical and electrical services measurement"))
+        self.comboBox.setItemText(1, _translate("tabWidget_rft", "E - In situ concrete/Large precast concrete"))
+        self.comboBox.setItemText(2, _translate("tabWidget_rft", "G - Structural/Carcassing metal/timber"))
 
         self.label_6.setText(_translate("tabWidget_rft", "Code :"))
         self.label_code.setText(_translate("tabWidget_rft", "\"code shows up here\""))
