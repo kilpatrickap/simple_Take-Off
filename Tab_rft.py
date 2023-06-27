@@ -241,7 +241,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
         # Execute query to retrieve table names ending with a number
         cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' 
-                        OR name LIKE 'rft_E%'
+                        AND name LIKE 'rft_E%'
                         OR name LIKE 'rft_G%'
                         """)
         tables = cursor.fetchall()
