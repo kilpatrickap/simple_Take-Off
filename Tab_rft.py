@@ -444,11 +444,13 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
-                # Convert `m` to Tonne
-                try:
-                    total_square = total_square * weight_value / 1000.00
-                except ZeroDivisionError:
-                    return
+            print(total_square)
+
+            # Convert `m` to Tonne
+            try:
+                total_square = total_square * weight_value / 1000.00
+            except ZeroDivisionError:
+                return
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
