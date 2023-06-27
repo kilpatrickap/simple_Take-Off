@@ -444,9 +444,9 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
+                # Convert `m` to Tonne
                 try:
-                    total_square = int(total_square) / 1000  # Convert `m` to Tonne
-                    total_square = float(total_square)  # Convert back to float
+                    total_square = total_square * weight_value / 1000.00
                 except ZeroDivisionError:
                     return
 
