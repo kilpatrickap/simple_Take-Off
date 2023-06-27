@@ -55,9 +55,6 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.lineEdit_weight = QtWidgets.QLineEdit(parent=self.groupBox_rft)
         self.lineEdit_weight.setObjectName("lineEdit_weight")
 
-        # Connect signal
-        # self.lineEdit_weight.returnPressed.connect(self.desc)
-
         self.horizontalLayout.addItem(spacerItem1)
         self.horizontalLayout.addWidget(self.label_weight)
         self.horizontalLayout.addWidget(self.lineEdit_weight)
@@ -410,10 +407,14 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
-            # Insert weight value
-            weight_value = self.lineEdit_weight.text()
-            print(weight_value)
-            weight_value_item = QtWidgets.QTableWidgetItem(weight_value)
+            # Insert weight value (try and catch errors if entry is not a float)
+            weight_value_text = self.lineEdit_weight.text()
+            try:
+                weight_value = float(weight_value_text)
+            except ValueError:
+                return
+
+            weight_value_item = QtWidgets.QTableWidgetItem(str(weight_value))   # convert weight_value to string
             flags = weight_value_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -442,6 +443,12 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_item = self.tableWidget_rft.item(row, 6)
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
+
+                try:
+                    total_square = int(total_square) / 1000  # Convert `m` to Tonne
+                    total_square = float(total_square)  # Convert back to float
+                except ZeroDivisionError:
+                    return
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
@@ -486,6 +493,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
         self.label_6.setText(_translate("tabWidget_rft", "Code :"))
         self.label_weight.setText(_translate("tabWidget_rft", "Weight (kg/m):"))
+        self.lineEdit_weight.setPlaceholderText(_translate("tabWidget_rft", "e.g 0.888"))
         self.label_code.setText(_translate("tabWidget_rft", "\"code shows up here\""))
         self.pushButton_rft_add.setText(_translate("tabWidget_rft", "Add"))
         self.pushButton_rft_ddt.setText(_translate("tabWidget_rft", "Deduct"))
