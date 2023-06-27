@@ -47,7 +47,21 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.horizontalLayout.addWidget(self.comboBox)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
+
+        # Weight Label and LineEdit inside a horizontal layout
+        self.label_weight = QtWidgets.QLabel(parent=self.groupBox_rft)
+        self.label_weight.setObjectName("label_weight")
+
+        self.lineEdit_weight = QtWidgets.QLineEdit(parent=self.groupBox_rft)
+        self.lineEdit_weight.setObjectName("lineEdit_weight")
+
+        # Connect signal
+        # self.lineEdit_weight.returnPressed.connect(self.desc)
+
         self.horizontalLayout.addItem(spacerItem1)
+        self.horizontalLayout.addWidget(self.label_weight)
+        self.horizontalLayout.addWidget(self.lineEdit_weight)
+
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -279,7 +293,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
     def add_row(self):
         current_row = self.tableWidget_rft.currentRow()  # Get the current row index
 
-        unit_t = "t"  # Set the unit
+        unit_t = "m"  # Set the unit
         unit_t_cell = QtWidgets.QTableWidgetItem(unit_t)
 
         new_row = self.tableWidget_rft.rowCount()  # Insert one new row at the end of the table
@@ -396,8 +410,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
-            # Set unit column as 'nr' for the last row
-            unit_item = QtWidgets.QTableWidgetItem("nr")
+            # Set unit column as 't' for the last row
+            unit_item = QtWidgets.QTableWidgetItem("t")
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -461,6 +475,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.comboBox.setItemText(2, _translate("tabWidget_rft", "G - Structural/Carcassing metal/timber"))
 
         self.label_6.setText(_translate("tabWidget_rft", "Code :"))
+        self.label_weight.setText(_translate("tabWidget_rft", "Weight :"))
         self.label_code.setText(_translate("tabWidget_rft", "\"code shows up here\""))
         self.pushButton_rft_add.setText(_translate("tabWidget_rft", "Add"))
         self.pushButton_rft_ddt.setText(_translate("tabWidget_rft", "Deduct"))
