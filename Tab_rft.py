@@ -410,6 +410,16 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
+            # Insert weight value
+            weight_value = self.lineEdit_weight.text()
+            print(weight_value)
+            weight_value_item = QtWidgets.QTableWidgetItem(weight_value)
+            flags = weight_value_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            weight_value_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 5, weight_value_item)
+
             # Set unit column as 't' for the last row
             unit_item = QtWidgets.QTableWidgetItem("t")
             flags = unit_item.flags()
@@ -475,7 +485,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.comboBox.setItemText(2, _translate("tabWidget_rft", "G - Structural/Carcassing metal/timber"))
 
         self.label_6.setText(_translate("tabWidget_rft", "Code :"))
-        self.label_weight.setText(_translate("tabWidget_rft", "Weight :"))
+        self.label_weight.setText(_translate("tabWidget_rft", "Weight (kg/m):"))
         self.label_code.setText(_translate("tabWidget_rft", "\"code shows up here\""))
         self.pushButton_rft_add.setText(_translate("tabWidget_rft", "Add"))
         self.pushButton_rft_ddt.setText(_translate("tabWidget_rft", "Deduct"))
