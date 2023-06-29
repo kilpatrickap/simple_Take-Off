@@ -5,23 +5,23 @@ from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
 from TakeOffSheet import TakeOffSheet_Widget
 
 
-class Tab_rft_Widget(QtWidgets.QWidget):
+class Tab_m2_Widget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
-        self.groupBox_rft = QtWidgets.QGroupBox(parent=self)
-        self.groupBox_rft.setGeometry(QtCore.QRect(10, 10, 751, 501))
-        self.groupBox_rft.setObjectName("groupBox_rft")
+        self.groupBox_m2 = QtWidgets.QGroupBox(parent=self)
+        self.groupBox_m2.setGeometry(QtCore.QRect(10, 10, 751, 501))
+        self.groupBox_m2.setObjectName("groupBox_m2")
 
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_rft)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_m2)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.label_4 = QtWidgets.QLabel(parent=self.groupBox_rft)
+        self.label_4 = QtWidgets.QLabel(parent=self.groupBox_m2)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_7.addWidget(self.label_4)
 
-        self.lineEdit_desc = QtWidgets.QLineEdit(parent=self.groupBox_rft)
+        self.lineEdit_desc = QtWidgets.QLineEdit(parent=self.groupBox_m2)
         self.lineEdit_desc.setObjectName("lineEdit_desc")
 
         # Connect signal
@@ -31,12 +31,31 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_7)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label_5 = QtWidgets.QLabel(parent=self.groupBox_rft)
+        self.label_5 = QtWidgets.QLabel(parent=self.groupBox_m2)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
 
-        self.comboBox = QtWidgets.QComboBox(parent=self.groupBox_rft)
+        self.comboBox = QtWidgets.QComboBox(parent=self.groupBox_m2)
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -47,25 +66,14 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.horizontalLayout.addWidget(self.comboBox)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
-
-        # Weight Label and LineEdit inside a horizontal layout
-        self.label_weight = QtWidgets.QLabel(parent=self.groupBox_rft)
-        self.label_weight.setObjectName("label_weight")
-
-        self.lineEdit_weight = QtWidgets.QLineEdit(parent=self.groupBox_rft)
-        self.lineEdit_weight.setObjectName("lineEdit_weight")
-
         self.horizontalLayout.addItem(spacerItem1)
-        self.horizontalLayout.addWidget(self.label_weight)
-        self.horizontalLayout.addWidget(self.lineEdit_weight)
-
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_6 = QtWidgets.QLabel(parent=self.groupBox_rft)
+        self.label_6 = QtWidgets.QLabel(parent=self.groupBox_m2)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_3.addWidget(self.label_6)
-        self.label_code = QtWidgets.QLabel(parent=self.groupBox_rft)
+        self.label_code = QtWidgets.QLabel(parent=self.groupBox_m2)
         self.label_code.setObjectName("label_code")
         self.horizontalLayout_3.addWidget(self.label_code)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -80,68 +88,68 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem1)
 
-        self.pushButton_rft_add = QtWidgets.QPushButton(parent=self.groupBox_rft)
+        self.pushButton_m2_add = QtWidgets.QPushButton(parent=self.groupBox_m2)
 
         # Add button icon with relative path
         icon1 = QtGui.QIcon()
         image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "plus.png")
         icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_rft_add.setIcon(icon1)
+        self.pushButton_m2_add.setIcon(icon1)
 
-        self.pushButton_rft_add.setObjectName("pushButton_rft_add")
+        self.pushButton_m2_add.setObjectName("pushButton_m2_add")
 
         # Connect signal
-        self.pushButton_rft_add.clicked.connect(self.add_row)
+        self.pushButton_m2_add.clicked.connect(self.add_row)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_rft_add)
-        self.pushButton_rft_ddt = QtWidgets.QPushButton(parent=self.groupBox_rft)
+        self.horizontalLayout_10.addWidget(self.pushButton_m2_add)
+        self.pushButton_m2_ddt = QtWidgets.QPushButton(parent=self.groupBox_m2)
 
         # Deduct button icon with relative path
         icon2 = QtGui.QIcon()
         image_path_to_icon2 = os.path.join(os.path.dirname(__file__), "images", "minus.png")
         icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_rft_ddt.setIcon(icon2)
+        self.pushButton_m2_ddt.setIcon(icon2)
 
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
-        self.pushButton_rft_ddt.setFont(font)
-        self.pushButton_rft_ddt.setObjectName("pushButton_rft_ddt")
+        self.pushButton_m2_ddt.setFont(font)
+        self.pushButton_m2_ddt.setObjectName("pushButton_m2_ddt")
 
         # Connect signal
-        self.pushButton_rft_ddt.clicked.connect(self.ddt_row)
-        self.pushButton_rft_ddt.setStyleSheet("color: red")
+        self.pushButton_m2_ddt.clicked.connect(self.ddt_row)
+        self.pushButton_m2_ddt.setStyleSheet("color: red")
 
-        self.horizontalLayout_10.addWidget(self.pushButton_rft_ddt)
-        self.pushButton_rft_del = QtWidgets.QPushButton(parent=self.groupBox_rft)
+        self.horizontalLayout_10.addWidget(self.pushButton_m2_ddt)
+        self.pushButton_m2_del = QtWidgets.QPushButton(parent=self.groupBox_m2)
 
         # Delete button icon with relative path
         icon3 = QtGui.QIcon()
         image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "cross.png")
         icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_rft_del.setIcon(icon3)
+        self.pushButton_m2_del.setIcon(icon3)
 
-        self.pushButton_rft_del.setObjectName("pushButton_rft_del")
+        self.pushButton_m2_del.setObjectName("pushButton_m2_del")
 
         # Connect signal
-        self.pushButton_rft_del.clicked.connect(self.delete_row)
+        self.pushButton_m2_del.clicked.connect(self.delete_row)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_rft_del)
+        self.horizontalLayout_10.addWidget(self.pushButton_m2_del)
 
-        self.pushButton_rft_sqr = QtWidgets.QPushButton(parent=self.groupBox_rft)
+        self.pushButton_m2_sqr = QtWidgets.QPushButton(parent=self.groupBox_m2)
 
         # Square button icon with relative path
         icon4 = QtGui.QIcon()
         image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "calculator.png")
         icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_rft_sqr.setIcon(icon4)
+        self.pushButton_m2_sqr.setIcon(icon4)
 
-        self.pushButton_rft_sqr.setObjectName("pushButton_rft_sqr")
+        self.pushButton_m2_sqr.setObjectName("pushButton_m2_sqr")
 
         # Connect signal
-        self.pushButton_rft_sqr.clicked.connect(self.square)
+        self.pushButton_m2_sqr.clicked.connect(self.square)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_rft_sqr)
+        self.horizontalLayout_10.addWidget(self.pushButton_m2_sqr)
 
         # Horizontal spacer
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -149,29 +157,29 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.horizontalLayout_10.addItem(spacerItem2)
 
         self.verticalLayout.addLayout(self.horizontalLayout_10)
-        self.tableWidget_rft = QtWidgets.QTableWidget(parent=self.groupBox_rft)
-        self.tableWidget_rft.setObjectName("tableWidget_rft")
-        self.tableWidget_rft.setColumnCount(9)
-        self.tableWidget_rft.setRowCount(0)
+        self.tableWidget_m2 = QtWidgets.QTableWidget(parent=self.groupBox_m2)
+        self.tableWidget_m2.setObjectName("tableWidget_m2")
+        self.tableWidget_m2.setColumnCount(9)
+        self.tableWidget_m2.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(0, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(1, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(2, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(3, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(4, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(5, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(6, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(7, item)
+        self.tableWidget_m2.setHorizontalHeaderItem(7, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_rft.setHorizontalHeaderItem(8, item)
-        self.verticalLayout.addWidget(self.tableWidget_rft)
+        self.tableWidget_m2.setHorizontalHeaderItem(8, item)
+        self.verticalLayout.addWidget(self.tableWidget_m2)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
 
@@ -180,34 +188,34 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem3)
 
-        self.pushButton_rft_clear = QtWidgets.QPushButton(parent=self.groupBox_rft)
+        self.pushButton_m2_clear = QtWidgets.QPushButton(parent=self.groupBox_m2)
 
         # Clear button icon with relative path
         icon5 = QtGui.QIcon()
         image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "application-blue.png")
         icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_rft_clear.setIcon(icon5)
+        self.pushButton_m2_clear.setIcon(icon5)
 
-        self.pushButton_rft_clear.setObjectName("pushButton_rft_clear")
+        self.pushButton_m2_clear.setObjectName("pushButton_m2_clear")
 
         # Connect signal
-        self.pushButton_rft_clear.clicked.connect(self.clear_table)
+        self.pushButton_m2_clear.clicked.connect(self.clear_table)
 
-        self.horizontalLayout_11.addWidget(self.pushButton_rft_clear)
-        self.pushButton_rft_insert = QtWidgets.QPushButton(parent=self.groupBox_rft)
+        self.horizontalLayout_11.addWidget(self.pushButton_m2_clear)
+        self.pushButton_m2_insert = QtWidgets.QPushButton(parent=self.groupBox_m2)
 
         # Insert button icon with relative path
         icon6 = QtGui.QIcon()
         image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "table-export.png")
         icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_rft_insert.setIcon(icon6)
+        self.pushButton_m2_insert.setIcon(icon6)
 
-        self.pushButton_rft_insert.setObjectName("pushButton_rft_insert")
+        self.pushButton_m2_insert.setObjectName("pushButton_m2_insert")
 
         # Connect signals
-        self.pushButton_rft_insert.clicked.connect(self.insert_dialog)
+        self.pushButton_m2_insert.clicked.connect(self.insert_dialog)
 
-        self.horizontalLayout_11.addWidget(self.pushButton_rft_insert)
+        self.horizontalLayout_11.addWidget(self.pushButton_m2_insert)
 
         # Horizontal spacer
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -217,6 +225,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_11)
 
         self.retranslateUi()
+        # self.tabWidget_m.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def desc(self):
@@ -224,7 +233,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
         # Set the entered string in the "desc" column of the new row
         desc_item = QtWidgets.QTableWidgetItem(desc_text)
-        self.tableWidget_rft.setItem(0, 2, desc_item)
+        self.tableWidget_m2.setItem(0, 2, desc_item)
 
         # de-activate lineEdit_desc item
         self.lineEdit_desc.setEnabled(False)
@@ -235,9 +244,9 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
         row_index = 0  # the row index of the selected item
 
-        # Set the first letter in the trade column of the tableWidget_rft
+        # Set the first letter in the trade column of the tableWidget_m2
         trade_item = QtWidgets.QTableWidgetItem(first_letter)
-        self.tableWidget_rft.setItem(row_index, 1, trade_item)
+        self.tableWidget_m2.setItem(row_index, 1, trade_item)
 
         # Execute the code method
         self.code()
@@ -252,8 +261,27 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
         # Execute query to retrieve table names ending with a number
         cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' 
-                        AND name LIKE 'rft_E%'
-                        OR name LIKE 'rft_G%'
+                        AND name LIKE 'm2_A%' 
+                        OR name LIKE 'm2_C%'
+                        OR name LIKE 'm2_D%'
+                        OR name LIKE 'm2_E%'
+                        OR name LIKE 'm2_F%'
+                        OR name LIKE 'm2_G%'
+                        OR name LIKE 'm2_H%'
+                        OR name LIKE 'm2_J%'
+                        OR name LIKE 'm2_K%'
+                        OR name LIKE 'm2_L%'
+                        OR name LIKE 'm2_M%'
+                        OR name LIKE 'm2_N%'
+                        OR name LIKE 'm2_P%'
+                        OR name LIKE 'm2_Q%'
+                        OR name LIKE 'm2_R%'
+                        OR name LIKE 'm2_S%'
+                        OR name LIKE 'm2_T%'
+                        OR name LIKE 'm2_U%'
+                        OR name LIKE 'm2_V%'
+                        OR name LIKE 'm2_W%'
+                        OR name LIKE 'm2_X%'
                         """)
         tables = cursor.fetchall()
 
@@ -278,60 +306,60 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         next_code_number = self.get_highest_code_number() + 1
 
         # Concatenate the tab name, first letter, last letter, and the incremented code number
-        code_string = f"rft_{first_letter}{next_code_number}"
+        code_string = f"m2_{first_letter}{next_code_number}"
         self.label_code.setText(code_string)  # Update the label "code shows up here" with the generated code
 
-        # Set the code in the code column of the tableWidget_rft
+        # Set the code in the code column of the tableWidget_m2
         code_item = QtWidgets.QTableWidgetItem(code_string)
-        self.tableWidget_rft.setItem(0, 0, code_item)
+        self.tableWidget_m2.setItem(0, 0, code_item)
 
-        return code_string  # returns e.g rft_M1, rft_D1 etc as type str
+        return code_string  # returns e.g m_M1, m_D1 etc as type str
 
     def add_row(self):
-        current_row = self.tableWidget_rft.currentRow()  # Get the current row index
+        current_row = self.tableWidget_m2.currentRow()  # Get the current row index
 
-        unit_t = "m"  # Set the unit
-        unit_t_cell = QtWidgets.QTableWidgetItem(unit_t)
+        unit_m = "m2"  # Set the unit
+        unit_m_cell = QtWidgets.QTableWidgetItem(unit_m)
 
-        new_row = self.tableWidget_rft.rowCount()  # Insert one new row at the end of the table
-        self.tableWidget_rft.insertRow(new_row)
+        new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
+        self.tableWidget_m2.insertRow(new_row)
 
-        flags = unit_t_cell.flags()  # Freeze cell
+        flags = unit_m_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_t_cell.setFlags(flags)
+        unit_m_cell.setFlags(flags)
 
-        self.tableWidget_rft.setItem(0, 7, unit_t_cell)  # set the unit
+        self.tableWidget_m2.setItem(0, 7, unit_m_cell)  # set the unit
 
         # Copy the formatting and logic from the previous row to the new row
-        for column in range(self.tableWidget_rft.columnCount()):
-            item = self.tableWidget_rft.item(current_row, column)
+        for column in range(self.tableWidget_m2.columnCount()):
+            item = self.tableWidget_m2.item(current_row, column)
             if item is not None:
                 new_item = QtWidgets.QTableWidgetItem(item.text())
                 flags = item.flags()
                 new_item.setFlags(flags)
-                self.tableWidget_rft.setItem(new_row, column, new_item)
+                self.tableWidget_m2.setItem(new_row, column, new_item)
 
     def ddt_row(self):
-        current_row = self.tableWidget_rft.rowCount() - 1  # Get the current row index
+        current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
 
-        unit_t = "t"  # Set the unit
-        unit_nr_cell = QtWidgets.QTableWidgetItem(unit_t)
-        unit_nr_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
+        unit_m = "m2"  # Set the unit
+        unit_m_cell = QtWidgets.QTableWidgetItem(unit_m)
+        unit_m_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-        new_row = self.tableWidget_rft.rowCount()  # Insert one new row at the end of the table
-        self.tableWidget_rft.insertRow(new_row)
+        new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
+        self.tableWidget_m2.insertRow(new_row)
 
-        flags = unit_nr_cell.flags()  # Freeze cell
+        flags = unit_m_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_nr_cell.setFlags(flags)
+        unit_m_cell.setFlags(flags)
 
-        self.tableWidget_rft.setItem(new_row, 7, unit_nr_cell)  # set the unit
+        self.tableWidget_m2.setItem(new_row, 7, unit_m_cell)  # set the unit
 
         # Copy the formatting and logic from the previous row to the new row
-        for column in range(self.tableWidget_rft.columnCount()):
-            item = self.tableWidget_rft.item(current_row, column)
+        for column in range(self.tableWidget_m2.columnCount()):
+            item = self.tableWidget_m2.item(current_row, column)
             if item is not None:
                 new_item = QtWidgets.QTableWidgetItem(item.text())
                 new_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
@@ -348,11 +376,11 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                     except ValueError:
                         return
 
-                self.tableWidget_rft.setItem(new_row, column, new_item)
+                self.tableWidget_m2.setItem(new_row, column, new_item)
 
     def delete_row(self):
-        current_row = self.tableWidget_rft.currentRow()
-        self.tableWidget_rft.removeRow(current_row)
+        current_row = self.tableWidget_m2.currentRow()
+        self.tableWidget_m2.removeRow(current_row)
 
         # If all rows are deleted, activate the lineEdit_desc item
         self.lineEdit_desc.setEnabled(True)
@@ -362,8 +390,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
     def square(self):
         try:
-            for row in range(self.tableWidget_rft.rowCount()):
-                times_item = self.tableWidget_rft.item(row, 4)
+            for row in range(self.tableWidget_m2.rowCount()):
+                times_item = self.tableWidget_m2.item(row, 4)
                 times_value = times_item.text()
 
                 # Check if times value is empty
@@ -373,7 +401,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                     times = float(times_value.rstrip(" /"))
                     times_item.setText("{:,.2f} /".format(times))
 
-                dims_item = self.tableWidget_rft.item(row, 5)
+                dims_item = self.tableWidget_m2.item(row, 5)
                 dims = float(dims_item.text())
                 dims_item.setText("{:,.2f}".format(dims))
 
@@ -396,61 +424,39 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 item.setFlags(flags)
 
                 # Set the square for row and col
-                self.tableWidget_rft.setItem(row, 6, item)
+                self.tableWidget_m2.setItem(row, 6, item)
 
             # Add a new row at the end
-            last_row = self.tableWidget_rft.rowCount()
-            self.tableWidget_rft.insertRow(last_row)
+            last_row = self.tableWidget_m2.rowCount()
+            self.tableWidget_m2.insertRow(last_row)
 
             # Insert sum_code
             sum_code = self.code()
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-            self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
+            self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
 
-            # Insert weight value (try and catch errors if entry is not a float)
-            weight_value_text = self.lineEdit_weight.text()
-            try:
-                weight_value = float(weight_value_text)
-            except ValueError:
-                return
-
-            weight_value_item = QtWidgets.QTableWidgetItem(str(weight_value))   # convert weight_value to string
-            flags = weight_value_item.flags()
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            weight_value_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 5, weight_value_item)
-
-            # Set unit column as 't' for the last row
-            unit_item = QtWidgets.QTableWidgetItem("t")
+            # Set unit column as 'm' for the last row
+            unit_item = QtWidgets.QTableWidgetItem("m2")
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             unit_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 7, unit_item)
+            self.tableWidget_m2.setItem(last_row, 7, unit_item)
 
-            # Set description column as 'TONNAGE' for the last row
-            desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
+            # Set description column as 'sum' for the last row
+            desc_item = QtWidgets.QTableWidgetItem("SUM")
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             desc_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 8, desc_item)
+            self.tableWidget_m2.setItem(last_row, 8, desc_item)
 
             # Sum the numbers in the square column
             total_square = 0.0
-            for row in range(self.tableWidget_rft.rowCount() - 1):
-                square_item = self.tableWidget_rft.item(row, 6)
+            for row in range(self.tableWidget_m2.rowCount() - 1):
+                square_item = self.tableWidget_m2.item(row, 6)
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
-
-            # print(total_square)
-
-            # Convert `m` to Tonne
-            try:
-                total_square = total_square * weight_value / 1000.00
-            except ZeroDivisionError:
-                return
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
@@ -458,7 +464,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             total_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 6, total_item)
+            self.tableWidget_m2.setItem(last_row, 6, total_item)
 
         except ValueError:
             return
@@ -468,8 +474,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             return
 
     def clear_table(self):
-        self.tableWidget_rft.clearContents()
-        self.tableWidget_rft.setRowCount(0)
+        self.tableWidget_m2.clearContents()
+        self.tableWidget_m2.setRowCount(0)
 
         # If all rows are cleared, activate the lineEdit_desc item
         self.lineEdit_desc.clear()
@@ -483,54 +489,72 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("tabWidget_rft", "tabWidget_rft"))
+        self.setWindowTitle(_translate("tabWidget_m2", "tabWidget_m"))
 
-        self.groupBox_rft.setTitle(_translate("tabWidget_rft", "Reinforcement measurement"))
+        self.groupBox_m2.setTitle(_translate("tabWidget_m2", "Area measurement"))
 
-        self.label_4.setText(_translate("tabWidget_rft", "Desc :"))
-        self.label_5.setText(_translate("tabWidget_rft", "Trade : "))
-        self.comboBox.setItemText(0, _translate("tabWidget_rft", "--- Select Trade ---"))
-        self.comboBox.setItemText(1, _translate("tabWidget_rft", "E - In situ concrete/Large precast concrete"))
-        self.comboBox.setItemText(2, _translate("tabWidget_rft", "G - Structural/Carcassing metal/timber"))
+        self.label_4.setText(_translate("tabWidget_m2", "Desc :"))
+        self.label_5.setText(_translate("tabWidget_m2", "Trade : "))
+        self.comboBox.setItemText(0, _translate("tabWidget_m2", "--- Select Trade ---"))
+        self.comboBox.setItemText(1, _translate("tabWidget_m2", "A - Preliminaries/General conditions"))
+        self.comboBox.setItemText(2, _translate("tabWidget_m2", "C - Existing site/buildings/services"))
+        self.comboBox.setItemText(3, _translate("tabWidget_m2", "D - Groundwork"))
+        self.comboBox.setItemText(4, _translate("tabWidget_m2", "E - In situ concrete/Large precast concrete"))
+        self.comboBox.setItemText(5, _translate("tabWidget_m2", "F - Masonry"))
+        self.comboBox.setItemText(6, _translate("tabWidget_m2", "G - Structural/Carcassing metal/timber"))
+        self.comboBox.setItemText(7, _translate("tabWidget_m2", "H - Cladding"))
+        self.comboBox.setItemText(8, _translate("tabWidget_m2", "J - Waterproofing"))
+        self.comboBox.setItemText(9, _translate("tabWidget_m2", "K - Linings/Sheathing/Dry partitioning"))
+        self.comboBox.setItemText(10, _translate("tabWidget_m2", "L - Windows/Doors/Stairs"))
+        self.comboBox.setItemText(11, _translate("tabWidget_m2", "M - Surface finishes"))
+        self.comboBox.setItemText(12, _translate("tabWidget_m2", "N - Furniture/Equipment"))
+        self.comboBox.setItemText(13, _translate("tabWidget_m2", "P - Building fabric sundries"))
+        self.comboBox.setItemText(14, _translate("tabWidget_m2", "Q - Paving/Planting/Fencing/Site furniture"))
+        self.comboBox.setItemText(15, _translate("tabWidget_m2", "R - Disposal systems"))
+        self.comboBox.setItemText(16, _translate("tabWidget_m2", "S - Piped Supply systems"))
+        self.comboBox.setItemText(17, _translate("tabWidget_m2", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox.setItemText(18, _translate("tabWidget_m2", "U - Ventilation/Air conditioning systems"))
+        self.comboBox.setItemText(19, _translate("tabWidget_m2", "V - Electrical supply/power/lighting systems"))
+        self.comboBox.setItemText(20, _translate("tabWidget_m2", "W - Communications/Security/Control systems"))
+        self.comboBox.setItemText(21, _translate("tabWidget_m2", "X - Transport systems"))
+        self.comboBox.setItemText(22, _translate("tabWidget_m2", "Y - Mechanical and electrical services measurement"))
 
-        self.label_6.setText(_translate("tabWidget_rft", "Code :"))
-        self.label_weight.setText(_translate("tabWidget_rft", "Weight (kg/m):"))
-        self.lineEdit_weight.setPlaceholderText(_translate("tabWidget_rft", "e.g 0.888"))
-        self.label_code.setText(_translate("tabWidget_rft", "\"code shows up here\""))
-        self.pushButton_rft_add.setText(_translate("tabWidget_rft", "Add"))
-        self.pushButton_rft_ddt.setText(_translate("tabWidget_rft", "Deduct"))
-        self.pushButton_rft_del.setText(_translate("tabWidget_rft", "Delete"))
-        self.pushButton_rft_sqr.setText(_translate("tabWidget_rft", "Square"))
-        item = self.tableWidget_rft.horizontalHeaderItem(0)
-        item.setText(_translate("tabWidget_rft", "code"))
-        self.tableWidget_rft.setColumnWidth(0, 60)
-        item = self.tableWidget_rft.horizontalHeaderItem(1)
-        item.setText(_translate("tabWidget_rft", "trade"))
-        self.tableWidget_rft.setColumnWidth(1, 40)
-        item = self.tableWidget_rft.horizontalHeaderItem(2)
-        item.setText(_translate("tabWidget_rft", "desc"))
-        self.tableWidget_rft.setColumnWidth(2, 250)
-        item = self.tableWidget_rft.horizontalHeaderItem(3)
-        item.setText(_translate("tabWidget_rft", "ref"))
-        self.tableWidget_rft.setColumnWidth(3, 60)
-        item = self.tableWidget_rft.horizontalHeaderItem(4)
-        item.setText(_translate("tabWidget_rft", "times"))
-        self.tableWidget_rft.setColumnWidth(4, 60)
-        item = self.tableWidget_rft.horizontalHeaderItem(5)
-        item.setText(_translate("tabWidget_rft", "dims"))
-        self.tableWidget_rft.setColumnWidth(5, 60)
-        item = self.tableWidget_rft.horizontalHeaderItem(6)
-        item.setText(_translate("tabWidget_rft", "square"))
-        self.tableWidget_rft.setColumnWidth(6, 60)
-        item = self.tableWidget_rft.horizontalHeaderItem(7)
-        item.setText(_translate("tabWidget_rft", "unit"))
-        self.tableWidget_rft.setColumnWidth(7, 30)
-        item = self.tableWidget_rft.horizontalHeaderItem(8)
-        item.setText(_translate("tabWidget_rft", "sign post"))
-        self.tableWidget_rft.setColumnWidth(8, 100)
+        self.label_6.setText(_translate("tabWidget_m2", "Code :"))
+        self.label_code.setText(_translate("tabWidget_m2", "\"code shows up here\""))
+        self.pushButton_m2_add.setText(_translate("tabWidget_m2", "Add"))
+        self.pushButton_m2_ddt.setText(_translate("tabWidget_m2", "Deduct"))
+        self.pushButton_m2_del.setText(_translate("tabWidget_m2", "Delete"))
+        self.pushButton_m2_sqr.setText(_translate("tabWidget_m2", "Square"))
+        item = self.tableWidget_m2.horizontalHeaderItem(0)
+        item.setText(_translate("tabWidget_m2", "code"))
+        self.tableWidget_m2.setColumnWidth(0, 60)
+        item = self.tableWidget_m2.horizontalHeaderItem(1)
+        item.setText(_translate("tabWidget_m2", "trade"))
+        self.tableWidget_m2.setColumnWidth(1, 40)
+        item = self.tableWidget_m2.horizontalHeaderItem(2)
+        item.setText(_translate("tabWidget_m2", "desc"))
+        self.tableWidget_m2.setColumnWidth(2, 250)
+        item = self.tableWidget_m2.horizontalHeaderItem(3)
+        item.setText(_translate("tabWidget_m2", "ref"))
+        self.tableWidget_m2.setColumnWidth(3, 60)
+        item = self.tableWidget_m2.horizontalHeaderItem(4)
+        item.setText(_translate("tabWidget_m2", "times"))
+        self.tableWidget_m2.setColumnWidth(4, 60)
+        item = self.tableWidget_m2.horizontalHeaderItem(5)
+        item.setText(_translate("tabWidget_m2", "dims"))
+        self.tableWidget_m2.setColumnWidth(5, 60)
+        item = self.tableWidget_m2.horizontalHeaderItem(6)
+        item.setText(_translate("tabWidget_m2", "square"))
+        self.tableWidget_m2.setColumnWidth(6, 60)
+        item = self.tableWidget_m2.horizontalHeaderItem(7)
+        item.setText(_translate("tabWidget_m2", "unit"))
+        self.tableWidget_m2.setColumnWidth(7, 30)
+        item = self.tableWidget_m2.horizontalHeaderItem(8)
+        item.setText(_translate("tabWidget_m2", "sign post"))
+        self.tableWidget_m2.setColumnWidth(8, 100)
 
-        self.pushButton_rft_clear.setText(_translate("tabWidget_rft", "Clear"))
-        self.pushButton_rft_insert.setText(_translate("tabWidget_rft", "Insert"))
+        self.pushButton_m2_clear.setText(_translate("tabWidget_m2", "Clear"))
+        self.pushButton_m2_insert.setText(_translate("tabWidget_m2", "Insert"))
 
     def save_table_data(self):
         # Import the return of self.code here as code_string
@@ -566,14 +590,14 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             return
 
         # Get the number of rows and columns in the table widget
-        num_rows = self.tableWidget_rft.rowCount()
-        num_columns = self.tableWidget_rft.columnCount()
+        num_rows = self.tableWidget_m2.rowCount()
+        num_columns = self.tableWidget_m2.columnCount()
 
         # Iterate over each row in the table widget and insert the data into the database
         for row in range(num_rows):
             data = []
             for col in range(num_columns):
-                item = self.tableWidget_rft.item(row, col)
+                item = self.tableWidget_m2.item(row, col)
                 if item is not None:
                     data.append(item.text())
                 else:

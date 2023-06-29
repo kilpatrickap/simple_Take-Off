@@ -9,6 +9,7 @@ from NewProject import NewProject_Dialog
 from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
+from Tab_m2 import Tab_m2_Widget
 from Tab_nr import Tab_nr_Widget
 from Tab_rft import Tab_rft_Widget
 from TakeOffSheet import TakeOffSheet_Widget
@@ -35,6 +36,13 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "len.png")
         icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_m_widget, icon1, "m")
+
+        # Insert Tab_m2_Widget() class and add widget to tabWidget
+        self.tab_m2_widget = Tab_m2_Widget()
+        icon4 = QtGui.QIcon()  # Add button icon with relative path
+        image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "area.png")
+        icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.tab_m2_widget, icon4, "m2")
 
         # Insert Tab_nr_Widget() class and add widget to tabWidget
         self.tab_nr_widget = Tab_nr_Widget()
