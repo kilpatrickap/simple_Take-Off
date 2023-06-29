@@ -327,30 +327,28 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         return code_string  # returns e.g m2_M1, m2_D1 etc as type str
 
     def add_row(self):
-        current_row = self.tableWidget_m2.currentRow()  # Get the current row index
-
         unit_m2 = "m2"  # Set the unit
         unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
 
         for _ in range(2):
-            new_row = self.tableWidget_m2.rowCount() # Insert two new rows at the end of the table
+            new_row = self.tableWidget_m2.rowCount()  # Insert two new rows at the end of the table
             self.tableWidget_m2.insertRow(new_row)
 
         flags = unit_m2_cell.flags()  # Freeze cell
-        flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
-        flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
+        flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
+        flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
         unit_m2_cell.setFlags(flags)
 
-        self.tableWidget_m2.setItem(1, 7, unit_m2_cell)  # set the unit (from 0 to 1)
+        self.tableWidget_m2.setItem(1, 7, unit_m2_cell)  # Set the unit (from 0 to 1)
 
-        # Copy the formatting and logic from the previous row to the new row
         for column in range(self.tableWidget_m2.columnCount()):
-            item = self.tableWidget_m2.item(current_row, column)
-            if item is not None:
-                new_item = QtWidgets.QTableWidgetItem(item.text())
-                flags = item.flags()
-                new_item.setFlags(flags)
-                self.tableWidget_m2.setItem(new_row, column, new_item)
+            for row in range(2):
+                item = self.tableWidget_m2.item(row, column)
+                if item is not None:
+                    new_item = QtWidgets.QTableWidgetItem(item.text())
+                    flags = item.flags()
+                    new_item.setFlags(flags)
+                    self.tableWidget_m2.setItem(new_row + row, column, new_item)
 
     def ddt_row(self):
         current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
