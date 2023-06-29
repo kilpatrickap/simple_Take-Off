@@ -429,7 +429,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             unit_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 7, unit_item)
 
-            # Set description column as 'sum' for the last row
+            # Set description column as 'TONNAGE' for the last row
             desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
