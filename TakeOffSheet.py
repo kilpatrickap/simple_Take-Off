@@ -236,6 +236,12 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
                     cell_item = self.tableWidget_takeOff.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('blue'))
 
+            # Check if sign_post_value == "SUM", set row foreground to blue
+            if sign_post_value == "TONNAGE":
+                for col in range(self.tableWidget_takeOff.columnCount()):
+                    cell_item = self.tableWidget_takeOff.item(row_num, col)
+                    cell_item.setForeground(QtGui.QColor('green'))
+
         # Close the database connection
         conn.close()
 
