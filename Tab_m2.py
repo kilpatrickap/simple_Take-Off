@@ -321,15 +321,16 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         unit_m2 = "m2"  # Set the unit
         unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
 
-        new_row = self.tableWidget_m2.rowCount() # Insert two new rows at the end of the table
-        self.tableWidget_m2.insertRow(new_row)
+        for _ in range(2):
+            new_row = self.tableWidget_m2.rowCount() # Insert two new rows at the end of the table
+            self.tableWidget_m2.insertRow(new_row)
 
         flags = unit_m2_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
         unit_m2_cell.setFlags(flags)
 
-        self.tableWidget_m2.setItem(0, 7, unit_m2_cell)  # set the unit
+        self.tableWidget_m2.setItem(1, 7, unit_m2_cell)  # set the unit (from 0 to 1)
 
         # Copy the formatting and logic from the previous row to the new row
         for column in range(self.tableWidget_m2.columnCount()):
@@ -401,15 +402,25 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                     times = float(times_value.rstrip(" /"))
                     times_item.setText("{:,.2f} /".format(times))
 
-                dims_item = self.tableWidget_m2.item(row, 5)
-                dims = float(dims_item.text())
-                dims_item.setText("{:,.2f}".format(dims))
+                dims_m2_len_item = self.tableWidget_m2.item(row, 5)
+                dims_m2_len = float(dims_m2_len_item.text())
+                dims_m2_len_item.setText("{:,.2f}".format(dims_m2_len))
+
+                # Add 1 to row for width_row increment
+                width_row = row + 1
+
+                dims_m2_width_item = self.tableWidget_m2.item(width_row, 5) # width_row increments by 1
+                dims_m2_width = float(dims_m2_width_item.text())
+                dims_m2_width_item.setText("{:,.2f}".format(dims_m2_width))
 
                 # Calculate square
-                square = round(times * dims, 2)
+                square = round(times * dims_m2_len * dims_m2_width, 2)
 
                 # Check if times and dims values are colored red
-                if times_item.foreground().color().name() == "#ff0000" and dims_item.foreground().color().name() == "#ff0000":
+                if times_item.foreground().color().name() == "#ff0000" \
+                        and dims_m2_len_item.foreground().color().name() == "#ff0000" \
+                        and dims_m2_width_item.foreground().color().name() == "#ff0000":
+
                     square *= -1  # Negate square
                     item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
                     item.setForeground(QtGui.QColor("red"))  # Set the foreground color to red
@@ -423,8 +434,8 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
                 item.setFlags(flags)
 
-                # Set the square for row and col
-                self.tableWidget_m2.setItem(row, 6, item)
+                # Set the square for row and col at width_row
+                self.tableWidget_m2.setItem(width_row, 6, item)
 
             # Add a new row at the end
             last_row = self.tableWidget_m2.rowCount()
