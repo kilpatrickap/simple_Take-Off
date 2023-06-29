@@ -174,7 +174,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         # Extract table names from the fetched data and store them in a list
         table_list = [table[0] for table in tables if table[0] != 'sqlite_sequence']  # Exclude the 'sqlite_sequence'
 
-        print(table_list)
+        # print(table_list)
 
         # Initialize an empty list to store all the retrieved data
         all_data = []

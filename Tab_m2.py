@@ -311,9 +311,15 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
         # Set the code in the code column of the tableWidget_m2
         code_item = QtWidgets.QTableWidgetItem(code_string)
-        self.tableWidget_m2.setItem(0, 0, code_item)
 
-        return code_string  # returns e.g m_M1, m_D1 etc as type str
+        row = 0     # Initialize row for first row
+        self.tableWidget_m2.setItem(row, 0, code_item)  # set row
+
+        row += 1    # Increment row by 1
+        code_item_clone = code_item.clone()     # Create a clone of code_item
+        self.tableWidget_m2.setItem(row, 0, code_item_clone)  # set row
+
+        return code_string  # returns e.g m2_M1, m2_D1 etc as type str
 
     def add_row(self):
         current_row = self.tableWidget_m2.currentRow()  # Get the current row index
