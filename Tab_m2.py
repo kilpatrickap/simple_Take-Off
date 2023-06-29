@@ -244,9 +244,14 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
         row_index = 0  # the row index of the selected item
 
-        # Set the first letter in the trade column of the tableWidget_m2
+        # Set the first letter in the trade column of the 1st row
         trade_item = QtWidgets.QTableWidgetItem(first_letter)
         self.tableWidget_m2.setItem(row_index, 1, trade_item)
+
+        #  Set the first letter in the trade column of 2nd row
+        row_index += 1
+        trade_item_clone = QtWidgets.QTableWidgetItem(first_letter)
+        self.tableWidget_m2.setItem(row_index, 1, trade_item_clone)
 
         # Execute the code method
         self.code()
