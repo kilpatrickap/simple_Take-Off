@@ -342,10 +342,13 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         self.tableWidget_m2.setItem(1, 7, unit_m2_cell)  # Set the unit (from 0 to 1)
 
         last_row = self.tableWidget_m2.rowCount() - 1
-        self.copy_row_content(last_row - 1, last_row - 3)
-        self.copy_row_formatting(last_row - 1, last_row - 3)
+        self.copy_row_content(last_row, last_row - 2)
+        self.copy_row_formatting(last_row, last_row - 2)
 
-    # Recursive function to copy the content of the last two rows into the new two rows
+        """the copy_row_content and copy_row_formatting methods are called with last_row as the destination_row and 
+        last_row - 2 as the source_row. This ensures that the content and formatting of the last two rows are 
+        correctly copied to the new rows."""
+
     def copy_row_content(self, destination_row, source_row):
         if source_row < 0:
             return
@@ -358,7 +361,6 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 self.tableWidget_m2.setItem(destination_row, column, new_item)
         self.copy_row_content(destination_row - 1, source_row - 1)
 
-    # Recursive function to copy the formatting of the last two rows into the new two rows
     def copy_row_formatting(self, destination_row, source_row):
         if source_row < 0:
             return
