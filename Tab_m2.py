@@ -348,8 +348,8 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 last_row - 2 as the source_row. This ensures that the content and formatting of the last two rows are 
                 correctly copied to the new rows."""
 
-        self.copy_row_content(last_row, last_row - 2)
-        self.copy_row_formatting(last_row, last_row - 2)
+        self.copy_row_content(last_row, last_row - 2)   # copy content
+        self.copy_row_formatting(last_row, last_row - 2)    # copy formatting
 
     def copy_row_content(self, destination_row, source_row):
         if source_row < 0:
