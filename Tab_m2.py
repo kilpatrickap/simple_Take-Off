@@ -341,14 +341,33 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
         self.tableWidget_m2.setItem(1, 7, unit_m2_cell)  # Set the unit (from 0 to 1)
 
+        last_row = self.tableWidget_m2.rowCount() - 1
+        self.copy_row_content(last_row - 1, last_row - 3)
+        self.copy_row_formatting(last_row - 1, last_row - 3)
+
+    # Recursive function to copy the content of the last two rows into the new two rows
+    def copy_row_content(self, destination_row, source_row):
+        if source_row < 0:
+            return
         for column in range(self.tableWidget_m2.columnCount()):
-            for row in range(2):
-                item = self.tableWidget_m2.item(row, column)
-                if item is not None:
-                    new_item = QtWidgets.QTableWidgetItem(item.text())
-                    flags = item.flags()
-                    new_item.setFlags(flags)
-                    self.tableWidget_m2.setItem(new_row + row, column, new_item)
+            item = self.tableWidget_m2.item(source_row, column)
+            if item is not None:
+                new_item = QtWidgets.QTableWidgetItem(item.text())
+                flags = item.flags()
+                new_item.setFlags(flags)
+                self.tableWidget_m2.setItem(destination_row, column, new_item)
+        self.copy_row_content(destination_row - 1, source_row - 1)
+
+    # Recursive function to copy the formatting of the last two rows into the new two rows
+    def copy_row_formatting(self, destination_row, source_row):
+        if source_row < 0:
+            return
+        for column in range(self.tableWidget_m2.columnCount()):
+            item = self.tableWidget_m2.item(source_row, column)
+            if item is not None:
+                flags = item.flags()
+                self.tableWidget_m2.item(destination_row, column).setFlags(flags)
+        self.copy_row_formatting(destination_row - 1, source_row - 1)
 
     def ddt_row(self):
         current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
