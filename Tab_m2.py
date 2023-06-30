@@ -327,6 +327,17 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         return code_string  # returns e.g m2_M1, m2_D1 etc as type str
 
     def add_row(self):
+        """
+        Adds new rows to the table and copies data from existing rows.
+
+        This method adds two new rows at the end of the table and copies data from the second-to-last row to the new
+        rows. It also copies the content of the last row for the first 9 columns to the new rows. Additionally,
+        it sets a special unit (m2) value in one of the cells of the second newly inserted row.
+
+        :parameter: None
+
+        :return: None
+        """
         unit_m2 = "m2"  # Set the unit
 
         last_row = self.tableWidget_m2.rowCount() - 1
