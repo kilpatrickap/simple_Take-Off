@@ -385,6 +385,16 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         self.tableWidget_m2.insertRow(last_row + 1)
         self.tableWidget_m2.insertRow(last_row + 2)
 
+        # Copy items in the first, second, third, and fourth columns to the new rows
+        for column in range(4):
+            item = self.tableWidget_m2.item(last_row - 1, column)
+            if item is not None:
+                new_item = QtWidgets.QTableWidgetItem(item.text())
+                flags = item.flags()
+                new_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row + 1, column, new_item)
+                self.tableWidget_m2.setItem(last_row + 2, column, new_item)
+
         # Set the unit in the new rows
         unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
         flags = unit_m2_item.flags()
