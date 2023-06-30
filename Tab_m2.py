@@ -509,7 +509,7 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                         if square_value.strip() != "":
                             total_square += float(square_value)
 
-                print(total_square)
+                # print(total_square)
 
                 # Set the total square in the last row's square column
                 total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
