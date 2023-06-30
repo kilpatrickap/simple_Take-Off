@@ -453,6 +453,25 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         self.comboBox.setEnabled(True)
 
     def square(self, start_row=0):
+        """
+        Recursively calculates and updates square values in a table widget.
+
+        This method recursively processes pairs of rows in a table widget, updating the necessary column values
+        to calculate the square. If the relevant values are colored red, the square is negated; otherwise,
+        it is calculated by multiplying the values. The resulting square is formatted and assigned to the square
+        column of the second row in each pair. Additionally, the method handles adding a new row, calculates the sum
+        of square values, and sets the total square in the last row of the table.
+
+        :parameter start_row: The starting row index for processing. Default is 0.
+
+        :raises
+            - ValueError: If a value conversion error occurs during calculations.
+            - AttributeError: If an attribute error occurs while accessing table widget items.
+            - UnboundLocalError: If a local variable is referenced before assignment.
+
+        :return: None
+        """
+
         try:
             if start_row >= self.tableWidget_m2.rowCount():
 
