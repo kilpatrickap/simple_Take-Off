@@ -465,6 +465,14 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
                 self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
 
+                # Set unit column as 'm2' for the last row
+                unit_item = QtWidgets.QTableWidgetItem("m2")
+                flags = unit_item.flags()
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+                unit_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row, 7, unit_item)
+
                 return  # Base case: stop recursion when all rows have been processed
 
             times_item = self.tableWidget_m2.item(start_row, 4)
