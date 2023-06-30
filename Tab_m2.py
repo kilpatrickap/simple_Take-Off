@@ -326,38 +326,13 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
         return code_string  # returns e.g m2_M1, m2_D1 etc as type str
 
-    # def add_row(self):
-    #     unit_m2 = "m2"  # Set the unit
-    #     unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
-    #
-    #     for _ in range(2):
-    #         new_row = self.tableWidget_m2.rowCount()  # Insert two new rows at the end of the table
-    #         self.tableWidget_m2.insertRow(new_row)
-    #
-    #     flags = unit_m2_cell.flags()  # Freeze cell
-    #     flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
-    #     flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
-    #     unit_m2_cell.setFlags(flags)
-    #
-    #     self.tableWidget_m2.setItem(1, 7, unit_m2_cell)  # Set the unit (from 0 to 1)
-    #
-    #     last_row = self.tableWidget_m2.rowCount() - 1
-    #
-    #     # Copy content and format of last two rows
-    #     """the copy_row_content and copy_row_formatting methods are called with last_row as the destination_row and
-    #             last_row - 2 as the source_row. This ensures that the content and formatting of the last two rows are
-    #             correctly copied to the new rows."""
-    #
-    #     self.copy_row_content(last_row, last_row - 2)
-    #     self.copy_row_formatting(last_row, last_row - 2)
-
     def add_row(self):
         unit_m2 = "m2"  # Set the unit
 
         last_row = self.tableWidget_m2.rowCount() - 1
 
         if last_row >= 1:
-            for i in range(2):
+            for i in range(2):  # Set number of rows to be added (m2 = 2; m3 = 3)
                 source_row = last_row - 1 + i
                 destination_row = last_row + i + 1
 
@@ -369,31 +344,23 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                         new_item.setFlags(flags)
                         self.tableWidget_m2.setItem(destination_row, column, new_item)
 
-                item = self.tableWidget_m2.item(source_row, 7)
-                if item is not None:
-                    flags = item.flags()
-                    destination_item = self.tableWidget_m2.item(destination_row, 7)
-                    if destination_item is None:
-                        destination_item = QtWidgets.QTableWidgetItem()
-                        self.tableWidget_m2.setItem(destination_row, 7, destination_item)
-                    else:
-                        destination_item = QtWidgets.QTableWidgetItem(
-                            destination_item.text())  # Create a new QTableWidgetItem instance
-                        self.tableWidget_m2.setItem(destination_row, 7, destination_item)
-                    destination_item.setFlags(flags)
-
         self.tableWidget_m2.insertRow(last_row + 1)
         self.tableWidget_m2.insertRow(last_row + 2)
 
-        # Copy items in the first, second, third, and fourth columns to the new rows
-        for column in range(4):
+        # Copy items in the 1st to 9th columns to the new rows
+        for column in range(9):
             item = self.tableWidget_m2.item(last_row - 1, column)
             if item is not None:
-                new_item = QtWidgets.QTableWidgetItem(item.text())
+                new_item1 = QtWidgets.QTableWidgetItem(item.text())
                 flags = item.flags()
-                new_item.setFlags(flags)
-                self.tableWidget_m2.setItem(last_row + 1, column, new_item)
-                self.tableWidget_m2.setItem(last_row + 2, column, new_item)
+                new_item1.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row + 1, column, new_item1)
+
+                item2 = self.tableWidget_m2.item(last_row, column)
+                if item2 is not None:
+                    new_item2 = QtWidgets.QTableWidgetItem(item2.text())
+                    new_item2.setFlags(flags)
+                    self.tableWidget_m2.setItem(last_row + 2, column, new_item2)
 
         # Set the unit in the new rows
         unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
@@ -403,28 +370,6 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         unit_m2_item.setFlags(flags)
 
         self.tableWidget_m2.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
-
-    # def copy_row_content(self, destination_row, source_row):
-    #     if source_row < 0:
-    #         return
-    #     for column in range(self.tableWidget_m2.columnCount()):
-    #         item = self.tableWidget_m2.item(source_row, column)
-    #         if item is not None:
-    #             new_item = QtWidgets.QTableWidgetItem(item.text())
-    #             flags = item.flags()
-    #             new_item.setFlags(flags)
-    #             self.tableWidget_m2.setItem(destination_row, column, new_item)
-    #     self.copy_row_content(destination_row - 1, source_row - 1)
-    #
-    # def copy_row_formatting(self, destination_row, source_row):
-    #     if source_row < 0:
-    #         return
-    #     for column in range(self.tableWidget_m2.columnCount()):
-    #         item = self.tableWidget_m2.item(source_row, column)
-    #         if item is not None:
-    #             flags = item.flags()
-    #             self.tableWidget_m2.item(destination_row, column).setFlags(flags)
-    #     self.copy_row_formatting(destination_row - 1, source_row - 1)
 
     def ddt_row(self):
         current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
