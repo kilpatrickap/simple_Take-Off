@@ -485,10 +485,12 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 total_square = 0.0
                 for row in range(self.tableWidget_m2.rowCount()):
                     square_item = self.tableWidget_m2.item(row, 6)
-                    square_value = square_item.text().replace(",", "")
-                    total_square += float(square_value)
+                    if square_item is not None:
+                        square_value = square_item.text().replace(",", "")
+                        if square_value.strip() != "":
+                            total_square += float(square_value)
 
-                    print(total_square)
+                print(total_square)
 
                 # Set the total square in the last row's square column
                 total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
