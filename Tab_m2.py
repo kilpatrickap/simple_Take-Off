@@ -473,6 +473,14 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 unit_item.setFlags(flags)
                 self.tableWidget_m2.setItem(last_row, 7, unit_item)
 
+                # Set sign_post column as 'sum' for the last row
+                desc_item = QtWidgets.QTableWidgetItem("SUM")
+                flags = desc_item.flags()
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+                desc_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row, 8, desc_item)
+
                 return  # Base case: stop recursion when all rows have been processed
 
             times_item = self.tableWidget_m2.item(start_row, 4)
