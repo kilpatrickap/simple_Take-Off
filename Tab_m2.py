@@ -383,42 +383,10 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         self.tableWidget_m2.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
 
     def ddt_row(self):
-        # current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
-        #
-        # unit_m2 = "m2"  # Set the unit
-        # unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
-        # unit_m2_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
-        #
-        # new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
-        # self.tableWidget_m2.insertRow(new_row)
-        #
-        # flags = unit_m2_cell.flags()  # Freeze cell
-        # flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
-        # flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        # unit_m2_cell.setFlags(flags)
-        #
-        # self.tableWidget_m2.setItem(new_row, 7, unit_m2_cell)  # set the unit
-        #
-        # # Copy the formatting and logic from the previous row to the new row
-        # for column in range(self.tableWidget_m2.columnCount()):
-        #     item = self.tableWidget_m2.item(current_row, column)
-        #     if item is not None:
-        #         new_item = QtWidgets.QTableWidgetItem(item.text())
-        #         new_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
-        #         flags = item.flags()
-        #         new_item.setFlags(flags)
-        #
-        #         # Check if the current column is the square cell (column index 6)
-        #         if column == 6:
-        #             try:
-        #                 # Convert the value to a negative number
-        #                 value = float(new_item.text())
-        #                 formatted_value = "{:,.2f}".format(-value)  # Format the value with pattern "{:,.2f}"
-        #                 new_item.setText(formatted_value)
-        #             except ValueError:
-        #                 return
-        #
-        #         self.tableWidget_m2.setItem(new_row, column, new_item)
+        """
+
+        :return:
+        """
 
         unit_m2 = "m2"  # Set the unit
 
@@ -437,6 +405,7 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                         new_item.setFlags(flags)
                         self.tableWidget_m2.setItem(destination_row, column, new_item)
 
+        # Insert the new rows at the end of the table
         self.tableWidget_m2.insertRow(last_row + 1)
         self.tableWidget_m2.insertRow(last_row + 2)
 
@@ -448,12 +417,14 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 flags = item.flags()
                 new_item1.setFlags(flags)
                 self.tableWidget_m2.setItem(last_row + 1, column, new_item1)
+                new_item1.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
                 item2 = self.tableWidget_m2.item(last_row, column)
                 if item2 is not None:
                     new_item2 = QtWidgets.QTableWidgetItem(item2.text())
                     new_item2.setFlags(flags)
                     self.tableWidget_m2.setItem(last_row + 2, column, new_item2)
+                    new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
         # Set the unit in the new rows
         unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
@@ -461,6 +432,7 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
         unit_m2_item.setFlags(flags)
+        unit_m2_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
         self.tableWidget_m2.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
 
