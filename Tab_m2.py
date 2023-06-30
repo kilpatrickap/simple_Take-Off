@@ -343,13 +343,13 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
         last_row = self.tableWidget_m2.rowCount() - 1
 
-        # Calculate the source row indices for copying content and formatting
-        source_row_content = last_row - 2
-        source_row_formatting = last_row - 3 if last_row >= 4 else 0
+        # Copy content and format of last two rows
+        """the copy_row_content and copy_row_formatting methods are called with last_row as the destination_row and 
+                last_row - 2 as the source_row. This ensures that the content and formatting of the last two rows are 
+                correctly copied to the new rows."""
 
-        # Copy content and format of last two rows to the new rows
-        self.copy_row_content(last_row, source_row_content)
-        self.copy_row_formatting(last_row, source_row_formatting)
+        self.copy_row_content(last_row, last_row - 2)
+        self.copy_row_formatting(last_row, last_row - 2)
 
     def copy_row_content(self, destination_row, source_row):
         if source_row < 0:
@@ -361,7 +361,7 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 flags = item.flags()
                 new_item.setFlags(flags)
                 self.tableWidget_m2.setItem(destination_row, column, new_item)
-        self.copy_row_content(destination_row + 1, source_row - 1)
+        self.copy_row_content(destination_row - 1, source_row - 1)
 
     def copy_row_formatting(self, destination_row, source_row):
         if source_row < 0:
@@ -370,12 +370,8 @@ class Tab_m2_Widget(QtWidgets.QWidget):
             item = self.tableWidget_m2.item(source_row, column)
             if item is not None:
                 flags = item.flags()
-                destination_item = self.tableWidget_m2.item(destination_row, column)
-                if destination_item is None:
-                    destination_item = QtWidgets.QTableWidgetItem()
-                    self.tableWidget_m2.setItem(destination_row, column, destination_item)
-                destination_item.setFlags(flags)
-        self.copy_row_formatting(destination_row + 1, source_row - 1)
+                self.tableWidget_m2.item(destination_row, column).setFlags(flags)
+        self.copy_row_formatting(destination_row - 1, source_row - 1)
 
     def ddt_row(self):
         current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
