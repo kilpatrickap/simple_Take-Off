@@ -384,8 +384,14 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
     def ddt_row(self):
         """
+        Adds new rows to the table widget and sets the text color of the new rows to red.
 
-        :return:
+        This method is responsible for duplicating the last row of the table widget and appending the duplicated rows at
+        the end. It also updates certain values and sets the text color of the new rows to red.
+
+        :parameter: None
+
+        :return: None
         """
 
         unit_m2 = "m2"  # Set the unit
@@ -449,6 +455,16 @@ class Tab_m2_Widget(QtWidgets.QWidget):
     def square(self, start_row=0):
         try:
             if start_row >= self.tableWidget_m2.rowCount():
+
+                # Add a new row at the end of the table
+                last_row = self.tableWidget_m2.rowCount()
+                self.tableWidget_m2.insertRow(last_row)
+
+                # Insert sum_code
+                sum_code = self.code()
+                sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
+                self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
+
                 return  # Base case: stop recursion when all rows have been processed
 
             times_item = self.tableWidget_m2.item(start_row, 4)
@@ -545,13 +561,6 @@ class Tab_m2_Widget(QtWidgets.QWidget):
             # flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             # total_item.setFlags(flags)
             # self.tableWidget_m2.setItem(last_row, 6, total_item)
-
-        # except ValueError:
-        #     return
-        # except AttributeError:
-        #     return
-        # except UnboundLocalError:
-        #     return
 
     def clear_table(self):
         self.tableWidget_m2.clearContents()
