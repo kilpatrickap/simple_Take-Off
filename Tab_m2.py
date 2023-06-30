@@ -481,6 +481,23 @@ class Tab_m2_Widget(QtWidgets.QWidget):
                 desc_item.setFlags(flags)
                 self.tableWidget_m2.setItem(last_row, 8, desc_item)
 
+                # Sum the numbers in the square column
+                total_square = 0.0
+                for row in range(self.tableWidget_m2.rowCount()):
+                    square_item = self.tableWidget_m2.item(row, 6)
+                    square_value = square_item.text().replace(",", "")
+                    total_square += float(square_value)
+
+                    print(total_square)
+
+                # Set the total square in the last row's square column
+                total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+                flags = total_item.flags()
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+                total_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row, 6, total_item)
+
                 return  # Base case: stop recursion when all rows have been processed
 
             times_item = self.tableWidget_m2.item(start_row, 4)
@@ -537,46 +554,6 @@ class Tab_m2_Widget(QtWidgets.QWidget):
             return
         except UnboundLocalError:
             return
-
-            # # Add a new row at the end
-            # last_row = self.tableWidget_m2.rowCount()
-            # self.tableWidget_m2.insertRow(last_row)
-            #
-            # # Insert sum_code
-            # sum_code = self.code()
-            # sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-            # self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
-            #
-            # # Set unit column as 'm' for the last row
-            # unit_item = QtWidgets.QTableWidgetItem("m2")
-            # flags = unit_item.flags()
-            # flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            # flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            # unit_item.setFlags(flags)
-            # self.tableWidget_m2.setItem(last_row, 7, unit_item)
-            #
-            # # Set description column as 'sum' for the last row
-            # desc_item = QtWidgets.QTableWidgetItem("SUM")
-            # flags = desc_item.flags()
-            # flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            # flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            # desc_item.setFlags(flags)
-            # self.tableWidget_m2.setItem(last_row, 8, desc_item)
-            #
-            # # Sum the numbers in the square column
-            # total_square = 0.0
-            # for row in range(self.tableWidget_m2.rowCount() - 1):
-            #     square_item = self.tableWidget_m2.item(row, 6)
-            #     square_value = square_item.text().replace(",", "")
-            #     total_square += float(square_value)
-            #
-            # # Set the total square in the last row's square column
-            # total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
-            # flags = total_item.flags()
-            # flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            # flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            # total_item.setFlags(flags)
-            # self.tableWidget_m2.setItem(last_row, 6, total_item)
 
     def clear_table(self):
         self.tableWidget_m2.clearContents()
