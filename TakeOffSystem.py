@@ -10,6 +10,7 @@ from ProjectTreeWidget import Project_Widget
 from TakeOffList import TakeOffList_Widget
 from Tab_m import Tab_m_Widget
 from Tab_m2 import Tab_m2_Widget
+from Tab_m3 import Tab_m3_Widget
 from Tab_nr import Tab_nr_Widget
 from Tab_rft import Tab_rft_Widget
 from TakeOffSheet import TakeOffSheet_Widget
@@ -44,6 +45,13 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_m2_widget, icon4, "m2")
 
+        # Insert Tab_m3_Widget() class and add widget to tabWidget
+        self.tab_m3_widget = Tab_m3_Widget()
+        icon5 = QtGui.QIcon()  # Add button icon with relative path
+        image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "vol.png")
+        icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.tab_m3_widget, icon5, "m3")
+
         # Insert Tab_nr_Widget() class and add widget to tabWidget
         self.tab_nr_widget = Tab_nr_Widget()
         icon2 = QtGui.QIcon()  # Add button icon with relative path
@@ -51,7 +59,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_nr_widget, icon2, "nr")
 
-        # Insert Tab_nr_Widget() class and add widget to tabWidget
+        # Insert Tab_rft_Widget() class and add widget to tabWidget
         self.tab_rft_widget = Tab_rft_Widget()
         icon3 = QtGui.QIcon()  # Add button icon with relative path
         image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "rft.png")
