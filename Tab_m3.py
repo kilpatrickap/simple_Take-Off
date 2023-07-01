@@ -252,6 +252,11 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         trade_item_clone = QtWidgets.QTableWidgetItem(first_letter)
         self.tableWidget_m3.setItem(row_index, 1, trade_item_clone)
 
+        #  Set the first letter in the trade column of 3rd row
+        row_index += 1
+        trade_item_clone = QtWidgets.QTableWidgetItem(first_letter)
+        self.tableWidget_m3.setItem(row_index, 1, trade_item_clone)
+
         # Execute the code method
         self.code()
 
@@ -319,8 +324,12 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         row = 0     # Initialize row for first row
         self.tableWidget_m3.setItem(row, 0, code_item)  # set row
 
-        row += 1    # Increment row by 1
+        row += 1    # Increment row by 1 and set it at the 2nd row
         code_item_clone = code_item.clone()     # Create a clone of code_item
+        self.tableWidget_m3.setItem(row, 0, code_item_clone)  # set row
+
+        row += 1  # Increment row by 1 and set it at the 3rd row
+        code_item_clone = code_item.clone()  # Create a clone of code_item
         self.tableWidget_m3.setItem(row, 0, code_item_clone)  # set row
 
         return code_string  # returns e.g m2_M1, m2_D1 etc as type str
@@ -488,7 +497,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                 sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
                 self.tableWidget_m3.setItem(last_row, 0, sum_code_item)
 
-                # Set unit column as 'm2' for the last row
+                # Set unit column as 'm3' for the last row
                 unit_item = QtWidgets.QTableWidgetItem("m3")
                 flags = unit_item.flags()
                 flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
