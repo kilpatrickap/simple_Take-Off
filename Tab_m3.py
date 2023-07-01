@@ -387,56 +387,45 @@ class Tab_m3_Widget(QtWidgets.QWidget):
 
     def ddt_row(self):
         """
-        Adds new rows to the table widget and sets the text color of the new rows to red.
+        Adds 3 new rows to the table and copies data from existing rows.
 
-        This method is responsible for duplicating the last row of the table widget and appending the duplicated rows at
-        the end. It also updates certain values and sets the text color of the new rows to red.
+        This method adds three new rows at the end of the table and copies data from the last three rows to the new rows.
+        It also sets a special unit (m3) value in one of the cells of the second newly inserted row.
 
         :parameter: None
 
         :return: None
         """
-
         unit_m3 = "m3"  # Set the unit
 
         last_row = self.tableWidget_m3.rowCount() - 1
 
-        if last_row >= 1:
+        if last_row >= 2:
             for i in range(3):  # Set number of rows to be added (m2 = 2; m3 = 3)
-                source_row = last_row - 1 + i
+                source_row = last_row - 2 + i
                 destination_row = last_row + i + 1
 
                 for column in range(self.tableWidget_m3.columnCount()):
                     item = self.tableWidget_m3.item(source_row, column)
                     if item is not None:
-                        new_item = QtWidgets.QTableWidgetItem(item.text())
+                        new_item = QtWidgets.QTableWidgetItem(item)
                         flags = item.flags()
                         new_item.setFlags(flags)
                         self.tableWidget_m3.setItem(destination_row, column, new_item)
 
-        # Insert the new rows at the end of the table
         self.tableWidget_m3.insertRow(last_row + 1)
         self.tableWidget_m3.insertRow(last_row + 2)
-        self.tableWidget_m3.insertRow(last_row + 3)
+        self.tableWidget_m3.insertRow(last_row + 3)  # Insert 3rd row
 
-        # Copy items in the 1st to 9th columns to the new rows
-        for column in range(9):
-            item = self.tableWidget_m3.item(last_row - 1, column)
-            if item is not None:
-                new_item1 = QtWidgets.QTableWidgetItem(item.text())
-                flags = item.flags()
-                new_item1.setFlags(flags)
-                self.tableWidget_m3.setItem(last_row + 1, column, new_item1)
-                new_item1.setForeground(QtGui.QColor("red"))  # Set the text color to red
-
-                item2 = self.tableWidget_m3.item(last_row, column)
-                if item2 is not None:
-                    new_item2 = QtWidgets.QTableWidgetItem(item2.text())
-                    new_item2.setFlags(flags)
-                    self.tableWidget_m3.setItem(last_row + 2, column, new_item2)
-                    new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
-                    self.tableWidget_m3.setItem(last_row + 3, column, new_item2)
-                    new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
+        # Copy items and formatting from the last 3 rows to the new rows
+        for row in range(last_row, last_row - 3, -1):
+            for column in range(self.tableWidget_m3.columnCount()):
+                item = self.tableWidget_m3.item(row, column)
+                if item is not None:
+                    new_item = QtWidgets.QTableWidgetItem(item)
+                    flags = item.flags()
+                    new_item.setFlags(flags)
+                    self.tableWidget_m3.setItem(row + 3, column, new_item)
 
         # Set the unit in the new rows
         unit_m3_item = QtWidgets.QTableWidgetItem(unit_m3)
@@ -444,7 +433,6 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
         unit_m3_item.setFlags(flags)
-        unit_m3_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
         self.tableWidget_m3.setItem(last_row + 3, 7, unit_m3_item)  # Set the unit item on the third newly inserted row
 
