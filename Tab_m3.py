@@ -575,10 +575,10 @@ class Tab_m3_Widget(QtWidgets.QWidget):
             item.setFlags(flags)
 
             # Set the square for row and col at width_row
-            self.tableWidget_m3.setItem(width_row, 6, item)
+            self.tableWidget_m3.setItem(depth_row, 6, item)
 
             # Recursive call to process the next set of rows
-            self.square(start_row + 2)
+            self.square(start_row + 3)
 
         except ValueError:
             return
