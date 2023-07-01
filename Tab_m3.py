@@ -442,6 +442,9 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
         unit_m3_item.setFlags(flags)
 
+        # Set the color of unit_m3_item to red
+        unit_m3_item.setForeground(QtGui.QColor("red"))
+
         self.tableWidget_m3.setItem(last_row + 3, 7, unit_m3_item)  # Set the unit item on the second newly inserted row
 
     def delete_row(self):
