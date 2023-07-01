@@ -337,7 +337,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
 
         :return: None
         """
-        unit_m2 = "m3"  # Set the unit
+        unit_m3 = "m3"  # Set the unit
 
         last_row = self.tableWidget_m3.rowCount() - 1
 
@@ -373,13 +373,13 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                     self.tableWidget_m3.setItem(last_row + 2, column, new_item2)
 
         # Set the unit in the new rows
-        unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
-        flags = unit_m2_item.flags()
+        unit_m3_item = QtWidgets.QTableWidgetItem(unit_m3)
+        flags = unit_m3_item.flags()
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
-        unit_m2_item.setFlags(flags)
+        unit_m3_item.setFlags(flags)
 
-        self.tableWidget_m3.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
+        self.tableWidget_m3.setItem(last_row + 2, 7, unit_m3_item)  # Set the unit item on the second newly inserted row
 
     def ddt_row(self):
         """
@@ -393,7 +393,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         :return: None
         """
 
-        unit_m2 = "m3"  # Set the unit
+        unit_m3 = "m3"  # Set the unit
 
         last_row = self.tableWidget_m3.rowCount() - 1
 
@@ -432,14 +432,14 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                     new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
         # Set the unit in the new rows
-        unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
-        flags = unit_m2_item.flags()
+        unit_m3_item = QtWidgets.QTableWidgetItem(unit_m3)
+        flags = unit_m3_item.flags()
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
-        unit_m2_item.setFlags(flags)
-        unit_m2_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
+        unit_m3_item.setFlags(flags)
+        unit_m3_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-        self.tableWidget_m3.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
+        self.tableWidget_m3.setItem(last_row + 2, 7, unit_m3_item)  # Set the unit item on the second newly inserted row
 
     def delete_row(self):
         current_row = self.tableWidget_m3.currentRow()
