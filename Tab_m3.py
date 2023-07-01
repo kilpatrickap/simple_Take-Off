@@ -400,7 +400,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         last_row = self.tableWidget_m3.rowCount() - 1
 
         if last_row >= 1:
-            for i in range(2):  # Set number of rows to be added (m2 = 2; m3 = 3)
+            for i in range(3):  # Set number of rows to be added (m2 = 2; m3 = 3)
                 source_row = last_row - 1 + i
                 destination_row = last_row + i + 1
 
@@ -415,6 +415,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         # Insert the new rows at the end of the table
         self.tableWidget_m3.insertRow(last_row + 1)
         self.tableWidget_m3.insertRow(last_row + 2)
+        self.tableWidget_m3.insertRow(last_row + 3)
 
         # Copy items in the 1st to 9th columns to the new rows
         for column in range(9):
@@ -432,6 +433,8 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                     new_item2.setFlags(flags)
                     self.tableWidget_m3.setItem(last_row + 2, column, new_item2)
                     new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
+                    self.tableWidget_m3.setItem(last_row + 3, column, new_item2)
+                    new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
         # Set the unit in the new rows
         unit_m3_item = QtWidgets.QTableWidgetItem(unit_m3)
@@ -441,7 +444,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         unit_m3_item.setFlags(flags)
         unit_m3_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-        self.tableWidget_m3.setItem(last_row + 2, 7, unit_m3_item)  # Set the unit item on the second newly inserted row
+        self.tableWidget_m3.setItem(last_row + 3, 7, unit_m3_item)  # Set the unit item on the third newly inserted row
 
     def delete_row(self):
         current_row = self.tableWidget_m3.currentRow()
