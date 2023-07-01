@@ -329,9 +329,9 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         """
         Adds new rows to the table and copies data from existing rows.
 
-        This method adds two new rows at the end of the table and copies data from the second-to-last row to the new
+        This method adds three new rows at the end of the table and copies data from the second-to-last row to the new
         rows. It also copies the content of the last row for the first 9 columns to the new rows. Additionally,
-        it sets a special unit (m2) value in one of the cells of the second newly inserted row.
+        it sets a special unit (m3) value in one of the cells of the second newly inserted row.
 
         :parameter: None
 
@@ -342,7 +342,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         last_row = self.tableWidget_m3.rowCount() - 1
 
         if last_row >= 1:
-            for i in range(2):  # Set number of rows to be added (m2 = 2; m3 = 3)
+            for i in range(3):  # Set number of rows to be added (m2 = 2; m3 = 3)
                 source_row = last_row - 1 + i
                 destination_row = last_row + i + 1
 
@@ -356,6 +356,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
 
         self.tableWidget_m3.insertRow(last_row + 1)
         self.tableWidget_m3.insertRow(last_row + 2)
+        self.tableWidget_m3.insertRow(last_row + 3)
 
         # Copy items in the 1st to 9th columns to the new rows
         for column in range(9):
@@ -371,6 +372,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                     new_item2 = QtWidgets.QTableWidgetItem(item2.text())
                     new_item2.setFlags(flags)
                     self.tableWidget_m3.setItem(last_row + 2, column, new_item2)
+                    self.tableWidget_m3.setItem(last_row + 3, column, new_item2)
 
         # Set the unit in the new rows
         unit_m3_item = QtWidgets.QTableWidgetItem(unit_m3)
@@ -379,7 +381,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
         unit_m3_item.setFlags(flags)
 
-        self.tableWidget_m3.setItem(last_row + 2, 7, unit_m3_item)  # Set the unit item on the second newly inserted row
+        self.tableWidget_m3.setItem(last_row + 3, 7, unit_m3_item)  # Set the unit item on the third newly inserted row
 
     def ddt_row(self):
         """
