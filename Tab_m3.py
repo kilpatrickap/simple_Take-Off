@@ -535,24 +535,31 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                 times = float(times_value.rstrip(" /"))
                 times_item.setText("{:,.2f} /".format(times))
 
-            dims_m2_len_item = self.tableWidget_m3.item(start_row, 5)
-            dims_m2_len = float(dims_m2_len_item.text())
-            dims_m2_len_item.setText("{:,.2f}".format(dims_m2_len))
+            dims_m3_len_item = self.tableWidget_m3.item(start_row, 5)
+            dims_m3_len = float(dims_m3_len_item.text())
+            dims_m3_len_item.setText("{:,.2f}".format(dims_m3_len))
 
             # Add 1 to row for width_row increment
             width_row = start_row + 1
 
-            dims_m2_width_item = self.tableWidget_m3.item(width_row, 5)  # width_row increments by 1
-            dims_m2_width = float(dims_m2_width_item.text())
-            dims_m2_width_item.setText("{:,.2f}".format(dims_m2_width))
+            dims_m3_width_item = self.tableWidget_m3.item(width_row, 5)  # width_row increments by 1
+            dims_m3_width = float(dims_m3_width_item.text())
+            dims_m3_width_item.setText("{:,.2f}".format(dims_m3_width))
+
+            # Add 1 to row for depth_row increment
+            depth_row = width_row + 1
+
+            dims_m3_depth_item = self.tableWidget_m3.item(depth_row, 5)  # width_row increments by 1
+            dims_m3_depth = float(dims_m3_depth_item.text())
+            dims_m3_depth_item.setText("{:,.2f}".format(dims_m3_depth))
 
             # Calculate square
-            square = round(times * dims_m2_len * dims_m2_width, 2)
+            square = round(times * dims_m3_len * dims_m3_width * dims_m3_depth, 2)
 
             # Check if times and dims values are colored red
             if times_item.foreground().color().name() == "#ff0000" \
-                    and dims_m2_len_item.foreground().color().name() == "#ff0000" \
-                    and dims_m2_width_item.foreground().color().name() == "#ff0000":
+                    and dims_m3_len_item.foreground().color().name() == "#ff0000" \
+                    and dims_m3_width_item.foreground().color().name() == "#ff0000":
 
                 square *= -1  # Negate square
                 item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
