@@ -336,7 +336,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
 
     def add_row(self):
         """
-        Adds new rows to the table and copies data from existing rows.
+        Adds 3 new rows to the table and copies data from existing rows.
 
         This method adds three new rows at the end of the table and copies data from the last three rows to the new rows.
         It also sets a special unit (m3) value in one of the cells of the second newly inserted row.
