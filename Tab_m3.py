@@ -338,7 +338,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         """
         Adds 3 new rows to the table and copies data from existing rows.
 
-        This method adds three new rows at the end of the table and copies data from the last three rows to the new rows.
+        This method adds three new rows at the end of the table and copies data from the first three rows to the new rows.
         It also sets a special unit (m3) value in one of the cells of the second newly inserted row.
 
         :parameter: None
@@ -351,7 +351,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
 
         if last_row >= 2:
             for i in range(3):  # Set number of rows to be added (m2 = 2; m3 = 3)
-                source_row = last_row - 2 + i
+                source_row = i  # Iterate over the first three rows
                 destination_row = last_row + i + 1
 
                 for column in range(self.tableWidget_m3.columnCount()):
@@ -366,15 +366,15 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         self.tableWidget_m3.insertRow(last_row + 2)
         self.tableWidget_m3.insertRow(last_row + 3)  # Insert 3rd row
 
-        # Copy items and formatting from the last 3 rows to the new rows
-        for row in range(last_row, last_row - 3, -1):
+        # Copy items and formatting from the first 3 rows to the new rows
+        for row in range(3):  # Iterate over the first three rows
             for column in range(self.tableWidget_m3.columnCount()):
                 item = self.tableWidget_m3.item(row, column)
                 if item is not None:
                     new_item = QtWidgets.QTableWidgetItem(item)
                     flags = item.flags()
                     new_item.setFlags(flags)
-                    self.tableWidget_m3.setItem(row + 3, column, new_item)
+                    self.tableWidget_m3.setItem(row + last_row + 1, column, new_item)
 
         # Set the unit in the new rows
         unit_m3_item = QtWidgets.QTableWidgetItem(unit_m3)
@@ -383,7 +383,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
         unit_m3_item.setFlags(flags)
 
-        self.tableWidget_m3.setItem(last_row + 3, 7, unit_m3_item)  # Set the unit item on the third newly inserted row
+        self.tableWidget_m3.setItem(last_row + 3, 7, unit_m3_item)  # Set the unit item on the second newly inserted row
 
     def ddt_row(self):
         """
