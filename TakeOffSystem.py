@@ -106,6 +106,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         elif entered_code.startswith("rft_"):  # If entered_code starts with "nr"
             self.edit_rft_msmt()
+            # pass
 
     def edit_m_msmt(self):
         dialog = QDialog()

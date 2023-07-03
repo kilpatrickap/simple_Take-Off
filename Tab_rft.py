@@ -315,7 +315,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
     def ddt_row(self):
         current_row = self.tableWidget_rft.rowCount() - 1  # Get the current row index
 
-        unit_t = "t"  # Set the unit
+        unit_t = "m"  # Set the unit
         unit_nr_cell = QtWidgets.QTableWidgetItem(unit_t)
         unit_nr_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 

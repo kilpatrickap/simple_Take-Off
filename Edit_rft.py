@@ -138,13 +138,8 @@ class Edit_rft_Dialog(object):
         self.pushButton_rft_destroy.clicked.connect(self.destroy_code)
 
         self.horizontalLayout_10.addWidget(self.pushButton_rft_destroy)
-
-        # Horizontal spacer
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_10.addItem(spacerItem2)
-
         self.verticalLayout.addLayout(self.horizontalLayout_10)
+
         self.tableWidget_rft = QtWidgets.QTableWidget(parent=Dialog)
         self.tableWidget_rft.setObjectName("tableWidget_rft")
         self.tableWidget_rft.setColumnCount(9)
@@ -246,7 +241,7 @@ class Edit_rft_Dialog(object):
     def ddt_row(self):
         current_row = self.tableWidget_rft.rowCount() - 1  # Get the current row index
 
-        unit_t = "t"  # Set the unit
+        unit_t = "m"  # Set the unit
         unit_nr_cell = QtWidgets.QTableWidgetItem(unit_t)
         unit_nr_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
