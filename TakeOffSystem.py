@@ -75,16 +75,29 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
 
-        # Connect signal of edit            TODO To set a condition to based on msmt code
-        # self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m_msmt)
-        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_nr_msmt)
-        # self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m2_msmt)
+        # Connect signal of edit
+        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.switch_msmt)
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
         ui = NewProject_Dialog()
         ui.setupUi(dialog)
         dialog.exec()
+
+    def switch_msmt(self):
+
+        # entered_code from TakeOffSheet
+        entered_code = self.takeOff_sheet_widget.lineEdit_code.text()
+
+        # Condition to edit msmts based on msmt modes.
+        if entered_code.startswith("m_"):  # If entered_code starts with "m"
+            self.edit_m_msmt()
+
+        elif entered_code.startswith("nr_"):  # If entered_code starts with "nr"
+            self.edit_nr_msmt()
+
+        elif entered_code.startswith("m2_"):  # If entered_code starts with "m2"
+            self.edit_m2_msmt()
 
     def edit_m_msmt(self):
         dialog = QDialog()
@@ -109,7 +122,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         ui.setupUi(dialog)
         dialog.exec()
-
 
     def edit_m2_msmt(self):
         dialog = QDialog()
