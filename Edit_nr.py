@@ -3,7 +3,7 @@ import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
+class Edit_nr_Dialog(object):
     def __init__(self, entered_code):  # entered_code is initialized as an argument
 
         self.entered_code = entered_code  # Initialize the class attributes
@@ -19,11 +19,11 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
         font.setPointSize(12)
         Dialog.setFont(font)
 
-        self.groupBox_m2 = QtWidgets.QGroupBox(parent=Dialog)
-        self.groupBox_m2.setGeometry(QtCore.QRect(10, 10, 751, 501))
-        self.groupBox_m2.setObjectName("groupBox_m2")
+        self.groupBox_nr = QtWidgets.QGroupBox(parent=Dialog)
+        self.groupBox_nr.setGeometry(QtCore.QRect(10, 10, 751, 501))
+        self.groupBox_nr.setObjectName("groupBox_nr")
 
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_m2)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_nr)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
@@ -50,83 +50,83 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem1)
 
-        self.pushButton_m2_add = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_nr_add = QtWidgets.QPushButton(parent=Dialog)
 
         # Add button icon with relative path
         icon1 = QtGui.QIcon()
         image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "plus.png")
         icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_add.setIcon(icon1)
+        self.pushButton_nr_add.setIcon(icon1)
 
-        self.pushButton_m2_add.setObjectName("pushButton_m2_add")
+        self.pushButton_nr_add.setObjectName("pushButton_nr_add")
 
         # Connect signal
-        self.pushButton_m2_add.clicked.connect(self.add_row)
+        self.pushButton_nr_add.clicked.connect(self.add_row)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_m2_add)
-        self.pushButton_m2_ddt = QtWidgets.QPushButton(parent=Dialog)
+        self.horizontalLayout_10.addWidget(self.pushButton_nr_add)
+        self.pushButton_nr_ddt = QtWidgets.QPushButton(parent=Dialog)
 
         # Deduct button icon with relative path
         icon2 = QtGui.QIcon()
         image_path_to_icon2 = os.path.join(os.path.dirname(__file__), "images", "minus.png")
         icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_ddt.setIcon(icon2)
+        self.pushButton_nr_ddt.setIcon(icon2)
 
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
-        self.pushButton_m2_ddt.setFont(font)
-        self.pushButton_m2_ddt.setObjectName("pushButton_m2_ddt")
+        self.pushButton_nr_ddt.setFont(font)
+        self.pushButton_nr_ddt.setObjectName("pushButton_nr_ddt")
 
         # Connect signal
-        self.pushButton_m2_ddt.clicked.connect(self.ddt_row)
-        self.pushButton_m2_ddt.setStyleSheet("color: red")
+        self.pushButton_nr_ddt.clicked.connect(self.ddt_row)
+        self.pushButton_nr_ddt.setStyleSheet("color: red")
 
-        self.horizontalLayout_10.addWidget(self.pushButton_m2_ddt)
-        self.pushButton_m2_del = QtWidgets.QPushButton(parent=Dialog)
+        self.horizontalLayout_10.addWidget(self.pushButton_nr_ddt)
+        self.pushButton_nr_del = QtWidgets.QPushButton(parent=Dialog)
 
         # Delete button icon with relative path
         icon3 = QtGui.QIcon()
         image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "cross.png")
         icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_del.setIcon(icon3)
+        self.pushButton_nr_del.setIcon(icon3)
 
-        self.pushButton_m2_del.setObjectName("pushButton_m2_del")
+        self.pushButton_nr_del.setObjectName("pushButton_nr_del")
 
         # Connect signal
-        self.pushButton_m2_del.clicked.connect(self.delete_row)
+        self.pushButton_nr_del.clicked.connect(self.delete_row)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_m2_del)
+        self.horizontalLayout_10.addWidget(self.pushButton_nr_del)
 
-        self.pushButton_m2_sqr = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_nr_sqr = QtWidgets.QPushButton(parent=Dialog)
 
         # Square button icon with relative path
         icon4 = QtGui.QIcon()
         image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "calculator.png")
         icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_sqr.setIcon(icon4)
+        self.pushButton_nr_sqr.setIcon(icon4)
 
-        self.pushButton_m2_sqr.setObjectName("pushButton_m2_sqr")
+        self.pushButton_nr_sqr.setObjectName("pushButton_nr_sqr")
 
         # Connect signal
-        self.pushButton_m2_sqr.clicked.connect(self.square)
+        self.pushButton_nr_sqr.clicked.connect(self.square)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_m2_sqr)
+        self.horizontalLayout_10.addWidget(self.pushButton_nr_sqr)
 
-        self.pushButton_m2_destroy = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_nr_destroy = QtWidgets.QPushButton(parent=Dialog)
 
         # Add button icon with relative path
         icon7 = QtGui.QIcon()
         image_path_to_icon7 = os.path.join(os.path.dirname(__file__), "images", "exit.png")
         icon7.addPixmap(QtGui.QPixmap(image_path_to_icon7), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_destroy.setIcon(icon7)
+        self.pushButton_nr_destroy.setIcon(icon7)
 
-        self.pushButton_m2_destroy.setObjectName("pushButton_m2_destroy")
+        self.pushButton_nr_destroy.setObjectName("pushButton_nr_destroy")
 
         # Connect signal
-        self.pushButton_m2_destroy.clicked.connect(self.destroy_code)
+        self.pushButton_nr_destroy.clicked.connect(self.destroy_code)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_m2_destroy)
+        self.horizontalLayout_10.addWidget(self.pushButton_nr_destroy)
 
         # Horizontal spacer
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -134,29 +134,29 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
         self.horizontalLayout_10.addItem(spacerItem2)
 
         self.verticalLayout.addLayout(self.horizontalLayout_10)
-        self.tableWidget_m2 = QtWidgets.QTableWidget(parent=Dialog)
-        self.tableWidget_m2.setObjectName("tableWidget_m2")
-        self.tableWidget_m2.setColumnCount(9)
-        self.tableWidget_m2.setRowCount(0)
+        self.tableWidget_nr = QtWidgets.QTableWidget(parent=Dialog)
+        self.tableWidget_nr.setObjectName("tableWidget_nr")
+        self.tableWidget_nr.setColumnCount(9)
+        self.tableWidget_nr.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(0, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(1, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(2, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(3, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(4, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(5, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(6, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(7, item)
+        self.tableWidget_nr.setHorizontalHeaderItem(7, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_m2.setHorizontalHeaderItem(8, item)
-        self.verticalLayout.addWidget(self.tableWidget_m2)
+        self.tableWidget_nr.setHorizontalHeaderItem(8, item)
+        self.verticalLayout.addWidget(self.tableWidget_nr)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
 
@@ -165,34 +165,34 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem3)
 
-        self.pushButton_m2_clear = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_nr_clear = QtWidgets.QPushButton(parent=Dialog)
 
         # Clear button icon with relative path
         icon5 = QtGui.QIcon()
         image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "application-blue.png")
         icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_clear.setIcon(icon5)
+        self.pushButton_nr_clear.setIcon(icon5)
 
-        self.pushButton_m2_clear.setObjectName("pushButton_m2_clear")
+        self.pushButton_nr_clear.setObjectName("pushButton_nr_clear")
 
         # Connect signal
-        self.pushButton_m2_clear.clicked.connect(self.clear_table)
+        self.pushButton_nr_clear.clicked.connect(self.clear_table)
 
-        self.horizontalLayout_11.addWidget(self.pushButton_m2_clear)
-        self.pushButton_m2_update = QtWidgets.QPushButton(parent=Dialog)
+        self.horizontalLayout_11.addWidget(self.pushButton_nr_clear)
+        self.pushButton_nr_update = QtWidgets.QPushButton(parent=Dialog)
 
         # Insert button icon with relative path
         icon6 = QtGui.QIcon()
         image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "disk.png")
         icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_m2_update.setIcon(icon6)
+        self.pushButton_nr_update.setIcon(icon6)
 
-        self.pushButton_m2_update.setObjectName("pushButton_m2_update")
+        self.pushButton_nr_update.setObjectName("pushButton_nr_update")
 
         # Connect signals
-        self.pushButton_m2_update.clicked.connect(self.update_msmt)
+        self.pushButton_nr_update.clicked.connect(self.update_msmt)
 
-        self.horizontalLayout_11.addWidget(self.pushButton_m2_update)
+        self.horizontalLayout_11.addWidget(self.pushButton_nr_update)
 
         # Horizontal spacer
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -208,50 +208,50 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def add_row(self):
-        current_row = self.tableWidget_m2.currentRow()  # Get the current row index
+        current_row = self.tableWidget_nr.currentRow()  # Get the current row index
 
-        unit_m2 = "m2"  # Set the unit
-        unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
+        unit_nr = "nr"  # Set the unit
+        unit_nr_cell = QtWidgets.QTableWidgetItem(unit_nr)
 
-        new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
-        self.tableWidget_m2.insertRow(new_row)
+        new_row = self.tableWidget_nr.rowCount()  # Insert one new row at the end of the table
+        self.tableWidget_nr.insertRow(new_row)
 
-        flags = unit_m2_cell.flags()  # Freeze cell
+        flags = unit_nr_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_m2_cell.setFlags(flags)
+        unit_nr_cell.setFlags(flags)
 
-        self.tableWidget_m2.setItem(0, 7, unit_m2_cell)  # set the unit
+        self.tableWidget_nr.setItem(0, 7, unit_nr_cell)  # set the unit
 
         # Copy the formatting and logic from the previous row to the new row
-        for column in range(self.tableWidget_m2.columnCount()):
-            item = self.tableWidget_m2.item(current_row, column)
+        for column in range(self.tableWidget_nr.columnCount()):
+            item = self.tableWidget_nr.item(current_row, column)
             if item is not None:
                 new_item = QtWidgets.QTableWidgetItem(item.text())
                 flags = item.flags()
                 new_item.setFlags(flags)
-                self.tableWidget_m2.setItem(new_row, column, new_item)
+                self.tableWidget_nr.setItem(new_row, column, new_item)
 
     def ddt_row(self):
-        current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
+        current_row = self.tableWidget_nr.rowCount() - 1  # Get the current row index
 
-        unit_m2 = "m2"  # Set the unit
-        unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
-        unit_m2_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
+        unit_nr = "nr"  # Set the unit
+        unit_nr_cell = QtWidgets.QTableWidgetItem(unit_nr)
+        unit_nr_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-        new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
-        self.tableWidget_m2.insertRow(new_row)
+        new_row = self.tableWidget_nr.rowCount()  # Insert one new row at the end of the table
+        self.tableWidget_nr.insertRow(new_row)
 
-        flags = unit_m2_cell.flags()  # Freeze cell
+        flags = unit_nr_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_m2_cell.setFlags(flags)
+        unit_nr_cell.setFlags(flags)
 
-        self.tableWidget_m2.setItem(new_row, 7, unit_m2_cell)  # set the unit
+        self.tableWidget_nr.setItem(new_row, 7, unit_nr_cell)  # set the unit
 
         # Copy the formatting and logic from the previous row to the new row
-        for column in range(self.tableWidget_m2.columnCount()):
-            item = self.tableWidget_m2.item(current_row, column)
+        for column in range(self.tableWidget_nr.columnCount()):
+            item = self.tableWidget_nr.item(current_row, column)
             if item is not None:
                 new_item = QtWidgets.QTableWidgetItem(item.text())
                 new_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
@@ -268,16 +268,16 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
                     except ValueError:
                         return
 
-                self.tableWidget_m2.setItem(new_row, column, new_item)
+                self.tableWidget_nr.setItem(new_row, column, new_item)
 
     def delete_row(self):
-        current_row = self.tableWidget_m2.currentRow()
-        self.tableWidget_m2.removeRow(current_row)
+        current_row = self.tableWidget_nr.currentRow()
+        self.tableWidget_nr.removeRow(current_row)
 
     def square(self):
         try:
-            for row in range(self.tableWidget_m2.rowCount()):
-                times_item = self.tableWidget_m2.item(row, 4)
+            for row in range(self.tableWidget_nr.rowCount()):
+                times_item = self.tableWidget_nr.item(row, 4)
                 times_value = times_item.text()
 
                 # Check if times value is empty
@@ -287,7 +287,7 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
                     times = float(times_value.rstrip(" /"))
                     times_item.setText("{:,.2f} /".format(times))
 
-                dims_item = self.tableWidget_m2.item(row, 5)
+                dims_item = self.tableWidget_nr.item(row, 5)
                 dims = float(dims_item.text())
                 dims_item.setText("{:,.2f}".format(dims))
 
@@ -310,24 +310,24 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
                 item.setFlags(flags)
 
                 # Set the square for row and col
-                self.tableWidget_m2.setItem(row, 6, item)
+                self.tableWidget_nr.setItem(row, 6, item)
 
             # Add a new row at the end
-            last_row = self.tableWidget_m2.rowCount()
-            self.tableWidget_m2.insertRow(last_row)
+            last_row = self.tableWidget_nr.rowCount()
+            self.tableWidget_nr.insertRow(last_row)
 
             # Insert sum_code
             sum_code = self.code()
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-            self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
+            self.tableWidget_nr.setItem(last_row, 0, sum_code_item)
 
             # Set unit column as 'm' for the last row
-            unit_item = QtWidgets.QTableWidgetItem("m2")
+            unit_item = QtWidgets.QTableWidgetItem("nr")
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             unit_item.setFlags(flags)
-            self.tableWidget_m2.setItem(last_row, 7, unit_item)
+            self.tableWidget_nr.setItem(last_row, 7, unit_item)
 
             # Set description column as 'sum' for the last row
             desc_item = QtWidgets.QTableWidgetItem("SUM")
@@ -335,12 +335,12 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             desc_item.setFlags(flags)
-            self.tableWidget_m2.setItem(last_row, 8, desc_item)
+            self.tableWidget_nr.setItem(last_row, 8, desc_item)
 
             # Sum the numbers in the square column
             total_square = 0.0
-            for row in range(self.tableWidget_m2.rowCount() - 1):
-                square_item = self.tableWidget_m2.item(row, 6)
+            for row in range(self.tableWidget_nr.rowCount() - 1):
+                square_item = self.tableWidget_nr.item(row, 6)
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
@@ -350,7 +350,7 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             total_item.setFlags(flags)
-            self.tableWidget_m2.setItem(last_row, 6, total_item)
+            self.tableWidget_nr.setItem(last_row, 6, total_item)
 
 
         except ValueError:
@@ -361,50 +361,50 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
             return
 
     def clear_table(self):
-        self.tableWidget_m2.clearContents()
-        self.tableWidget_m2.setRowCount(0)
+        self.tableWidget_nr.clearContents()
+        self.tableWidget_nr.setRowCount(0)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", self.entered_code))  # entered_code shows here
-        self.groupBox_m2.setTitle(_translate("Dialog", "Edit Area measurement"))
+        self.groupBox_nr.setTitle(_translate("Dialog", "Edit number measurement"))
         self.label_6.setText(_translate("Dialog", "Code :"))
         self.label_code.setText(_translate("Dialog", self.entered_code))  # entered_code shows here
-        self.pushButton_m2_add.setText(_translate("Dialog", "Add"))
-        self.pushButton_m2_ddt.setText(_translate("Dialog", "Deduct"))
-        self.pushButton_m2_del.setText(_translate("Dialog", "Delete"))
-        self.pushButton_m2_sqr.setText(_translate("Dialog", "Square"))
-        self.pushButton_m2_destroy.setText(_translate("Dialog", "Destroy"))
-        item = self.tableWidget_m2.horizontalHeaderItem(0)
+        self.pushButton_nr_add.setText(_translate("Dialog", "Add"))
+        self.pushButton_nr_ddt.setText(_translate("Dialog", "Deduct"))
+        self.pushButton_nr_del.setText(_translate("Dialog", "Delete"))
+        self.pushButton_nr_sqr.setText(_translate("Dialog", "Square"))
+        self.pushButton_nr_destroy.setText(_translate("Dialog", "Destroy"))
+        item = self.tableWidget_nr.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "code"))
-        self.tableWidget_m2.setColumnWidth(0, 60)
-        item = self.tableWidget_m2.horizontalHeaderItem(1)
+        self.tableWidget_nr.setColumnWidth(0, 60)
+        item = self.tableWidget_nr.horizontalHeaderItem(1)
         item.setText(_translate("Dialog", "trade"))
-        self.tableWidget_m2.setColumnWidth(1, 40)
-        item = self.tableWidget_m2.horizontalHeaderItem(2)
+        self.tableWidget_nr.setColumnWidth(1, 40)
+        item = self.tableWidget_nr.horizontalHeaderItem(2)
         item.setText(_translate("Dialog", "desc"))
-        self.tableWidget_m2.setColumnWidth(2, 250)
-        item = self.tableWidget_m2.horizontalHeaderItem(3)
+        self.tableWidget_nr.setColumnWidth(2, 250)
+        item = self.tableWidget_nr.horizontalHeaderItem(3)
         item.setText(_translate("Dialog", "ref"))
-        self.tableWidget_m2.setColumnWidth(3, 60)
-        item = self.tableWidget_m2.horizontalHeaderItem(4)
+        self.tableWidget_nr.setColumnWidth(3, 60)
+        item = self.tableWidget_nr.horizontalHeaderItem(4)
         item.setText(_translate("Dialog", "times"))
-        self.tableWidget_m2.setColumnWidth(4, 60)
-        item = self.tableWidget_m2.horizontalHeaderItem(5)
+        self.tableWidget_nr.setColumnWidth(4, 60)
+        item = self.tableWidget_nr.horizontalHeaderItem(5)
         item.setText(_translate("Dialog", "dims"))
-        self.tableWidget_m2.setColumnWidth(5, 60)
-        item = self.tableWidget_m2.horizontalHeaderItem(6)
+        self.tableWidget_nr.setColumnWidth(5, 60)
+        item = self.tableWidget_nr.horizontalHeaderItem(6)
         item.setText(_translate("Dialog", "square"))
-        self.tableWidget_m2.setColumnWidth(6, 60)
-        item = self.tableWidget_m2.horizontalHeaderItem(7)
+        self.tableWidget_nr.setColumnWidth(6, 60)
+        item = self.tableWidget_nr.horizontalHeaderItem(7)
         item.setText(_translate("Dialog", "unit"))
-        self.tableWidget_m2.setColumnWidth(7, 30)
-        item = self.tableWidget_m2.horizontalHeaderItem(8)
+        self.tableWidget_nr.setColumnWidth(7, 30)
+        item = self.tableWidget_nr.horizontalHeaderItem(8)
         item.setText(_translate("Dialog", "sign post"))
-        self.tableWidget_m2.setColumnWidth(8, 100)
+        self.tableWidget_nr.setColumnWidth(8, 100)
 
-        self.pushButton_m2_clear.setText(_translate("Dialog", "Clear"))
-        self.pushButton_m2_update.setText(_translate("Dialog", "Update"))
+        self.pushButton_nr_clear.setText(_translate("Dialog", "Clear"))
+        self.pushButton_nr_update.setText(_translate("Dialog", "Update"))
 
     def code(self):
         code = self.entered_code
@@ -431,8 +431,8 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
             return
 
         # Set the number of rows and columns in the QTableWidget
-        self.tableWidget_m2.setRowCount(len(all_data))
-        self.tableWidget_m2.setColumnCount(9)  # Column count set to 9
+        self.tableWidget_nr.setRowCount(len(all_data))
+        self.tableWidget_nr.setColumnCount(9)  # Column count set to 9
 
         # Populate the QTableWidget with the retrieved data
         for row_num, row_data in enumerate(all_data):
@@ -466,21 +466,21 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
                     flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
                     item.setFlags(flags)
 
-                self.tableWidget_m2.setItem(row_num, col_num - 1, item)  # Adjust column index
+                self.tableWidget_nr.setItem(row_num, col_num - 1, item)  # Adjust column index
 
                 if col_num == 9:  # "sign_post" column is at index 9
                     sign_post_value = str(col_data)  # Store the value of the sign_post column
 
             # Check if square value is negative and set row color to red
             if square_value < 0:
-                for col in range(self.tableWidget_m2.columnCount()):
-                    cell_item = self.tableWidget_m2.item(row_num, col)
+                for col in range(self.tableWidget_nr.columnCount()):
+                    cell_item = self.tableWidget_nr.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('red'))
 
             # Check if sign_post_value == "SUM", set row foreground to blue
             if sign_post_value == "SUM":
-                for col in range(self.tableWidget_m2.columnCount()):
-                    cell_item = self.tableWidget_m2.item(row_num, col)
+                for col in range(self.tableWidget_nr.columnCount()):
+                    cell_item = self.tableWidget_nr.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('blue'))
 
         # Close the database connection
@@ -522,14 +522,14 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
         cursor.execute(f'DELETE FROM {code_string}')
 
         # Get the number of rows and columns in the table widget
-        num_rows = self.tableWidget_m2.rowCount()
-        num_columns = self.tableWidget_m2.columnCount()
+        num_rows = self.tableWidget_nr.rowCount()
+        num_columns = self.tableWidget_nr.columnCount()
 
         # Iterate over each row in the table widget and insert the data into the database
         for row in range(num_rows):
             data = []
             for col in range(num_columns):
-                item = self.tableWidget_m2.item(row, col)
+                item = self.tableWidget_nr.item(row, col)
                 if item is not None:
                     data.append(item.text())
                 else:

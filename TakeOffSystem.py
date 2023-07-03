@@ -15,6 +15,7 @@ from Tab_nr import Tab_nr_Widget
 from Tab_rft import Tab_rft_Widget
 from TakeOffSheet import TakeOffSheet_Widget
 from Edit_m import Edit_m_Dialog
+from Edit_nr import Edit_nr_Dialog
 from Edit_m2 import Edit_m2_Dialog
 
 
@@ -74,9 +75,10 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
 
-        # Connect signal of edit
-        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m_msmt)
-        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m2_msmt)
+        # Connect signal of edit            TODO To set a condition to based on msmt code
+        # self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m_msmt)
+        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_nr_msmt)
+        # self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m2_msmt)
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
@@ -95,6 +97,19 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         ui.setupUi(dialog)
         dialog.exec()
+
+    def edit_nr_msmt(self):
+        dialog = QDialog()
+
+        # Set the window flags to make the dialog stay on top
+        dialog.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+
+        # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
+        ui = Edit_nr_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
+
+        ui.setupUi(dialog)
+        dialog.exec()
+
 
     def edit_m2_msmt(self):
         dialog = QDialog()
