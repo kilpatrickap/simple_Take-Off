@@ -17,6 +17,7 @@ from TakeOffSheet import TakeOffSheet_Widget
 from Edit_m import Edit_m_Dialog
 from Edit_nr import Edit_nr_Dialog
 from Edit_m2 import Edit_m2_Dialog
+from Edit_m3 import Edit_m3_Dialog
 
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
@@ -99,6 +100,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         elif entered_code.startswith("m2_"):  # If entered_code starts with "m2"
             self.edit_m2_msmt()
 
+        elif entered_code.startswith("m3_"):  # If entered_code starts with "m2"
+            self.edit_m3_msmt()
+
     def edit_m_msmt(self):
         dialog = QDialog()
 
@@ -131,6 +135,18 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
         ui = Edit_m2_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
+
+        ui.setupUi(dialog)
+        dialog.exec()
+
+    def edit_m3_msmt(self):
+        dialog = QDialog()
+
+        # Set the window flags to make the dialog stay on top
+        dialog.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+
+        # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
+        ui = Edit_m3_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
 
         ui.setupUi(dialog)
         dialog.exec()
