@@ -18,6 +18,7 @@ from Edit_m import Edit_m_Dialog
 from Edit_nr import Edit_nr_Dialog
 from Edit_m2 import Edit_m2_Dialog
 from Edit_m3 import Edit_m3_Dialog
+from Edit_rft import Edit_rft_Dialog
 
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
@@ -103,6 +104,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         elif entered_code.startswith("nr_"):  # If entered_code starts with "nr"
             self.edit_nr_msmt()
 
+        elif entered_code.startswith("rft_"):  # If entered_code starts with "nr"
+            self.edit_rft_msmt()
+
     def edit_m_msmt(self):
         dialog = QDialog()
 
@@ -147,6 +151,18 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
         ui = Edit_nr_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
+
+        ui.setupUi(dialog)
+        dialog.exec()
+
+    def edit_rft_msmt(self):
+        dialog = QDialog()
+
+        # Set the window flags to make the dialog stay on top
+        dialog.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+
+        # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
+        ui = Edit_rft_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
 
         ui.setupUi(dialog)
         dialog.exec()
