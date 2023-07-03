@@ -466,6 +466,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
             total_item.setFlags(flags)
             self.tableWidget_m.setItem(last_row, 6, total_item)
 
+
         except ValueError:
             return
         except AttributeError:
