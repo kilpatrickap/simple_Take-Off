@@ -290,18 +290,18 @@ class Tab_rft_Widget(QtWidgets.QWidget):
     def add_row(self):
         current_row = self.tableWidget_rft.currentRow()  # Get the current row index
 
-        unit_t = "m"  # Set the unit
-        unit_t_cell = QtWidgets.QTableWidgetItem(unit_t)
+        unit_rft = "m"  # Set the unit
+        unit_rft_cell = QtWidgets.QTableWidgetItem(unit_rft)
 
         new_row = self.tableWidget_rft.rowCount()  # Insert one new row at the end of the table
         self.tableWidget_rft.insertRow(new_row)
 
-        flags = unit_t_cell.flags()  # Freeze cell
+        flags = unit_rft_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_t_cell.setFlags(flags)
+        unit_rft_cell.setFlags(flags)
 
-        self.tableWidget_rft.setItem(0, 7, unit_t_cell)  # set the unit
+        self.tableWidget_rft.setItem(0, 7, unit_rft_cell)  # set the unit
 
         # Copy the formatting and logic from the previous row to the new row
         for column in range(self.tableWidget_rft.columnCount()):
@@ -315,19 +315,19 @@ class Tab_rft_Widget(QtWidgets.QWidget):
     def ddt_row(self):
         current_row = self.tableWidget_rft.rowCount() - 1  # Get the current row index
 
-        unit_t = "t"  # Set the unit
-        unit_nr_cell = QtWidgets.QTableWidgetItem(unit_t)
-        unit_nr_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
+        unit_rft = "t"  # Set the unit
+        unit_rft_cell = QtWidgets.QTableWidgetItem(unit_rft)
+        unit_rft_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
         new_row = self.tableWidget_rft.rowCount()  # Insert one new row at the end of the table
         self.tableWidget_rft.insertRow(new_row)
 
-        flags = unit_nr_cell.flags()  # Freeze cell
+        flags = unit_rft_cell.flags()  # Freeze cell
         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_nr_cell.setFlags(flags)
+        unit_rft_cell.setFlags(flags)
 
-        self.tableWidget_rft.setItem(new_row, 7, unit_nr_cell)  # set the unit
+        self.tableWidget_rft.setItem(new_row, 7, unit_rft_cell)  # set the unit
 
         # Copy the formatting and logic from the previous row to the new row
         for column in range(self.tableWidget_rft.columnCount()):
