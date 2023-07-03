@@ -1,13 +1,13 @@
 import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
 
-class Edit_Dialog(object):
-    def __init__(self, entered_code):   # entered_code is initialized as an argument
 
-        self.entered_code = entered_code    # Initialize the class attributes
-        print("Entered code from TakeOff Sheet is : " + entered_code)   # test to see if it works.
+class Edit_m_Dialog(object):
+    def __init__(self, entered_code):  # entered_code is initialized as an argument
+
+        self.entered_code = entered_code  # Initialize the class attributes
+        print("Entered code from TakeOff Sheet is : " + entered_code)  # test to see if it works.
 
     def setupUi(self, Dialog):
 
@@ -369,7 +369,7 @@ class Edit_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", self.entered_code))  # entered_code shows here
         self.groupBox_m.setTitle(_translate("Dialog", "Edit Linear measurement"))
         self.label_6.setText(_translate("Dialog", "Code :"))
-        self.label_code.setText(_translate("Dialog", self.entered_code))    # entered_code shows here
+        self.label_code.setText(_translate("Dialog", self.entered_code))  # entered_code shows here
         self.pushButton_m_add.setText(_translate("Dialog", "Add"))
         self.pushButton_m_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_m_del.setText(_translate("Dialog", "Delete"))
@@ -566,8 +566,6 @@ class Edit_Dialog(object):
         if result == QtWidgets.QMessageBox.StandardButton.Ok:
             # Perform the insertion into the TakeOff sheet
             self.save_table_data()
-
-            # Close the Edit_Dialog     #TODO To close the Edit_Dialog when OK is pressed
 
         else:
             # User clicked Cancel, do nothing or perform any desired action

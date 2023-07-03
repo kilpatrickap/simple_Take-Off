@@ -14,7 +14,7 @@ from Tab_m3 import Tab_m3_Widget
 from Tab_nr import Tab_nr_Widget
 from Tab_rft import Tab_rft_Widget
 from TakeOffSheet import TakeOffSheet_Widget
-from Edit import Edit_Dialog
+from Edit_m import Edit_m_Dialog
 
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
@@ -74,7 +74,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.actionNew.triggered.connect(self.new_project)
 
         # Connect signal of edit
-        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_msmt)
+        self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.edit_m_msmt)
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
@@ -82,14 +82,14 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         ui.setupUi(dialog)
         dialog.exec()
 
-    def edit_msmt(self):
+    def edit_m_msmt(self):
         dialog = QDialog()
 
         # Set the window flags to make the dialog stay on top
         dialog.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
         # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
-        ui = Edit_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
+        ui = Edit_m_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
 
         ui.setupUi(dialog)
         dialog.exec()

@@ -1,10 +1,7 @@
 import os
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtGui import QColor
-from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget, QVBoxLayout
-
-from Edit import Edit_Dialog
+from PyQt6.QtWidgets import QTableWidgetItem
 
 
 class TakeOffSheet_Widget(QtWidgets.QWidget):
@@ -68,9 +65,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.pushButton_edit.setIcon(icon2)
 
         self.pushButton_edit.setObjectName("pushButton_edit")
-
-        # Connect signal
-        # self.pushButton_edit.clicked.connect(self.edit_msmt)
 
         self.horizontalLayout_2.addWidget(self.pushButton_edit)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
