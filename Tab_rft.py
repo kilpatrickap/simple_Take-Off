@@ -288,7 +288,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         return code_string  # returns e.g rft_M1, rft_D1 etc as type str
 
     def add_row(self):
-        current_row = self.tableWidget_rft.currentRow()  # Get the current row index
+        current_row = self.tableWidget_rft.currentRow()  # Get the current row index.
 
         unit_rft = "m"  # Set the unit
         unit_rft_cell = QtWidgets.QTableWidgetItem(unit_rft)
