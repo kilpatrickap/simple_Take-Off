@@ -3,7 +3,7 @@ import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
+class Edit_m2_Dialog(object):
     def __init__(self, entered_code):  # entered_code is initialized as an argument
 
         self.entered_code = entered_code  # Initialize the class attributes
@@ -208,150 +208,241 @@ class Edit_m2_Dialog(object):       # TODO To refactor code to suit Tab_m2.py
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def add_row(self):
-        current_row = self.tableWidget_m2.currentRow()  # Get the current row index
+        """
+        Adds new rows to the table and copies data from existing rows.
 
+        This method adds two new rows at the end of the table and copies data from the second-to-last row to the new
+        rows. It also copies the content of the last row for the first 9 columns to the new rows. Additionally,
+        it sets a special unit (m2) value in one of the cells of the second newly inserted row.
+
+        :parameter: None
+
+        :return: None
+        """
         unit_m2 = "m2"  # Set the unit
-        unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
 
-        new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
-        self.tableWidget_m2.insertRow(new_row)
+        last_row = self.tableWidget_m2.rowCount() - 1
 
-        flags = unit_m2_cell.flags()  # Freeze cell
-        flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
-        flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_m2_cell.setFlags(flags)
+        if last_row >= 1:
+            for i in range(2):  # Set number of rows to be added (m2 = 2; m3 = 3)
+                source_row = last_row - 1 + i
+                destination_row = last_row + i + 1
 
-        self.tableWidget_m2.setItem(0, 7, unit_m2_cell)  # set the unit
+                for column in range(self.tableWidget_m2.columnCount()):
+                    item = self.tableWidget_m2.item(source_row, column)
+                    if item is not None:
+                        new_item = QtWidgets.QTableWidgetItem(item.text())
+                        flags = item.flags()
+                        new_item.setFlags(flags)
+                        self.tableWidget_m2.setItem(destination_row, column, new_item)
 
-        # Copy the formatting and logic from the previous row to the new row
-        for column in range(self.tableWidget_m2.columnCount()):
-            item = self.tableWidget_m2.item(current_row, column)
+        self.tableWidget_m2.insertRow(last_row + 1)
+        self.tableWidget_m2.insertRow(last_row + 2)
+
+        # Copy items in the 1st to 9th columns to the new rows
+        for column in range(9):
+            item = self.tableWidget_m2.item(last_row - 1, column)
             if item is not None:
-                new_item = QtWidgets.QTableWidgetItem(item.text())
+                new_item1 = QtWidgets.QTableWidgetItem(item.text())
                 flags = item.flags()
-                new_item.setFlags(flags)
-                self.tableWidget_m2.setItem(new_row, column, new_item)
+                new_item1.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row + 1, column, new_item1)
+
+                item2 = self.tableWidget_m2.item(last_row, column)
+                if item2 is not None:
+                    new_item2 = QtWidgets.QTableWidgetItem(item2.text())
+                    new_item2.setFlags(flags)
+                    self.tableWidget_m2.setItem(last_row + 2, column, new_item2)
+
+        # Set the unit in the new rows
+        unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
+        flags = unit_m2_item.flags()
+        flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
+        flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
+        unit_m2_item.setFlags(flags)
+
+        self.tableWidget_m2.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
 
     def ddt_row(self):
-        current_row = self.tableWidget_m2.rowCount() - 1  # Get the current row index
+        """
+        Adds new rows to the table widget and sets the text color of the new rows to red.
+
+        This method is responsible for duplicating the last row of the table widget and appending the duplicated rows at
+        the end. It also updates certain values and sets the text color of the new rows to red.
+
+        :parameter: None
+
+        :return: None
+        """
 
         unit_m2 = "m2"  # Set the unit
-        unit_m2_cell = QtWidgets.QTableWidgetItem(unit_m2)
-        unit_m2_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-        new_row = self.tableWidget_m2.rowCount()  # Insert one new row at the end of the table
-        self.tableWidget_m2.insertRow(new_row)
+        last_row = self.tableWidget_m2.rowCount() - 1
 
-        flags = unit_m2_cell.flags()  # Freeze cell
-        flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # set the cell as read-only
-        flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # disable cell selection
-        unit_m2_cell.setFlags(flags)
+        if last_row >= 1:
+            for i in range(2):  # Set number of rows to be added (m2 = 2; m3 = 3)
+                source_row = last_row - 1 + i
+                destination_row = last_row + i + 1
 
-        self.tableWidget_m2.setItem(new_row, 7, unit_m2_cell)  # set the unit
+                for column in range(self.tableWidget_m2.columnCount()):
+                    item = self.tableWidget_m2.item(source_row, column)
+                    if item is not None:
+                        new_item = QtWidgets.QTableWidgetItem(item.text())
+                        flags = item.flags()
+                        new_item.setFlags(flags)
+                        self.tableWidget_m2.setItem(destination_row, column, new_item)
 
-        # Copy the formatting and logic from the previous row to the new row
-        for column in range(self.tableWidget_m2.columnCount()):
-            item = self.tableWidget_m2.item(current_row, column)
+        # Insert the new rows at the end of the table
+        self.tableWidget_m2.insertRow(last_row + 1)
+        self.tableWidget_m2.insertRow(last_row + 2)
+
+        # Copy items in the 1st to 9th columns to the new rows
+        for column in range(9):
+            item = self.tableWidget_m2.item(last_row - 1, column)
             if item is not None:
-                new_item = QtWidgets.QTableWidgetItem(item.text())
-                new_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
+                new_item1 = QtWidgets.QTableWidgetItem(item.text())
                 flags = item.flags()
-                new_item.setFlags(flags)
+                new_item1.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row + 1, column, new_item1)
+                new_item1.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-                # Check if the current column is the square cell (column index 6)
-                if column == 6:
-                    try:
-                        # Convert the value to a negative number
-                        value = float(new_item.text())
-                        formatted_value = "{:,.2f}".format(-value)  # Format the value with pattern "{:,.2f}"
-                        new_item.setText(formatted_value)
-                    except ValueError:
-                        return
+                item2 = self.tableWidget_m2.item(last_row, column)
+                if item2 is not None:
+                    new_item2 = QtWidgets.QTableWidgetItem(item2.text())
+                    new_item2.setFlags(flags)
+                    self.tableWidget_m2.setItem(last_row + 2, column, new_item2)
+                    new_item2.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
-                self.tableWidget_m2.setItem(new_row, column, new_item)
+        # Set the unit in the new rows
+        unit_m2_item = QtWidgets.QTableWidgetItem(unit_m2)
+        flags = unit_m2_item.flags()
+        flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable  # Set the cell as read-only
+        flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable  # Disable cell selection
+        unit_m2_item.setFlags(flags)
+        unit_m2_item.setForeground(QtGui.QColor("red"))  # Set the text color to red
+
+        self.tableWidget_m2.setItem(last_row + 2, 7, unit_m2_item)  # Set the unit item on the second newly inserted row
 
     def delete_row(self):
         current_row = self.tableWidget_m2.currentRow()
         self.tableWidget_m2.removeRow(current_row)
 
-    def square(self):
+    def square(self, start_row=0):
+        """
+        Recursively calculates and updates square values in a table widget.
+
+        This method recursively processes pairs of rows in a table widget, updating the necessary column values
+        to calculate the square. If the relevant values are colored red, the square is negated; otherwise,
+        it is calculated by multiplying the values. The resulting square is formatted and assigned to the square
+        column of the second row in each pair. Additionally, the method handles adding a new row, calculates the sum
+        of square values, and sets the total square in the last row of the table.
+
+        :parameter start_row: The starting row index for processing. Default is 0.
+
+        :raises
+            - ValueError: If a value conversion error occurs during calculations.
+            - AttributeError: If an attribute error occurs while accessing table widget items.
+            - UnboundLocalError: If a local variable is referenced before assignment.
+
+        :return: None
+        """
+
         try:
-            for row in range(self.tableWidget_m2.rowCount()):
-                times_item = self.tableWidget_m2.item(row, 4)
-                times_value = times_item.text()
+            if start_row >= self.tableWidget_m2.rowCount():
 
-                # Check if times value is empty
-                if times_value.strip() == "":
-                    times_item.setText("1.00 /")  # Set default value of "1.00 /"
-                else:
-                    times = float(times_value.rstrip(" /"))
-                    times_item.setText("{:,.2f} /".format(times))
+                # Add a new row at the end of the table
+                last_row = self.tableWidget_m2.rowCount()
+                self.tableWidget_m2.insertRow(last_row)
 
-                dims_item = self.tableWidget_m2.item(row, 5)
-                dims = float(dims_item.text())
-                dims_item.setText("{:,.2f}".format(dims))
+                # Insert sum_code
+                sum_code = self.code()
+                sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
+                self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
 
-                # Calculate square
-                square = round(times * dims, 2)
-
-                # Check if times and dims values are colored red
-                if times_item.foreground().color().name() == "#ff0000" and dims_item.foreground().color().name() == "#ff0000":
-                    square *= -1  # Negate square
-                    item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
-                    item.setForeground(QtGui.QColor("red"))  # Set the foreground color to red
-                else:
-                    item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
-                    item.setForeground(QtGui.QColor("black"))  # Set the foreground color to black
-
-                # Freeze the cell
-                flags = item.flags()
+                # Set unit column as 'm2' for the last row
+                unit_item = QtWidgets.QTableWidgetItem("m2")
+                flags = unit_item.flags()
                 flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
                 flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-                item.setFlags(flags)
+                unit_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row, 7, unit_item)
 
-                # Set the square for row and col
-                self.tableWidget_m2.setItem(row, 6, item)
+                # Set sign_post column as 'sum' for the last row
+                desc_item = QtWidgets.QTableWidgetItem("SUM")
+                flags = desc_item.flags()
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+                desc_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row, 8, desc_item)
 
-            # Add a new row at the end
-            last_row = self.tableWidget_m2.rowCount()
-            self.tableWidget_m2.insertRow(last_row)
+                # Sum the numbers in the square column
+                total_square = 0.0
+                for row in range(self.tableWidget_m2.rowCount()):
+                    square_item = self.tableWidget_m2.item(row, 6)
+                    if square_item is not None:
+                        square_value = square_item.text().replace(",", "")
+                        if square_value.strip() != "":
+                            total_square += float(square_value)
 
-            # Insert sum_code
-            sum_code = self.code()
-            sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-            self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
+                # print(total_square)
 
-            # Set unit column as 'm' for the last row
-            unit_item = QtWidgets.QTableWidgetItem("m2")
-            flags = unit_item.flags()
+                # Set the total square in the last row's square column
+                total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+                flags = total_item.flags()
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+                flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+                total_item.setFlags(flags)
+                self.tableWidget_m2.setItem(last_row, 6, total_item)
+
+                return  # Base case: stop recursion when all rows have been processed
+
+            times_item = self.tableWidget_m2.item(start_row, 4)
+            times_value = times_item.text()
+
+            # Check if times value is empty
+            if times_value.strip() == "":
+                times_item.setText("1.00 /")  # Set default value of "1.00 /"
+            else:
+                times = float(times_value.rstrip(" /"))
+                times_item.setText("{:,.2f} /".format(times))
+
+            dims_m2_len_item = self.tableWidget_m2.item(start_row, 5)
+            dims_m2_len = float(dims_m2_len_item.text())
+            dims_m2_len_item.setText("{:,.2f}".format(dims_m2_len))
+
+            # Add 1 to row for width_row increment
+            width_row = start_row + 1
+
+            dims_m2_width_item = self.tableWidget_m2.item(width_row, 5)  # width_row increments by 1
+            dims_m2_width = float(dims_m2_width_item.text())
+            dims_m2_width_item.setText("{:,.2f}".format(dims_m2_width))
+
+            # Calculate square
+            square = round(times * dims_m2_len * dims_m2_width, 2)
+
+            # Check if times and dims values are colored red
+            if times_item.foreground().color().name() == "#ff0000" \
+                    and dims_m2_len_item.foreground().color().name() == "#ff0000" \
+                    and dims_m2_width_item.foreground().color().name() == "#ff0000":
+
+                square *= -1  # Negate square
+                item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
+                item.setForeground(QtGui.QColor("red"))  # Set the foreground color to red
+            else:
+                item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
+                item.setForeground(QtGui.QColor("black"))  # Set the foreground color to black
+
+            # Freeze the cell
+            flags = item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            unit_item.setFlags(flags)
-            self.tableWidget_m2.setItem(last_row, 7, unit_item)
+            item.setFlags(flags)
 
-            # Set description column as 'sum' for the last row
-            desc_item = QtWidgets.QTableWidgetItem("SUM")
-            flags = desc_item.flags()
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            desc_item.setFlags(flags)
-            self.tableWidget_m2.setItem(last_row, 8, desc_item)
+            # Set the square for row and col at width_row
+            self.tableWidget_m2.setItem(width_row, 6, item)
 
-            # Sum the numbers in the square column
-            total_square = 0.0
-            for row in range(self.tableWidget_m2.rowCount() - 1):
-                square_item = self.tableWidget_m2.item(row, 6)
-                square_value = square_item.text().replace(",", "")
-                total_square += float(square_value)
-
-            # Set the total square in the last row's square column
-            total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
-            flags = total_item.flags()
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            total_item.setFlags(flags)
-            self.tableWidget_m2.setItem(last_row, 6, total_item)
-
+            # Recursive call to process the next set of rows
+            self.square(start_row + 2)
 
         except ValueError:
             return
