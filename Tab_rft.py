@@ -469,6 +469,14 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             weight_value_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 5, weight_value_item)
 
+            # Set unit column as 't' for the last row
+            unit_item = QtWidgets.QTableWidgetItem("t")
+            flags = unit_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            unit_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 7, unit_item)
+
             # Set description column as 'TONNAGE' for the last row
             desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
             flags = desc_item.flags()
