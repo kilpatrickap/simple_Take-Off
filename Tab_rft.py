@@ -418,7 +418,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             unit_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 7, unit_item)
 
-            # Set description column as 'TONNAGE' for the last row
+            # Set description column as 'sum' for the last row
             desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
@@ -433,13 +433,15 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
-            # Get the weight from user input        # TODO Bug, when weight is entered, can't square
-            weight = float(self.lineEdit_weight.text())
-            print(weight)
-
-            # Convert to Tonnage
-            total_square = total_square * weight / 1000.0
-            print(total_square)
+            # #--- FIX THIS ERROR ---
+            #
+            # # Get the weight from user input        # TODO Bug, when weight is entered, can't square
+            # weight = float(self.lineEdit_weight.text())
+            # print(weight)
+            #
+            # # Convert to Tonnage
+            # total_square = total_square * 1000 / 1000.0
+            # print(total_square)
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
