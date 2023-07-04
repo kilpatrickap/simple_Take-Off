@@ -433,17 +433,18 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             self.tableWidget_rft.setItem(last_row, 8, desc_item)
 
             # Sum the numbers in the square column
+            # weight = float(self.lineEdit_weight.text())
             total_square = 0.0
             for row in range(self.tableWidget_rft.rowCount() - 1):
                 square_item = self.tableWidget_rft.item(row, 6)
                 square_value = square_item.text().replace(",", "")
-                total_square += float(square_value)
+                total_square += float(square_value)     # Sum the square col
+                # total_square *= weight / 1000.0     # Convert to Tonnage
 
             #--- FIX THIS ERROR ---
 
             # Get the weight from user input        # TODO Bug, when weight is entered, can't square
             # weight = float(self.lineEdit_weight.text())
-            weight = 0.888
             # print(weight)
 
             # Convert to Tonnage
