@@ -453,13 +453,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
             # call the weight method into weight_value_text
-            weight_value_text = self.weight()       # TODO Bug, when weight is entered, can't square new, del, ddt rows
-
-            # Insert weight value (try and catch errors if entry is not a float)
-            try:
-                weight_value = float(weight_value_text)
-            except ValueError:
-                return
+            weight_value = self.weight()       # TODO Bug, when weight is entered, can't square new, del, ddt rows
 
             # Set the wieght_value
             weight_value_item = QtWidgets.QTableWidgetItem(str(weight_value))  # convert weight_value to string
@@ -508,7 +502,14 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
     def weight(self):
         entered_weight = self.lineEdit_weight.text()
-        return entered_weight
+
+        # Insert weight value (try and catch errors if entry is not a float)
+        try:
+            weight_value = float(entered_weight)
+        except ValueError:
+            return
+
+        return weight_value
 
     def clear_table(self):
         self.tableWidget_rft.clearContents()
