@@ -509,7 +509,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         except ValueError:
             return
 
-        return weight_value
+        return weight_value # Returns the weight_value as a float for calculation
 
     def clear_table(self):
         self.tableWidget_rft.clearContents()
