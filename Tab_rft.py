@@ -433,30 +433,23 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
-            #--- FIX THIS ERROR ---
+            # #--- FIX THIS ERROR ---
+            #
+            # # Get the weight from user input        # TODO Bug, when weight is entered, can't square
+            # weight = float(self.lineEdit_weight.text())
+            # print(weight)
+            #
+            # # Convert to Tonnage
+            # total_square = total_square * 1000 / 1000.0
+            # print(total_square)
 
-            # Get the weight from user input        # TODO Bug, when weight is entered, can't square
-            weight_text = self.lineEdit_weight.text().strip()
-            if weight_text:
-                try:
-                    weight = float(weight_text)
-
-                    # Convert to tonnage
-                    total_square = total_square * weight / 1000.0
-
-                    # Set the total square in the last row's square column
-                    total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
-                    flags = total_item.flags()
-                    flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-                    flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-                    total_item.setFlags(flags)
-                    self.tableWidget_rft.setItem(last_row, 6, total_item)
-                except ValueError:
-                    # Handle the case where the weight is not a valid float
-                    print("Invalid weight value:", weight_text)
-            else:
-                # Handle the case where the weight input field is empty
-                print("Weight input field is empty")
+            # Set the total square in the last row's square column
+            total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+            flags = total_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            total_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 6, total_item)
 
         except ValueError:
             return
