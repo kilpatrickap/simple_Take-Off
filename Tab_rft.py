@@ -453,7 +453,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
             # call the weight method into weight_value_text
-            weight_value_text = self.weight()
+            weight_value_text = self.weight()       # TODO Bug, when weight is entered, can't square new, del, ddt rows
 
             # Insert weight value (try and catch errors if entry is not a float)
             try:
