@@ -410,6 +410,12 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
+            # # Set weight for the last row
+            # entered_weight = self.lineEdit_weight.text()
+            # entered_weight_item = QtWidgets.QTableWidgetItem(entered_weight)
+            # self.tableWidget_rft.setItem(last_row, 5, entered_weight_item)
+
+
             # Set unit column as 'm' for the last row
             unit_item = QtWidgets.QTableWidgetItem("t")
             flags = unit_item.flags()
@@ -433,14 +439,15 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
-            # #--- FIX THIS ERROR ---
-            #
-            # # Get the weight from user input        # TODO Bug, when weight is entered, can't square
+            #--- FIX THIS ERROR ---
+
+            # Get the weight from user input        # TODO Bug, when weight is entered, can't square
             # weight = float(self.lineEdit_weight.text())
+            weight = 0.888
             # print(weight)
-            #
-            # # Convert to Tonnage
-            # total_square = total_square * 1000 / 1000.0
+
+            # Convert to Tonnage
+            # total_square = total_square * weight / 1000.0
             # print(total_square)
 
             # Set the total square in the last row's square column
