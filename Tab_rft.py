@@ -365,10 +365,6 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
     def square(self):
         try:
-            # Get the weight from user input
-            weight = float(self.lineEdit_weight.text())
-            print(weight)
-
             for row in range(self.tableWidget_rft.rowCount()):
                 times_item = self.tableWidget_rft.item(row, 4)
                 times_value = times_item.text()
@@ -422,7 +418,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             unit_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 7, unit_item)
 
-            # Set description column as 'sum' for the last row
+            # Set description column as 'TONNAGE' for the last row
             desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
@@ -437,12 +433,15 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
-            # TODO Bug, when weight is entered, can't square new, del, ddt rows
+            # TODO Bug, when weight is entered, can't square
+
+            # Get the weight from user input
+            weight = float(self.lineEdit_weight.text())
+            print(weight)
+
             # Convert to Tonnage
-            try:
-                total_square = total_square * weight / 1000.0
-            except ZeroDivisionError:
-                return
+            total_square = total_square * weight / 1000.0
+            print(total_square)
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
@@ -452,166 +451,12 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             total_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 6, total_item)
 
-
         except ValueError:
             return
         except AttributeError:
             return
         except UnboundLocalError:
             return
-
-    # def square(self):
-    #     try:
-    #         for row in range(self.tableWidget_rft.rowCount()):
-    #             times_item = self.tableWidget_rft.item(row, 4)
-    #             times_value = times_item.text()
-    #
-    #             # Check if times value is empty
-    #             if times_value.strip() == "":
-    #                 times_item.setText("1.00 /")  # Set default value of "1.00 /"
-    #             else:
-    #                 times = float(times_value.rstrip(" /"))
-    #                 times_item.setText("{:,.2f} /".format(times))
-    #
-    #             dims_item = self.tableWidget_rft.item(row, 5)
-    #             dims = float(dims_item.text())
-    #             dims_item.setText("{:,.2f}".format(dims))
-    #
-    #             # Calculate square
-    #             square = round(times * dims, 2)
-    #
-    #             # Check if times and dims values are colored red
-    #             if times_item.foreground().color().name() == "#ff0000" and dims_item.foreground().color().name() == "#ff0000":
-    #                 square *= -1  # Negate square
-    #                 item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
-    #                 item.setForeground(QtGui.QColor("red"))  # Set the foreground color to red
-    #             else:
-    #                 item = QtWidgets.QTableWidgetItem("{:,.2f}".format(square))
-    #                 item.setForeground(QtGui.QColor("black"))  # Set the foreground color to black
-    #
-    #             # Freeze the cell
-    #             flags = item.flags()
-    #             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #             item.setFlags(flags)
-    #
-    #             # Set the square for row and col
-    #             self.tableWidget_rft.setItem(row, 6, item)
-    #
-    #         # Add a new row at the end
-    #         sum_row = self.tableWidget_rft.rowCount()
-    #         self.tableWidget_rft.insertRow(sum_row)
-    #
-    #         # Insert sum_code
-    #         sum_code = self.code()
-    #         sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-    #         self.tableWidget_rft.setItem(sum_row, 0, sum_code_item)
-    #
-    #         # Set unit column as 'm' for the last row
-    #         unit_item = QtWidgets.QTableWidgetItem("m")
-    #         flags = unit_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         unit_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(sum_row, 7, unit_item)
-    #
-    #         # Set description column as 'sum' for the last row
-    #         desc_item = QtWidgets.QTableWidgetItem("SUM")
-    #         flags = desc_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         desc_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(sum_row, 8, desc_item)
-    #
-    #         # Sum the numbers in the square column
-    #         total_square = 0.0
-    #         for row in range(self.tableWidget_rft.rowCount() - 1):
-    #             square_item = self.tableWidget_rft.item(row, 6)
-    #             square_value = square_item.text().replace(",", "")
-    #             total_square += float(square_value)
-    #
-    #         # Set the total square in the last row's square column
-    #         total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
-    #         flags = total_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         total_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(sum_row, 6, total_item)
-    #
-    #         #--- CREATE A NEW LINE AND CONVERT WEIGHT ---
-    #
-    #         # Add a new row at the end
-    #         last_row = self.tableWidget_rft.rowCount()
-    #         self.tableWidget_rft.insertRow(last_row)
-    #
-    #         # Insert sum_code
-    #         sum_code = self.code()
-    #         sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-    #         self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
-    #
-    #         # call the weight method into weight_value_text
-    #         weight_value = self.weight()
-    #
-    #         # Set the wieght_value
-    #         weight_value_item = QtWidgets.QTableWidgetItem(str(weight_value))  # convert weight_value to string
-    #         flags = weight_value_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         weight_value_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(last_row, 5, weight_value_item)
-    #
-    #         # Set unit column as 't' for the last row
-    #         unit_item = QtWidgets.QTableWidgetItem("t")
-    #         flags = unit_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         unit_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(last_row, 7, unit_item)
-    #
-    #         # Set description column as 'TONNAGE' for the last row
-    #         desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
-    #         flags = desc_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         desc_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(last_row, 8, desc_item)
-    #
-    #         # Convert `m` to Tonne
-    #         try:
-    #             converted_square = total_square * weight_value / 1000.00
-    #         except ZeroDivisionError:
-    #             return
-    #
-    #         # Set the total square in the last row's square column
-    #         total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(converted_square))
-    #         flags = total_item.flags()
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-    #         flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-    #         total_item.setFlags(flags)
-    #         self.tableWidget_rft.setItem(last_row, 6, total_item)
-    #
-    #     except ValueError:
-    #         return
-    #     except AttributeError:
-    #         return
-    #     except UnboundLocalError:
-    #         return
-
-    # def weight(self) -> float:
-    #     default_weight = 0.888
-    #     entered_weight = self.lineEdit_weight.text()
-    #
-    #     # Insert weight value (try and catch errors if entry is not a float)
-    #     try:
-    #         weight_value = float(entered_weight)
-    #
-    #         # If weight_value is None, then set the weight_value to the default_weight
-    #         if weight_value is None:
-    #             weight_value = default_weight
-    #     except ValueError:
-    #         return
-    #
-    #     return weight_value  # Returns the weight_value as a float for calculation
 
     def clear_table(self):
         self.tableWidget_rft.clearContents()
