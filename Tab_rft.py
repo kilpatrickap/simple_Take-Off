@@ -452,8 +452,10 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
+            # call the weight method into weight_value_text
+            weight_value_text = self.weight()
+
             # Insert weight value (try and catch errors if entry is not a float)
-            weight_value_text = self.weight()  # call the weight method into weight_value_text
             try:
                 weight_value = float(weight_value_text)
             except ValueError:
