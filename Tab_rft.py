@@ -56,7 +56,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.lineEdit_weight.setObjectName("lineEdit_weight")
 
         # Connect signal
-        self.lineEdit_weight.returnPressed.connect(self.weight)
+        # self.lineEdit_weight.returnPressed.connect(self.weight)
 
         self.horizontalLayout.addItem(spacerItem1)
         self.horizontalLayout.addWidget(self.label_weight)
@@ -364,12 +364,11 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.comboBox.setEnabled(True)
 
     def square(self):
-        # Call self.weight() returning weight_value of tpye float
-        weight = self.weight()
-        if weight is None:
-            weight = 1.0
-
         try:
+            # Get the weight from user input
+            weight = float(self.lineEdit_weight.text())
+            print(weight)
+
             for row in range(self.tableWidget_rft.rowCount()):
                 times_item = self.tableWidget_rft.item(row, 4)
                 times_value = times_item.text()
@@ -441,7 +440,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             # TODO Bug, when weight is entered, can't square new, del, ddt rows
             # Convert to Tonnage
             try:
-                total_square = total_square * 1 / 1000.0
+                total_square = total_square * weight / 1000.0
             except ZeroDivisionError:
                 return
 
@@ -598,21 +597,21 @@ class Tab_rft_Widget(QtWidgets.QWidget):
     #     except UnboundLocalError:
     #         return
 
-    def weight(self) -> float:
-        default_weight = 0.888
-        entered_weight = self.lineEdit_weight.text()
-
-        # Insert weight value (try and catch errors if entry is not a float)
-        try:
-            weight_value = float(entered_weight)
-
-            # If weight_value is None, then set the weight_value to the default_weight
-            if weight_value is None:
-                weight_value = default_weight
-        except ValueError:
-            return
-
-        return weight_value  # Returns the weight_value as a float for calculation
+    # def weight(self) -> float:
+    #     default_weight = 0.888
+    #     entered_weight = self.lineEdit_weight.text()
+    #
+    #     # Insert weight value (try and catch errors if entry is not a float)
+    #     try:
+    #         weight_value = float(entered_weight)
+    #
+    #         # If weight_value is None, then set the weight_value to the default_weight
+    #         if weight_value is None:
+    #             weight_value = default_weight
+    #     except ValueError:
+    #         return
+    #
+    #     return weight_value  # Returns the weight_value as a float for calculation
 
     def clear_table(self):
         self.tableWidget_rft.clearContents()
