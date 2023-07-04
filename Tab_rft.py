@@ -402,13 +402,13 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 self.tableWidget_rft.setItem(row, 6, item)
 
             # Add a new row at the end
-            last_row = self.tableWidget_rft.rowCount()
-            self.tableWidget_rft.insertRow(last_row)
+            sum_row = self.tableWidget_rft.rowCount()
+            self.tableWidget_rft.insertRow(sum_row)
 
             # Insert sum_code
             sum_code = self.code()
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
-            self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
+            self.tableWidget_rft.setItem(sum_row, 0, sum_code_item)
 
             # Set unit column as 'm' for the last row
             unit_item = QtWidgets.QTableWidgetItem("m")
@@ -416,7 +416,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             unit_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 7, unit_item)
+            self.tableWidget_rft.setItem(sum_row, 7, unit_item)
 
             # Set description column as 'sum' for the last row
             desc_item = QtWidgets.QTableWidgetItem("SUM")
@@ -424,7 +424,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             desc_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 8, desc_item)
+            self.tableWidget_rft.setItem(sum_row, 8, desc_item)
 
             # Sum the numbers in the square column
             total_square = 0.0
@@ -439,8 +439,55 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             total_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 6, total_item)
+            self.tableWidget_rft.setItem(sum_row, 6, total_item)
 
+            #--- CREATE A NEW LINE AND CONVERT WEIGHT ---
+
+            # Add a new row at the end
+            last_row = self.tableWidget_rft.rowCount()
+            self.tableWidget_rft.insertRow(last_row)
+
+            # Insert sum_code
+            sum_code = self.code()
+            sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
+            self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
+
+            # Insert weight value (try and catch errors if entry is not a float)
+            weight_value_text = self.weight()  # call the weight method into weight_value_text
+            try:
+                weight_value = float(weight_value_text)
+            except ValueError:
+                return
+
+            # Set the wieght_value
+            weight_value_item = QtWidgets.QTableWidgetItem(str(weight_value))  # convert weight_value to string
+            flags = weight_value_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            weight_value_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 5, weight_value_item)
+
+            # Set description column as 'TONNAGE' for the last row
+            desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
+            flags = desc_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            desc_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 8, desc_item)
+
+            # Convert `m` to Tonne
+            try:
+                converted_square = total_square * weight_value / 1000.00
+            except ZeroDivisionError:
+                return
+
+            # Set the total square in the last row's square column
+            total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(converted_square))
+            flags = total_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            total_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 6, total_item)
 
         except ValueError:
             return
