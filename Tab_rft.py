@@ -433,9 +433,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)
 
-            # TODO Bug, when weight is entered, can't square
-
-            # Get the weight from user input
+            # Get the weight from user input        # TODO Bug, when weight is entered, can't square
             weight = float(self.lineEdit_weight.text())
             print(weight)
 
