@@ -369,7 +369,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 times_item = self.tableWidget_rft.item(row, 4)
                 times_value = times_item.text()
 
-                """ When times_value and dims_value is >= 1,000.00 in any of the rows, tableWidget can't square"""
+                """ When times and dims is >= 1,000.00 in any of the rows, tableWidget can't square"""
 
                 # Check if times value is empty
                 if times_value.strip() == "":
