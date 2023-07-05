@@ -113,17 +113,6 @@ class Edit_rft_Dialog(object):
 
         self.horizontalLayout_10.addWidget(self.pushButton_rft_sqr)
 
-        # Weight Label and LineEdit inside a horizontal layout
-        self.label_weight = QtWidgets.QLabel(parent=Dialog)
-        self.label_weight.setObjectName("label_weight")
-
-        self.lineEdit_weight = QtWidgets.QLineEdit(parent=Dialog)
-        self.lineEdit_weight.setObjectName("lineEdit_weight")
-
-        self.horizontalLayout_10.addWidget(self.label_weight)
-        self.horizontalLayout_10.addWidget(self.lineEdit_weight)
-        self.horizontalLayout_10.addItem(spacerItem1)
-
         self.pushButton_rft_destroy = QtWidgets.QPushButton(parent=Dialog)
 
         # Add button icon with relative path
@@ -138,8 +127,13 @@ class Edit_rft_Dialog(object):
         self.pushButton_rft_destroy.clicked.connect(self.destroy_code)
 
         self.horizontalLayout_10.addWidget(self.pushButton_rft_destroy)
-        self.verticalLayout.addLayout(self.horizontalLayout_10)
 
+        # Horizontal spacer
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem2)
+
+        self.verticalLayout.addLayout(self.horizontalLayout_10)
         self.tableWidget_rft = QtWidgets.QTableWidget(parent=Dialog)
         self.tableWidget_rft.setObjectName("tableWidget_rft")
         self.tableWidget_rft.setColumnCount(9)
@@ -241,7 +235,7 @@ class Edit_rft_Dialog(object):
     def ddt_row(self):
         current_row = self.tableWidget_rft.rowCount() - 1  # Get the current row index
 
-        unit_rft = "t"  # Set the unit
+        unit_rft = "m"  # Set the unit
         unit_rft_cell = QtWidgets.QTableWidgetItem(unit_rft)
         unit_rft_cell.setForeground(QtGui.QColor("red"))  # Set the text color to red
 
@@ -286,6 +280,8 @@ class Edit_rft_Dialog(object):
                 times_item = self.tableWidget_rft.item(row, 4)
                 times_value = times_item.text()
 
+                """ When times and dims is >= 1,000.00 in any of the rows, tableWidget can't square"""
+
                 # Check if times value is empty
                 if times_value.strip() == "":
                     times_item.setText("1.00 /")  # Set default value of "1.00 /"
@@ -327,30 +323,16 @@ class Edit_rft_Dialog(object):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
-            # Insert weight value (try and catch errors if entry is not a float)
-            weight_value_text = self.lineEdit_weight.text()
-            try:
-                weight_value = float(weight_value_text)
-            except ValueError:
-                return
-
-            weight_value_item = QtWidgets.QTableWidgetItem(str(weight_value))   # convert weight_value to string
-            flags = weight_value_item.flags()
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
-            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
-            weight_value_item.setFlags(flags)
-            self.tableWidget_rft.setItem(last_row, 5, weight_value_item)
-
-            # Set unit column as 't' for the last row
-            unit_item = QtWidgets.QTableWidgetItem("t")
+            # Set unit column as 'm' for the last row
+            unit_item = QtWidgets.QTableWidgetItem("m")
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             unit_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 7, unit_item)
 
-            # Set description column as 'TONNAGE' for the last row
-            desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
+            # Set description column as 'sum' for the last row
+            desc_item = QtWidgets.QTableWidgetItem("SUM")
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -362,15 +344,51 @@ class Edit_rft_Dialog(object):
             for row in range(self.tableWidget_rft.rowCount() - 1):
                 square_item = self.tableWidget_rft.item(row, 6)
                 square_value = square_item.text().replace(",", "")
-                total_square += float(square_value)
+                total_square += float(square_value)     # Sum the square col
 
-            # print(total_square)
+            # Set the total square in the last row's square column
+            total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+            flags = total_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            total_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 6, total_item)
 
-            # Convert `m` to Tonne
-            try:
-                total_square = total_square * weight_value / 1000.00
-            except ZeroDivisionError:
-                return
+            #--- CREATE A NEW ROW FOR TONNAGE CONVERSION ---
+
+            # Add a new row at the end
+            last_row = self.tableWidget_rft.rowCount()
+            self.tableWidget_rft.insertRow(last_row)
+
+            # Insert sum_code
+            sum_code = self.code()
+            sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
+            self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
+
+            # Set weight for the last row
+            entered_weight = self.lineEdit_weight.text()
+            entered_weight_item = QtWidgets.QTableWidgetItem(entered_weight)
+            self.tableWidget_rft.setItem(last_row, 5, entered_weight_item)
+
+            # Set unit column as 'm' for the last row
+            unit_item = QtWidgets.QTableWidgetItem("t")
+            flags = unit_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            unit_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 7, unit_item)
+
+            # Set description column as 'sum' for the last row
+            desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
+            flags = desc_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            desc_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 8, desc_item)
+
+            # Convert to Tonnage
+            weight = float(entered_weight)
+            total_square *= weight / 1000.0
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
@@ -394,17 +412,13 @@ class Edit_rft_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", self.entered_code))  # entered_code shows here
-        self.groupBox_rft.setTitle(_translate("Dialog", "Edit reinforcement measurement"))
+        self.groupBox_rft.setTitle(_translate("Dialog", "Edit Linear measurement"))
         self.label_6.setText(_translate("Dialog", "Code :"))
         self.label_code.setText(_translate("Dialog", self.entered_code))  # entered_code shows here
         self.pushButton_rft_add.setText(_translate("Dialog", "Add"))
         self.pushButton_rft_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_rft_del.setText(_translate("Dialog", "Delete"))
         self.pushButton_rft_sqr.setText(_translate("Dialog", "Square"))
-
-        self.label_weight.setText(_translate("Dialog", "Weight (kg/m):"))
-        self.lineEdit_weight.setPlaceholderText(_translate("Dialog", "e.g 0.888"))
-
         self.pushButton_rft_destroy.setText(_translate("Dialog", "Destroy"))
         item = self.tableWidget_rft.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "code"))
