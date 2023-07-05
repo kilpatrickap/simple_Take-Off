@@ -412,6 +412,47 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
+            # Set unit column as 'm' for the last row
+            unit_item = QtWidgets.QTableWidgetItem("m")
+            flags = unit_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            unit_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 7, unit_item)
+
+            # Set description column as 'sum' for the last row
+            desc_item = QtWidgets.QTableWidgetItem("SUM")
+            flags = desc_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            desc_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 8, desc_item)
+
+            # Sum the numbers in the square column
+            total_square = 0.0
+            for row in range(self.tableWidget_rft.rowCount() - 1):
+                square_item = self.tableWidget_rft.item(row, 6)
+                square_value = square_item.text().replace(",", "")
+                total_square += float(square_value)     # Sum the square col
+
+            # Set the total square in the last row's square column
+            total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+            flags = total_item.flags()
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
+            flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
+            total_item.setFlags(flags)
+            self.tableWidget_rft.setItem(last_row, 6, total_item)
+
+            #--- CREATE A NEW ROW FOR TONNAGE CONVERSION ---
+            # Add a new row at the end
+            last_row = self.tableWidget_rft.rowCount()
+            self.tableWidget_rft.insertRow(last_row)
+
+            # Insert sum_code
+            sum_code = self.code()
+            sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
+            self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
+
             # Set weight for the last row
             entered_weight = self.lineEdit_weight.text()
             entered_weight_item = QtWidgets.QTableWidgetItem(entered_weight)
@@ -433,15 +474,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             desc_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 8, desc_item)
 
-            # Sum the numbers in the square column
-            weight = float(self.lineEdit_weight.text())
-            total_square = 0.0
-            for row in range(self.tableWidget_rft.rowCount() - 1):
-                square_item = self.tableWidget_rft.item(row, 6)
-                square_value = square_item.text().replace(",", "")
-                total_square += float(square_value)     # Sum the square col
-
             # Convert to Tonnage
+            weight = float(entered_weight)
             total_square *= weight / 1000.0
 
             # Set the total square in the last row's square column
