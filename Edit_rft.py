@@ -412,7 +412,7 @@ class Edit_rft_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", self.entered_code))  # entered_code shows here
-        self.groupBox_rft.setTitle(_translate("Dialog", "Edit Linear measurement"))
+        self.groupBox_rft.setTitle(_translate("Dialog", "Edit Reinforcement measurement"))
         self.label_6.setText(_translate("Dialog", "Code :"))
         self.label_code.setText(_translate("Dialog", self.entered_code))  # entered_code shows here
         self.pushButton_rft_add.setText(_translate("Dialog", "Add"))
