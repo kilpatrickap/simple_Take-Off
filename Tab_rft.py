@@ -369,6 +369,8 @@ class Tab_rft_Widget(QtWidgets.QWidget):
                 times_item = self.tableWidget_rft.item(row, 4)
                 times_value = times_item.text()
 
+                """ When times_value and dims_value is >= 1,000.00 in any of the rows, tableWidget can't square"""
+
                 # Check if times value is empty
                 if times_value.strip() == "":
                     times_item.setText("1.00 /")  # Set default value of "1.00 /"
@@ -436,8 +438,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             total_square = 0.0
             for row in range(self.tableWidget_rft.rowCount() - 1):
                 square_item = self.tableWidget_rft.item(row, 6)
-                square_value = square_item.text().replace(",", "")  # TODO Bug, when weight is entered, can't square
-                """ When 1,000.00 or => is in any of the rows, tableWidget can't square"""
+                square_value = square_item.text().replace(",", "")
                 total_square += float(square_value)     # Sum the square col
 
             # Convert to Tonnage
