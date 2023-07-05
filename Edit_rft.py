@@ -7,7 +7,7 @@ class Edit_rft_Dialog(object):
     def __init__(self, entered_code):  # entered_code is initialized as an argument
 
         self.entered_code = entered_code  # Initialize the class attributes
-        print("Entered code from TakeOff Sheet is : " + entered_code)  # test to see if it works.
+        # print("Entered code from TakeOff Sheet is : " + entered_code)  # test to see if it works.
 
     def setupUi(self, Dialog):
 
@@ -38,9 +38,19 @@ class Edit_rft_Dialog(object):
         self.label_code.setObjectName("label_code")
         self.horizontalLayout_3.addWidget(self.label_code)
 
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+        spacerItem2 = QtWidgets.QSpacerItem(500, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem2)
+
+        # Weight Label and LineEdit inside a horizontal layout
+        self.label_weight = QtWidgets.QLabel(parent=Dialog)
+        self.label_weight.setObjectName("label_weight")
+        self.horizontalLayout_3.addWidget(self.label_weight)
+
+        self.lineEdit_weight = QtWidgets.QLineEdit(parent=Dialog)
+        self.lineEdit_weight.setObjectName("lineEdit_weight")
+        self.horizontalLayout_3.addWidget(self.lineEdit_weight)
+
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
@@ -415,6 +425,10 @@ class Edit_rft_Dialog(object):
         self.groupBox_rft.setTitle(_translate("Dialog", "Edit Reinforcement measurement"))
         self.label_6.setText(_translate("Dialog", "Code :"))
         self.label_code.setText(_translate("Dialog", self.entered_code))  # entered_code shows here
+
+        self.label_weight.setText(_translate("Dialog", "Weight (kg/m):"))
+        self.lineEdit_weight.setPlaceholderText(_translate("Dialog", "e.g 0.888"))
+
         self.pushButton_rft_add.setText(_translate("Dialog", "Add"))
         self.pushButton_rft_ddt.setText(_translate("Dialog", "Deduct"))
         self.pushButton_rft_del.setText(_translate("Dialog", "Delete"))

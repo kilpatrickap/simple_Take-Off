@@ -55,9 +55,6 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.lineEdit_weight = QtWidgets.QLineEdit(parent=self.groupBox_rft)
         self.lineEdit_weight.setObjectName("lineEdit_weight")
 
-        # Connect signal
-        # self.lineEdit_weight.returnPressed.connect(self.weight)
-
         self.horizontalLayout.addItem(spacerItem1)
         self.horizontalLayout.addWidget(self.label_weight)
         self.horizontalLayout.addWidget(self.lineEdit_weight)
