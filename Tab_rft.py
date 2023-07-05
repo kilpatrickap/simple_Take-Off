@@ -444,6 +444,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             self.tableWidget_rft.setItem(last_row, 6, total_item)
 
             #--- CREATE A NEW ROW FOR TONNAGE CONVERSION ---
+
             # Add a new row at the end
             last_row = self.tableWidget_rft.rowCount()
             self.tableWidget_rft.insertRow(last_row)
