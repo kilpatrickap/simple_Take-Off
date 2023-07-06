@@ -256,3 +256,4 @@ class Abstract_Dialog(object):
 
         # Sort the table by the "trade" column
         self.tableWidget_takeOff.sortItems(1, sort_order)
+
