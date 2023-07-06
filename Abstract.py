@@ -27,6 +27,9 @@ class Abstract_Dialog(object):
         icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_sort.setIcon(icon1)
         self.pushButton_sort.setObjectName("pushButton_sort")
+
+        # Connect signal
+        self.pushButton_sort.clicked.connect(self.sort)
         self.horizontalLayout_2.addWidget(self.pushButton_sort)
 
         # icon with relative path
@@ -246,3 +249,10 @@ class Abstract_Dialog(object):
 
         # Close the database connection
         conn.close()
+
+    def sort(self):
+        # Set the sort in ascending order (A-Z)
+        sort_order = QtCore.Qt.SortOrder.AscendingOrder
+
+        # Sort the table by the "trade" column
+        self.tableWidget_takeOff.sortItems(1, sort_order)
