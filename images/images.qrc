@@ -1,12 +1,18 @@
 <RCC>
   <qresource prefix="images">
+    <file>blue-document-pdf-text.png</file>
+    <file>x-circle-duotone.png</file>
+    <file>table-excel.png</file>
     <file>pencil.png</file>
-    <file>printer.png</file>
     <file>magnifier-left.png</file>
+    <file>pdf.png</file>
+    <file>print.png</file>
+    <file>printprev.png</file>
     <file>minus.png</file>
     <file>notebook.png</file>
     <file>table-export.png</file>
     <file>rft.png</file>
+    <file>sort-alphabet.png</file>
     <file>application-blue.png</file>
     <file>calculator.png</file>
     <file>wand.png</file>
