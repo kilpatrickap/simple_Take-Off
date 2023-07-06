@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidge
 from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
 
 def create_pdf():
-    printer = QPrinter(QPrinter.HighResolution)
+    printer = QPrinter(QPrinter.PrinterMode.HighResolution)
     printer.setOutputFormat(QPrinter.OutputFormat.PdfFormat)
     printer.setOutputFileName("tables.pdf")
     printer.setPageSize(QPrinter.PageSize.Letter)
@@ -13,7 +13,7 @@ def create_pdf():
     painter.setFont(QFont("Arial", 10))
 
     print_dialog = QPrintDialog(printer)
-    if print_dialog.exec() == QPrintDialog.PrintDialogResult.Accepted:
+    if print_dialog.exec() == QPrintDialog.DialogCode.Accepted:
         print_preview(painter)
 
 def print_preview(painter):
