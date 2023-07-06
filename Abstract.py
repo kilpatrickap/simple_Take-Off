@@ -110,7 +110,7 @@ class Abstract_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Abstract"))
         self.pushButton_sort.setText(_translate("Dialog", "Sort"))
         self.pushButton_exportToExcel.setText(_translate("Dialog", "Export to Excel"))
         self.pushButton_exportToPdf.setText(_translate("Dialog", "Export to Pdf"))
@@ -118,20 +118,38 @@ class Abstract_Dialog(object):
         self.pushButton_print.setText(_translate("Dialog", "Print"))
         item = self.tableWidget_takeOff.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "code"))
+        self.tableWidget_takeOff.setColumnWidth(0, 70)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(1)
         item.setText(_translate("Dialog", "trade"))
+        self.tableWidget_takeOff.setColumnWidth(1, 50)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(2)
         item.setText(_translate("Dialog", "desc"))
+        self.tableWidget_takeOff.setColumnWidth(2, 350)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(3)
         item.setText(_translate("Dialog", "ref"))
+        self.tableWidget_takeOff.setColumnWidth(3, 70)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(4)
         item.setText(_translate("Dialog", "times"))
+        self.tableWidget_takeOff.setColumnWidth(4, 70)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(5)
         item.setText(_translate("Dialog", "dims"))
+        self.tableWidget_takeOff.setColumnWidth(5, 60)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(6)
         item.setText(_translate("Dialog", "square"))
+        self.tableWidget_takeOff.setColumnWidth(6, 70)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(7)
         item.setText(_translate("Dialog", "unit"))
+        self.tableWidget_takeOff.setColumnWidth(7, 40)
+
         item = self.tableWidget_takeOff.horizontalHeaderItem(8)
         item.setText(_translate("Dialog", "sign post"))
+        self.tableWidget_takeOff.setColumnWidth(8, 170)
+
         self.pushButton_cancel.setText(_translate("Dialog", "Cancel"))
