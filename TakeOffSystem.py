@@ -18,6 +18,7 @@ from Edit_nr import Edit_nr_Dialog
 from Edit_m2 import Edit_m2_Dialog
 from Edit_m3 import Edit_m3_Dialog
 from Edit_rft import Edit_rft_Dialog
+from Abstract import Abstract_Dialog
 
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
@@ -78,6 +79,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.switch_msmt)
+
+        # Connect signal of Abstract
+        self.takeOff_sheet_widget.pushButton_abstract.clicked.connect(self.abstract)
 
     def new_project(self):  # When new is clicked, run a new project
         dialog = QDialog()
@@ -164,5 +168,11 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # entered_code is a class argument of the Edit_Dialog() class, extending from TakeOffSheet() class
         ui = Edit_rft_Dialog(entered_code=self.takeOff_sheet_widget.lineEdit_code.text())
 
+        ui.setupUi(dialog)
+        dialog.exec()
+
+    def abstract(self):
+        dialog = QDialog()
+        ui = Abstract_Dialog()
         ui.setupUi(dialog)
         dialog.exec()
