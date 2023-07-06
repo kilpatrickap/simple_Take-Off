@@ -8,6 +8,11 @@ class Abstract_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1011, 788)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica") # Set font
+        font.setPointSize(12)
+        Dialog.setFont(font)
+
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
