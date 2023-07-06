@@ -489,6 +489,11 @@ class Tab_m3_Widget(QtWidgets.QWidget):
                 sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
                 self.tableWidget_m3.setItem(last_row, 0, sum_code_item)
 
+                # Insert Trade letter
+                trade_letter = self.code()[3]  # indexing to the 4th letter of the code.
+                trade_letter_item = QtWidgets.QTableWidgetItem(trade_letter)
+                self.tableWidget_m3.setItem(last_row, 1, trade_letter_item)
+
                 # Set unit column as 'm3' for the last row
                 unit_item = QtWidgets.QTableWidgetItem("m3")
                 flags = unit_item.flags()

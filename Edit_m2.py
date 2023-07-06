@@ -359,6 +359,11 @@ class Edit_m2_Dialog(object):
                 sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
                 self.tableWidget_m2.setItem(last_row, 0, sum_code_item)
 
+                # Insert Trade letter
+                trade_letter = self.code()[3]  # indexing to the 4th letter of the code.
+                trade_letter_item = QtWidgets.QTableWidgetItem(trade_letter)
+                self.tableWidget_m2.setItem(last_row, 1, trade_letter_item)
+
                 # Set unit column as 'm2' for the last row
                 unit_item = QtWidgets.QTableWidgetItem("m2")
                 flags = unit_item.flags()

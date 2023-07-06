@@ -409,6 +409,11 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
 
+            # Insert Trade letter
+            trade_letter = self.code()[4]  # indexing to the 5th letter of the code.
+            trade_letter_item = QtWidgets.QTableWidgetItem(trade_letter)
+            self.tableWidget_rft.setItem(last_row, 1, trade_letter_item)
+
             # Set unit column as 'm' for the last row
             unit_item = QtWidgets.QTableWidgetItem("m")
             flags = unit_item.flags()
@@ -450,6 +455,11 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             sum_code = self.code()
             sum_code_item = QtWidgets.QTableWidgetItem(sum_code)
             self.tableWidget_rft.setItem(last_row, 0, sum_code_item)
+
+            # Insert Trade letter
+            trade_letter = self.code()[4]  # indexing to the 5th letter of the code.
+            trade_letter_item = QtWidgets.QTableWidgetItem(trade_letter)
+            self.tableWidget_rft.setItem(last_row, 1, trade_letter_item)
 
             # Set weight for the last row
             entered_weight = self.lineEdit_weight.text()
