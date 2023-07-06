@@ -129,7 +129,7 @@ class Abstract_Dialog(object):
 
         item = self.tableWidget_takeOff.horizontalHeaderItem(1)
         item.setText(_translate("Dialog", "trade"))
-        self.tableWidget_takeOff.setColumnWidth(1, 50)
+        self.tableWidget_takeOff.setColumnWidth(1, 40)
 
         item = self.tableWidget_takeOff.horizontalHeaderItem(2)
         item.setText(_translate("Dialog", "desc"))
@@ -149,7 +149,7 @@ class Abstract_Dialog(object):
 
         item = self.tableWidget_takeOff.horizontalHeaderItem(6)
         item.setText(_translate("Dialog", "square"))
-        self.tableWidget_takeOff.setColumnWidth(6, 70)
+        self.tableWidget_takeOff.setColumnWidth(6, 90)
 
         item = self.tableWidget_takeOff.horizontalHeaderItem(7)
         item.setText(_translate("Dialog", "unit"))
