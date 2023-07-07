@@ -374,9 +374,6 @@ class Abstract_Dialog(object):
         self.tableWidget_takeOff.setStyleSheet("QTableView::item { border-right: 1px solid black; }")
         self.tableWidget_takeOff.setFont(QFont("Helvetica", 12))
 
-    # def print(self):
-    #     pass
-    #
     # def export_pdf(self):
     #     pass
 
@@ -393,12 +390,12 @@ class Abstract_Dialog(object):
     def handlePaintRequest(self, printer):
 
         #--- FORMATTING ---
-        # tableFormat = QTextTableFormat()
-        # tableFormat.setBorder(5)
-        # tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
-        # tableFormat.setCellSpacing(0)
-        # tableFormat.setTopMargin(0)
-        # tableFormat.setCellPadding(4)
+        tableFormat = QTextTableFormat()
+        tableFormat.setBorder(5)
+        tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
+        tableFormat.setCellSpacing(0)
+        tableFormat.setTopMargin(0)
+        tableFormat.setCellPadding(4)
 
         document = QtGui.QTextDocument()
         cursor = QtGui.QTextCursor(document)
