@@ -1,5 +1,7 @@
 import os
 import sqlite3
+
+import openpyxl
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMessageBox
@@ -195,6 +197,9 @@ class Abstract_Dialog(object):
         # Run load_tabel_data method
         self.load_table_data()
 
+        # apply table style sheet
+        self.apply_table_stylesheet()
+
     def load_table_data(self):
         # Connect to the SQLite database
         conn = sqlite3.connect('data.db')
@@ -325,6 +330,11 @@ class Abstract_Dialog(object):
                 if font:
                     sheet.cell(row=row + 2, column=col + 1).font = font
 
+                # Add vertical borders to each column
+                border = openpyxl.styles.Border(left=openpyxl.styles.Side(style='thin'),
+                                                right=openpyxl.styles.Side(style='thin'))
+                sheet.cell(row=row + 2, column=col + 1).border = border
+
         # Create an "exports" directory if it doesn't exist
         export_dir = os.path.join(os.getcwd(), 'exports')
         os.makedirs(export_dir, exist_ok=True)
@@ -345,3 +355,6 @@ class Abstract_Dialog(object):
         msg_box.setIconPixmap(icon_pixmap)
 
         msg_box.exec()
+
+    def apply_table_stylesheet(self):
+        self.tableWidget_takeOff.setStyleSheet("QTableView::item { border-right: 1px solid black; }")
