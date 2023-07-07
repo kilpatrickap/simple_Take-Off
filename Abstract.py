@@ -1,7 +1,8 @@
 import os
 import sqlite3
-
 from PyQt6 import QtCore, QtGui, QtWidgets
+from openpyxl import Workbook
+from openpyxl.styles import Font
 
 
 class Abstract_Dialog(object):
@@ -46,6 +47,8 @@ class Abstract_Dialog(object):
         # Set focus policy to NoFocus
         self.pushButton_exportToExcel.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
 
+        # Connect Signal
+        self.pushButton_exportToExcel.clicked.connect(self.export_to_excel)
         self.horizontalLayout_2.addWidget(self.pushButton_exportToExcel)
 
         # icon with relative path
@@ -283,3 +286,49 @@ class Abstract_Dialog(object):
         # Sort the table by the "trade" column
         self.tableWidget_takeOff.sortItems(1, sort_order)
 
+    def export_to_excel(self):
+        # Create a workbook and select the active sheet
+        workbook = Workbook()
+        sheet = workbook.active
+
+        # Export table headers
+        headers = []
+        for col in range(self.tableWidget_takeOff.columnCount()):
+            header = self.tableWidget_takeOff.horizontalHeaderItem(col).text()
+            headers.append(header)
+            sheet.cell(row=1, column=col + 1).value = header
+
+        # Export table data with formatting
+        for row in range(self.tableWidget_takeOff.rowCount()):
+            for col in range(self.tableWidget_takeOff.columnCount()):
+                # Get the data and foreground color from each cell in the QTableWidget
+                cell_item = self.tableWidget_takeOff.item(row, col)
+                cell_data = cell_item.text()
+                foreground_color = cell_item.foreground().color()
+
+                # Write the cell data to the corresponding cell in the Excel sheet
+                sheet.cell(row=row + 2, column=col + 1).value = cell_data
+
+                # Apply font color formatting based on the foreground color
+                if foreground_color == QtGui.QColor('red'):
+                    font = Font(color="FFFF0000")  # Red
+                elif foreground_color == QtGui.QColor('blue'):
+                    font = Font(color="FF0000FF")  # Blue
+                elif foreground_color == QtGui.QColor('green'):
+                    font = Font(color="FF00FF00")  # Green
+                else:
+                    font = None
+
+                # Apply font color formatting to the corresponding cell in the Excel sheet
+                if font:
+                    sheet.cell(row=row + 2, column=col + 1).font = font
+
+        # Create an "exports" directory if it doesn't exist
+        export_dir = os.path.join(os.getcwd(), 'exports')
+        os.makedirs(export_dir, exist_ok=True)
+
+        # Save the workbook to an Excel file in the "exports" directory
+        export_path = os.path.join(export_dir, 'table_data.xlsx')
+        workbook.save(export_path)
+
+        print(f"Table data exported to: {export_path}")
