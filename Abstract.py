@@ -388,23 +388,14 @@ class Abstract_Dialog(object):
         dialog.exec()
 
     def handlePaintRequest(self, printer):
-        # Create a QTextDocument and QTextCursor
         document = QtGui.QTextDocument()
         cursor = QtGui.QTextCursor(document)
-
-        # Set table format
-        tableFormat = QtGui.QTextTableFormat()
-
-        # Insert the table into the QTextDocument
-        table = cursor.insertTable(self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount(),
-                                   tableFormat)
-
-        # Iterate over the table cells and insert text
+        table = cursor.insertTable(
+            self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount())
         for row in range(table.rows()):
             for col in range(table.columns()):
-                cell = table.cellAt(row, col)
-                cellCursor = cell.firstCursorPosition()
-                cellCursor.insertText(self.tableWidget_takeOff.item(row, col).text())
+                cursor.insertText(self.tableWidget_takeOff.item(row, col).text())
+                cursor.movePosition(QtGui.QTextCursor.MoveOperation.NextCell)
 
         # Set the output format and file name for the printer
         printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)
