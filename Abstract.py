@@ -1,6 +1,7 @@
 import os
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMessageBox
 from openpyxl import Workbook
 from openpyxl.styles import Font
@@ -337,4 +338,10 @@ class Abstract_Dialog(object):
         msg_box.setIcon(QMessageBox.Icon.Information)
         msg_box.setWindowTitle("Export Successful")
         msg_box.setText(f"Take-Offs exported to: {export_path}")
+
+        # Add icon with relative path
+        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-circle.png")
+        icon_pixmap = QtGui.QPixmap(icon_path)
+        msg_box.setIconPixmap(icon_pixmap)
+
         msg_box.exec()

@@ -595,7 +595,7 @@ class Edit_m_Dialog(object):
             msg_box.setWindowTitle("Destroy")
             msg_box.setText("Click OK to PERMANENTLY DELETE the measurement.")
 
-            # Add button icon with relative path
+            # Add icon with relative path
             icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-red.png")
             icon_pixmap = QtGui.QPixmap(icon_path)
             msg_box.setIconPixmap(icon_pixmap)
