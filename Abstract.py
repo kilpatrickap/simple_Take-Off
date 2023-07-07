@@ -19,8 +19,8 @@ class Abstract_Dialog(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.pushButton_sort = QtWidgets.QPushButton(parent=Dialog)
 
+        self.pushButton_sort = QtWidgets.QPushButton(parent=Dialog)
         # icon with relative path
         icon1 = QtGui.QIcon()
         image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "sort-alphabet.png")
