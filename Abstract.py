@@ -2,20 +2,21 @@ import os
 import sqlite3
 import openpyxl
 from PyQt6 import QtCore, QtGui, QtWidgets, QtPrintSupport
-from PyQt6.QtCore import QFileInfo
-from PyQt6.QtGui import QPainter, QPageLayout, QPageSize, QFont
-from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
-from PyQt6.QtWidgets import QMessageBox, QTableWidgetSelectionRange, QFileDialog
+from PyQt6.QtGui import QFont
+from PyQt6.QtWidgets import QMessageBox
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
 
 class Abstract_Dialog(object):
+    def __init__(self):
+        self.tableWidget_takeOff = None
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1011, 788)
         font = QtGui.QFont()
-        font.setFamily("Helvetica") # Set font
+        font.setFamily("Helvetica")  # Set font
         font.setPointSize(12)
         Dialog.setFont(font)
 
@@ -23,7 +24,8 @@ class Abstract_Dialog(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                           QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
 
         self.pushButton_sort = QtWidgets.QPushButton(parent=Dialog)
@@ -68,7 +70,7 @@ class Abstract_Dialog(object):
         self.pushButton_exportToPdf.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
 
         # Connect signal
-        self.pushButton_exportToPdf.clicked.connect(self.export_pdf)
+        # self.pushButton_exportToPdf.clicked.connect(self.handlePreview())
 
         self.horizontalLayout_2.addWidget(self.pushButton_exportToPdf)
 
@@ -82,6 +84,9 @@ class Abstract_Dialog(object):
 
         # Set focus policy to NoFocus
         self.pushButton_printPreview.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
+        # Connect signal
+        self.pushButton_printPreview.clicked.connect(self.handlePreview)
 
         self.horizontalLayout_2.addWidget(self.pushButton_printPreview)
 
@@ -97,14 +102,14 @@ class Abstract_Dialog(object):
         self.pushButton_print.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
 
         # Connect signal
-        self.pushButton_print.clicked.connect(self.print)
+        self.pushButton_print.clicked.connect(self.handlePrint)
 
         self.horizontalLayout_2.addWidget(self.pushButton_print)
 
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-
 
         self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=Dialog)
         self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
@@ -132,7 +137,8 @@ class Abstract_Dialog(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
 
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
 
         # icon with relative path
@@ -148,7 +154,8 @@ class Abstract_Dialog(object):
 
         self.horizontalLayout.addWidget(self.pushButton_cancel)
 
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem3)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -367,11 +374,11 @@ class Abstract_Dialog(object):
         self.tableWidget_takeOff.setStyleSheet("QTableView::item { border-right: 1px solid black; }")
         self.tableWidget_takeOff.setFont(QFont("Helvetica", 12))
 
-    def print(self):
-        pass
-
-    def export_pdf(self):
-        pass
+    # def print(self):
+    #     pass
+    #
+    # def export_pdf(self):
+    #     pass
 
     def handlePrint(self):
         dialog = QtPrintSupport.QPrintDialog()
@@ -387,10 +394,10 @@ class Abstract_Dialog(object):
         document = QtGui.QTextDocument()
         cursor = QtGui.QTextCursor(document)
         table = cursor.insertTable(
-            self.table.rowCount(), self.table.columnCount())
+            self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount())
         for row in range(table.rows()):
             for col in range(table.columns()):
-                cursor.insertText(self.table.item(row, col).text())
+                cursor.insertText(self.tableWidget_takeOff.item(row, col).text())
                 cursor.movePosition(QtGui.QTextCursor.MoveOperation.NextCell)
 
         printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)  # Set the output format, e.g., PDF
