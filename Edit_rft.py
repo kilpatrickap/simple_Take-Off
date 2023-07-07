@@ -70,6 +70,9 @@ class Edit_rft_Dialog(object):
 
         self.pushButton_rft_add.setObjectName("pushButton_rft_add")
 
+        # Set focus policy to NoFocus
+        self.pushButton_rft_add.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         # Connect signal
         self.pushButton_rft_add.clicked.connect(self.add_row)
 
@@ -88,6 +91,9 @@ class Edit_rft_Dialog(object):
         self.pushButton_rft_ddt.setFont(font)
         self.pushButton_rft_ddt.setObjectName("pushButton_rft_ddt")
 
+        # Set focus policy to NoFocus
+        self.pushButton_rft_ddt.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         # Connect signal
         self.pushButton_rft_ddt.clicked.connect(self.ddt_row)
         self.pushButton_rft_ddt.setStyleSheet("color: red")
@@ -102,6 +108,9 @@ class Edit_rft_Dialog(object):
         self.pushButton_rft_del.setIcon(icon3)
 
         self.pushButton_rft_del.setObjectName("pushButton_rft_del")
+
+        # Set focus policy to NoFocus
+        self.pushButton_rft_del.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
 
         # Connect signal
         self.pushButton_rft_del.clicked.connect(self.delete_row)
@@ -118,6 +127,9 @@ class Edit_rft_Dialog(object):
 
         self.pushButton_rft_sqr.setObjectName("pushButton_rft_sqr")
 
+        # Set focus policy to NoFocus
+        self.pushButton_rft_sqr.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         # Connect signal
         self.pushButton_rft_sqr.clicked.connect(self.square)
 
@@ -132,6 +144,9 @@ class Edit_rft_Dialog(object):
         self.pushButton_rft_destroy.setIcon(icon7)
 
         self.pushButton_rft_destroy.setObjectName("pushButton_rft_destroy")
+
+        # Set focus policy to NoFocus
+        self.pushButton_rft_destroy.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
 
         # Connect signal
         self.pushButton_rft_destroy.clicked.connect(self.destroy_code)
