@@ -391,9 +391,10 @@ class Abstract_Dialog(object):
         dialog.exec()
 
     def handlePaintRequest(self, printer):
+
+        #--- FORMATTING ---
         tableFormat = QTextTableFormat()
-        tableFormat.setBorder(0.5)
-        # tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.Solid)
+        tableFormat.setBorder(5)
         tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
         tableFormat.setCellSpacing(0)
         tableFormat.setTopMargin(0)
@@ -409,6 +410,6 @@ class Abstract_Dialog(object):
                 cursor.movePosition(QtGui.QTextCursor.MoveOperation.NextCell)
 
         printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)  # Set the output format, e.g., PDF
-        printer.setOutputFileName("output.pdf")  # Set the output file name
+        printer.setOutputFileName("TakeOff_sheet.pdf")  # Set the output file name
 
         document.print(printer)
