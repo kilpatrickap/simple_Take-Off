@@ -388,26 +388,34 @@ class Abstract_Dialog(object):
         dialog.exec()
 
     def handlePaintRequest(self, printer):
-
-        #--- FORMATTING ---
-        tableFormat = QTextTableFormat()
-        tableFormat.setBorder(5)
-        tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
-        tableFormat.setCellSpacing(0)
-        tableFormat.setTopMargin(0)
-        tableFormat.setCellPadding(4)
-
+        # Create a QTextDocument and QTextCursor
         document = QtGui.QTextDocument()
         cursor = QtGui.QTextCursor(document)
-        table = cursor.insertTable(
-            self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount())
 
+        # Set table format
+        tableFormat = QtGui.QTextTableFormat()
+
+        # Insert the table into the QTextDocument
+        table = cursor.insertTable(self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount(),
+                                   tableFormat)
+
+        # Iterate over the table cells and insert text
         for row in range(table.rows()):
             for col in range(table.columns()):
-                cursor.insertText(self.tableWidget_takeOff.item(row, col).text())
-                cursor.movePosition(QtGui.QTextCursor.MoveOperation.NextCell)
+                cell = table.cellAt(row, col)
+                cellCursor = cell.firstCursorPosition()
+                cellCursor.insertText(self.tableWidget_takeOff.item(row, col).text())
 
-        printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)  # Set the output format, e.g., PDF
-        printer.setOutputFileName("TakeOff_sheet.pdf")  # Set the output file name
+        # Set the output format and file name for the printer
+        printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)
 
+        # Create an "exports" directory if it doesn't exist
+        export_dir = os.path.join(os.getcwd(), 'exports')
+        os.makedirs(export_dir, exist_ok=True)
+
+        # Set the output file path to the export directory
+        export_path = os.path.join(export_dir, 'TakeOff_sheet.pdf')
+        printer.setOutputFileName(export_path)
+
+        # Save the document as PDF
         document.print(printer)
