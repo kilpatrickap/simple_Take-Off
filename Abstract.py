@@ -42,6 +42,10 @@ class Abstract_Dialog(object):
         icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_exportToExcel.setIcon(icon2)
         self.pushButton_exportToExcel.setObjectName("pushButton_exportToExcel")
+
+        # Set focus policy to NoFocus
+        self.pushButton_exportToExcel.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         self.horizontalLayout_2.addWidget(self.pushButton_exportToExcel)
 
         # icon with relative path
@@ -51,6 +55,10 @@ class Abstract_Dialog(object):
         icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_exportToPdf.setIcon(icon3)
         self.pushButton_exportToPdf.setObjectName("pushButton_exportToPdf")
+
+        # Set focus policy to NoFocus
+        self.pushButton_exportToPdf.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         self.horizontalLayout_2.addWidget(self.pushButton_exportToPdf)
 
         # icon with relative path
@@ -60,6 +68,10 @@ class Abstract_Dialog(object):
         icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_printPreview.setIcon(icon4)
         self.pushButton_printPreview.setObjectName("pushButton_printPreview")
+
+        # Set focus policy to NoFocus
+        self.pushButton_printPreview.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         self.horizontalLayout_2.addWidget(self.pushButton_printPreview)
 
         # icon with relative path
@@ -69,6 +81,10 @@ class Abstract_Dialog(object):
         icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_print.setIcon(icon5)
         self.pushButton_print.setObjectName("pushButton_print")
+
+        # Set focus policy to NoFocus
+        self.pushButton_print.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         self.horizontalLayout_2.addWidget(self.pushButton_print)
 
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -112,6 +128,10 @@ class Abstract_Dialog(object):
         icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_cancel.setIcon(icon6)
         self.pushButton_cancel.setObjectName("pushButton_cancel")
+
+        # Set focus policy to NoFocus
+        self.pushButton_cancel.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         self.horizontalLayout.addWidget(self.pushButton_cancel)
 
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -249,6 +269,9 @@ class Abstract_Dialog(object):
                 for col in range(self.tableWidget_takeOff.columnCount()):
                     cell_item = self.tableWidget_takeOff.item(row_num, col)
                     cell_item.setForeground(QtGui.QColor('green'))
+
+        # Freeze the table contents
+        self.tableWidget_takeOff.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
 
         # Close the database connection
         conn.close()
