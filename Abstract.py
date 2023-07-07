@@ -1,6 +1,7 @@
 import os
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QMessageBox
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
@@ -328,7 +329,12 @@ class Abstract_Dialog(object):
         os.makedirs(export_dir, exist_ok=True)
 
         # Save the workbook to an Excel file in the "exports" directory
-        export_path = os.path.join(export_dir, 'table_data.xlsx')
+        export_path = os.path.join(export_dir, 'takeOff_sheet.xlsx')
         workbook.save(export_path)
 
-        print(f"Table data exported to: {export_path}")
+        # Show a message box with the location of the saved file
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Icon.Information)
+        msg_box.setWindowTitle("Export Successful")
+        msg_box.setText(f"Take-Offs exported to: {export_path}")
+        msg_box.exec()
