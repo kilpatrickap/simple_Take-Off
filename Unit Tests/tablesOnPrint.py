@@ -1,58 +1,59 @@
-from PyQt6.QtCore import Qt, QPoint
-from PyQt6.QtGui import QFont, QPainter
-from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem
-from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
+from PyQt6 import QtWidgets, QtCore, QtPrintSupport, QtGui
 
-def create_pdf():
-    printer = QPrinter(QPrinter.PrinterMode.HighResolution)
-    printer.setOutputFormat(QPrinter.OutputFormat.PdfFormat)
-    printer.setOutputFileName("tables.pdf")
-    printer.setPageSize(QPrinter.PageSize.Letter)
 
-    painter = QPainter(printer)
-    painter.setFont(QFont("Arial", 10))
+class Window(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(self.tr('Document Printer'))
+        self.table = QtWidgets.QTableWidget(200, 5, self)
 
-    print_dialog = QPrintDialog(printer)
-    if print_dialog.exec() == QPrintDialog.DialogCode.Accepted:
-        print_preview(painter)
+        for row in range(self.table.rowCount()):
+            for col in range(self.table.columnCount()):
+                item = QtWidgets.QTableWidgetItem(f'({row}, {col})')
+                item.setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                self.table.setItem(row, col, item)
+        self.table.setHorizontalHeaderLabels(
+            'SKU #|NAME|DESCRIPTION|QUANTITY|PRICE'.split('|'))
+        self.buttonPrint = QtWidgets.QPushButton('Print', self)
+        self.buttonPrint.clicked.connect(self.handlePrint)
+        self.buttonPreview = QtWidgets.QPushButton('Preview', self)
+        self.buttonPreview.clicked.connect(self.handlePreview)
+        layout = QtWidgets.QGridLayout(self)
+        layout.addWidget(self.table, 0, 0, 1, 2)
+        layout.addWidget(self.buttonPrint, 1, 0)
+        layout.addWidget(self.buttonPreview, 1, 1)
 
-def print_preview(painter):
-    # Create and populate the first table widget
-    table1 = QTableWidget()
-    table1.setColumnCount(3)
-    table1.setRowCount(3)
-    for row in range(3):
-        for column in range(3):
-            item = QTableWidgetItem(f"Table 1: Row {row}, Column {column}")
-            table1.setItem(row, column, item)
+    def handlePrint(self):
+        dialog = QtPrintSupport.QPrintDialog()
+        if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
+            self.handlePaintRequest(dialog.printer())
 
-    # Create and populate the second table widget
-    table2 = QTableWidget()
-    table2.setColumnCount(2)
-    table2.setRowCount(4)
-    for row in range(4):
-        for column in range(2):
-            item = QTableWidgetItem(f"Table 2: Row {row}, Column {column}")
-            table2.setItem(row, column, item)
+    def handlePreview(self):
+        dialog = QtPrintSupport.QPrintPreviewDialog()
+        dialog.paintRequested.connect(self.handlePaintRequest)
+        dialog.exec()
 
-    # Set the sizes and positions of the table widgets
-    table1.setGeometry(50, 50, 300, 200)
-    table2.setGeometry(50, 300, 200, 150)
+    def handlePaintRequest(self, printer):
+        document = QtGui.QTextDocument()
+        cursor = QtGui.QTextCursor(document)
+        table = cursor.insertTable(
+            self.table.rowCount(), self.table.columnCount())
+        for row in range(table.rows()):
+            for col in range(table.columns()):
+                cursor.insertText(self.table.item(row, col).text())
+                cursor.movePosition(QtGui.QTextCursor.MoveOperation.NextCell)
 
-    # Render the table widgets on the printer
-    table1.render(painter, QPoint(50, 50), table1.rect(), Qt.ItemSelectionMode.DontSelect)
-    painter.drawText(50, 260, "Table 1")
+        printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)  # Set the output format, e.g., PDF
+        printer.setOutputFileName("output.pdf")  # Set the output file name
 
-    painter.drawText(50, 300, "Table 2")
-    table2.render(painter, QPoint(50, 320), table2.rect(), Qt.ItemSelectionMode.DontSelect)
+        document.print(printer)
+
 
 if __name__ == '__main__':
-    app = QApplication([])
-    window = QMainWindow()
+    import sys
 
-    # Show the main window and execute the application event loop
+    app = QtWidgets.QApplication(sys.argv)
+    window = Window()
+    window.resize(640, 480)
     window.show()
-    app.exec()
-
-    # Generate the PDF file with the table widgets
-    create_pdf()
+    sys.exit(app.exec())

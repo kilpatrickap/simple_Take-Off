@@ -1,10 +1,11 @@
 import os
 import sqlite3
 import openpyxl
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets, QtPrintSupport
+from PyQt6.QtCore import QFileInfo
 from PyQt6.QtGui import QPainter, QPageLayout, QPageSize, QFont
 from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
-from PyQt6.QtWidgets import QMessageBox, QTableWidgetSelectionRange
+from PyQt6.QtWidgets import QMessageBox, QTableWidgetSelectionRange, QFileDialog
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
@@ -65,6 +66,9 @@ class Abstract_Dialog(object):
 
         # Set focus policy to NoFocus
         self.pushButton_exportToPdf.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
+        # Connect signal
+        self.pushButton_exportToPdf.clicked.connect(self.export_pdf)
 
         self.horizontalLayout_2.addWidget(self.pushButton_exportToPdf)
 
@@ -363,12 +367,8 @@ class Abstract_Dialog(object):
         self.tableWidget_takeOff.setStyleSheet("QTableView::item { border-right: 1px solid black; }")
         self.tableWidget_takeOff.setFont(QFont("Helvetica", 12))
 
-
     def print(self):
-        printer = QPrinter(QPrinter.PrinterMode.HighResolution)
-        dialog = QPrintDialog(printer)
+        pass
 
-        if dialog.exec() == QPrintDialog.DialogCode.Accepted:
-            painter = QPainter(printer)
-            self.tableWidget_takeOff.render(painter)
-            painter.end()
+    def export_pdf(self):
+        pass
