@@ -393,17 +393,18 @@ class Abstract_Dialog(object):
     def handlePaintRequest(self, printer):
 
         #--- FORMATTING ---
-        tableFormat = QTextTableFormat()
-        tableFormat.setBorder(5)
-        tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
-        tableFormat.setCellSpacing(0)
-        tableFormat.setTopMargin(0)
-        tableFormat.setCellPadding(4)
+        # tableFormat = QTextTableFormat()
+        # tableFormat.setBorder(5)
+        # tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
+        # tableFormat.setCellSpacing(0)
+        # tableFormat.setTopMargin(0)
+        # tableFormat.setCellPadding(4)
 
         document = QtGui.QTextDocument()
         cursor = QtGui.QTextCursor(document)
         table = cursor.insertTable(
             self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount())
+
         for row in range(table.rows()):
             for col in range(table.columns()):
                 cursor.insertText(self.tableWidget_takeOff.item(row, col).text())
