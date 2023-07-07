@@ -1,10 +1,10 @@
 import os
 import sqlite3
-
 import openpyxl
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtGui import QGuiApplication
-from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtGui import QPainter, QPageLayout, QPageSize, QFont
+from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
+from PyQt6.QtWidgets import QMessageBox, QTableWidgetSelectionRange
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
@@ -91,6 +91,9 @@ class Abstract_Dialog(object):
 
         # Set focus policy to NoFocus
         self.pushButton_print.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
+        # Connect signal
+        self.pushButton_print.clicked.connect(self.print)
 
         self.horizontalLayout_2.addWidget(self.pushButton_print)
 
@@ -358,3 +361,57 @@ class Abstract_Dialog(object):
 
     def apply_table_stylesheet(self):
         self.tableWidget_takeOff.setStyleSheet("QTableView::item { border-right: 1px solid black; }")
+        self.tableWidget_takeOff.setFont(QFont("Helvetica", 12))
+
+
+    # def print(self):
+    #     # Create a QPrinter object
+    #     printer = QPrinter()
+    #
+    #     # Set printer properties
+    #     printer.setPageOrientation(QPageLayout.Orientation.Portrait)
+    #     printer.setPageSize(QPrinter.PageSize.A4)
+    #
+    #     # Create a print dialog and get the print settings
+    #     print_dialog = QPrintDialog(printer, self)
+    #     if not print_dialog.exec():
+    #         return
+    #
+    #     # Create a QPainter object to perform the actual printing
+    #     painter = QPainter(printer)
+    #
+    #     # Set the font and other properties for printing
+    #     font = painter.font()
+    #     font.setFamily("Helvetica")
+    #     font.setPointSize(12)
+    #     painter.setFont(font)
+    #
+    #     # Set the table widget's current page range for printing
+    #     self.tableWidget_takeOff.setRangeSelected(
+    #         QTableWidgetSelectionRange(0, 0, self.tableWidget_takeOff.rowCount() - 1,
+    #                                    self.tableWidget_takeOff.columnCount() - 1), True)
+    #
+    #     # Calculate the number of pages to print
+    #     num_pages = int(self.tableWidget_takeOff.height() / printer.pageRect().height()) + 1
+    #
+    #     # Iterate over each page and print the table widget
+    #     for page in range(num_pages):
+    #         # Set the painter to the current page
+    #         painter.setWindow(printer.pageRect())
+    #
+    #         # Calculate the vertical offset based on the page number
+    #         vertical_offset = -page * printer.pageRect().height()
+    #
+    #         # Translate the painter to the appropriate position
+    #         painter.translate(0, vertical_offset)
+    #
+    #         # Print the table widget
+    #         self.tableWidget_takeOff.render(painter)
+    #
+    #         # Check if there are more pages to print
+    #         if page < num_pages - 1:
+    #             # Start a new page
+    #             printer.newPage()
+    #
+    #     # Clean up and end the printing
+    #     painter.end()
