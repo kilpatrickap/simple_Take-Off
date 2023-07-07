@@ -2,7 +2,7 @@ import os
 import sqlite3
 import openpyxl
 from PyQt6 import QtCore, QtGui, QtWidgets, QtPrintSupport
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QTextTableFormat
 from PyQt6.QtWidgets import QMessageBox
 from openpyxl import Workbook
 from openpyxl.styles import Font
@@ -391,6 +391,14 @@ class Abstract_Dialog(object):
         dialog.exec()
 
     def handlePaintRequest(self, printer):
+        tableFormat = QTextTableFormat()
+        tableFormat.setBorder(0.5)
+        # tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.Solid)
+        tableFormat.setBorderStyle(QTextTableFormat.BorderStyle.BorderStyle_Solid)
+        tableFormat.setCellSpacing(0)
+        tableFormat.setTopMargin(0)
+        tableFormat.setCellPadding(4)
+
         document = QtGui.QTextDocument()
         cursor = QtGui.QTextCursor(document)
         table = cursor.insertTable(
