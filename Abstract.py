@@ -28,6 +28,9 @@ class Abstract_Dialog(object):
         self.pushButton_sort.setIcon(icon1)
         self.pushButton_sort.setObjectName("pushButton_sort")
 
+        # Set focus policy to NoFocus
+        self.pushButton_sort.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+
         # Connect signal
         self.pushButton_sort.clicked.connect(self.sort)
         self.horizontalLayout_2.addWidget(self.pushButton_sort)
