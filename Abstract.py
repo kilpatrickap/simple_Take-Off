@@ -372,3 +372,28 @@ class Abstract_Dialog(object):
 
     def export_pdf(self):
         pass
+    #
+    # def handlePrint(self):
+    #     dialog = QtPrintSupport.QPrintDialog()
+    #     if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
+    #         self.handlePaintRequest(dialog.printer())
+    #
+    # def handlePreview(self):
+    #     dialog = QtPrintSupport.QPrintPreviewDialog()
+    #     dialog.paintRequested.connect(self.handlePaintRequest)
+    #     dialog.exec()
+    #
+    # def handlePaintRequest(self, printer):
+    #     document = QtGui.QTextDocument()
+    #     cursor = QtGui.QTextCursor(document)
+    #     if self.tableWidget_takeOff:
+    #         tableWidget_takeOff = cursor.insertTable(
+    #             self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount())
+    #         for row in range(tableWidget_takeOff.rows()):
+    #             for col in range(tableWidget_takeOff.columns()):
+    #                 cursor.insertText(self.tableWidget_takeOff.item(row, col).text())
+    #                 cursor.movePosition(QtGui.QTextCursor.MoveOperation.NextCell)
+    #
+    #     printer.setOutputFormat(QtPrintSupport.QPrinter.OutputFormat.PdfFormat)
+    #     printer.setOutputFileName("output.pdf")
+    #     document.print(printer)
