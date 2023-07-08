@@ -1,4 +1,3 @@
-from PyQt6 import QtGui
 from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
 from PyQt6.QtWidgets import QApplication, QTableWidget, QTableWidgetItem
 
@@ -20,8 +19,3 @@ if __name__ == '__main__':
         table.render(printer)
 
     app.exec()
-
-    # def handlePrint(self):
-    #     dialog = QtPrintSupport.QPrintDialog()
-    #     if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
-    #         self.handlePaintRequest(dialog.printer())
