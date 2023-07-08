@@ -1,5 +1,5 @@
 from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
-from PyQt6.QtGui import QPageSize
+from PyQt6.QtGui import QPageSize, QPainter, QTransform
 from PyQt6.QtWidgets import QApplication, QTableWidget, QTableWidgetItem
 
 if __name__ == '__main__':
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # Set printer properties for A4 landscape
     printer = QPrinter()
     printer.setPageSize(QPageSize(QPageSize.PageSizeId.A4))
-    printer.setOrientation(QPrinter.Orientation.Landscape)
+    # printer.setPageOrientation(QPrinter.setPageOrientation(Landscape))
 
     dialog = QPrintDialog(printer)
     if dialog.exec() == QPrintDialog.DialogCode.Accepted:
