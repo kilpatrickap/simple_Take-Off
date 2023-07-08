@@ -6,7 +6,7 @@ if __name__ == '__main__':
     app = QApplication([])
 
     table = QTableWidget(10, 10)
-    table.setMinimumSize(500, 500)
+    table.setMinimumSize(800, 500)
 
     # Populate the table with data
     for row in range(10):
@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     # Set printer properties for A4 landscape
     printer = QPrinter()
-    printer.setPageSize(QPageSize(QPageSize.PageSizeId.A4))
+    printer.setPageSize(QPageSize(QPageSize.PageSizeId.A3))
     # printer.setPageOrientation(QPrinter.setPageOrientation(Landscape))
 
     dialog = QPrintDialog(printer)
