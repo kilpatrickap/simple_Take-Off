@@ -1,5 +1,5 @@
 from PyQt6.QtPrintSupport import QPrinter, QPrintDialog
-from PyQt6.QtGui import QPageSize, QPainter, QTransform
+from PyQt6.QtGui import QPageSize
 from PyQt6.QtWidgets import QApplication, QTableWidget, QTableWidgetItem
 
 if __name__ == '__main__':
