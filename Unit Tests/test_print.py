@@ -24,7 +24,7 @@ if __name__ == '__main__':
     printer.setOrientation(QPrinter.Orientation.Landscape)
 
     dialog = QPrintDialog(printer)
-    if dialog.exec() == QPrintDialog.Accepted:
+    if dialog.exec() == QPrintDialog.DialogCode.Accepted:
         table.render(printer)
 
     app.exec()
