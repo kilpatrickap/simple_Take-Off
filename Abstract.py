@@ -401,10 +401,6 @@ class Abstract_Dialog(object):
         table_format.setCellPadding(4)
         table_format.setCellSpacing(0)
 
-        # Apply font color formatting based on the foreground color
-
-        # Add vertical borders to each column
-
         # Create the table
         table = cursor.insertTable(
             self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount(), table_format)
