@@ -60,22 +60,6 @@ class Abstract_Dialog(object):
         self.horizontalLayout_2.addWidget(self.pushButton_exportToExcel)
 
         # icon with relative path
-        self.pushButton_exportToPdf = QtWidgets.QPushButton(parent=Dialog)
-        icon3 = QtGui.QIcon()
-        image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "pdf.png")
-        icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_exportToPdf.setIcon(icon3)
-        self.pushButton_exportToPdf.setObjectName("pushButton_exportToPdf")
-
-        # Set focus policy to NoFocus
-        self.pushButton_exportToPdf.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
-
-        # Connect signal
-        # self.pushButton_exportToPdf.clicked.connect(self.handlePreview())
-
-        self.horizontalLayout_2.addWidget(self.pushButton_exportToPdf)
-
-        # icon with relative path
         self.pushButton_printPreview = QtWidgets.QPushButton(parent=Dialog)
         icon4 = QtGui.QIcon()
         image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "printprev.png")
@@ -168,7 +152,6 @@ class Abstract_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Abstract"))
         self.pushButton_sort.setText(_translate("Dialog", "Sort"))
         self.pushButton_exportToExcel.setText(_translate("Dialog", "Export to Excel"))
-        self.pushButton_exportToPdf.setText(_translate("Dialog", "Export to Pdf"))
         self.pushButton_printPreview.setText(_translate("Dialog", "Print Preview"))
         self.pushButton_print.setText(_translate("Dialog", "Print"))
         item = self.tableWidget_takeOff.horizontalHeaderItem(0)
@@ -374,9 +357,6 @@ class Abstract_Dialog(object):
     def apply_table_stylesheet(self):
         self.tableWidget_takeOff.setStyleSheet("QTableView::item { border-right: 1px solid black; }")
         self.tableWidget_takeOff.setFont(QFont("Helvetica", 12))
-
-    # def export_pdf(self):
-    #     pass
 
     def handlePrint(self):
         dialog = QtPrintSupport.QPrintDialog()
