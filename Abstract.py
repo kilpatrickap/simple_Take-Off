@@ -380,6 +380,8 @@ class Abstract_Dialog(object):
         table_format.setAlignment(Qt.AlignmentFlag.AlignLeft)
         table_format.setCellPadding(4)
         table_format.setCellSpacing(0)
+        table_format.setBorder(1)  # Set border to single line
+        table_format.setBorderBrush(QtGui.QColor("black"))  # Set border color to black
 
         # Create the table
         table = cursor.insertTable(
