@@ -2,6 +2,7 @@ import os
 import sqlite3
 import openpyxl
 from PyQt6 import QtCore, QtGui, QtWidgets, QtPrintSupport
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFont, QTextTableFormat
 from PyQt6.QtWidgets import QMessageBox
 from openpyxl import Workbook
@@ -388,10 +389,23 @@ class Abstract_Dialog(object):
         dialog.exec()
 
     def handlePaintRequest(self, printer):
+        # Create a QTextDocument
         document = QtGui.QTextDocument()
+
+        # Create a QTextCursor to manipulate the document
         cursor = QtGui.QTextCursor(document)
+
+        # Create a QTextTableFormat to format the table
+        table_format = QTextTableFormat()
+        table_format.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        table_format.setCellPadding(4)
+        table_format.setCellSpacing(0)
+
+        # Create the table
         table = cursor.insertTable(
-            self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount())
+            self.tableWidget_takeOff.rowCount(), self.tableWidget_takeOff.columnCount(), table_format)
+
+        # Populate the table with data
         for row in range(table.rows()):
             for col in range(table.columns()):
                 cursor.insertText(self.tableWidget_takeOff.item(row, col).text())
