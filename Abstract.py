@@ -137,6 +137,9 @@ class Abstract_Dialog(object):
         # Set focus policy to NoFocus
         self.pushButton_cancel.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
 
+        # Connect signal
+        self.pushButton_cancel.clicked.connect(self.cancel)
+
         self.horizontalLayout.addWidget(self.pushButton_cancel)
 
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
@@ -338,7 +341,7 @@ class Abstract_Dialog(object):
         os.makedirs(export_dir, exist_ok=True)
 
         # Save the workbook to an Excel file in the "exports" directory
-        export_path = os.path.join(export_dir, 'takeOff_sheet.xlsx')
+        export_path = os.path.join(export_dir, 'TakeOff_sheet.xlsx')
         workbook.save(export_path)
 
         # Show a message box with the location of the saved file
@@ -406,3 +409,8 @@ class Abstract_Dialog(object):
 
         # Save the document as PDF
         document.print(printer)
+
+    def cancel(self):
+        dialog = self.tableWidget_takeOff.parent()
+        if dialog is not None:
+            dialog.reject()
