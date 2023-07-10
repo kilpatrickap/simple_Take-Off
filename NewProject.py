@@ -124,7 +124,6 @@ class NewProject_Dialog(object):
         Retrieves project details from UI elements and returns them as a dictionary.
 
         :return: A dictionary containing the project details.
-
         """
         project_name = self.lineEdit_prjtName.text()
         project_folder = self.lineEdit_prjtFolder.text()
@@ -182,8 +181,6 @@ class NewProject_Dialog(object):
             project_details['Project Folder'] = new_folder_path
 
         json_data = json.dumps(project_details, indent=4)
-
-        # file_path = os.path.join(project_folder, f"{project_name}.json")
 
         if create_new_folder:
             # Save the project details JSON file into the new folder
