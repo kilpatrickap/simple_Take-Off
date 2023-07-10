@@ -83,11 +83,25 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal of Abstract
         self.takeOff_sheet_widget.pushButton_abstract.clicked.connect(self.abstract)
 
-    def new_project(self):  # When new is clicked, run a new project
+    def new_project(self):
+        # Create a new project dialog
         dialog = QDialog()
         ui = NewProject_Dialog()
+
+        # Setup the new project dialog
         ui.setupUi(dialog)
+
+        # Execute the dialog and wait for user interaction
         dialog.exec()
+
+        # Get the project details from the dialog
+        project_details = ui.get_project_details()
+
+        # Extract the new folder path from the project details
+        new_folder_path = project_details.get("Project Folder")
+
+        # Update the displayed folder after the dialog is closed
+        self.projectWidgetTree.update_displayed_folder(new_folder_path)
 
     def switch_msmt(self):
 

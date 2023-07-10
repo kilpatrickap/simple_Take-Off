@@ -92,14 +92,18 @@ class Project_Widget(QtWidgets.QWidget):
 
                 self._add_folder_contents(entry_path, item)
 
-    def update_displayed_folder(self, folder_path):
+    def update_displayed_folder(self, folder_path, new_folder_path=None):
         """
         Updates the displayed folder in the tree widget.
 
         This method updates the displayed folder in the tree widget to the specified folder path.
 
         :param folder_path: The path of the folder to be displayed.
+        :param new_folder_path: The new folder path to be displayed (optional).
         :return: None
         """
+
+        if new_folder_path is not None:
+            folder_path = new_folder_path
 
         self.display_folder_contents(folder_path)
