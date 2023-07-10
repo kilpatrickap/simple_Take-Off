@@ -37,7 +37,7 @@ class Project_Widget(QtWidgets.QWidget):
         if self.has_subfolders(folder_path):
             # Add button icon with relative path
             icon1 = QtGui.QIcon()
-            image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal.png")
+            image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal-open.png")
             icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
             root_item.setIcon(0, icon1)
 
