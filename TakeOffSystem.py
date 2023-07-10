@@ -1,7 +1,8 @@
 import os
 import sys
 from PyQt6 import QtGui, QtWidgets, QtCore
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QUrl
+from PyQt6.QtGui import QDesktopServices
 from PyQt6.QtWidgets import QMainWindow, QDialog
 from MainGUI import Ui_MainWindow
 from NewProject import NewProject_Dialog
