@@ -92,38 +92,41 @@ class Project_Widget(QtWidgets.QWidget):
 
                 self._add_folder_contents(entry_path, item)
 
-    def update_displayed_folder(self, folder_path):
+    def update_displayed_folder(self, folder_path, file_name=None):
         """
         Updates the displayed folder in the tree widget.
 
-        This method updates the displayed folder in the tree widget to the specified folder path.
+        This method updates the displayed folder in the tree widget to the specified folder path, optionally appending
+        the file name to the folder path.
 
         :param folder_path: The path of the folder to be displayed.
+        :param file_name: Optional file name to append to the folder path.
         :return: None
         """
-        folder_name = os.path.basename(folder_path)  # Get the folder name from the folder path
+        if file_name:
+            folder_path = os.path.join(folder_path, file_name)  # Append the file name to the folder path
 
-        self.display_folder_contents(folder_path, folder_name)  # Pass the folder name to display_folder_contents method
+        self.display_folder_contents(folder_path)  # Pass the updated folder path to display_folder_contents method
 
-    def display_folder_contents(self, folder_path, folder_name):
+    def display_folder_contents(self, folder_path):
         """
         Populates the tree widget with the contents of the specified folder.
 
         This method clears the existing contents of the tree widget and adds the contents of the specified folder as
-        items to the tree widget. Each item represents a file or sub folder within the specified folder.
+        items to the tree widget. Each item represents a file or subfolder within the specified folder.
 
         :param folder_path: The path of the folder whose contents should be displayed.
-        :param folder_name: The name of the folder to be displayed in the project tree.
         :return: None
         """
         self.treeWidget_project.clear()
 
         root_item = QtWidgets.QTreeWidgetItem(self.treeWidget_project)
-        root_item.setText(0, folder_name)  # Set the folder name as the text for the root item
+        root_item.setText(0, folder_path)  # Set the folder path as the text for the root item
 
-        icon1 = QtGui.QIcon()
-        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal-open.png")
-        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        root_item.setIcon(0, icon1)
+        if self.has_subfolders(folder_path):
+            icon1 = QtGui.QIcon()
+            image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal-open.png")
+            icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+            root_item.setIcon(0, icon1)
 
         self._add_folder_contents(folder_path, root_item)
