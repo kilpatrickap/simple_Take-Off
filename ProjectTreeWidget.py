@@ -1,4 +1,4 @@
-from PyQt6 import QtWidgets, QtCore
+from PyQt6 import QtWidgets, QtCore, QtGui
 import sys
 import os
 
@@ -34,7 +34,27 @@ class Project_Widget(QtWidgets.QWidget):
         root_item = QtWidgets.QTreeWidgetItem(self.treeWidget_project)
         root_item.setText(0, folder_path)
 
+        if self.has_subfolders(folder_path):
+            # Add button icon with relative path
+            icon1 = QtGui.QIcon()
+            image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal.png")
+            icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+            root_item.setIcon(0, icon1)
+
         self._add_folder_contents(folder_path, root_item)
+
+    def has_subfolders(self, folder_path):
+        """
+        Checks if a folder contains any sub-folders.
+
+        :param folder_path: The path of the folder to check.
+        :return: True if the folder contains sub-folders, False otherwise.
+        """
+        for entry in os.listdir(folder_path):
+            entry_path = os.path.join(folder_path, entry)
+            if os.path.isdir(entry_path):
+                return True
+        return False
 
     def _add_folder_contents(self, folder_path, parent_item):
         """
@@ -56,4 +76,10 @@ class Project_Widget(QtWidgets.QWidget):
             item.setText(0, entry)
 
             if os.path.isdir(entry_path):
+                # Add button icon with relative path
+                icon1 = QtGui.QIcon()
+                image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal.png")
+                icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+                item.setIcon(0, icon1)
+
                 self._add_folder_contents(entry_path, item)
