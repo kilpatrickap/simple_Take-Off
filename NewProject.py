@@ -7,7 +7,7 @@ import os
 
 class NewProject_Dialog(object):
     def setupUi(self, Dialog):
-        current_dir = os.getcwd()   # Get the current working directory
+        current_dir = os.getcwd()  # Get the current working directory
 
         Dialog.setObjectName("Dialog")
         Dialog.setWindowModality(QtCore.Qt.WindowModality.WindowModal)
@@ -29,7 +29,7 @@ class NewProject_Dialog(object):
         self.lineEdit_prjtFolder.setGeometry(QtCore.QRect(140, 40, 341, 22))
         self.lineEdit_prjtFolder.setObjectName("lineEdit_prjtFolder")
 
-        self.lineEdit_prjtFolder.setText(current_dir)   # set the text of the cwd
+        self.lineEdit_prjtFolder.setText(current_dir)  # set the text of the cwd
 
         self.toolButton_openFolder = QtWidgets.QToolButton(parent=Dialog)
         self.toolButton_openFolder.setGeometry(QtCore.QRect(490, 40, 31, 21))
@@ -99,7 +99,6 @@ class NewProject_Dialog(object):
         # Connect signal
         self.pushButton_OK.clicked.connect(lambda: self.save_project_details(Dialog))
 
-
         self.pushButton_cancel = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_cancel.setGeometry(QtCore.QRect(410, 320, 80, 26))
         self.pushButton_cancel.setObjectName("pushButton_cancel")
@@ -139,12 +138,11 @@ class NewProject_Dialog(object):
 
     def save_project_details(self, Dialog):
         """
-        Saves the project details to a JSON file and displays the new folder in the Project_Widget.
+        Saves the project details to a JSON file and updates the Project_Widget to display the new folder.
 
         It retrieves project details using the get_project_details method, extracts relevant information, and creates
         a new folder if specified. The project details are converted to JSON and saved in the chosen file path or in
-        a new folder. The method also updates UI elements, closes the dialog window, and displays the new folder
-        in the Project_Widget.
+        a new folder. The method also updates UI elements, closes the dialog window, and updates the Project_Widget.
 
         :param Dialog: The dialog window object that needs to be closed after saving.
 
@@ -195,7 +193,7 @@ class NewProject_Dialog(object):
 
         # Update the Project_Widget to display the new folder
         project_widget = Project_Widget()
-        project_widget.display_folder_contents(project_folder)
+        project_widget.update_displayed_folder(new_folder_path)
 
     def open_folder_dialog(self):
         """
@@ -232,4 +230,3 @@ class NewProject_Dialog(object):
         self.label_6.setText(_translate("Dialog", "Measured by :"))
         self.pushButton_OK.setText(_translate("Dialog", "OK"))
         self.pushButton_cancel.setText(_translate("Dialog", "Cancel"))
-

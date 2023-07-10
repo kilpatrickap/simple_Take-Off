@@ -7,16 +7,22 @@ class Project_Widget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        self.setFont(font)
+
         self.treeWidget_project = QtWidgets.QTreeWidget(self)
         self.treeWidget_project.setObjectName("treeWidget_project")
         self.treeWidget_project.setHeaderLabels(["Project Folder"])
+        self.treeWidget_project.setAlternatingRowColors(True)
+
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self)
+        self.horizontalLayout.addWidget(self.treeWidget_project)
 
         # Display the current working directory when the app loads
         current_dir = os.getcwd()
         self.display_folder_contents(current_dir)
-
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self)
-        self.horizontalLayout.addWidget(self.treeWidget_project)
 
     def display_folder_contents(self, folder_path):
         """
@@ -83,3 +89,15 @@ class Project_Widget(QtWidgets.QWidget):
                 item.setIcon(0, icon1)
 
                 self._add_folder_contents(entry_path, item)
+
+    def update_displayed_folder(self, folder_path):
+        """
+        Updates the displayed folder in the tree widget.
+
+        This method updates the displayed folder in the tree widget to the specified folder path.
+
+        :param folder_path: The path of the folder to be displayed.
+        :return: None
+        """
+
+        self.display_folder_contents(folder_path)
