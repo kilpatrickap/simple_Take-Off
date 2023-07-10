@@ -156,7 +156,7 @@ class NewProject_Dialog(object):
 
         :param Dialog: The dialog window object that needs to be closed after saving.
 
-        :return:
+        :return: None
         """
 
         project_details = self.get_project_details()
@@ -205,6 +205,11 @@ class NewProject_Dialog(object):
         Dialog.close()    # Close the application
 
     def open_folder_dialog(self):
+        """
+        Opens a folder dialog to select a directory.
+
+        :return: None
+        """
         options = QFileDialog.Option.ShowDirsOnly
 
         folder_path = QtWidgets.QFileDialog.getExistingDirectory(
