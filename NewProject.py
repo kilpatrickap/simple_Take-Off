@@ -120,6 +120,12 @@ class NewProject_Dialog(object):
 
     # When OK button is clicked, save the input data into a dictionary
     def get_project_details(self):
+        """
+        Retrieves project details from UI elements and returns them as a dictionary.
+
+        :return: A dictionary containing the project details.
+
+        """
         project_name = self.lineEdit_prjtName.text()
         project_folder = self.lineEdit_prjtFolder.text()
         create_new_folder = self.checkBox.isChecked()
@@ -141,6 +147,18 @@ class NewProject_Dialog(object):
         return project_details
 
     def save_project_details(self, Dialog):
+        """
+        Saves the project details to a JSON file.
+
+        It retrieves project details using the get_project_details method, extracts relevant information, and creates
+        a new folder if specified. The project details are converted to JSON and saved in the chosen file path or in
+        a new folder. The method also updates UI elements and closes a dialog window.
+
+        :param Dialog: The dialog window object that needs to be closed after saving.
+
+        :return:
+        """
+
         project_details = self.get_project_details()
         print(project_details)
 
