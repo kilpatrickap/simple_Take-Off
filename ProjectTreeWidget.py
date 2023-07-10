@@ -11,8 +11,9 @@ class Project_Widget(QtWidgets.QWidget):
         self.treeWidget_project.setObjectName("treeWidget_project")
         self.treeWidget_project.setHeaderLabels(["Project Folder"])
 
-        # Display folder when app loads
-        self.display_folder_contents('/Users/kilpatrick/Documents/Trad Take-Off app/Simpe Take-Off')
+        # Display the current working directory when the app loads
+        current_dir = os.getcwd()
+        self.display_folder_contents(current_dir)
 
         self.horizontalLayout = QtWidgets.QHBoxLayout(self)
         self.horizontalLayout.addWidget(self.treeWidget_project)
