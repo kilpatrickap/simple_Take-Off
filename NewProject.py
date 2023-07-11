@@ -197,18 +197,12 @@ class NewProject_Dialog(object):
 
     def open_folder_dialog(self):
         """
-        Opens a folder dialog to select a directory.
+        Opens a folder dialog to select the Jobs directory.
 
         :return: None
         """
-        options = QFileDialog.Option.ShowDirsOnly
-
-        folder_path = QtWidgets.QFileDialog.getExistingDirectory(
-            parent=self.toolButton_openFolder,
-            caption="Select Folder",
-            directory=os.getcwd(),
-            options=options
-        )
+        current_dir = os.getcwd()  # Get the current working directory
+        folder_path = os.path.join(current_dir, "Data/Storages/Local/Jobs/test") # append path Jobs folder
         self.lineEdit_prjtFolder.setText(folder_path)
 
     def cancel_project_setup(self, Dialog):
