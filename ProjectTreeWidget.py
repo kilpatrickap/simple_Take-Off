@@ -22,9 +22,8 @@ class Project_Widget(QtWidgets.QWidget):
 
         # Display the current working directory when the app loads
         current_dir = os.getcwd()
-        # self.display_folder_contents(current_dir)
-
-        self.update_displayed_folder(folder_path=current_dir)
+        folder_path = os.path.join(current_dir, "Data/Storages/Local/Jobs")
+        self.update_displayed_folder(folder_path)
 
     def display_folder_contents(self, folder_path):
         """
