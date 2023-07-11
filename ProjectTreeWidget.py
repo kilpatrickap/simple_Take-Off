@@ -83,13 +83,30 @@ class Project_Widget(QtWidgets.QWidget):
             item.setText(0, entry)
 
             if os.path.isdir(entry_path):
-                # Add button icon with relative path
                 icon1 = QtGui.QIcon()
                 image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal.png")
                 icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
                 item.setIcon(0, icon1)
 
+                # Connect the tree widget's itemExpanded signal to the _folder_item_expanded method
+                self.treeWidget_project.itemExpanded.connect(self._folder_item_expanded)
+
                 self._add_folder_contents(entry_path, item)
+
+    def _folder_item_expanded(self, item):
+        """
+        Slot method to handle the expanded signal of folder items.
+
+        This method is called when a folder item is expanded. It changes the item's icon to indicate it is expanded.
+
+        :param item: The expanded folder item.
+        :return: None
+        """
+        # Change the icon to the open folder icon
+        icon = QtGui.QIcon()
+        image_path = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal-open.png")
+        icon.addPixmap(QtGui.QPixmap(image_path), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        item.setIcon(0, icon)
 
     def update_displayed_folder(self, folder_path, file_name=None):
         """
