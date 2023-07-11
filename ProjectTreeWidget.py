@@ -88,14 +88,14 @@ class Project_Widget(QtWidgets.QWidget):
                 icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
                 item.setIcon(0, icon1)
 
-                # Connect the tree widget's itemExpanded signal to the _folder_item_expanded method
                 self.treeWidget_project.itemExpanded.connect(self._folder_item_expanded)
+                self.treeWidget_project.itemCollapsed.connect(self._folder_item_collapsed)
 
                 self._add_folder_contents(entry_path, item)
 
     def _folder_item_expanded(self, item):
         """
-        Slot method to handle the expanded signal of folder items.
+        Slot method to handle the itemExpanded signal of folder items.
 
         This method is called when a folder item is expanded. It changes the item's icon to indicate it is expanded.
 
@@ -105,6 +105,21 @@ class Project_Widget(QtWidgets.QWidget):
         # Change the icon to the open folder icon
         icon = QtGui.QIcon()
         image_path = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal-open.png")
+        icon.addPixmap(QtGui.QPixmap(image_path), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        item.setIcon(0, icon)
+
+    def _folder_item_collapsed(self, item):
+        """
+        Slot method to handle the itemCollapsed signal of folder items.
+
+        This method is called when a folder item is collapsed. It changes the item's icon back to indicate it is closed.
+
+        :param item: The collapsed folder item.
+        :return: None
+        """
+        # Change the icon back to the closed folder icon
+        icon = QtGui.QIcon()
+        image_path = os.path.join(os.path.dirname(__file__), "images", "blue-folder-horizontal.png")
         icon.addPixmap(QtGui.QPixmap(image_path), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         item.setIcon(0, icon)
 
