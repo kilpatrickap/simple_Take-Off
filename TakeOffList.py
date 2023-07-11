@@ -248,14 +248,3 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.lineEdit.setPlaceholderText(_translate("TakeOffList_Widget", "Type in work item and hit enter."))
         self.pushButton_insertSubItem.setText(_translate("TakeOffList_Widget", "Insert Sub-Item"))
         self.pushButton_delete.setText(_translate("TakeOffList_Widget", "    Delete Item    "))
-
-
-# if __name__ == "__main__":
-#     import sys
-#
-#     app = QtWidgets.QApplication(sys.argv)
-#     self = QtWidgets.QWidget()
-#     ui = Ui_self()
-#     ui.setupUi(self)
-#     self.show()
-#     sys.exit(app.exec())
