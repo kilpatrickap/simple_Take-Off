@@ -101,6 +101,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Extract the new folder path from the project details
         new_folder_path = project_details.get("Project Folder")
 
+        # Set the new folder path as the current working directory for the TakeOffList_Widget
+        os.chdir(new_folder_path)
+
         # Update the displayed folder after the dialog is closed
         self.projectWidgetTree.update_displayed_folder(new_folder_path)
 
