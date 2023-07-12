@@ -1,4 +1,5 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QFileDialog
 from ProjectTreeWidget import Project_Widget
 import json
@@ -148,6 +149,9 @@ class NewProject_Dialog(object):
 
         :return: None
         """
+
+        # Set the window flags to make the dialog stay on top
+        Dialog.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
         project_details = self.get_project_details()
 
