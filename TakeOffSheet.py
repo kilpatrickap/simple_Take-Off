@@ -153,7 +153,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff.setColumnWidth(8, 160)
 
         # Run load_tabel_data method
-        self.load_table_data()      #TODO To turn it off in production
+        self.load_table_data()      #TODO To turn load_table_data() off in production
         self.save_takeOff_database()
 
     def load_table_data(self):
