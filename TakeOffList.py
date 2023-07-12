@@ -147,7 +147,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         current_dir = os.getcwd()
 
         # Construct the file path relative to the current directory
-        file_path = os.path.join(current_dir, file_name)    #TODO write to project folder
+        file_path = os.path.join(current_dir, file_name)
 
         # Write the tree data to the JSON file
         with open(file_path, 'w') as file:

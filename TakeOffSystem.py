@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 from PyQt6 import QtGui, QtWidgets, QtCore
@@ -98,14 +99,31 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Get the project details from the dialog
         project_details = ui.get_project_details()
 
-        # Extract the new folder path from the project details
+        # Extract the project name and new folder path from the project details
+        project_name = project_details.get("Project Name")
         new_folder_path = project_details.get("Project Folder")
+
+        # Append the project name to the new folder path
+        new_folder_path = os.path.join(new_folder_path, project_name)
+
+        # Create the new project folder
+        os.makedirs(new_folder_path, exist_ok=True)
 
         # Set the new folder path as the current working directory for the TakeOffList_Widget
         os.chdir(new_folder_path)
 
         # Update the displayed folder after the dialog is closed
         self.projectWidgetTree.update_displayed_folder(new_folder_path)
+
+        # Create the path for the takeOffList_DB.json file
+        db_file_path = os.path.join(new_folder_path, "takeOffList_DB.json")
+
+        # Initialize an empty tree data dictionary
+        tree_data = {}
+
+        # Write the empty tree data to the takeOffList_DB.json file
+        with open(db_file_path, 'w') as file:
+            json.dump(tree_data, file)
 
     def switch_msmt(self):
 
