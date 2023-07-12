@@ -199,7 +199,7 @@ class NewProject_Dialog(object):
         project_widget = Project_Widget()
         project_widget.update_displayed_folder(new_folder_path)
 
-    def open_folder_dialog(self):
+    def open_folder_dialog(self):       #TODO Write Class to and load Job folder
         """
         Opens a folder dialog to select the Jobs directory.
 
