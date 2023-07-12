@@ -171,7 +171,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
             parent_item.setExpanded(True)  # Expand the parent item to show child items
 
-    def load_database(self, file_name='takeOffList_DB.json'):   #TODO Load from project folder
+    def load_database(self, file_name='takeOffList_DB.json'):
         # Get the current directory
         current_dir = os.getcwd()
 
@@ -230,7 +230,6 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Only add a new sub-item if a child item is selected
         if selected_item and selected_item.parent():
-
             # Create a new child item
             child_item = QtWidgets.QTreeWidgetItem(selected_item)
             child_item.setText(0, "New Sub-Item")
