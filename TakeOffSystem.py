@@ -238,8 +238,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             print("file_path from open_folder_dialog(): ", file_path)
 
             # Set the new folder path as the current working directory for the TakeOffList_Widget
-            # os.chdir(file_path)
-
             try:
                 with open(file_path, 'r') as file:
                     tree_data = json.load(file)
@@ -262,7 +260,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
                         # Expand all the parent items when app loads
                         parent_item.setExpanded(True)
-
             except Exception:
                 pass
 
