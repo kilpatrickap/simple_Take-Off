@@ -63,16 +63,11 @@ class Ui_MainWindow(object):
         icon17.addPixmap(QtGui.QPixmap("images/new.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.actionNew.setIcon(icon17)
         self.actionNew.setObjectName("actionNew")
-
         self.actionOpen = QtGui.QAction(parent=MainWindow)
         icon18 = QtGui.QIcon()
         icon18.addPixmap(QtGui.QPixmap("images/open.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.actionOpen.setIcon(icon18)
         self.actionOpen.setObjectName("actionOpen")
-
-        # Connect signal
-        self.actionOpen.triggered.connect(self.open_folder_dialog)
-
         self.actionSave = QtGui.QAction(parent=MainWindow)
         icon19 = QtGui.QIcon()
         icon19.addPixmap(QtGui.QPixmap("images/save.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -150,25 +145,3 @@ class Ui_MainWindow(object):
         self.actionRedo.setText(_translate("MainWindow", "Redo"))
         self.actionRedo.setShortcut(_translate("MainWindow", "Ctrl+Y"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
-
-    def open_folder_dialog(self):
-        """
-        Opens a folder dialog to select the desired job directory and sets it as the current working directory.
-        If the selected folder is already the current working directory, print a message to the console.
-
-        :return: None
-        """
-        dialog = QtWidgets.QFileDialog()
-        dialog.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
-        dialog.setOption(QtWidgets.QFileDialog.Option.ShowDirsOnly, True)
-        dialog.setDirectory(os.path.join(os.getcwd(), "Data/Storages/Local/Jobs"))
-
-        if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
-            selected_directory = dialog.selectedFiles()[0]
-            print("cwd from open_folder_dialog(): ", selected_directory)
-
-            if selected_directory == os.getcwd():
-                print("Selected folder is already the current working directory.")
-            else:
-                os.chdir(selected_directory)  # Set the selected directory as the current working directory
-

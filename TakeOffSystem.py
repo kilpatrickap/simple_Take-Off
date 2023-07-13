@@ -29,6 +29,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.show()
 
+        # Connect signal to open_folder_dialog
+        self.actionOpen.triggered.connect(self.open_folder_dialog)
+
         # Insert Project_Widget() class and add widget
         self.projectWidgetTree = Project_Widget()
         self.horizontalLayout_2.addWidget(self.projectWidgetTree)
@@ -212,3 +215,25 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         ui = Abstract_Dialog()
         ui.setupUi(dialog)
         dialog.exec()
+
+    def open_folder_dialog(self):
+        """
+        Opens a folder dialog to select the desired job directory and sets it as the current working directory.
+        If the selected folder is already the current working directory, print a message to the console.
+
+        :return: None
+        """
+        dialog = QtWidgets.QFileDialog()
+        dialog.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
+        dialog.setOption(QtWidgets.QFileDialog.Option.ShowDirsOnly, True)
+        dialog.setDirectory(os.path.join(os.getcwd(), "Data/Storages/Local/Jobs"))
+
+        if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
+            selected_directory = dialog.selectedFiles()[0]
+            print("cwd from open_folder_dialog(): ", selected_directory)
+
+            if selected_directory == os.getcwd():
+                print("Selected folder is already the current working directory.")
+            else:
+                os.chdir(selected_directory)  # Set the selected directory as the current working directory
+
