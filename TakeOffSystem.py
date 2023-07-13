@@ -233,9 +233,12 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             print("cwd from open_folder_dialog(): ", selected_directory)
 
             # Load takeOffList_widget
-            self.takeOffListWidget.load_database()
+            self.load_takeOffList_widget()
 
             if selected_directory == os.getcwd():
                 print("Selected folder is already the current working directory.")
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
+
+    def load_takeOffList_widget(self):
+        self.takeOffListWidget.load_database(file_name='takeOffList_DB.json')
