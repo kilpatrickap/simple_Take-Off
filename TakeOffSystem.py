@@ -233,12 +233,40 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             print("cwd from open_folder_dialog(): ", selected_directory)
 
             # Load takeOffList_widget
-            self.load_takeOffList_widget()
+            file_name = 'takeOffList_DB.json'
+            file_path = os.path.join(selected_directory, file_name)
+            print("file_path from open_folder_dialog(): ", file_path)
+
+            # Set the new folder path as the current working directory for the TakeOffList_Widget
+            # os.chdir(file_path)
+
+            try:
+                with open(file_path, 'r') as file:
+                    tree_data = json.load(file)
+
+                    # Replace data list with parent items from tree_data
+                    self.data = list(tree_data.keys())
+
+                    # Clear the tree widget
+                    self.root_item = self.takeOffListWidget.root_item
+                    self.root_item.takeChildren()
+
+                    # Add data items to tree widget
+                    for parent_text, child_items in tree_data.items():
+                        parent_item = QtWidgets.QTreeWidgetItem(self.root_item)
+                        parent_item.setText(0, parent_text)
+                        for child_text in child_items:
+                            child_item = QtWidgets.QTreeWidgetItem(parent_item)
+                            child_item.setText(0, child_text)
+                            parent_item.addChild(child_item)
+
+                        # Expand all the parent items when app loads
+                        parent_item.setExpanded(True)
+
+            except Exception:
+                pass
 
             if selected_directory == os.getcwd():
                 print("Selected folder is already the current working directory.")
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
-
-    def load_takeOffList_widget(self):
-        self.takeOffListWidget.load_database()
