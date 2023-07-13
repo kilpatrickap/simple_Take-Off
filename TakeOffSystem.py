@@ -29,9 +29,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.show()
 
-        # Connect signal to open_folder_dialog
-        self.actionOpen.triggered.connect(self.open_folder_dialog)
-
         # Insert Project_Widget() class and add widget
         self.projectWidgetTree = Project_Widget()
         self.horizontalLayout_2.addWidget(self.projectWidgetTree)
@@ -81,6 +78,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Connect signal of new_project
         self.actionNew.triggered.connect(self.new_project)
+
+        # Connect signal to open_folder_dialog
+        self.actionOpen.triggered.connect(self.open_folder_dialog)
 
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.switch_msmt)
@@ -236,4 +236,3 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                 print("Selected folder is already the current working directory.")
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
-
