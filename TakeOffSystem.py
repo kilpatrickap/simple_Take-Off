@@ -241,4 +241,4 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
 
     def load_takeOffList_widget(self):
-        self.takeOffListWidget.load_database(file_name='takeOffList_DB.json')
+        self.takeOffListWidget.load_database()
