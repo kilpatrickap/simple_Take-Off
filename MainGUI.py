@@ -162,7 +162,7 @@ class Ui_MainWindow(object):
         Opens a folder dialog to select the desired job directory and sets it as the current working directory.
         If the selected folder is already the current working directory, print a message to the console.
 
-        :return: selected_directory as string
+        :return: None
         """
         dialog = QtWidgets.QFileDialog()
         dialog.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
@@ -176,12 +176,3 @@ class Ui_MainWindow(object):
                 print("Selected folder is already the current working directory.")
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
-                return selected_directory  # Return the selected directory
-
-    def returned_selected_directory(self):
-        """
-        Returns the selected directory from the open_folder_dialog method.
-
-        :return: The selected directory as a string.
-        """
-        return self.open_folder_dialog()
