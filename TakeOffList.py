@@ -177,6 +177,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Construct the file path relative to the current directory
         file_path = os.path.join(current_dir, file_name)
+        print("file_path from load_database(): ", file_path)
 
         try:
             with open(file_path, 'r') as file:
