@@ -11,7 +11,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.setupUi()
 
     def setupUi(self):
-        # self.setObjectName("self")
         self.setObjectName("TakeOffSheet_Widget")
 
         self.groupBox = QtWidgets.QGroupBox(self)
@@ -25,6 +24,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.lineEdit_code = QtWidgets.QLineEdit(parent=self.groupBox)
 
         self.pushButton_refresh = QtWidgets.QPushButton(parent=self.groupBox)
+
         # Add button icon with relative path
         icon4 = QtGui.QIcon()
         image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "arrow-circle-double-135.png")
@@ -108,7 +108,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff.setHorizontalHeaderItem(8, item)
         self.verticalLayout_2.addWidget(self.tableWidget_takeOff)
 
-        # #---TAKE OFF SHEET ENDS HERE---
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
@@ -152,8 +151,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         item.setText(_translate("groupBox", "sign post"))
         self.tableWidget_takeOff.setColumnWidth(8, 160)
 
-        # Run load_tabel_data method
-        # self.load_table_data()      #TODO To turn load_table_data() off in production
+        # Save save_takeOff_database() method
         self.save_takeOff_database()
 
     def load_table_data(self):

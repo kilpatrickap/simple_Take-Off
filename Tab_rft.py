@@ -1,7 +1,6 @@
 import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
 from TakeOffSheet import TakeOffSheet_Widget
 
 
