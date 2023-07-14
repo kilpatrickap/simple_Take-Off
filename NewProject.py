@@ -34,10 +34,8 @@ class NewProject_Dialog(object):
 
         self.toolButton_openFolder = QtWidgets.QToolButton(parent=Dialog)
         self.toolButton_openFolder.setGeometry(QtCore.QRect(490, 40, 31, 21))
-
         icon = QtGui.QIcon()
-        image_path_to_icon = os.path.join(os.path.dirname(__file__), "images", "open.png")
-        icon.addPixmap(QtGui.QPixmap(image_path_to_icon), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("images/open.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_openFolder.setIcon(icon)
         self.toolButton_openFolder.setAutoRaise(True)
         self.toolButton_openFolder.setObjectName("toolButton_openFolder")
