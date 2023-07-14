@@ -1,4 +1,5 @@
-from PyQt6 import QtWidgets, QtGui
+from PyQt6 import QtWidgets, QtCore, QtGui
+import sys
 import os
 
 

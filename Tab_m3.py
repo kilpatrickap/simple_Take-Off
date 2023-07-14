@@ -224,6 +224,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_11)
 
         self.retranslateUi()
+        # self.tabWidget_m.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def desc(self):

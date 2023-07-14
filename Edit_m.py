@@ -7,6 +7,7 @@ class Edit_m_Dialog(object):
     def __init__(self, entered_code):  # entered_code is initialized as an argument
 
         self.entered_code = entered_code  # Initialize the class attributes
+        # print("Entered code from TakeOff Sheet is : " + entered_code)  # test to see if it works.
 
     def setupUi(self, Dialog):
 
