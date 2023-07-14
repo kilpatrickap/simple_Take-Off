@@ -1,7 +1,6 @@
 import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
 from TakeOffSheet import TakeOffSheet_Widget
 
 
@@ -225,7 +224,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_11)
 
         self.retranslateUi()
-        # self.tabWidget_m.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def desc(self):

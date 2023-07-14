@@ -1,6 +1,5 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QFileDialog
 from ProjectTreeWidget import Project_Widget
 import json
 import os
@@ -110,7 +109,6 @@ class NewProject_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    # When OK button is clicked, save the input data into a dictionary
     def get_project_details(self):
         """
         Retrieves project details from UI elements and returns them as a dictionary.

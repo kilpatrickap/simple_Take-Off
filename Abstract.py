@@ -213,8 +213,6 @@ class Abstract_Dialog(object):
         # Extract table names from the fetched data and store them in a list
         table_list = [table[0] for table in tables if table[0] != 'sqlite_sequence']  # Exclude the 'sqlite_sequence'
 
-        # print(table_list)
-
         # Initialize an empty list to store all the retrieved data
         all_data = []
 
@@ -226,8 +224,6 @@ class Abstract_Dialog(object):
 
             # Append the retrieved data to the all_data list
             all_data.extend(data)
-
-        # print(all_data)
 
         # Check if the all_data list is empty
         if not all_data:
