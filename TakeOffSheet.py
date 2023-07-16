@@ -239,107 +239,221 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         # Close the database connection
         conn.close()
 
-    def save_takeOff_database(self):
-        conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
-        cursor = conn.cursor()
-
-        # Create the "takeOff" table if it doesn't exist
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS takeOff (
-                id     INTEGER PRIMARY KEY AUTOINCREMENT,
-                code   TEXT,
-                trade  TEXT,
-                desc   TEXT,
-                ref    TEXT,
-                times  TEXT,
-                dims   TEXT,
-                square INTEGER,
-                unit   TEXT,
-                sign_post TEXT,
-                UNIQUE(id)
-            )
-        """)
-
-        rows = self.tableWidget_takeOff.rowCount()
-        for row in range(rows):
-            code_item = self.tableWidget_takeOff.item(row, 0)
-            trade_item = self.tableWidget_takeOff.item(row, 1)
-            desc_item = self.tableWidget_takeOff.item(row, 2)
-            ref_item = self.tableWidget_takeOff.item(row, 3)
-            times_item = self.tableWidget_takeOff.item(row, 4)
-            dims_item = self.tableWidget_takeOff.item(row, 5)
-            square_item = self.tableWidget_takeOff.item(row, 6)
-            unit_item = self.tableWidget_takeOff.item(row, 7)
-            sign_post_item = self.tableWidget_takeOff.item(row, 8)
-
-            # Check if any of the items are None
-            if (
-                    code_item is None or trade_item is None or desc_item is None or ref_item is None
-                    or times_item is None or dims_item is None or square_item is None
-                    or unit_item is None or sign_post_item is None
-            ):
-                continue  # Skip the current row if any item is None
-
-            code = code_item.text()
-            trade = trade_item.text()
-            desc = desc_item.text()
-            ref = ref_item.text()
-            times = times_item.text()
-            dims = dims_item.text()
-            square = square_item.text()
-            unit = unit_item.text()
-            sign_post = sign_post_item.text()
-
-            # Check if the row already exists in the table
-            cursor.execute("""
-                SELECT * FROM takeOff WHERE code = ? AND trade = ? AND desc = ? AND ref = ? AND times = ? AND dims = ?
-                AND square = ? AND unit = ? AND sign_post = ?
-            """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
-
-            existing_row = cursor.fetchone()
-            if existing_row is None:
-                # Row does not exist, insert it into the table
-                cursor.execute("""
-                    INSERT INTO takeOff (code, trade, desc, ref, times, dims, square, unit, sign_post)
-                    VALUES (?,?,?,?,?,?,?,?,?)
-                """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
-
-        conn.commit()  # Save the changes
-        conn.close()  # Close the connection
-
-        # print("Data is saved to takeOff.db")
+    # def save_takeOff_database(self):
+    #     conn = sqlite3.connect('takeOff.db')  # Create or connect to the "takeOff.db" database
+    #     cursor = conn.cursor()
+    #
+    #     # Create the "takeOff" table if it doesn't exist
+    #     cursor.execute("""
+    #         CREATE TABLE IF NOT EXISTS takeOff (
+    #             id     INTEGER PRIMARY KEY AUTOINCREMENT,
+    #             code   TEXT,
+    #             trade  TEXT,
+    #             desc   TEXT,
+    #             ref    TEXT,
+    #             times  TEXT,
+    #             dims   TEXT,
+    #             square INTEGER,
+    #             unit   TEXT,
+    #             sign_post TEXT,
+    #             UNIQUE(id)
+    #         )
+    #     """)
+    #
+    #     rows = self.tableWidget_takeOff.rowCount()
+    #     for row in range(rows):
+    #         code_item = self.tableWidget_takeOff.item(row, 0)
+    #         trade_item = self.tableWidget_takeOff.item(row, 1)
+    #         desc_item = self.tableWidget_takeOff.item(row, 2)
+    #         ref_item = self.tableWidget_takeOff.item(row, 3)
+    #         times_item = self.tableWidget_takeOff.item(row, 4)
+    #         dims_item = self.tableWidget_takeOff.item(row, 5)
+    #         square_item = self.tableWidget_takeOff.item(row, 6)
+    #         unit_item = self.tableWidget_takeOff.item(row, 7)
+    #         sign_post_item = self.tableWidget_takeOff.item(row, 8)
+    #
+    #         # Check if any of the items are None
+    #         if (
+    #                 code_item is None or trade_item is None or desc_item is None or ref_item is None
+    #                 or times_item is None or dims_item is None or square_item is None
+    #                 or unit_item is None or sign_post_item is None
+    #         ):
+    #             continue  # Skip the current row if any item is None
+    #
+    #         code = code_item.text()
+    #         trade = trade_item.text()
+    #         desc = desc_item.text()
+    #         ref = ref_item.text()
+    #         times = times_item.text()
+    #         dims = dims_item.text()
+    #         square = square_item.text()
+    #         unit = unit_item.text()
+    #         sign_post = sign_post_item.text()
+    #
+    #         # Check if the row already exists in the table
+    #         cursor.execute("""
+    #             SELECT * FROM takeOff WHERE code = ? AND trade = ? AND desc = ? AND ref = ? AND times = ? AND dims = ?
+    #             AND square = ? AND unit = ? AND sign_post = ?
+    #         """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
+    #
+    #         existing_row = cursor.fetchone()
+    #         if existing_row is None:
+    #             # Row does not exist, insert it into the table
+    #             cursor.execute("""
+    #                 INSERT INTO takeOff (code, trade, desc, ref, times, dims, square, unit, sign_post)
+    #                 VALUES (?,?,?,?,?,?,?,?,?)
+    #             """, (code, trade, desc, ref, times, dims, square, unit, sign_post))
+    #
+    #     conn.commit()  # Save the changes
+    #     conn.close()  # Close the connection
+    #
+    #     # print("Data is saved to takeOff.db")
 
     def search_code(self):
         entered_code = self.lineEdit_code.text()
-        # print(entered_code)
 
-        conn = sqlite3.connect('takeOff.db')  # Connect to the "takeOff.db" database
+        conn = sqlite3.connect('data.db')  # Connect to the "data.db" database
         cursor = conn.cursor()
 
-        # Execute a query to search for the entered code in all the columns of the 'takeOff' table
-        cursor.execute("SELECT * FROM takeOff WHERE code=?", (entered_code,))
-        rows = cursor.fetchall()
+        # Execute a query to search for the entered code in specific tables
+        cursor.execute("""
+            SELECT name FROM sqlite_master WHERE type='table' AND (
+                name LIKE 'm_A%' 
+                OR name LIKE 'm_C%' 
+                OR name LIKE 'm_D%' 
+                OR name LIKE 'm_E%' 
+                OR name LIKE 'm_F%' 
+                OR name LIKE 'm_G%' 
+                OR name LIKE 'm_H%' 
+                OR name LIKE 'm_J%' 
+                OR name LIKE 'm_K%' 
+                OR name LIKE 'm_L%' 
+                OR name LIKE 'm_M%' 
+                OR name LIKE 'm_N%' 
+                OR name LIKE 'm_P%' 
+                OR name LIKE 'm_Q%' 
+                OR name LIKE 'm_R%' 
+                OR name LIKE 'm_S%' 
+                OR name LIKE 'm_T%' 
+                OR name LIKE 'm_U%' 
+                OR name LIKE 'm_V%' 
+                OR name LIKE 'm_W%' 
+                OR name LIKE 'm_X%'
+                
+                OR name LIKE 'm2_A%' 
+                OR name LIKE 'm2_C%' 
+                OR name LIKE 'm2_D%' 
+                OR name LIKE 'm2_E%' 
+                OR name LIKE 'm2_F%' 
+                OR name LIKE 'm2_G%' 
+                OR name LIKE 'm2_H%' 
+                OR name LIKE 'm2_J%' 
+                OR name LIKE 'm2_K%' 
+                OR name LIKE 'm2_L%' 
+                OR name LIKE 'm2_M%' 
+                OR name LIKE 'm2_N%' 
+                OR name LIKE 'm2_P%' 
+                OR name LIKE 'm2_Q%' 
+                OR name LIKE 'm2_R%' 
+                OR name LIKE 'm2_S%' 
+                OR name LIKE 'm2_T%' 
+                OR name LIKE 'm2_U%' 
+                OR name LIKE 'm2_V%' 
+                OR name LIKE 'm2_W%' 
+                OR name LIKE 'm2_X%'
+                
+                OR name LIKE 'm3_A%' 
+                OR name LIKE 'm3_C%' 
+                OR name LIKE 'm3_D%' 
+                OR name LIKE 'm3_E%' 
+                OR name LIKE 'm3_F%' 
+                OR name LIKE 'm3_G%' 
+                OR name LIKE 'm3_H%' 
+                OR name LIKE 'm3_J%' 
+                OR name LIKE 'm3_K%' 
+                OR name LIKE 'm3_L%' 
+                OR name LIKE 'm3_M%' 
+                OR name LIKE 'm3_N%' 
+                OR name LIKE 'm3_P%' 
+                OR name LIKE 'm3_Q%' 
+                OR name LIKE 'm3_R%' 
+                OR name LIKE 'm3_S%' 
+                OR name LIKE 'm3_T%' 
+                OR name LIKE 'm3_U%' 
+                OR name LIKE 'm3_V%' 
+                OR name LIKE 'm3_W%' 
+                OR name LIKE 'm3_X%'
+                
+                OR name LIKE 'nr_A%' 
+                OR name LIKE 'nr_C%' 
+                OR name LIKE 'nr_D%' 
+                OR name LIKE 'nr_E%' 
+                OR name LIKE 'nr_F%' 
+                OR name LIKE 'nr_G%' 
+                OR name LIKE 'nr_H%' 
+                OR name LIKE 'nr_J%' 
+                OR name LIKE 'nr_K%' 
+                OR name LIKE 'nr_L%' 
+                OR name LIKE 'nr_M%' 
+                OR name LIKE 'nr_N%' 
+                OR name LIKE 'nr_P%' 
+                OR name LIKE 'nr_Q%' 
+                OR name LIKE 'nr_R%' 
+                OR name LIKE 'nr_S%' 
+                OR name LIKE 'nr_T%' 
+                OR name LIKE 'nr_U%' 
+                OR name LIKE 'nr_V%' 
+                OR name LIKE 'nr_W%' 
+                OR name LIKE 'nr_X%'
+                
+                OR name LIKE 'rft_A%' 
+                OR name LIKE 'rft_C%' 
+                OR name LIKE 'rft_D%' 
+                OR name LIKE 'rft_E%' 
+                OR name LIKE 'rft_F%' 
+                OR name LIKE 'rft_G%' 
+                OR name LIKE 'rft_H%' 
+                OR name LIKE 'rft_J%' 
+                OR name LIKE 'rft_K%' 
+                OR name LIKE 'rft_L%' 
+                OR name LIKE 'rft_M%' 
+                OR name LIKE 'rft_N%' 
+                OR name LIKE 'rft_P%' 
+                OR name LIKE 'rft_Q%' 
+                OR name LIKE 'rft_R%' 
+                OR name LIKE 'rft_S%' 
+                OR name LIKE 'rft_T%' 
+                OR name LIKE 'rft_U%' 
+                OR name LIKE 'rft_V%' 
+                OR name LIKE 'rft_W%' 
+                OR name LIKE 'rft_X%'
+            )
+        """)
 
-        # Slice the id column returned from the takeOff.db using list comprehension. [1:] starts from 2nd element
-        rows = [row[1:] for row in rows]
+        tables = cursor.fetchall()
 
         # Clear the existing data in the tableWidget_takeOff
         self.tableWidget_takeOff.clearContents()
         self.tableWidget_takeOff.setRowCount(0)
 
-        if rows:
-            # print("Matching rows:")
-            for row in rows:
-                # print(row)
-                # Add a new row to the tableWidget_takeOff
-                self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
+        if tables:
+            for table in tables:
+                table_name = table[0]
 
-                # # Populate the cells of the new row with the fetched data
-                for column, value in enumerate(row):
-                    item = QTableWidgetItem(str(value))
-                    self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column, item)
+                # Execute a query to retrieve rows from the matching table
+                cursor.execute("SELECT * FROM {} WHERE code=?".format(table_name), (entered_code,))
+                rows = cursor.fetchall()
+
+                for row in rows:
+                    # Add a new row to the tableWidget_takeOff
+                    self.tableWidget_takeOff.insertRow(self.tableWidget_takeOff.rowCount())
+
+                    # Populate the cells of the new row with the fetched data
+                    for column, value in enumerate(row):
+                        item = QTableWidgetItem(str(value))
+                        self.tableWidget_takeOff.setItem(self.tableWidget_takeOff.rowCount() - 1, column - 1, item)
         else:
-            # print("No matching rows")
+            # No matching tables found
             pass
 
         conn.close()
