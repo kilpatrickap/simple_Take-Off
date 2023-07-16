@@ -152,10 +152,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         item.setText(_translate("groupBox", "sign post"))
         self.tableWidget_takeOff.setColumnWidth(8, 160)
 
-        # Run load_tabel_data method
-        # self.load_table_data()      #TODO To turn load_table_data() off in production
-        # self.save_takeOff_database()
-
     def load_table_data(self):
         # Connect to the SQLite database
         conn = sqlite3.connect('data.db')
