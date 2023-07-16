@@ -463,6 +463,16 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
             # Set weight for the last row
             entered_weight = self.lineEdit_weight.text()
+
+            if not entered_weight:
+                QMessageBox.critical(self.parent(), "Weight Missing", "Please enter a weight.")
+
+                # Delete the last two rows in the table
+                last_row = self.tableWidget_rft.rowCount() - 1
+                self.tableWidget_rft.removeRow(last_row)  # Remove the last row
+                last_row = self.tableWidget_rft.rowCount() - 1
+                self.tableWidget_rft.removeRow(last_row)  # Remove the second-to-last row
+
             entered_weight_item = QtWidgets.QTableWidgetItem(entered_weight)
             self.tableWidget_rft.setItem(last_row, 5, entered_weight_item)
 
