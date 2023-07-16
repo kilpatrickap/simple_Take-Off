@@ -742,7 +742,7 @@ class Tab_m2_Widget(QtWidgets.QWidget):
             # Perform the insertion into the TakeOff sheet
             self.save_table_data()
             self.load_table_data()
-            self.save_takeOff_database()
+            # self.save_takeOff_database()
 
         else:
             # User clicked Cancel, do nothing or perform any desired action
@@ -752,6 +752,6 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
         take_off_sheet.load_table_data()  # Call the method to load data from table
 
-    def save_takeOff_database(self):
-        take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
-        take_off_sheet.save_takeOff_database()  # Call the method to save data from table
+    # def save_takeOff_database(self):
+    #     take_off_sheet = TakeOffSheet_Widget()  # Create an instance of TakeOffSheet_Widget
+    #     take_off_sheet.save_takeOff_database()  # Call the method to save data from table

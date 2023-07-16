@@ -154,7 +154,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Run load_tabel_data method
         # self.load_table_data()      #TODO To turn load_table_data() off in production
-        self.save_takeOff_database()
+        # self.save_takeOff_database()
 
     def load_table_data(self):
         # Connect to the SQLite database
