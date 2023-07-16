@@ -32,6 +32,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Store the initial directory when the application is launched
         self.initial_directory = os.getcwd()
 
+        # Create an instance of TakeOffSheet_Widget
+        self.takeOffSheetWidget = TakeOffSheet_Widget()
+
         # Insert Project_Widget() class and add widget
         self.projectWidgetTree = Project_Widget()
         self.horizontalLayout_2.addWidget(self.projectWidgetTree)
@@ -85,6 +88,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal to open_folder_dialog
         self.actionOpen.triggered.connect(self.open_folder_dialog)
 
+        # Connect signal to close_project
+        self.actionClose.triggered.connect(self.close_project)
+
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.switch_msmt)
 
@@ -96,7 +102,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Check if a project is already open
         if os.getcwd() != self.initial_directory:
             QtWidgets.QMessageBox.critical(self, "Cannot Create New Project",
-                                          "Please close the current project before creating a new one.")
+                                           "Please close the current project before creating a new one.")
             return
 
         # Create a new project dialog
@@ -137,6 +143,21 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Write the empty tree data to the takeOffList_DB.json file
         with open(db_file_path, 'w') as file:
             json.dump(tree_data, file)
+
+    def close_project(self):
+        # Check if a project is currently open
+        if os.getcwd() == self.initial_directory:
+            QtWidgets.QMessageBox.warning(self, "No Project Open", "No project is currently open.")
+            return
+
+        # Reset the current working directory to the initial directory
+        os.chdir(self.initial_directory)
+
+        # Update the displayed folder in the UI
+        self.projectWidgetTree.update_displayed_folder(self.initial_directory)
+
+        # Clear the take-off list data and update the tree widget
+        self.takeOffListWidget.clear_data()
 
     def switch_msmt(self):
 
@@ -277,4 +298,3 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                 print("Selected folder is already the current working directory.")
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
-

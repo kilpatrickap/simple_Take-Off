@@ -241,6 +241,16 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             # Update the database
             self.update_database()
 
+    def clear_data(self):
+        # Clear the data list
+        self.data = []
+
+        # Clear the tree widget
+        self.root_item.takeChildren()
+
+        # Update the database to reflect the cleared data
+        self.update_database()
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("TakeOffList_Widget", "Take-Off List"))

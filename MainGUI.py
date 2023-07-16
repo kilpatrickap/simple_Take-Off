@@ -78,6 +78,13 @@ class Ui_MainWindow(object):
         self.actionOpen.setIcon(icon3)
         self.actionOpen.setObjectName("actionOpen")
 
+        self.actionClose = QtGui.QAction(parent=MainWindow)
+        icon6 = QtGui.QIcon()
+        image_path_to_icon6 = os.path.join(os.path.dirname(__file__), "images", "exit.png")
+        icon6.addPixmap(QtGui.QPixmap(image_path_to_icon6), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionClose.setIcon(icon6)
+        self.actionClose.setObjectName("actionClose")
+
         self.actionExit = QtGui.QAction(parent=MainWindow)
         icon4 = QtGui.QIcon()
         image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "exit.png")
@@ -89,6 +96,7 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionClose)
         self.menuFile.addSeparator()
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
@@ -97,6 +105,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
         self.toolBar.addAction(self.actionNew)
         self.toolBar.addAction(self.actionOpen)
+        self.toolBar.addAction(self.actionClose)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -111,6 +120,8 @@ class Ui_MainWindow(object):
         self.actionNew.setShortcut(_translate("MainWindow", "Ctrl+N"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
+        self.actionClose.setText(_translate("MainWindow", "Close"))
+        self.actionClose.setShortcut(_translate("MainWindow", "Ctrl+W"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionExit.setShortcut(_translate("MainWindow", "Ctrl+Q"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
