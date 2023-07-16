@@ -1,7 +1,7 @@
 import os.path
 import sqlite3
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget
+from PyQt6.QtWidgets import QTableWidgetItem, QTableWidget, QMessageBox
 from TakeOffSheet import TakeOffSheet_Widget
 
 
@@ -568,7 +568,16 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
         # Check if code_string is valid
         if not code_string:
-            print("Invalid table name")
+            QMessageBox.critical(self, "Invalid Table Name", "Invalid table name.")
+            return
+
+        # Determine the current working directory
+        current_directory = os.getcwd()
+
+        # Check if "/Data/Storages/Local/Jobs" is not present in the file path
+        if "/Data/Storages/Local/Jobs" not in current_directory:
+            QMessageBox.critical(self, "Invalid Directory", "Data can only be saved in the Jobs directory. Create a "
+                                                            "new Job or open an existing one to save.")
             return
 
         # Connect to the SQLite database
@@ -621,7 +630,6 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Commit the changes and close the database connection
         conn.commit()
         conn.close()
-
     def insert_dialog(self):
         msg_box = QtWidgets.QMessageBox()
         msg_box.setWindowTitle("Insert")
