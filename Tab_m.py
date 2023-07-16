@@ -436,7 +436,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
             self.tableWidget_m.setItem(last_row, 0, sum_code_item)
 
             # Insert Trade letter
-            trade_letter = self.code()[2]   # indexing to the 3rd letter of the code.
+            trade_letter = self.code()[2]  # indexing to the 3rd letter of the code.
             trade_letter_item = QtWidgets.QTableWidgetItem(trade_letter)
             self.tableWidget_m.setItem(last_row, 1, trade_letter_item)
 
@@ -630,6 +630,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
         # Commit the changes and close the database connection
         conn.commit()
         conn.close()
+
     def insert_dialog(self):
         msg_box = QtWidgets.QMessageBox()
         msg_box.setWindowTitle("Insert")
