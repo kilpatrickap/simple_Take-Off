@@ -52,6 +52,10 @@ class Ui_MainWindow(object):
         self.menuFile.setObjectName("menuFile")
         self.menuAbout = QtWidgets.QMenu(parent=self.menubar)
         self.menuAbout.setObjectName("menuAbout")
+
+        # Connect signal
+        self.menuAbout.triggered.connect(self.about)
+
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -110,3 +114,19 @@ class Ui_MainWindow(object):
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionExit.setShortcut(_translate("MainWindow", "Ctrl+Q"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
+
+    def about(self):
+        dialog = QtWidgets.QMessageBox()
+        dialog.setWindowTitle("About")
+
+        icon5 = QtGui.QIcon()
+        image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "MetiQs.png")
+        icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+
+        dialog.setIconPixmap(icon5.pixmap(64, 64))  # Set the icon pixmap
+        dialog.setText("Simple Take-Off v1.0.\n\n"
+                       "Simply and quickly perform taking-off measurments for building projects. \n\n"
+                       "www.metiqs.com"
+                       )
+        dialog.addButton(QtWidgets.QMessageBox.StandardButton.Close)
+        dialog.exec()
