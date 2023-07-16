@@ -29,6 +29,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.show()
 
+        # Store the initial directory when the application is launched
+        self.initial_directory = os.getcwd()
+
         # Insert Project_Widget() class and add widget
         self.projectWidgetTree = Project_Widget()
         self.horizontalLayout_2.addWidget(self.projectWidgetTree)
@@ -89,6 +92,13 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         self.takeOff_sheet_widget.pushButton_abstract.clicked.connect(self.abstract)
 
     def new_project(self):
+
+        # Check if a project is already open
+        if os.getcwd() != self.initial_directory:
+            QtWidgets.QMessageBox.critical(self, "Cannot Create New Project",
+                                          "Please close the current project before creating a new one.")
+            return
+
         # Create a new project dialog
         dialog = QDialog()
         ui = NewProject_Dialog()
