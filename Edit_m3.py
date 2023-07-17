@@ -654,7 +654,7 @@ class Edit_m3_Dialog(object):
         msg_box.setText("Click OK to update the Take Off sheet and click Refresh to show.")
 
         # Add button icon with relative path
-        icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-circle.png")
+        icon_path = os.path.join(os.path.dirname(__file__), "images", "info.png")
         icon_pixmap = QtGui.QPixmap(icon_path)
         msg_box.setIconPixmap(icon_pixmap)
 
