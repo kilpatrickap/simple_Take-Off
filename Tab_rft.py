@@ -416,6 +416,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
             # Set unit column as 'm' for the last row
             unit_item = QtWidgets.QTableWidgetItem("m")
+            unit_item.setForeground(QtGui.QColor("blue"))
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -424,6 +425,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
             # Set description column as 'sum' for the last row
             desc_item = QtWidgets.QTableWidgetItem("SUM")
+            desc_item.setForeground(QtGui.QColor("blue"))
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -435,17 +437,18 @@ class Tab_rft_Widget(QtWidgets.QWidget):
             for row in range(self.tableWidget_rft.rowCount() - 1):
                 square_item = self.tableWidget_rft.item(row, 6)
                 square_value = square_item.text().replace(",", "")
-                total_square += float(square_value)     # Sum the square col
+                total_square += float(square_value)  # Sum the square col
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+            total_item.setForeground(QtGui.QColor("blue"))
             flags = total_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             total_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 6, total_item)
 
-            #--- CREATE A NEW ROW FOR TONNAGE CONVERSION ---
+            # --- CREATE A NEW ROW FOR TONNAGE CONVERSION ---
 
             # Add a new row at the end
             last_row = self.tableWidget_rft.rowCount()
@@ -478,6 +481,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
             # Set unit column as 'm' for the last row
             unit_item = QtWidgets.QTableWidgetItem("t")
+            unit_item.setForeground(QtGui.QColor("green"))
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -486,6 +490,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
             # Set description column as 'sum' for the last row
             desc_item = QtWidgets.QTableWidgetItem("TONNAGE")
+            desc_item.setForeground(QtGui.QColor("green"))
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -498,11 +503,23 @@ class Tab_rft_Widget(QtWidgets.QWidget):
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+            total_item.setForeground(QtGui.QColor("green"))
             flags = total_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             total_item.setFlags(flags)
             self.tableWidget_rft.setItem(last_row, 6, total_item)
+
+            # Iterate through all rows and columns
+            for row in range(self.tableWidget_rft.rowCount()):
+                for column in range(self.tableWidget_rft.columnCount()):
+                    item = self.tableWidget_rft.item(row, column)
+                    if item is not None and item.text() == "SUM":
+                        # Found the cell containing "SUM", make the entire row's foreground color blue
+                        for col in range(self.tableWidget_rft.columnCount()):
+                            cell_item = self.tableWidget_rft.item(row, col)
+                            cell_item.setForeground(QtGui.QColor("blue"))
+                        break  # Exit the inner loop once "SUM" is found
 
         except ValueError:
             return
