@@ -442,6 +442,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
             # Set unit column as 'm' for the last row
             unit_item = QtWidgets.QTableWidgetItem("m")
+            unit_item.setForeground(QtGui.QColor("blue"))
             flags = unit_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -450,6 +451,7 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
             # Set description column as 'sum' for the last row
             desc_item = QtWidgets.QTableWidgetItem("SUM")
+            desc_item.setForeground(QtGui.QColor("blue"))
             flags = desc_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
@@ -465,11 +467,24 @@ class Tab_m_Widget(QtWidgets.QWidget):
 
             # Set the total square in the last row's square column
             total_item = QtWidgets.QTableWidgetItem("{:,.2f}".format(total_square))
+            total_item.setForeground(QtGui.QColor("blue"))
             flags = total_item.flags()
             flags &= ~QtCore.Qt.ItemFlag.ItemIsEditable
             flags &= ~QtCore.Qt.ItemFlag.ItemIsSelectable
             total_item.setFlags(flags)
             self.tableWidget_m.setItem(last_row, 6, total_item)
+
+            # Iterate through all rows and columns
+            for row in range(self.tableWidget_m.rowCount()):
+                for column in range(self.tableWidget_m.columnCount()):
+                    item = self.tableWidget_m.item(row, column)
+                    if item is not None and item.text() == "SUM":
+                        # Found the cell containing "SUM", make the entire row's foreground color blue
+                        for col in range(self.tableWidget_m.columnCount()):
+                            cell_item = self.tableWidget_m.item(row, col)
+                            cell_item.setForeground(QtGui.QColor("blue"))
+                        break  # Exit the inner loop once "SUM" is found
+
 
 
         except ValueError:
