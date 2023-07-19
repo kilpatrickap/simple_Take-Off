@@ -91,6 +91,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Connect signal to close_project
         self.actionClose.triggered.connect(self.close_project)
 
+        # Connect signal to close main window
+        self.actionExit.triggered.connect(self.close_main_window)
+
         # Connect signal of edit
         self.takeOff_sheet_widget.pushButton_edit.clicked.connect(self.switch_msmt)
 
@@ -158,6 +161,10 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Clear the take-off list data and update the tree widget
         self.takeOffListWidget.clear_data()
+
+    def close_main_window(self):
+        # Close the main window
+        self.close()
 
     def switch_msmt(self):
 
