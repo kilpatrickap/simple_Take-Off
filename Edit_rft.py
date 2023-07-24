@@ -642,6 +642,9 @@ class Edit_rft_Dialog(object):
         icon_pixmap = QtGui.QPixmap(icon_path)
         msg_box.setIconPixmap(icon_pixmap)
 
+        # Set the window modality to ApplicationModal
+        msg_box.setWindowModality(QtCore.Qt.WindowModality.ApplicationModal)
+
         msg_box.setStandardButtons(
             QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
         )

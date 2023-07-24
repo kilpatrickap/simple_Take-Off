@@ -22,7 +22,7 @@ class Project_Widget(QtWidgets.QWidget):
 
         # Display the current working directory when the app loads
         current_dir = os.getcwd()
-        folder_path = os.path.join(current_dir, "Data/Storages/Local/Jobs")
+        folder_path = os.path.join(current_dir, "Data", "Storages", "Local", "Jobs")  # => PC (from / for mac to \)
         self.update_displayed_folder(folder_path)
 
     def display_folder_contents(self, folder_path):
@@ -57,11 +57,10 @@ class Project_Widget(QtWidgets.QWidget):
         :param folder_path: The path of the folder to check.
         :return: True if the folder contains sub-folders, False otherwise.
         """
-        for entry in os.listdir(folder_path):
-            entry_path = os.path.join(folder_path, entry)
-            if os.path.isdir(entry_path):
-                return True
-        return False
+        return any(
+            os.path.isdir(os.path.join(folder_path, entry))
+            for entry in os.listdir(folder_path)
+        )
 
     def _add_folder_contents(self, folder_path, parent_item):
         """

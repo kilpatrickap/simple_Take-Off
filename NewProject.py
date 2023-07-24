@@ -35,7 +35,7 @@ class NewProject_Dialog(object):
         self.toolButton_openFolder = QtWidgets.QToolButton(parent=Dialog)
         self.toolButton_openFolder.setGeometry(QtCore.QRect(490, 40, 31, 21))
         icon = QtGui.QIcon()    # TODO Relative path to icon
-        icon.addPixmap(QtGui.QPixmap("images/open.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("images\open.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_openFolder.setIcon(icon)
         self.toolButton_openFolder.setAutoRaise(True)
         self.toolButton_openFolder.setObjectName("toolButton_openFolder")
@@ -206,7 +206,7 @@ class NewProject_Dialog(object):
         :return: None
         """
         current_dir = os.getcwd()  # Get the current working directory
-        folder_path = os.path.join(current_dir, "Data/Storages/Local/Jobs") # append path Jobs folder
+        folder_path = os.path.join(current_dir, "Data", "Storages", "Local", "Jobs") # append path Jobs folder
         self.lineEdit_prjtFolder.setText(folder_path)
 
     def cancel_project_setup(self, Dialog):

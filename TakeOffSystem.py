@@ -264,7 +264,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         dialog = QtWidgets.QFileDialog()
         dialog.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
         dialog.setOption(QtWidgets.QFileDialog.Option.ShowDirsOnly, True)
-        dialog.setDirectory(os.path.join(os.getcwd(), "Data/Storages/Local/Jobs"))
+        dialog.setDirectory(os.path.join(os.getcwd(), "Data", "Storages", "Local", "Jobs"))
 
         if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
             selected_directory = dialog.selectedFiles()[0]

@@ -704,8 +704,8 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         # Determine the current working directory
         current_directory = os.getcwd()
 
-        # Check if "/Data/Storages/Local/Jobs" is not present in the file path
-        if "/Data/Storages/Local/Jobs" not in current_directory:
+        # Check if "/Data/Storages/Local/Jobs" is not present in the file path  => for MAC
+        if "\Data\Storages\Local\Jobs" not in current_directory:  # => for PC
             QMessageBox.critical(self, "Invalid Directory", "Data can only be saved in the Jobs directory. Create a "
                                                             "new Job or open an existing one to save.")
             return

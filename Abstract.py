@@ -1,5 +1,6 @@
 import os
 import sqlite3
+import sys
 import openpyxl
 from PyQt6 import QtCore, QtGui, QtWidgets, QtPrintSupport
 from PyQt6.QtCore import Qt

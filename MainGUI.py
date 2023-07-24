@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
 
         # Icon with relative path
         icon1 = QtGui.QIcon()
-        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "MetiQs.png")
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "TakeOffList.png")
         icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon1)
 
