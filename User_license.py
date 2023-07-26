@@ -1,4 +1,5 @@
 import os
+import random
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import pyqtSignal
@@ -141,7 +142,7 @@ class User_license(QtCore.QObject):
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
 
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
-        self.label_daysRemainingText.setText(_translate("Dialog", "1"))
+        self.label_daysRemainingText.setText(_translate("Dialog", "0"))
 
         self.label_position.setText(_translate("Dialog", "Position : "))
         self.label_positionText.setText(_translate("Dialog", "1"))
@@ -211,14 +212,32 @@ class User_license(QtCore.QObject):
 
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
+
+    def random_number(self):
+        # If label_daysRemaining is 0 (license has expired) , generate random number.
+        if self.label_daysRemainingText.text() == '0':
+
+            # Deactivate validate button
+            self.pushButton_validate.setEnabled(False)
+            self.pushButton_validate.setText("License expired")
+
+            # Generate a random number from 0 <= 4
+            rand_nr = int(random.randint(0, 4))
+            print(rand_nr)
+            self.label_positionText.setText(str(rand_nr))
+
+            return rand_nr
+
+        else:
+            return 3
         
     def _verify(self, key):
         
         global score
         score = 0
 
-        # Define our check digit
-        check_digit = key[2]    # Say 3rd digit
+        # Get the random check digit
+        check_digit = key[self.random_number()]    # Say 3rd digit
         check_digit_count = 0   # Track how many times we see that digit in the key
 
         # aafa-bbfb-cccc-ddfd-1111
