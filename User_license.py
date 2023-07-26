@@ -5,8 +5,9 @@ from PyQt6.QtCore import pyqtSignal
 
 
 class User_license(QtCore.QObject):
+
     # Define the custom signal here using the pyqtSignal decorator
-    cancelClicked = QtCore.pyqtSignal()
+    cancelClicked = pyqtSignal()
 
     def __init__(self, Dialog):
         super().__init__()

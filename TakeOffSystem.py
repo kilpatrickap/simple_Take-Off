@@ -321,3 +321,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         ui.cancelClicked.connect(self.close)  # Connect signal to close main window
 
         dialog.exec()
+
+    def close(self):
+        # Close the main window
+        sys.exit()
