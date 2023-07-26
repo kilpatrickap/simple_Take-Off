@@ -43,9 +43,9 @@ class User_license(object):
         self.verticalLayout.addWidget(self.label_verify_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.pushButton_OK = QtWidgets.QPushButton(parent=Dialog)
-        self.pushButton_OK.setObjectName("pushButton_OK")
-        self.horizontalLayout_2.addWidget(self.pushButton_OK)
+        self.pushButton_proceed = QtWidgets.QPushButton(parent=Dialog)
+        self.pushButton_proceed.setObjectName("pushButton_proceed")
+        self.horizontalLayout_2.addWidget(self.pushButton_proceed)
         self.pushButton_Cancel = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_Cancel.setObjectName("pushButton_Cancel")
         self.horizontalLayout_2.addWidget(self.pushButton_Cancel)
@@ -57,22 +57,13 @@ class User_license(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "User License"))
-        self.lineEdit_email.setPlaceholderText(_translate("Dialog", "Enter e-mail address here."))
-        self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter license keys here."))
+        self.lineEdit_email.setPlaceholderText(_translate("Dialog", "Enter registered e-mail address from "
+                                                                    "https://www.metiqs.com."))
+        self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter valid license keys to proceed."))
         self.pushButton_validate.setText(_translate("Dialog", "Validate License"))
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
         self.label_daysRemainingText.setText(_translate("Dialog", "1"))
         self.label_verify_2.setText(_translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
-        self.pushButton_OK.setText(_translate("Dialog", "OK"))
+        self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
-
-
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     Dialog = QtWidgets.QDialog()
-#     ui = User_license()
-#     ui.setupUi(Dialog)
-#     Dialog.show()
-#     sys.exit(app.exec())
