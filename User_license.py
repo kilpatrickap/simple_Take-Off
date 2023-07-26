@@ -1,10 +1,15 @@
 import os
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import pyqtSignal
 
 
-class User_license(object):
+class User_license(QtCore.QObject):
+    # Define the custom signal here using the pyqtSignal decorator
+    cancelClicked = QtCore.pyqtSignal()
+
     def __init__(self, Dialog):
+        super().__init__()
         self.Dialog = Dialog
 
     def setupUi(self, Dialog):
@@ -67,7 +72,7 @@ class User_license(object):
         self.pushButton_Cancel.setObjectName("pushButton_Cancel")
 
         # Connect signal
-        # self.pushButton_Cancel.clicked.connect(self)
+        self.pushButton_Cancel.clicked.connect(self.onCancelClicked)
 
         self.horizontalLayout_2.addWidget(self.pushButton_Cancel)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -116,3 +121,7 @@ class User_license(object):
 
     def proceed(self):
         self.Dialog.close()
+
+    def onCancelClicked(self):
+        # Emit the custom signal when the "Cancel" button is clicked
+        self.cancelClicked.emit()

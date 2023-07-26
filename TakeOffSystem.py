@@ -31,6 +31,10 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Show the User_license dialog when app loads
         self.user_license()
 
+        # Connect the custom signal from User_license class to a slot that closes the Ui_MainWindow
+        self.user_license_dialog = User_license(QDialog)
+        self.user_license_dialog.cancelClicked.connect(self.close)
+
         self.setupUi(self)
         self.show()
 
