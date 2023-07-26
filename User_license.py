@@ -81,8 +81,19 @@ class User_license(QtCore.QObject):
         self.label_positionText.setObjectName("label_positionText")
         self.horizontalLayout.addWidget(self.label_positionText)
 
-        # Activation count
+        # Count
+        self.label_count = QtWidgets.QLabel(parent=Dialog)
+        self.label_count.setObjectName("count")
+        self.horizontalLayout.addWidget(self.label_count)
 
+        self.label_countText = QtWidgets.QLabel(parent=Dialog)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label_countText.setFont(font)
+        self.label_positionText.setObjectName("label_countText")
+        self.horizontalLayout.addWidget(self.label_countText)
 
 
 
@@ -135,7 +146,8 @@ class User_license(QtCore.QObject):
         self.label_position.setText(_translate("Dialog", "Position : "))
         self.label_positionText.setText(_translate("Dialog", "1"))
 
-
+        self.label_count.setText(_translate("Dialog", "Count : "))
+        self.label_countText.setText(_translate("Dialog", "1"))
 
         self.label_expiry_notice.setText(_translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
