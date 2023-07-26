@@ -58,12 +58,16 @@ class User_license(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.pushButton_proceed = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_proceed.setObjectName("pushButton_proceed")
+
+        # Connect signal
+        self.pushButton_proceed.clicked.connect(self.proceed)
+
         self.horizontalLayout_2.addWidget(self.pushButton_proceed)
         self.pushButton_Cancel = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_Cancel.setObjectName("pushButton_Cancel")
 
         # Connect signal
-        self.pushButton_Cancel.clicked.connect(self.close)
+        # self.pushButton_Cancel.clicked.connect(self)
 
         self.horizontalLayout_2.addWidget(self.pushButton_Cancel)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -110,5 +114,5 @@ class User_license(object):
         # Print a message indicating that the credentials have been saved
         print("Credentials have been saved to 'credentials.txt'.")
 
-    def close(self):
+    def proceed(self):
         self.Dialog.close()
