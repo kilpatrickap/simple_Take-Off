@@ -40,7 +40,7 @@ class User_license(QtCore.QObject):
         self.pushButton_validate.setObjectName("pushButton_validate")
 
         # Connect signal
-        self.pushButton_validate.clicked.connect(self.validate)
+        self.pushButton_validate.clicked.connect(self._validate)
 
         self.verticalLayout.addWidget(self.pushButton_validate)
         self.label_verify = QtWidgets.QLabel(parent=Dialog)
@@ -125,13 +125,15 @@ class User_license(QtCore.QObject):
         print("Credentials have been saved to 'credentials.txt'.")
         
         
-    def validate(self):
+    def _validate(self):
         # Verify
-        if self.verify(key=self.lineEdit_key.text()):
+        if self._verify(key=self.lineEdit_key.text()):
             # Key is verified
             self.label_verify.setText("License key is VALID, proceed.")
+        else:
+            self.label_verify.setText("INVALID License key!")
         
-    def verify(self, key):
+    def _verify(self, key):
         
         global score
         score = 0
