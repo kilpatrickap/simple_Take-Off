@@ -21,11 +21,20 @@ from Edit_m2 import Edit_m2_Dialog
 from Edit_m3 import Edit_m3_Dialog
 from Edit_rft import Edit_rft_Dialog
 from Abstract import Abstract_Dialog
+from User_license import User_license
 
 
 class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+
+        # Create and show the User_license dialog
+        self.user_license_dialog = User_license()
+
+
+
+
+
         self.setupUi(self)
         self.show()
 
