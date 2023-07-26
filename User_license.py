@@ -58,6 +58,10 @@ class User_license(object):
         self.horizontalLayout_2.addWidget(self.pushButton_proceed)
         self.pushButton_Cancel = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_Cancel.setObjectName("pushButton_Cancel")
+
+        # Connect signal
+        self.pushButton_Cancel.clicked.connect(self.closeApp)
+
         self.horizontalLayout_2.addWidget(self.pushButton_Cancel)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
@@ -102,3 +106,6 @@ class User_license(object):
 
         # Print a message indicating that the credentials have been saved
         print("Credentials have been saved to 'credentials.txt'.")
+
+    def closeApp(self):
+        self.dialog.close()
