@@ -29,7 +29,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         super().__init__()
 
         # Show the User_license dialog when app loads
-        self.user_license()
+        self.user_license_validation()
 
         # Show the main window
         self.setupUi(self)
@@ -312,16 +312,16 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
 
-    def user_license(self):
+    def user_license_validation(self):
         dialog = QDialog()
         ui = User_license(dialog)
 
         # Show the User_license dialog when app loads
         ui.setupUi(dialog)
-        ui.cancelClicked.connect(self.close)  # Connect signal to close main window
+        ui.cancelClicked.connect(self.close_system)  # Connect signal to close main window
 
         dialog.exec()
 
-    def close(self):
+    def close_system(self):
         # Close the main window
         sys.exit()
