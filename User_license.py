@@ -1,3 +1,5 @@
+import os
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
@@ -13,9 +15,17 @@ class User_license(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.lineEdit_email = QtWidgets.QLineEdit(parent=Dialog)
         self.lineEdit_email.setObjectName("lineEdit_email")
+
+        # Connect signal
+        self.lineEdit_email.returnPressed.connect(self.details)
+
         self.verticalLayout.addWidget(self.lineEdit_email)
         self.lineEdit_key = QtWidgets.QLineEdit(parent=Dialog)
         self.lineEdit_key.setObjectName("lineEdit_key")
+
+        # Connect signal
+        self.lineEdit_key.returnPressed.connect(self.details)
+
         self.verticalLayout.addWidget(self.lineEdit_key)
         self.pushButton_validate = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_validate.setObjectName("pushButton_validate")
@@ -67,3 +77,28 @@ class User_license(object):
         self.label_verify_2.setText(_translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
+
+    def details(self):
+        # Get the email and license key entered by the user from line edits
+        email = self.lineEdit_email.text()
+        license_key = self.lineEdit_key.text()
+
+        # Call the credentials() method with the captured email and license key
+        self.credentials(email, license_key)
+
+    def credentials(self, email, license_key):
+        # Combine email and license key into a single string
+        credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
+
+        # Get the current working directory
+        current_directory = os.getcwd()
+
+        # Create a file named 'credentials.txt' in the current working directory
+        file_path = os.path.join(current_directory, "credentials.txt")
+
+        # Write the credentials to the file
+        with open(file_path, "w") as file:
+            file.write(credentials_str)
+
+        # Print a message indicating that the credentials have been saved
+        print("Credentials have been saved to 'credentials.txt'.")
