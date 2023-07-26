@@ -13,6 +13,9 @@ class User_license(QtCore.QObject):
         super().__init__()
         self.Dialog = Dialog
 
+        # Load credentials on initialization
+        self.load_credentials()
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
@@ -72,6 +75,9 @@ class User_license(QtCore.QObject):
         # Connect signal
         self.pushButton_proceed.clicked.connect(self.proceed)
 
+        # De-activate when app loads
+        self.pushButton_proceed.setEnabled(False)
+
         self.horizontalLayout_2.addWidget(self.pushButton_proceed)
         self.pushButton_Cancel = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_Cancel.setObjectName("pushButton_Cancel")
@@ -126,12 +132,26 @@ class User_license(QtCore.QObject):
         
         
     def _validate(self):
-        # Verify
-        if self._verify(key=self.lineEdit_key.text()):
+        # Get the entered license key
+        license_key = self.lineEdit_key.text()
+
+        if not license_key:
+            # If the license key is empty, display a message
+            self.label_verify.setText("Please enter your email and license key")
+            return
+
+        # Verify the license key
+        if self._verify(key=license_key):
             # Key is verified
             self.label_verify.setText("License key is VALID, proceed.")
+
+            # Activate proceed button
+            self.pushButton_proceed.setEnabled(True)
         else:
             self.label_verify.setText("INVALID License key!")
+
+            # Deactivate proceed button
+            self.pushButton_proceed.setEnabled(False)
         
     def _verify(self, key):
         
@@ -163,6 +183,37 @@ class User_license(QtCore.QObject):
             return True
         else:
             return False
+
+    def load_credentials(self):
+        # Get the current working directory
+        current_directory = os.getcwd()
+
+        # Create the file path to 'credentials.txt' in the current working directory
+        file_path = os.path.join(current_directory, "credentials.txt")
+
+        if not os.path.exists(file_path):
+            # If 'credentials.txt' does not exist, return without loading credentials
+            return
+
+        # Read the credentials from the file
+        with open(file_path, "r") as file:
+            credentials = file.read()
+
+        # Extract email and license key from credentials
+        email = ""
+        license_key = ""
+        lines = credentials.splitlines()
+        for line in lines:
+            if line.startswith("Email:"):
+                email = line.split(":", 1)[1].strip()
+                print(email)
+            elif line.startswith("License Key:"):
+                license_key = line.split(":", 1)[1].strip()
+                print(license_key)
+
+        # Fill the lineEdit_email and lineEdit_key fields with the loaded credentials
+        # self.lineEdit_email.setText(email)
+        # self.lineEdit_key.setText(license_key)
 
     def proceed(self):
         self.Dialog.close()
