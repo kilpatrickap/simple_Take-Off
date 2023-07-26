@@ -28,12 +28,8 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
 
-        # Create and show the User_license dialog
-        self.user_license_dialog = User_license()
-
-
-
-
+        # Show the User_license dialog when app loads
+        self.user_license()
 
         self.setupUi(self)
         self.show()
@@ -314,3 +310,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                 print("Selected folder is already the current working directory.")
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
+
+    def user_license(self):
+        dialog = QDialog()
+        ui = User_license()
+        ui.setupUi(dialog)
+        dialog.exec()
