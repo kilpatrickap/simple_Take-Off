@@ -109,19 +109,6 @@ class Ui_Dialog(object):
         else:
             return False
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
