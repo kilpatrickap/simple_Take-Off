@@ -105,6 +105,14 @@ class User_license(QtCore.QObject):
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
+        # Retrieve the credentials
+        email, license_key = self.load_credentials()
+        if email and license_key:
+            print(f"Email: {email}")
+            print(f"License Key: {license_key}")
+        else:
+            print("No saved credentials found.")
+
     def details(self):
         # Get the email and license key entered by the user from line edits
         email = self.lineEdit_email.text()
@@ -206,14 +214,12 @@ class User_license(QtCore.QObject):
         for line in lines:
             if line.startswith("Email:"):
                 email = line.split(":", 1)[1].strip()
-                print(email)
+                # print(email)
             elif line.startswith("License Key:"):
                 license_key = line.split(":", 1)[1].strip()
-                print(license_key)
+                # print(license_key)
 
-        # Fill the lineEdit_email and lineEdit_key fields with the loaded credentials
-        # self.lineEdit_email.setText(email)
-        # self.lineEdit_key.setText(license_key)
+        return email, license_key
 
     def proceed(self):
         self.Dialog.close()
