@@ -108,7 +108,10 @@ class User_license(QtCore.QObject):
         # Retrieve the credentials
         email, license_key = self.load_credentials()
         if email and license_key:
+            self.lineEdit_email.setText(email)
             print(f"Email: {email}")
+
+            self.lineEdit_key.setText(license_key)
             print(f"License Key: {license_key}")
         else:
             print("No saved credentials found.")
