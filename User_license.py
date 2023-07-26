@@ -1,7 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class User_license(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
@@ -59,7 +59,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "User License"))
         self.lineEdit_email.setPlaceholderText(_translate("Dialog", "Enter e-mail address here."))
         self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter license keys here."))
-        self.pushButton_validate.setText(_translate("Dialog", "Validate License Key"))
+        self.pushButton_validate.setText(_translate("Dialog", "Validate License"))
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
         self.label_daysRemainingText.setText(_translate("Dialog", "1"))
@@ -68,11 +68,11 @@ class Ui_Dialog(object):
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec())
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     Dialog = QtWidgets.QDialog()
+#     ui = User_license()
+#     ui.setupUi(Dialog)
+#     Dialog.show()
+#     sys.exit(app.exec())
