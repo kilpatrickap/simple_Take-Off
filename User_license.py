@@ -4,6 +4,9 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class User_license(object):
+    def __init__(self, Dialog):
+        self.Dialog = Dialog
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
@@ -60,7 +63,7 @@ class User_license(object):
         self.pushButton_Cancel.setObjectName("pushButton_Cancel")
 
         # Connect signal
-        self.pushButton_Cancel.clicked.connect(self.closeApp)
+        self.pushButton_Cancel.clicked.connect(self.close)
 
         self.horizontalLayout_2.addWidget(self.pushButton_Cancel)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -107,5 +110,5 @@ class User_license(object):
         # Print a message indicating that the credentials have been saved
         print("Credentials have been saved to 'credentials.txt'.")
 
-    def closeApp(self):
-        self.dialog.close()
+    def close(self):
+        self.Dialog.close()

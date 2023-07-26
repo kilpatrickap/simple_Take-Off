@@ -313,6 +313,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
     def user_license(self):
         dialog = QDialog()
-        ui = User_license()
+        ui = User_license(dialog)
         ui.setupUi(dialog)
         dialog.exec()
