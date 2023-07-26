@@ -52,9 +52,12 @@ class User_license(QtCore.QObject):
         self.verticalLayout.addWidget(self.label_verify)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+
+        # Days Remaining
         self.label_daysRemaining = QtWidgets.QLabel(parent=Dialog)
         self.label_daysRemaining.setObjectName("label_daysRemaining")
         self.horizontalLayout.addWidget(self.label_daysRemaining)
+
         self.label_daysRemainingText = QtWidgets.QLabel(parent=Dialog)
         font = QtGui.QFont()
         font.setFamily("Helvetica")
@@ -63,10 +66,36 @@ class User_license(QtCore.QObject):
         self.label_daysRemainingText.setFont(font)
         self.label_daysRemainingText.setObjectName("label_daysRemainingText")
         self.horizontalLayout.addWidget(self.label_daysRemainingText)
+
+        # Position
+        self.label_position = QtWidgets.QLabel(parent=Dialog)
+        self.label_position.setObjectName("position")
+        self.horizontalLayout.addWidget(self.label_position)
+
+        self.label_positionText = QtWidgets.QLabel(parent=Dialog)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        font.setBold(True)
+        self.label_positionText.setFont(font)
+        self.label_positionText.setObjectName("label_positionText")
+        self.horizontalLayout.addWidget(self.label_positionText)
+
+        # Activation count
+
+
+
+
+
+
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.label_expiry_notice = QtWidgets.QLabel(parent=Dialog)
         self.label_expiry_notice.setObjectName("label_expiry_notice")
         self.verticalLayout.addWidget(self.label_expiry_notice)
+
+
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.pushButton_proceed = QtWidgets.QPushButton(parent=Dialog)
@@ -99,8 +128,15 @@ class User_license(QtCore.QObject):
         self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter valid license keys to proceed."))
         self.pushButton_validate.setText(_translate("Dialog", "Validate License"))
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
+
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
         self.label_daysRemainingText.setText(_translate("Dialog", "1"))
+
+        self.label_position.setText(_translate("Dialog", "Position : "))
+        self.label_positionText.setText(_translate("Dialog", "1"))
+
+
+
         self.label_expiry_notice.setText(_translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
