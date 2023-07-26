@@ -38,6 +38,10 @@ class User_license(QtCore.QObject):
         self.verticalLayout.addWidget(self.lineEdit_key)
         self.pushButton_validate = QtWidgets.QPushButton(parent=Dialog)
         self.pushButton_validate.setObjectName("pushButton_validate")
+
+        # Connect signal
+        self.pushButton_validate.clicked.connect(self.validate)
+
         self.verticalLayout.addWidget(self.pushButton_validate)
         self.label_verify = QtWidgets.QLabel(parent=Dialog)
         self.label_verify.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -57,9 +61,9 @@ class User_license(QtCore.QObject):
         self.label_daysRemainingText.setObjectName("label_daysRemainingText")
         self.horizontalLayout.addWidget(self.label_daysRemainingText)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.label_verify_2 = QtWidgets.QLabel(parent=Dialog)
-        self.label_verify_2.setObjectName("label_verify_2")
-        self.verticalLayout.addWidget(self.label_verify_2)
+        self.label_expiry_notice = QtWidgets.QLabel(parent=Dialog)
+        self.label_expiry_notice.setObjectName("label_expiry_notice")
+        self.verticalLayout.addWidget(self.label_expiry_notice)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.pushButton_proceed = QtWidgets.QPushButton(parent=Dialog)
@@ -91,7 +95,7 @@ class User_license(QtCore.QObject):
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
         self.label_daysRemainingText.setText(_translate("Dialog", "1"))
-        self.label_verify_2.setText(_translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
+        self.label_expiry_notice.setText(_translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
@@ -119,6 +123,44 @@ class User_license(QtCore.QObject):
 
         # Print a message indicating that the credentials have been saved
         print("Credentials have been saved to 'credentials.txt'.")
+        
+        
+    def validate(self):
+        # Verify
+        if self.verify(key=self.lineEdit_key.text()):
+            # Key is verified
+            self.label_verify.setText("License key is VALID, proceed.")
+        
+    def verify(self, key):
+        
+        global score
+        score = 0
+
+        # Define our check digit
+        check_digit = key[2]    # Say 3rd digit
+        check_digit_count = 0   # Track how many times we see that digit in the key
+
+        # aafa-bbfb-cccc-ddfd-1111
+        # separate by hypen
+        chunks = key.split('-')
+
+        # Loop through chunks and check
+        for chunk in chunks:
+            if len(chunk) != 4:     # If chunk is < 4, return false
+                return False
+
+            for char in chunk:
+                if char == check_digit:
+                    check_digit_count += 1  # add 1 to the counter
+
+                # Grab the score of the ANSCII char
+                score += ord(char)      # ord() converts the numerical value of a char.
+
+        # Check for rules
+        if 1700 < score < 1800 and check_digit_count == 3:
+            return True
+        else:
+            return False
 
     def proceed(self):
         self.Dialog.close()
