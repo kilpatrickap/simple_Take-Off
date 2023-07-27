@@ -181,7 +181,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=2)  # TODO connect the epiration_date
+        expiration_date = datetime.now() + timedelta(minutes=10)  # TODO connect the epiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -252,7 +252,15 @@ class User_license(QtWidgets.QDialog):
         # If the remaining minutes are less than 1.0, set remaining_minutes to 0 and save it to credentials.txt
         if remaining_minutes < 1.0:
             remaining_minutes = 0
+
+            # Save the remaining_minutes
             self.save_remaining_minutes(remaining_minutes)
+
+            # Clear the lineEdit_email field
+            self.lineEdit_email.clear()
+
+            # Clear the lineEdit_key field
+            self.lineEdit_key.clear()
 
         return remaining_minutes
 
@@ -286,6 +294,14 @@ class User_license(QtWidgets.QDialog):
         # Initialize the position
         initial_position = 0
 
+        # If remaining_minutes != 0, read position from label_positionText
+        current_position = int(self.label_positionText.text())
+
+        # # Replace initial_position with current_position
+        # current_position = initial_position
+
+        print("Position from label is : ", current_position)
+
         # Get the installation date, expiration date, and time remaining from credentials.txt
         _, _, _, expiration_date, remaining_minutes = self.load_credentials()
         print("Remaining minutes from credentials is : ", remaining_minutes)
@@ -296,9 +312,10 @@ class User_license(QtWidgets.QDialog):
             random_position = random.randint(0, 3)
             print("Random position is:", random_position)
             return random_position
-
-        print("Initial position is:", initial_position)
-        return initial_position
+        else:
+            # When the license has not expired, show the current position
+            print("Current position is:", current_position)
+            return current_position
 
     def _verify(self, key):
 
