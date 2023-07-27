@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timedelta
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import pyqtSignal, Qt
@@ -136,10 +137,10 @@ class User_license(QtWidgets.QDialog):
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
 
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
-        self.label_daysRemainingText.setText(_translate("Dialog", "1"))
+        self.label_daysRemainingText.setText(_translate("Dialog", f"{self.minutes_count_down()}"))
 
         self.label_position.setText(_translate("Dialog", "Position : "))
-        self.label_positionText.setText(_translate("Dialog", f"{self.position()}"))  #TODO change position if day = 0
+        self.label_positionText.setText(_translate("Dialog", f"{self.position()}"))
 
         self.label_count.setText(_translate("Dialog", "Count : "))
         self.label_countText.setText(_translate("Dialog", "1"))
@@ -207,9 +208,30 @@ class User_license(QtWidgets.QDialog):
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
 
+    # TODO To replce minutes_count_down() with days_count_down()
+    # def days_count_down(self):
+    #     # Get the expiration date of the license (this is just an example date)
+    #     expiration_date = datetime(2023, 7, 31)  # Replace this with the actual expiration date
+    #
+    #     # Calculate the number of days remaining until the expiration date
+    #     current_date = datetime.now()
+    #     remaining_days = (expiration_date - current_date).days
+    #
+    #     return remaining_days
+
+    def minutes_count_down(self):
+        # Set the expiration date to 1 minute from the current time
+        expiration_date = datetime.now() + timedelta(minutes=2)
+
+        # Calculate the number of minutes remaining until the expiration date
+        current_datetime = datetime.now()
+        remaining_minutes = (expiration_date - current_datetime).total_seconds() // 60
+
+        return max(remaining_minutes, 0)
+
     def position(self):
         # Set the position
-        initial_position = 2    #TODO Change position if day=0
+        initial_position = 2  # TODO Change position if day=0
         return initial_position
 
     def _verify(self, key):
