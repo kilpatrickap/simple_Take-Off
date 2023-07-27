@@ -179,13 +179,17 @@ class User_license(QtWidgets.QDialog):
         # Set the expiration date to 2 minutes from the current time for testing purposes
         expiration_date = datetime.now() + timedelta(minutes=2)
 
+        # Calculate the time remaining (in minutes) between installation and expiration
+        time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
+
         # Format the dates without milliseconds
         installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
         expiration_date_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
 
-        # Combine email, license key, installation date, and expiration date into a single string
+        # Combine email, license key, installation date, expiration date, and time remaining into a single string
         credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
         credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
+        credentials_str += f"Time Remaining (Minutes): {time_remaining_minutes}\n"
 
         # Get the current working directory
         current_directory = os.getcwd()
