@@ -294,28 +294,34 @@ class User_license(QtWidgets.QDialog):
         # Initialize the position
         initial_position = 0
 
-        # If remaining_minutes != 0, read position from label_positionText
-        current_position = int(self.label_positionText.text())
+        # Set the file path to the current working directory
+        current_directory = os.getcwd()
+        random_position_file = os.path.join(current_directory, "random_position.txt")
 
-        # # Replace initial_position with current_position
-        # current_position = initial_position
-
-        print("Position from label is : ", current_position)
+        if os.path.exists(random_position_file):
+            # If the file exists, read the random position from it
+            with open(random_position_file, "r") as file:
+                random_position = int(file.read())
+        else:
+            # If the file doesn't exist, generate a new random position and save it to the file
+            random_position = random.randint(0, 3)
+            with open(random_position_file, "w") as file:
+                file.write(str(random_position))
 
         # Get the installation date, expiration date, and time remaining from credentials.txt
         _, _, _, expiration_date, remaining_minutes = self.load_credentials()
-        print("Remaining minutes from credentials is : ", remaining_minutes)
+        print("Remaining minutes from credentials is:", remaining_minutes)
 
-        # When the license expires, show a random_position
         if remaining_minutes == 0:
-            # If remaining_minutes is 0, generate a random number from 0 to 3
-            random_position = random.randint(0, 3)
+            # If remaining_minutes is 0, use the random position as the current_position
+            current_position = initial_position + random_position
             print("Random position is:", random_position)
-            return random_position
-        else:
-            # When the license has not expired, show the current position
             print("Current position is:", current_position)
-            return current_position
+            return int(current_position)  # Convert current_position to an integer
+        else:
+            # When the license has not expired, return the current_position (random_position)
+            print("Current position is:", random_position)
+            return int(random_position)  # Convert random_position to an integer
 
     def _verify(self, key):
 
