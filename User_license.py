@@ -1,5 +1,4 @@
 import os
-import random
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import pyqtSignal
@@ -134,10 +133,10 @@ class User_license(QtCore.QObject):
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
 
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
-        self.label_daysRemainingText.setText(_translate("Dialog", "0"))
+        self.label_daysRemainingText.setText(_translate("Dialog", "1"))
 
         self.label_position.setText(_translate("Dialog", "Position : "))
-        self.label_positionText.setText(_translate("Dialog", "1"))
+        self.label_positionText.setText(_translate("Dialog", "1"))  #TODO change position if day = 0
 
         self.label_count.setText(_translate("Dialog", "Count : "))
         self.label_countText.setText(_translate("Dialog", "1"))
@@ -148,17 +147,13 @@ class User_license(QtCore.QObject):
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
         # Retrieve the credentials
-        email, license_key, position = self.load_credentials()
-        if email and license_key and position:
+        email, license_key = self.load_credentials()
+        if email and license_key:
             self.lineEdit_email.setText(email)
             print(f"Email: {email}")
 
             self.lineEdit_key.setText(license_key)
             print(f"License Key: {license_key}")
-
-            self.label_positionText.setText(position)
-            print(f"Position: {position}")
-
         else:
             print("No saved credentials found.")
 
@@ -166,40 +161,13 @@ class User_license(QtCore.QObject):
         # Get the email and license key entered by the user from line edits
         email = self.lineEdit_email.text()
         license_key = self.lineEdit_key.text()
-        position = self.label_positionText.text()
 
         # Call the credentials() method with the captured email and license key
-        self.credentials(email, license_key, position)
+        self.credentials(email, license_key)
 
-        # Check whether current entry is valid. If it is, activate validate button.
-        if not license_key:
-            # If the license key is empty, display a message
-            self.label_verify.setText("Please enter your email and license key")
-            return
-
-        # Verify the license key
-        if self._verify(key=license_key):
-            # Key is verified
-            self.label_verify.setText("License key is VALID, proceed.")
-
-            # Set the label_remainingDays to 30 days
-            self.label_daysRemainingText.setText('30')
-
-            self.pushButton_validate.setText("License activated")
-
-            # Activate proceed button
-            self.pushButton_proceed.setEnabled(True)
-        else:
-            self.label_verify.setText("INVALID License key!")
-
-            # Deactivate proceed button
-            self.pushButton_proceed.setEnabled(False)
-
-        # self.pushButton_validate.setEnabled(True)
-
-    def credentials(self, email, license_key, position):
+    def credentials(self, email, license_key):
         # Combine email and license key into a single string
-        credentials_str = f"Email: {email}\nLicense Key: {license_key}\nPosition: {position}\n"
+        credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
 
         # Get the current working directory
         current_directory = os.getcwd()
@@ -236,33 +204,13 @@ class User_license(QtCore.QObject):
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
 
-    def random_number(self):
-        # If label_daysRemaining is 0 (license has expired) , generate random number.
-        if self.label_daysRemainingText.text() == '0':
-
-            # Deactivate validate button
-            self.pushButton_validate.setEnabled(False)
-            self.pushButton_validate.setText("License expired")
-            self.lineEdit_email.clear()
-            self.lineEdit_key.clear()
-
-            # Generate a random number from 0 <= 3
-            rand_nr = int(random.randint(0, 3))
-            print(rand_nr)
-            self.label_positionText.setText(str(rand_nr))
-
-            return rand_nr
-
-        else:
-            return 3
-
     def _verify(self, key):
 
         global score
         score = 0
 
-        # Get the random check digit
-        check_digit = key[self.random_number()]  # Say 3rd digit
+        # Define our check digit
+        check_digit = key[2]  # Say 3rd digit   #TODO Change position if day=0
         check_digit_count = 0  # Track how many times we see that digit in the key
 
         # aafa-bbfb-cccc-ddfd-1111
@@ -305,20 +253,16 @@ class User_license(QtCore.QObject):
         # Extract email and license key from credentials
         email = ""
         license_key = ""
-        position = ""
         lines = credentials.splitlines()
         for line in lines:
             if line.startswith("Email:"):
                 email = line.split(":", 1)[1].strip()
-                print(email)
+                # print(email)
             elif line.startswith("License Key:"):
                 license_key = line.split(":", 1)[1].strip()
-                print(license_key)
-            elif line.startswith("Position :"):
-                position = line.split(":", 1)[1].strip()
-                print(position)
+                # print(license_key)
 
-        return email, license_key, position
+        return email, license_key
 
     def proceed(self):
         self.Dialog.close()
