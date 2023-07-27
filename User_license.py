@@ -50,6 +50,7 @@ class User_license(QtWidgets.QDialog):
         self.pushButton_validate.clicked.connect(self._validate)
         self.pushButton_validate.clicked.connect(self.count_down)
 
+
         self.verticalLayout.addWidget(self.pushButton_validate)
         self.label_verify = QtWidgets.QLabel(parent=Dialog)
         self.label_verify.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
