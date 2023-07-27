@@ -50,7 +50,6 @@ class User_license(QtWidgets.QDialog):
         self.pushButton_validate.clicked.connect(self._validate)
         self.pushButton_validate.clicked.connect(self.count_down)
 
-
         self.verticalLayout.addWidget(self.pushButton_validate)
         self.label_verify = QtWidgets.QLabel(parent=Dialog)
         self.label_verify.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -294,34 +293,34 @@ class User_license(QtWidgets.QDialog):
         # Initialize the position
         initial_position = 0
 
-        # Set the file path to the current working directory
-        current_directory = os.getcwd()
-        random_position_file = os.path.join(current_directory, "random_position.txt")
-
-        if os.path.exists(random_position_file):
-            # If the file exists, read the random position from it
-            with open(random_position_file, "r") as file:
-                random_position = int(file.read())
-        else:
-            # If the file doesn't exist, generate a new random position and save it to the file
-            random_position = random.randint(0, 3)
-            with open(random_position_file, "w") as file:
-                file.write(str(random_position))
-
         # Get the installation date, expiration date, and time remaining from credentials.txt
         _, _, _, expiration_date, remaining_minutes = self.load_credentials()
         print("Remaining minutes from credentials is:", remaining_minutes)
 
         if remaining_minutes == 0:
             # If remaining_minutes is 0, use the random position as the current_position
+
+            # Set the file path to the current working directory
+            current_directory = os.getcwd()
+            random_position_file = os.path.join(current_directory, "random_position.txt")
+
+            if os.path.exists(random_position_file):
+                # If the file exists, read the random position from it
+                with open(random_position_file, "r") as file:
+                    random_position = int(file.read())
+            else:
+                # If the file doesn't exist, generate a new random position and save it to the file
+                random_position = random.randint(0, 3)
+                with open(random_position_file, "w") as file:
+                    file.write(str(random_position))
+
             current_position = initial_position + random_position
             print("Random position is:", random_position)
             print("Current position is:", current_position)
             return int(current_position)  # Convert current_position to an integer
-        else:
-            # When the license has not expired, return the current_position (random_position)
-            print("Current position is:", random_position)
-            return int(random_position)  # Convert random_position to an integer
+
+        # Return the calculated position when remaining_minutes is not zero
+        return initial_position + (remaining_minutes % 4)
 
     def _verify(self, key):
 
