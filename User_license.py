@@ -139,7 +139,7 @@ class User_license(QtWidgets.QDialog):
         self.label_daysRemainingText.setText(_translate("Dialog", "1"))
 
         self.label_position.setText(_translate("Dialog", "Position : "))
-        self.label_positionText.setText(_translate("Dialog", "1"))  #TODO change position if day = 0
+        self.label_positionText.setText(_translate("Dialog", f"{self.position()}"))  #TODO change position if day = 0
 
         self.label_count.setText(_translate("Dialog", "Count : "))
         self.label_countText.setText(_translate("Dialog", "1"))
@@ -207,13 +207,18 @@ class User_license(QtWidgets.QDialog):
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
 
+    def position(self):
+        # Set the position
+        initial_position = 2    #TODO Change position if day=0
+        return initial_position
+
     def _verify(self, key):
 
         global score
         score = 0
 
         # Define our check digit
-        check_digit = key[2]  # Say 3rd digit   #TODO Change position if day=0
+        check_digit = key[self.position()]
         check_digit_count = 0  # Track how many times we see that digit in the key
 
         # aafa-bbfb-cccc-ddfd-1111
