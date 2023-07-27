@@ -179,7 +179,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=2)     #TODO connect the epiration_date
+        expiration_date = datetime.now() + timedelta(minutes=5)     #TODO connect the epiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -247,11 +247,12 @@ class User_license(QtWidgets.QDialog):
         current_datetime = datetime.now()
         remaining_minutes = (expiration_date - current_datetime).total_seconds() // 60
 
-        # If the time remaining in credentials.txt is greater than calculated, use the time from credentials.txt
-        remaining_minutes = max(remaining_minutes, time_remaining_minutes)
+        # If the remaining minutes are less than 1.0, return 0
+        if remaining_minutes < 1.0:
+            return 0
 
-        # If the remaining minutes are negative or zero, return 0
-        return max(remaining_minutes, 0)
+        # Otherwise, return the remaining minutes
+        return remaining_minutes
 
     def position(self):
         # Set the position
