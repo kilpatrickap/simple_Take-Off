@@ -137,7 +137,7 @@ class User_license(QtWidgets.QDialog):
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
 
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
-        self.label_daysRemainingText.setText(_translate("Dialog", f"{self.minutes_count_down()}"))
+        self.label_daysRemainingText.setText(_translate("Dialog", f"{self.count_down()}"))
 
         self.label_position.setText(_translate("Dialog", "Position : "))
         self.label_positionText.setText(_translate("Dialog", f"{self.position()}"))
@@ -151,7 +151,8 @@ class User_license(QtWidgets.QDialog):
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
         # Retrieve the credentials
-        email, license_key = self.load_credentials()
+        email, license_key, _, _, _ = self.load_credentials()  # Only retrieve email and license_key
+
         if email and license_key:
             self.lineEdit_email.setText(email)
             print(f"Email: {email}")
@@ -162,7 +163,8 @@ class User_license(QtWidgets.QDialog):
             print("No saved credentials found.")
 
         # Countdown
-        self.minutes_count_down()
+        self.count_down()
+
 
     def details(self):
         # Get the email and license key entered by the user from line edits
@@ -177,7 +179,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=2)
+        expiration_date = datetime.now() + timedelta(minutes=2)     #TODO connect the epiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -237,13 +239,16 @@ class User_license(QtWidgets.QDialog):
     #
     #     return remaining_days
 
-    def minutes_count_down(self):
-        # Set the expiration date to 2 minutes from the current time
-        expiration_date = datetime.now() + timedelta(minutes=2)
+    def count_down(self):
+        # Get the installation date, expiration date, and time remaining from credentials.txt
+        _, _, installation_date, expiration_date, time_remaining_minutes = self.load_credentials()
 
         # Calculate the number of minutes remaining until the expiration date
         current_datetime = datetime.now()
         remaining_minutes = (expiration_date - current_datetime).total_seconds() // 60
+
+        # If the time remaining in credentials.txt is greater than calculated, use the time from credentials.txt
+        remaining_minutes = max(remaining_minutes, time_remaining_minutes)
 
         # If the remaining minutes are negative or zero, return 0
         return max(remaining_minutes, 0)
@@ -299,19 +304,37 @@ class User_license(QtWidgets.QDialog):
         with open(file_path, "r") as file:
             credentials = file.read()
 
-        # Extract email and license key from credentials
+        # Extract email, license key, installation date, expiration date, and time remaining from credentials
         email = ""
         license_key = ""
+        installation_date_str = ""
+        expiration_date_str = ""
+        time_remaining_str = ""
+
         lines = credentials.splitlines()
         for line in lines:
             if line.startswith("Email:"):
                 email = line.split(":", 1)[1].strip()
-                # print(email)
             elif line.startswith("License Key:"):
                 license_key = line.split(":", 1)[1].strip()
-                # print(license_key)
+            elif line.startswith("Installation Date:"):
+                installation_date_str = line.split(":", 1)[1].strip()
+            elif line.startswith("Expiration Date:"):
+                expiration_date_str = line.split(":", 1)[1].strip()
+            elif line.startswith("Time Remaining (Minutes):"):
+                time_remaining_str = line.split(":", 1)[1].strip()
 
-        return email, license_key
+        # Convert date strings to datetime objects
+        installation_date = datetime.strptime(installation_date_str, "%Y-%m-%d %H:%M:%S")
+        expiration_date = datetime.strptime(expiration_date_str, "%Y-%m-%d %H:%M:%S")
+
+        # Convert time remaining to an integer
+        try:
+            time_remaining_minutes = int(float(time_remaining_str))
+        except ValueError:
+            time_remaining_minutes = 0
+
+        return email, license_key, installation_date, expiration_date, time_remaining_minutes
 
     def proceed(self):
         self.Dialog.close()
