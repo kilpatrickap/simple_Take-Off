@@ -1,4 +1,5 @@
 import os
+import random
 from datetime import datetime, timedelta
 
 from PyQt6 import QtCore, QtGui, QtWidgets
@@ -165,7 +166,6 @@ class User_license(QtWidgets.QDialog):
         # Countdown
         self.count_down()
 
-
     def details(self):
         # Get the email and license key entered by the user from line edits
         email = self.lineEdit_email.text()
@@ -179,7 +179,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=10)     #TODO connect the epiration_date
+        expiration_date = datetime.now() + timedelta(minutes=2)  # TODO connect the epiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -255,8 +255,21 @@ class User_license(QtWidgets.QDialog):
         return remaining_minutes
 
     def position(self):
-        # Set the position
-        initial_position = 2  # TODO Change position if day=0
+        # Initialize the position
+        initial_position = 0
+
+        # Get the installation date, expiration date, and time remaining from credentials.txt
+        _, _, _, expiration_date, remaining_minutes = self.load_credentials()
+        print("Remaining minutes from credentials is : ", remaining_minutes)
+
+        # When the license expires, show a random_position
+        if remaining_minutes == 0:
+            # If remaining_minutes is 0, generate a random number from 0 to 3
+            random_position = random.randint(0, 3)
+            print("Random position is:", random_position)
+            return random_position
+
+        print("Initial position is:", initial_position)
         return initial_position
 
     def _verify(self, key):
