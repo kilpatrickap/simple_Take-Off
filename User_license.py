@@ -48,6 +48,7 @@ class User_license(QtWidgets.QDialog):
 
         # Connect signal
         self.pushButton_validate.clicked.connect(self._validate)
+        self.pushButton_validate.clicked.connect(self.count_down)
 
         self.verticalLayout.addWidget(self.pushButton_validate)
         self.label_verify = QtWidgets.QLabel(parent=Dialog)
@@ -247,12 +248,38 @@ class User_license(QtWidgets.QDialog):
         current_datetime = datetime.now()
         remaining_minutes = (expiration_date - current_datetime).total_seconds() // 60
 
-        # If the remaining minutes are less than 1.0, return 0
+        # If the remaining minutes are less than 1.0, set remaining_minutes to 0 and save it to credentials.txt
         if remaining_minutes < 1.0:
-            return 0
+            remaining_minutes = 0
+            self.save_remaining_minutes(remaining_minutes)
 
-        # Otherwise, return the remaining minutes
         return remaining_minutes
+
+    def save_remaining_minutes(self, remaining_minutes):
+        # Read the existing credentials from credentials.txt
+        email, license_key, installation_date, expiration_date, _ = self.load_credentials()
+
+        # Format the dates without milliseconds
+        installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
+        expiration_date_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
+
+        # Combine email, license key, installation date, expiration date, and time remaining into a single string
+        credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
+        credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
+        credentials_str += f"Time Remaining (Minutes): {remaining_minutes}\n"
+
+        # Get the current working directory
+        current_directory = os.getcwd()
+
+        # Create a file named 'credentials.txt' in the current working directory
+        file_path = os.path.join(current_directory, "credentials.txt")
+
+        # Write the credentials to the file
+        with open(file_path, "w") as file:
+            file.write(credentials_str)
+
+        # Print a message indicating that the credentials have been updated
+        print("Remaining minutes have been updated and saved to 'credentials.txt'.")
 
     def position(self):
         # Initialize the position
