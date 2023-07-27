@@ -286,8 +286,8 @@ class User_license(QtWidgets.QDialog):
         _, _, _, expiration_date, remaining_minutes = self.load_credentials()
         print("Remaining minutes from credentials is:", remaining_minutes)
 
+        # If remaining_minutes is 0, use the random position as the current_position
         if remaining_minutes == 0:
-            # If remaining_minutes is 0, use the random position as the current_position
 
             # Set the file path to the current working directory
             current_directory = os.getcwd()
@@ -313,7 +313,6 @@ class User_license(QtWidgets.QDialog):
         return initial_position + (remaining_minutes % 4)
 
     def _verify(self, key):
-
         global score
         score = 0
 
