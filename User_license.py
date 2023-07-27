@@ -180,7 +180,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=10)  # TODO connect the epiration_date
+        expiration_date = datetime.now() + timedelta(minutes=2)  # TODO connect the expiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -294,15 +294,17 @@ class User_license(QtWidgets.QDialog):
             random_position_file = os.path.join(current_directory, "random_position.txt")
 
             if os.path.exists(random_position_file):
-                # If the file exists, read the random position from it
-                with open(random_position_file, "r") as file:
-                    random_position = int(file.read())
-            else:
-                # If the file doesn't exist, generate a new random position and save it to the file
-                random_position = random.randint(0, 3)
-                with open(random_position_file, "w") as file:
+
+                # If the file exists, write the random position to it.
+                random_position = random.randint(0, 3)  # Generate a random number
+
+                with open(random_position_file, "w") as file:   # Write to file
                     file.write(str(random_position))
 
+                with open(random_position_file, "r") as file:   # Read the file
+                    random_position = int(file.read())
+
+            # Make the random_position the current_position
             current_position = initial_position + random_position
             print("Random position is:", random_position)
             print("Current position is:", current_position)
