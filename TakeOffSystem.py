@@ -322,6 +322,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         dialog.exec()
 
-    def close_system(self):
+    def close_system(self): #TODO exit when x is clicked
         # Close the main window
         sys.exit()
