@@ -229,17 +229,6 @@ class User_license(QtWidgets.QDialog):
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
 
-    # TODO To replce minutes_count_down() with days_count_down()
-    # def days_count_down(self):
-    #     # Get the expiration date of the license (this is just an example date)
-    #     expiration_date = datetime(2023, 7, 31)  # Replace this with the actual expiration date
-    #
-    #     # Calculate the number of days remaining until the expiration date
-    #     current_date = datetime.now()
-    #     remaining_days = (expiration_date - current_date).days
-    #
-    #     return remaining_days
-
     def count_down(self):
         # Get the installation date, expiration date, and time remaining from credentials.txt
         _, _, installation_date, expiration_date, time_remaining_minutes = self.load_credentials()
