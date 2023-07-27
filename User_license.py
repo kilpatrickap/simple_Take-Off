@@ -294,6 +294,11 @@ class User_license(QtWidgets.QDialog):
             random_position_file = os.path.join(current_directory, "random_position.txt")
 
             if os.path.exists(random_position_file):
+                # Generate a random number and write it to the file.
+                random_position = random.randint(0, 3)  # Generate a random number
+                with open(random_position_file, "w") as file:
+                    file.write(str(random_position))
+
                 # If the file exists, read the random position from it.
                 with open(random_position_file, "r") as file:
                     random_position = int(file.read())
