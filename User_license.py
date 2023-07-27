@@ -1,16 +1,19 @@
 import os
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtCore import pyqtSignal
+from PyQt6.QtCore import pyqtSignal, Qt
 
 
-class User_license(QtCore.QObject):
+class User_license(QtWidgets.QDialog):
     # Define the custom signal here using the pyqtSignal decorator
     cancelClicked = pyqtSignal()
 
     def __init__(self, Dialog):
         super().__init__()
         self.Dialog = Dialog
+
+        # Hide the close button and window frame
+        Dialog.setWindowFlags(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
 
         # Load credentials on initialization
         self.load_credentials()
