@@ -221,10 +221,6 @@ class User_license(QtWidgets.QDialog):
             # Key is verified
             self.label_verify.setText("License key is VALID, proceed.")
 
-            # De-activate email and key
-            self.lineEdit_email.setEnabled(False)
-            self.lineEdit_key.setEnabled(False)
-
             # Activate proceed button
             self.pushButton_proceed.setEnabled(True)
         else:
@@ -317,17 +313,6 @@ class User_license(QtWidgets.QDialog):
             print("Random position is:", random_position)
             print("Current position is:", current_position)
             return int(current_position)  # Convert current_position to an integer
-
-        # Deactivate email, key, validate button if not expired
-        self.lineEdit_email.setEnabled(False)
-        self.lineEdit_key.setEnabled(False)
-        self.pushButton_validate.setEnabled(False)
-
-        # Set text in label
-        self.label_verify.setText("Your License has not expired")
-
-        # Activate proceed button
-        self.pushButton_proceed.setEnabled(True)
 
         # Return the calculated position when remaining_minutes is not zero
         return initial_position + (remaining_minutes % 4)
