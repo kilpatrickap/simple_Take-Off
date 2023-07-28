@@ -227,46 +227,10 @@ class User_license(QtWidgets.QDialog):
             self.pushButton_validate.setEnabled(False)
             self.pushButton_proceed.setEnabled(True)
         else:
-            # Invalid license key
             self.label_verify.setText("INVALID License key!")
 
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
-
-            # Reset credentials to default values and save to file
-            self.default_credentials()
-
-    def default_credentials(self):
-        # Get the current working directory
-        current_directory = os.getcwd()
-
-        # Create the file path to 'credentials.txt' in the current working directory
-        file_path = os.path.join(current_directory, "credentials.txt")
-
-        try:
-            # Prepare the default credentials
-            email = "user@email.com"
-            license_key = "xxxx-xxxx-xxxx-xxxx-xxxx"
-            installation_date = datetime.now()
-            expiration_date = datetime.now() + timedelta(minutes=3)  # Set expiration to 3 minutes for testing
-            time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
-
-            # Format the dates without milliseconds
-            installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
-            expiration_date_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
-
-            # Create the default credentials string
-            default_credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
-            default_credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
-            default_credentials_str += f"Time Remaining (Minutes): {time_remaining_minutes}\n"
-
-            # Write the default credentials to the file
-            with open(file_path, "w") as file:
-                file.write(default_credentials_str)
-
-            print("credentials.txt file has been updated with default values.")
-        except Exception as e:
-            print(f"An error occurred while writing to the file: {e}")
 
     def count_down(self):
         # Get the installation date, expiration date, and time remaining from credentials.txt
@@ -354,11 +318,7 @@ class User_license(QtWidgets.QDialog):
             return int(current_position)  # Convert current_position to an integer
 
         # License has not expired.
-        self.lineEdit_email.setEnabled(False)
-        self.lineEdit_key.setEnabled(False)
-        self.pushButton_validate.setEnabled(False)
-        self.label_verify.setText("Your License has not expired")
-        self.pushButton_proceed.setEnabled(True)
+
 
         # Return the calculated position when remaining_minutes is not zero
         return initial_position + (remaining_minutes % 4)
