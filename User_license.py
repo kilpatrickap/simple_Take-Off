@@ -227,10 +227,40 @@ class User_license(QtWidgets.QDialog):
             self.pushButton_validate.setEnabled(False)
             self.pushButton_proceed.setEnabled(True)
         else:
+            # Invalid license key
             self.label_verify.setText("INVALID License key!")
 
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
+
+            # Reset credentials to default values and save to file
+            self.default_credentials()
+
+    def default_credentials(self):
+        # Get the current working directory
+        current_directory = os.getcwd()
+
+        # Create the file path to 'credentials.txt' in the current working directory
+        file_path = os.path.join(current_directory, "credentials.txt")
+
+        # Check if the file exists before attempting to modify it
+        if os.path.exists(file_path):
+            try:
+                # Read the existing credentials from credentials.txt
+                with open(file_path, "r") as file:
+                    credentials = file.read()
+
+                # Modify the email and license key in the credentials
+                credentials = credentials.replace("Email:", "Email: user@email.com")
+                credentials = credentials.replace("License Key:", "License Key: xxxx-xxxx-xxxx-xxxx-xxxx")
+
+                # Write the modified credentials back to the file
+                with open(file_path, "w") as file:
+                    file.write(credentials)
+
+                print("credentials.txt file has been updated with default values.")
+            except Exception as e:
+                print(f"An error occurred while modifying the file: {e}")
 
     def count_down(self):
         # Get the installation date, expiration date, and time remaining from credentials.txt
