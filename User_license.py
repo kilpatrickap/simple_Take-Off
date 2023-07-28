@@ -318,7 +318,11 @@ class User_license(QtWidgets.QDialog):
             return int(current_position)  # Convert current_position to an integer
 
         # License has not expired.
-
+        self.lineEdit_email.setEnabled(False)
+        self.lineEdit_key.setEnabled(False)
+        self.pushButton_validate.setEnabled(False)
+        self.label_verify.setText("Your License has not expired")
+        self.pushButton_proceed.setEnabled(True)
 
         # Return the calculated position when remaining_minutes is not zero
         return initial_position + (remaining_minutes % 4)
