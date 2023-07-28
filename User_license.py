@@ -243,24 +243,30 @@ class User_license(QtWidgets.QDialog):
         # Create the file path to 'credentials.txt' in the current working directory
         file_path = os.path.join(current_directory, "credentials.txt")
 
-        # Check if the file exists before attempting to modify it
-        if os.path.exists(file_path):
-            try:
-                # Read the existing credentials from credentials.txt
-                with open(file_path, "r") as file:
-                    credentials = file.read()
+        try:
+            # Prepare the default credentials
+            email = "user@email.com"
+            license_key = "xxxx-xxxx-xxxx-xxxx-xxxx"
+            installation_date = datetime.now()
+            expiration_date = datetime.now() + timedelta(minutes=3)  # Set expiration to 3 minutes for testing
+            time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
 
-                # Modify the email and license key in the credentials
-                credentials = credentials.replace("Email:", "Email: user@email.com")
-                credentials = credentials.replace("License Key:", "License Key: xxxx-xxxx-xxxx-xxxx-xxxx")
+            # Format the dates without milliseconds
+            installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
+            expiration_date_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
 
-                # Write the modified credentials back to the file
-                with open(file_path, "w") as file:
-                    file.write(credentials)
+            # Create the default credentials string
+            default_credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
+            default_credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
+            default_credentials_str += f"Time Remaining (Minutes): {time_remaining_minutes}\n"
 
-                print("credentials.txt file has been updated with default values.")
-            except Exception as e:
-                print(f"An error occurred while modifying the file: {e}")
+            # Write the default credentials to the file
+            with open(file_path, "w") as file:
+                file.write(default_credentials_str)
+
+            print("credentials.txt file has been updated with default values.")
+        except Exception as e:
+            print(f"An error occurred while writing to the file: {e}")
 
     def count_down(self):
         # Get the installation date, expiration date, and time remaining from credentials.txt
