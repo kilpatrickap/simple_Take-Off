@@ -310,7 +310,9 @@ class User_license(QtWidgets.QDialog):
             return int(current_position)  # Convert current_position to an integer
 
         else:
-            # Return the  position when remaining_minutes is not zero
+            # Freeze email/key
+            self.lineEdit_email.setEnabled(False)
+            self.lineEdit_key.setEnabled(False)
 
             # Read the random_position from random_position.txt
             current_directory = os.getcwd()
@@ -320,11 +322,6 @@ class User_license(QtWidgets.QDialog):
 
                 # Make the random_position the initial_position
                 initial_position = random_position
-
-            # Freeze email/key/validate
-            self.lineEdit_email.setEnabled(False)
-            self.lineEdit_key.setEnabled(False)
-            self.pushButton_validate.setEnabled(False)
 
             return initial_position
 
