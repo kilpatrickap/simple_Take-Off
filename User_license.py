@@ -226,7 +226,10 @@ class User_license(QtWidgets.QDialog):
         else:
             self.label_verify.setText("INVALID License key!")
 
-            # Reset minutes remaining to zero
+            # Reset time_remaining as 0 in credentials.txt
+            self.save_remaining_minutes(0)
+
+            # Reset count_down to 0.
 
 
             # Deactivate proceed button
