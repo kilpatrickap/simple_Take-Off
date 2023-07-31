@@ -48,7 +48,6 @@ class User_license(QtWidgets.QDialog):
 
         # Connect signal
         self.pushButton_validate.clicked.connect(self._validate)
-        self.pushButton_validate.clicked.connect(self.count_down)
 
         self.verticalLayout.addWidget(self.pushButton_validate)
         self.label_verify = QtWidgets.QLabel(parent=Dialog)
@@ -164,8 +163,6 @@ class User_license(QtWidgets.QDialog):
         else:
             print("No saved credentials found.")
 
-        # Countdown
-        self.count_down()
 
     def details(self):
         # Get the email and license key entered by the user from line edits
