@@ -230,12 +230,12 @@ class User_license(QtWidgets.QDialog):
             self.save_remaining_minutes(0)
 
             # Reset count_down to 0.
-
+            self.count_down(zero=True)
 
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
 
-    def count_down(self):
+    def count_down(self, zero=False):
         # Get the installation date, expiration date, and time remaining from credentials.txt
         _, _, installation_date, expiration_date, time_remaining_minutes = self.load_credentials()
 
@@ -255,6 +255,10 @@ class User_license(QtWidgets.QDialog):
 
             # Clear the lineEdit_key field
             self.lineEdit_key.clear()
+
+        if zero:
+            # Save the remaining_minutes
+            self.save_remaining_minutes(0)
 
         return remaining_minutes
 
