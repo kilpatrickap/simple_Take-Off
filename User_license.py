@@ -180,7 +180,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=5)  # TODO connect the expiration_date
+        expiration_date = datetime.now() + timedelta(minutes=3)  # TODO connect the expiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -310,9 +310,13 @@ class User_license(QtWidgets.QDialog):
             return int(current_position)  # Convert current_position to an integer
 
         else:
-            # Freeze email/key
+            # Freeze email/key/validate
             self.lineEdit_email.setEnabled(False)
             self.lineEdit_key.setEnabled(False)
+            self.pushButton_validate.setEnabled(False)
+
+            # Unfreeze proceed button
+            self.pushButton_proceed.setEnabled(True)
 
             # Read the random_position from random_position.txt
             current_directory = os.getcwd()
