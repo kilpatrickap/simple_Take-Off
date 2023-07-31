@@ -226,6 +226,9 @@ class User_license(QtWidgets.QDialog):
         else:
             self.label_verify.setText("INVALID License key!")
 
+            # Reset minutes remaining to zero
+
+
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
 
@@ -314,6 +317,9 @@ class User_license(QtWidgets.QDialog):
             self.lineEdit_email.setEnabled(False)
             self.lineEdit_key.setEnabled(False)
             self.pushButton_validate.setEnabled(False)
+
+            # Show the user the license is not expired
+            self.label_verify.setText("Your License has not expired")
 
             # Unfreeze proceed button
             self.pushButton_proceed.setEnabled(True)
