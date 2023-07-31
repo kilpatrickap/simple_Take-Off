@@ -302,11 +302,11 @@ class User_license(QtWidgets.QDialog):
                 # If the file exists, read the random position from it.
                 with open(random_position_file, "r") as file:
                     random_position = int(file.read())
-            else:
-                # If the file does not exist, generate a random number and write it to the file.
-                random_position = random.randint(0, 3)  # Generate a random number
-                with open(random_position_file, "w") as file:
-                    file.write(str(random_position))
+            # else:
+            #     # If the file does not exist, generate a random number and write it to the file.
+            #     random_position = random.randint(0, 3)  # Generate a random number
+            #     with open(random_position_file, "w") as file:
+            #         file.write(str(random_position))
 
             # Make the random_position the current_position
             current_position = initial_position + random_position
@@ -314,8 +314,19 @@ class User_license(QtWidgets.QDialog):
             print("Current position is:", current_position)
             return int(current_position)  # Convert current_position to an integer
 
-        # Return the calculated position when remaining_minutes is not zero
-        return initial_position + (remaining_minutes % 4)
+        else:
+            # Return the  position when remaining_minutes is not zero
+
+            # Read the random_position from random_position.txt
+            current_directory = os.getcwd()
+            random_position_file = os.path.join(current_directory, "random_position.txt")
+            with open(random_position_file, "r") as file:
+                random_position = int(file.read())
+
+                # Make the random_position the initial_position
+                initial_position = random_position
+
+            return initial_position
 
     def _verify(self, key):
         global score
