@@ -302,11 +302,6 @@ class User_license(QtWidgets.QDialog):
                 # If the file exists, read the random position from it.
                 with open(random_position_file, "r") as file:
                     random_position = int(file.read())
-            # else:
-            #     # If the file does not exist, generate a random number and write it to the file.
-            #     random_position = random.randint(0, 3)  # Generate a random number
-            #     with open(random_position_file, "w") as file:
-            #         file.write(str(random_position))
 
             # Make the random_position the current_position
             current_position = initial_position + random_position
@@ -325,6 +320,11 @@ class User_license(QtWidgets.QDialog):
 
                 # Make the random_position the initial_position
                 initial_position = random_position
+
+            # Freeze email/key/validate
+            self.lineEdit_email.setEnabled(False)
+            self.lineEdit_key.setEnabled(False)
+            self.pushButton_validate.setEnabled(False)
 
             return initial_position
 
