@@ -180,7 +180,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 2 minutes from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(minutes=3)  # TODO connect the expiration_date
+        expiration_date = datetime.now() + timedelta(minutes=5)  # TODO connect the expiration_date
 
         # Calculate the time remaining (in minutes) between installation and expiration
         time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
@@ -222,9 +222,6 @@ class User_license(QtWidgets.QDialog):
             self.label_verify.setText("License key is VALID, proceed.")
 
             # Activate proceed button
-            self.lineEdit_email.setEnabled(False)
-            self.lineEdit_key.setEnabled(False)
-            self.pushButton_validate.setEnabled(False)
             self.pushButton_proceed.setEnabled(True)
         else:
             self.label_verify.setText("INVALID License key!")
@@ -316,9 +313,6 @@ class User_license(QtWidgets.QDialog):
             print("Random position is:", random_position)
             print("Current position is:", current_position)
             return int(current_position)  # Convert current_position to an integer
-
-        # License has not expired.
-
 
         # Return the calculated position when remaining_minutes is not zero
         return initial_position + (remaining_minutes % 4)
