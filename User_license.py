@@ -196,7 +196,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 1 day from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(days=1)  # TODO connect the expiration_date
+        expiration_date = datetime.now() + timedelta(days=2)  # TODO connect the expiration_date
 
         # Calculate the time remaining (in days) between installation and expiration
         time_remaining_days = (expiration_date - installation_date).days
@@ -296,7 +296,7 @@ class User_license(QtWidgets.QDialog):
             remaining_days = 0
 
             # Save the remaining_minutes
-            self.save_remaining_minutes(remaining_days)
+            self.save_remaining_days(remaining_days)
 
             # Clear the lineEdit_email field
             self.lineEdit_email.clear()
