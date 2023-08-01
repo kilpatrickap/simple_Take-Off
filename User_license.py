@@ -240,7 +240,7 @@ class User_license(QtWidgets.QDialog):
         current_directory = os.getcwd()
 
         # Create the file path to 'valid_licenses.txt' in the current working directory
-        file_path = os.path.join(current_directory, "valid_licenses.txt")
+        file_path = os.path.join(current_directory, "licenses.lic")
 
         # Write the valid license key to the file
         with open(file_path, "a") as file:
@@ -251,7 +251,7 @@ class User_license(QtWidgets.QDialog):
         current_directory = os.getcwd()
 
         # Create the file path to 'valid_licenses.txt' in the current working directory
-        file_path = os.path.join(current_directory, "valid_licenses.txt")
+        file_path = os.path.join(current_directory, "licenses.lic")
 
         # Read the valid licenses from the file
         if not os.path.exists(file_path):
