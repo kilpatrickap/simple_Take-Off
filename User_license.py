@@ -144,7 +144,7 @@ class User_license(QtWidgets.QDialog):
         self.label_positionText.setText(_translate("Dialog", f"{self.position()}"))
 
         self.label_count.setText(_translate("Dialog", "Count : "))
-        self.label_countText.setText(_translate("Dialog", "1"))
+        self.label_countText.setText(_translate("Dialog", f"{self.count_valid_licenses()}"))
 
         self.label_expiry_notice.setText(
             _translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
@@ -218,6 +218,9 @@ class User_license(QtWidgets.QDialog):
             # Key is verified
             self.label_verify.setText("License key is VALID, proceed.")
 
+            # Save the valid license key to 'valid_licenses.txt'
+            self.save_valid_license(license_key)
+
             # Activate proceed button
             self.pushButton_proceed.setEnabled(True)
         else:
@@ -231,6 +234,35 @@ class User_license(QtWidgets.QDialog):
 
             # Deactivate proceed button
             self.pushButton_proceed.setEnabled(False)
+
+    def save_valid_license(self, license_key):
+        # Get the current working directory
+        current_directory = os.getcwd()
+
+        # Create the file path to 'valid_licenses.txt' in the current working directory
+        file_path = os.path.join(current_directory, "valid_licenses.txt")
+
+        # Write the valid license key to the file
+        with open(file_path, "a") as file:
+            file.write(license_key + "\n")
+
+    def count_valid_licenses(self):
+        # Get the current working directory
+        current_directory = os.getcwd()
+
+        # Create the file path to 'valid_licenses.txt' in the current working directory
+        file_path = os.path.join(current_directory, "valid_licenses.txt")
+
+        # Read the valid licenses from the file
+        if not os.path.exists(file_path):
+            # If 'valid_licenses.txt' does not exist, return 0
+            return 0
+
+        # Read the valid licenses from the file
+        with open(file_path, "r") as file:
+            valid_licenses = file.read().splitlines()
+
+        return len(valid_licenses)
 
     def count_down(self, zero=False):
         # Get the installation date, expiration date, and time remaining from credentials.txt
@@ -418,6 +450,22 @@ class User_license(QtWidgets.QDialog):
             time_remaining_minutes = 0
 
         return email, license_key, installation_date, expiration_date, time_remaining_minutes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def proceed(self):
         self.Dialog.close()
