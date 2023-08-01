@@ -151,19 +151,6 @@ class User_license(QtWidgets.QDialog):
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
-        # # Retrieve the credentials
-        # email, license_key, _, _, _ = self.load_credentials()  # Only retrieve email and license_key
-        #
-        # if email and license_key:
-        #     self.lineEdit_email.setText(email)
-        #     print(f"Email: {email}")
-        #
-        #     self.lineEdit_key.setText(license_key)
-        #     print(f"License Key: {license_key}")
-        # else:
-        #     print("No saved credentials found.")
-
-
     def details(self):
         # Get the email and license key entered by the user from line edits
         email = self.lineEdit_email.text()
