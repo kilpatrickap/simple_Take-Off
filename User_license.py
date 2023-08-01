@@ -289,14 +289,14 @@ class User_license(QtWidgets.QDialog):
 
         # Calculate the number of minutes remaining until the expiration date
         current_datetime = datetime.now()
-        remaining_minutes = (expiration_date - current_datetime).total_seconds() // 60
+        remaining_days = (expiration_date - current_datetime).days
 
         # If the remaining minutes are less than 1.0, set remaining_minutes to 0 and save it to credentials.txt
-        if remaining_minutes < 1.0:
-            remaining_minutes = 0
+        if remaining_days < 1.0:
+            remaining_days = 0
 
             # Save the remaining_minutes
-            self.save_remaining_minutes(remaining_minutes)
+            self.save_remaining_minutes(remaining_days)
 
             # Clear the lineEdit_email field
             self.lineEdit_email.clear()
@@ -306,11 +306,11 @@ class User_license(QtWidgets.QDialog):
 
         if zero:
             # Save the remaining_minutes
-            self.save_remaining_minutes(0)
+            self.save_remaining_days(0)
 
-        return remaining_minutes
+        return remaining_days
 
-    def save_remaining_minutes(self, remaining_minutes):
+    def save_remaining_days(self, remaining_days):
         # Read the existing credentials from credentials.txt
         email, license_key, installation_date, expiration_date, _ = self.load_credentials()
 
@@ -321,7 +321,7 @@ class User_license(QtWidgets.QDialog):
         # Combine email, license key, installation date, expiration date, and time remaining into a single string
         credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
         credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
-        credentials_str += f"Time Remaining (Days): {remaining_minutes}\n"
+        credentials_str += f"Time Remaining (Days): {remaining_days}\n"
 
         # Get the current working directory
         current_directory = os.getcwd()
@@ -341,11 +341,11 @@ class User_license(QtWidgets.QDialog):
         initial_position = 0
 
         # Get the installation date, expiration date, and time remaining from credentials.txt
-        _, _, _, expiration_date, remaining_minutes = self.load_credentials()
-        print("Remaining days from credentials is:", remaining_minutes)
+        _, _, _, expiration_date, remaining_days = self.load_credentials()
+        print("Remaining days from credentials is:", remaining_days)
 
         # If remaining_minutes is 0, use the random position as the current_position
-        if remaining_minutes == 0:
+        if remaining_days == 0:
 
             # Clear the email and key fields.
             self.lineEdit_email.clear()
@@ -468,11 +468,11 @@ class User_license(QtWidgets.QDialog):
 
         # Convert time remaining to an integer
         try:
-            time_remaining_minutes = int(float(time_remaining_str))
+            time_remaining_days = int(float(time_remaining_str))
         except ValueError:
-            time_remaining_minutes = 0
+            time_remaining_days = 0
 
-        return email, license_key, installation_date, expiration_date, time_remaining_minutes
+        return email, license_key, installation_date, expiration_date, time_remaining_days
 
     def proceed(self):
         self.Dialog.close()
