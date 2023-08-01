@@ -135,7 +135,7 @@ class User_license(QtWidgets.QDialog):
                                                                     "https://www.metiqs.com."))
         self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter valid license key to proceed."))
         self.pushButton_validate.setText(_translate("Dialog", "Validate License"))
-        self.label_verify.setText(_translate("Dialog", "Waiting..."))
+        self.label_verify.setText(_translate("Dialog", "Your license has expired."))
 
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
         self.label_daysRemainingText.setText(_translate("Dialog", f"{self.count_down()}"))
