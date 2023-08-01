@@ -18,7 +18,7 @@ class User_license(QtWidgets.QDialog):
         Dialog.setWindowFlags(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
 
         # Load credentials on initialization
-        self.load_credentials()
+        # self.load_credentials()
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -151,17 +151,17 @@ class User_license(QtWidgets.QDialog):
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
-        # Retrieve the credentials
-        email, license_key, _, _, _ = self.load_credentials()  # Only retrieve email and license_key
-
-        if email and license_key:
-            self.lineEdit_email.setText(email)
-            print(f"Email: {email}")
-
-            self.lineEdit_key.setText(license_key)
-            print(f"License Key: {license_key}")
-        else:
-            print("No saved credentials found.")
+        # # Retrieve the credentials
+        # email, license_key, _, _, _ = self.load_credentials()  # Only retrieve email and license_key
+        #
+        # if email and license_key:
+        #     self.lineEdit_email.setText(email)
+        #     print(f"Email: {email}")
+        #
+        #     self.lineEdit_key.setText(license_key)
+        #     print(f"License Key: {license_key}")
+        # else:
+        #     print("No saved credentials found.")
 
 
     def details(self):
@@ -454,22 +454,6 @@ class User_license(QtWidgets.QDialog):
             time_remaining_minutes = 0
 
         return email, license_key, installation_date, expiration_date, time_remaining_minutes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     def proceed(self):
         self.Dialog.close()
