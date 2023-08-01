@@ -328,6 +328,10 @@ class User_license(QtWidgets.QDialog):
         # If remaining_minutes is 0, use the random position as the current_position
         if remaining_minutes == 0:
 
+            # Clear the email and key fields.
+            self.lineEdit_email.clear()
+            self.lineEdit_key.clear()
+
             # Set the file path to the current working directory
             current_directory = os.getcwd()
             random_position_file = os.path.join(current_directory, "random_position.txt")
