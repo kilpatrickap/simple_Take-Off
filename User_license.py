@@ -159,15 +159,47 @@ class User_license(QtWidgets.QDialog):
         # Call the credentials() method with the captured email and license key
         self.credentials(email, license_key)
 
+    # def credentials(self, email, license_key):
+    #     # Set the installation date to the current date
+    #     installation_date = datetime.now()
+    #
+    #     # Set the expiration date to 2 minutes from the current time for testing purposes
+    #     expiration_date = datetime.now() + timedelta(days=1)
+    #
+    #     # Calculate the time remaining (in minutes) between installation and expiration
+    #     time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
+    #
+    #     # Format the dates without milliseconds
+    #     installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
+    #     expiration_date_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
+    #
+    #     # Combine email, license key, installation date, expiration date, and time remaining into a single string
+    #     credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
+    #     credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
+    #     credentials_str += f"Time Remaining (Minutes): {time_remaining_minutes}\n"
+    #
+    #     # Get the current working directory
+    #     current_directory = os.getcwd()
+    #
+    #     # Create a file named 'credentials.txt' in the current working directory
+    #     file_path = os.path.join(current_directory, "credentials.txt")
+    #
+    #     # Write the credentials to the file
+    #     with open(file_path, "w") as file:
+    #         file.write(credentials_str)
+    #
+    #     # Print a message indicating that the credentials have been saved
+    #     print("Credentials have been saved to 'credentials.txt'.")
+
     def credentials(self, email, license_key):
         # Set the installation date to the current date
         installation_date = datetime.now()
 
-        # Set the expiration date to 2 minutes from the current time for testing purposes
+        # Set the expiration date to 1 day from the current time for testing purposes
         expiration_date = datetime.now() + timedelta(days=1)  # TODO connect the expiration_date
 
-        # Calculate the time remaining (in minutes) between installation and expiration
-        time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
+        # Calculate the time remaining (in days) between installation and expiration
+        time_remaining_days = (expiration_date - installation_date).days
 
         # Format the dates without milliseconds
         installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
@@ -176,7 +208,7 @@ class User_license(QtWidgets.QDialog):
         # Combine email, license key, installation date, expiration date, and time remaining into a single string
         credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
         credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
-        credentials_str += f"Time Remaining (Minutes): {time_remaining_minutes}\n"
+        credentials_str += f"Time Remaining (Days): {time_remaining_days}\n"
 
         # Get the current working directory
         current_directory = os.getcwd()
@@ -289,7 +321,7 @@ class User_license(QtWidgets.QDialog):
         # Combine email, license key, installation date, expiration date, and time remaining into a single string
         credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
         credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
-        credentials_str += f"Time Remaining (Minutes): {remaining_minutes}\n"
+        credentials_str += f"Time Remaining (Days): {remaining_minutes}\n"
 
         # Get the current working directory
         current_directory = os.getcwd()
@@ -302,7 +334,7 @@ class User_license(QtWidgets.QDialog):
             file.write(credentials_str)
 
         # Print a message indicating that the credentials have been updated
-        print("Remaining minutes have been updated and saved to 'credentials.txt'.")
+        print("Remaining days have been updated and saved to 'credentials.txt'.")
 
     def position(self):
         # Initialize the position
@@ -310,7 +342,7 @@ class User_license(QtWidgets.QDialog):
 
         # Get the installation date, expiration date, and time remaining from credentials.txt
         _, _, _, expiration_date, remaining_minutes = self.load_credentials()
-        print("Remaining minutes from credentials is:", remaining_minutes)
+        print("Remaining days from credentials is:", remaining_minutes)
 
         # If remaining_minutes is 0, use the random position as the current_position
         if remaining_minutes == 0:
@@ -427,7 +459,7 @@ class User_license(QtWidgets.QDialog):
                 installation_date_str = line.split(":", 1)[1].strip()
             elif line.startswith("Expiration Date:"):
                 expiration_date_str = line.split(":", 1)[1].strip()
-            elif line.startswith("Time Remaining (Minutes):"):
+            elif line.startswith("Time Remaining (Days):"):
                 time_remaining_str = line.split(":", 1)[1].strip()
 
         # Convert date strings to datetime objects

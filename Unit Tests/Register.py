@@ -84,7 +84,7 @@ class Ui_Dialog(object):
         score = 0
 
         # Define our check digit
-        check_digit = key[3]    # Say 3rd digit TODO: Change key
+        check_digit = key[2]    # Say 3rd digit TODO: Change key
         check_digit_count = 0   # Track how many times we see that digit in the key
 
         # aafa-bbfb-cccc-ddfd-1111
