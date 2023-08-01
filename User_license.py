@@ -133,7 +133,7 @@ class User_license(QtWidgets.QDialog):
         Dialog.setWindowTitle(_translate("Dialog", "User License"))
         self.lineEdit_email.setPlaceholderText(_translate("Dialog", "Enter registered e-mail address from "
                                                                     "https://www.metiqs.com."))
-        self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter valid license keys to proceed."))
+        self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter valid license key to proceed."))
         self.pushButton_validate.setText(_translate("Dialog", "Validate License"))
         self.label_verify.setText(_translate("Dialog", "Waiting..."))
 
