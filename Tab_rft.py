@@ -10,7 +10,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         super().__init__()
 
         self.groupBox_rft = QtWidgets.QGroupBox(parent=self)
-        self.groupBox_rft.setGeometry(QtCore.QRect(10, 10, 771, 501))
+        self.groupBox_rft.setGeometry(QtCore.QRect(10, 10, 790, 501))
         self.groupBox_rft.setObjectName("groupBox_rft")
 
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_rft)

@@ -11,7 +11,7 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         super().__init__()
 
         self.groupBox_m2 = QtWidgets.QGroupBox(parent=self)
-        self.groupBox_m2.setGeometry(QtCore.QRect(10, 10, 771, 501))
+        self.groupBox_m2.setGeometry(QtCore.QRect(10, 10, 790, 501))
         self.groupBox_m2.setObjectName("groupBox_m2")
 
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_m2)
