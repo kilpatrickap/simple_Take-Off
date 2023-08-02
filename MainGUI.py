@@ -1,7 +1,5 @@
 import os
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QSizePolicy
 
 
 class Ui_MainWindow(object):
@@ -41,7 +39,7 @@ class Ui_MainWindow(object):
 
         # --- Setup Vert layout to contain TakeOff sheet here ---
         self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
-        self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(0, 0, 1800, 900))
+        self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(0, 10, 1800, 900))
         self.layoutWidget_takeOffSheet.setObjectName("layoutWidget_takeOffSheet")
 
         self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.layoutWidget_takeOffSheet)
