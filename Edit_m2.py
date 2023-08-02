@@ -136,6 +136,12 @@ class Edit_m2_Dialog(object):
         self.verticalLayout.addLayout(self.horizontalLayout_10)
         self.tableWidget_m2 = QtWidgets.QTableWidget(parent=Dialog)
         self.tableWidget_m2.setObjectName("tableWidget_m2")
+
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        self.tableWidget_m2.setFont(font)
+
         self.tableWidget_m2.setColumnCount(9)
         self.tableWidget_m2.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()

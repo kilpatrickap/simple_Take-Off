@@ -86,6 +86,12 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         self.tableWidget_takeOff = QtWidgets.QTableWidget(parent=self.groupBox)
         self.tableWidget_takeOff.setObjectName("tableWidget_takeOff")
+
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        self.tableWidget_takeOff.setFont(font)
+
         self.tableWidget_takeOff.setColumnCount(9)
         self.tableWidget_takeOff.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()

@@ -136,6 +136,12 @@ class Edit_nr_Dialog(object):
         self.verticalLayout.addLayout(self.horizontalLayout_10)
         self.tableWidget_nr = QtWidgets.QTableWidget(parent=Dialog)
         self.tableWidget_nr.setObjectName("tableWidget_nr")
+
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        self.tableWidget_nr.setFont(font)
+
         self.tableWidget_nr.setColumnCount(9)
         self.tableWidget_nr.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()

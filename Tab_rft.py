@@ -151,6 +151,12 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_10)
         self.tableWidget_rft = QtWidgets.QTableWidget(parent=self.groupBox_rft)
         self.tableWidget_rft.setObjectName("tableWidget_rft")
+
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        self.tableWidget_rft.setFont(font)
+
         self.tableWidget_rft.setColumnCount(9)
         self.tableWidget_rft.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()

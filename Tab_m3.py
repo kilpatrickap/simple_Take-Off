@@ -160,6 +160,12 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         self.verticalLayout.addLayout(self.horizontalLayout_10)
         self.tableWidget_m3 = QtWidgets.QTableWidget(parent=self.groupBox_m3)
         self.tableWidget_m3.setObjectName("tableWidget_m3")
+
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        self.tableWidget_m3.setFont(font)
+
         self.tableWidget_m3.setColumnCount(9)
         self.tableWidget_m3.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()

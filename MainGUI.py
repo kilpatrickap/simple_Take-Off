@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Simple Take-Off v1.0"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Simple Take-Off"))
 
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
@@ -135,7 +135,7 @@ class Ui_MainWindow(object):
         icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
 
         dialog.setIconPixmap(icon5.pixmap(64, 64))  # Set the icon pixmap
-        dialog.setText("Simple Take-Off v1.0.\n\n"
+        dialog.setText("Simple Take-Off\n\n"
                        "Simply and quickly perform taking-off measurments for building projects. \n\n"
                        "www.metiqs.com"
                        )
