@@ -45,7 +45,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.comboBox.currentIndexChanged.connect(self.trade)
 
         self.horizontalLayout.addWidget(self.comboBox)
-        spacerItem1 = QtWidgets.QSpacerItem(260, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+        spacerItem1 = QtWidgets.QSpacerItem(200, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
 
         # Weight Label and LineEdit inside a horizontal layout
