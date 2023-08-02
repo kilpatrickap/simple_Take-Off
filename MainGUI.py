@@ -27,6 +27,9 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         # #---TAB_M WIDGET ENDS HERE---
 
+        # Current working directory label
+        self.label_cwd = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_cwd.setObjectName("label_cwd")
 
         # --- Setup Vert layout to contain TakeOff sheet here ---
         self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
@@ -112,6 +115,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Simple Take-Off"))
+
+        self.label_cwd.setText(_translate("MainWindow", "Current working directory for opened job."))
 
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
