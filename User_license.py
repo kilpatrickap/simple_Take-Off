@@ -144,7 +144,7 @@ class User_license(QtWidgets.QDialog):
         self.label_countText.setText(_translate("Dialog", f"{self.count_valid_licenses()}"))
 
         self.label_expiry_notice.setText(
-            _translate("Dialog", "Upon License expiry, contact +233 541 193 598 for re-activation."))
+            _translate("Dialog", "Upon License expiry, contact +233541193598 for re-activation."))
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
