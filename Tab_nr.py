@@ -10,7 +10,7 @@ class Tab_nr_Widget(QtWidgets.QWidget):
         super().__init__()
 
         self.groupBox_nr = QtWidgets.QGroupBox(parent=self)
-        self.groupBox_nr.setGeometry(QtCore.QRect(10, 10, 751, 501))
+        self.groupBox_nr.setGeometry(QtCore.QRect(10, 10, 771, 501))
         self.groupBox_nr.setObjectName("groupBox_nr")
 
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_nr)

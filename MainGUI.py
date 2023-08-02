@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
 
         #---TAB_M WIDGET STARTS HERE---
         self.tabWidget = QtWidgets.QTabWidget(parent=self)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 327, 781, 561))
+        self.tabWidget.setGeometry(QtCore.QRect(10, 327, 800, 561))
         self.tabWidget.setObjectName("tabWidget")
         # #---TAB_M WIDGET ENDS HERE---
 
