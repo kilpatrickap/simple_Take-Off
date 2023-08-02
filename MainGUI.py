@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Simple Take-Off"))
 
-        self.label_cwd.setText(_translate("MainWindow", "Current working directory for opened job."))
+        self.label_cwd.setText(_translate("MainWindow", f"    {os.getcwd()}"))
 
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
