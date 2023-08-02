@@ -15,7 +15,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.setObjectName("TakeOffSheet_Widget")
 
         self.groupBox = QtWidgets.QGroupBox(self)
-        self.groupBox.setGeometry(QtCore.QRect(779, 0, 851, 830))
+        self.groupBox.setGeometry(QtCore.QRect(779, 0, 951, 830))
         self.groupBox.setObjectName("groupBox")
 
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
