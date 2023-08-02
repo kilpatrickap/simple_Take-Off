@@ -17,12 +17,9 @@ class User_license(QtWidgets.QDialog):
         # Hide the close button and window frame
         Dialog.setWindowFlags(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
 
-        # Load credentials on initialization
-        # self.load_credentials()
-
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 300)
+        Dialog.resize(500, 300)
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -132,9 +129,9 @@ class User_license(QtWidgets.QDialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "User License"))
         self.lineEdit_email.setPlaceholderText(_translate("Dialog", "Enter registered e-mail address from "
-                                                                    "https://www.metiqs.com."))
+                                                                    "https://www.metiqs.com"))
         self.lineEdit_key.setPlaceholderText(_translate("Dialog", "Enter valid license key to proceed."))
-        self.pushButton_validate.setText(_translate("Dialog", "Validate License"))
+        self.pushButton_validate.setText(_translate("Dialog", "Activate License"))
         self.label_verify.setText(_translate("Dialog", "Your license has expired."))
 
         self.label_daysRemaining.setText(_translate("Dialog", "Days remaining : "))
@@ -147,7 +144,7 @@ class User_license(QtWidgets.QDialog):
         self.label_countText.setText(_translate("Dialog", f"{self.count_valid_licenses()}"))
 
         self.label_expiry_notice.setText(
-            _translate("Dialog", "Upon License expiry, contact 0541193598 for re-activation."))
+            _translate("Dialog", "Upon License expiry, contact +233 541 193 598 for re-activation."))
         self.pushButton_proceed.setText(_translate("Dialog", "Proceed"))
         self.pushButton_Cancel.setText(_translate("Dialog", "Cancel"))
 
@@ -158,38 +155,6 @@ class User_license(QtWidgets.QDialog):
 
         # Call the credentials() method with the captured email and license key
         self.credentials(email, license_key)
-
-    # def credentials(self, email, license_key):
-    #     # Set the installation date to the current date
-    #     installation_date = datetime.now()
-    #
-    #     # Set the expiration date to 2 minutes from the current time for testing purposes
-    #     expiration_date = datetime.now() + timedelta(days=1)
-    #
-    #     # Calculate the time remaining (in minutes) between installation and expiration
-    #     time_remaining_minutes = (expiration_date - installation_date).total_seconds() // 60
-    #
-    #     # Format the dates without milliseconds
-    #     installation_date_str = installation_date.strftime("%Y-%m-%d %H:%M:%S")
-    #     expiration_date_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
-    #
-    #     # Combine email, license key, installation date, expiration date, and time remaining into a single string
-    #     credentials_str = f"Email: {email}\nLicense Key: {license_key}\n"
-    #     credentials_str += f"Installation Date: {installation_date_str}\nExpiration Date: {expiration_date_str}\n"
-    #     credentials_str += f"Time Remaining (Minutes): {time_remaining_minutes}\n"
-    #
-    #     # Get the current working directory
-    #     current_directory = os.getcwd()
-    #
-    #     # Create a file named 'credentials.txt' in the current working directory
-    #     file_path = os.path.join(current_directory, "credentials.txt")
-    #
-    #     # Write the credentials to the file
-    #     with open(file_path, "w") as file:
-    #         file.write(credentials_str)
-    #
-    #     # Print a message indicating that the credentials have been saved
-    #     print("Credentials have been saved to 'credentials.txt'.")
 
     def credentials(self, email, license_key):
         # Set the installation date to the current date
@@ -246,7 +211,7 @@ class User_license(QtWidgets.QDialog):
             self.label_verify.setText("INVALID License key!")
 
             # Reset time_remaining as 0 in credentials.txt
-            self.save_remaining_minutes(0)
+            self.save_remaining_days(0)
 
             # Reset count_down to 0.
             self.count_down(zero=True)
@@ -292,7 +257,7 @@ class User_license(QtWidgets.QDialog):
         remaining_days = (expiration_date - current_datetime).days
 
         # If the remaining minutes are less than 1.0, set remaining_minutes to 0 and save it to credentials.txt
-        if remaining_days < 1.0:
+        if remaining_days < 1:
             remaining_days = 0
 
             # Save the remaining_minutes
@@ -378,7 +343,7 @@ class User_license(QtWidgets.QDialog):
             self.pushButton_validate.setEnabled(False)
 
             # Show the user the license is not expired
-            self.label_verify.setText("Your License has not expired")
+            self.label_verify.setText("Your Activated License has not expired")
 
             # Unfreeze proceed button
             self.pushButton_proceed.setEnabled(True)
