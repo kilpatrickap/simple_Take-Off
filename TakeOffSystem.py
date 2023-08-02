@@ -315,8 +315,8 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                 # Update the displayed folder in the UI
                 self.projectWidgetTree.update_displayed_folder(selected_directory)
 
-                # Update the current working directory label
-                self.set_selected_directory(selected_directory)
+                # Update the label with the current working directory
+                self.update_cwd_label("   " + selected_directory)
 
     def user_license_validation(self):
         dialog = QDialog()

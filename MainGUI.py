@@ -32,7 +32,12 @@ class Ui_MainWindow(object):
         # Current working directory label
         self.label_cwd = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_cwd.setObjectName("label_cwd")
-        self.label_cwd.setMaximumWidth(1000)
+        self.label_cwd.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)  # Align the label to the left
+        size_policy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.MinimumExpanding,
+            QtWidgets.QSizePolicy.Policy.Preferred
+        )
+        self.label_cwd.setSizePolicy(size_policy)  # Set the size policy
 
         # --- Setup Vert layout to contain TakeOff sheet here ---
         self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
@@ -150,10 +155,9 @@ class Ui_MainWindow(object):
         dialog.addButton(QtWidgets.QMessageBox.StandardButton.Close)
         dialog.exec()
 
-    def set_selected_directory(self, directory):
-        """
-                Sets the current working directory label text.
+    def update_cwd_label(self, cwd):
+        # Set the full text of the cwd in the label
+        self.label_cwd.setText(cwd)
 
-                :param directory: The directory to be displayed as the current working directory.
-                """
-        self.label_cwd.setText("  " + directory)
+        # Resize the label to accommodate the full text
+        self.label_cwd.adjustSize()
