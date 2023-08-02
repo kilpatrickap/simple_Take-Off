@@ -1,5 +1,7 @@
 import os
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QSizePolicy
 
 
 class Ui_MainWindow(object):
@@ -30,6 +32,7 @@ class Ui_MainWindow(object):
         # Current working directory label
         self.label_cwd = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_cwd.setObjectName("label_cwd")
+        self.label_cwd.setMaximumWidth(1000)
 
         # --- Setup Vert layout to contain TakeOff sheet here ---
         self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
@@ -146,3 +149,11 @@ class Ui_MainWindow(object):
                        )
         dialog.addButton(QtWidgets.QMessageBox.StandardButton.Close)
         dialog.exec()
+
+    def set_selected_directory(self, directory):
+        """
+                Sets the current working directory label text.
+
+                :param directory: The directory to be displayed as the current working directory.
+                """
+        self.label_cwd.setText("  " + directory)

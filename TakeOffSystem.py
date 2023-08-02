@@ -312,6 +312,12 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             else:
                 os.chdir(selected_directory)  # Set the selected directory as the current working directory
 
+                # Update the displayed folder in the UI
+                self.projectWidgetTree.update_displayed_folder(selected_directory)
+
+                # Update the current working directory label
+                self.set_selected_directory(selected_directory)
+
     def user_license_validation(self):
         dialog = QDialog()
         ui = User_license(dialog)
