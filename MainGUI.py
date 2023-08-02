@@ -6,7 +6,7 @@ class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1750, 900)
+        MainWindow.resize(1750, 950)
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
