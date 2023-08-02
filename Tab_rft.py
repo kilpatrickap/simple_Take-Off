@@ -567,7 +567,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         self.label_6.setText(_translate("tabWidget_rft", "Code :"))
         self.label_weight.setText(_translate("tabWidget_rft", "Weight (kg/m):"))
         self.lineEdit_weight.setPlaceholderText(_translate("tabWidget_rft", "e.g 0.888"))
-        self.label_code.setText(_translate("tabWidget_rft", "\"code shows up here\""))
+        self.label_code.setText(_translate("tabWidget_rft", ""))
         self.pushButton_rft_add.setText(_translate("tabWidget_rft", "Add"))
         self.pushButton_rft_ddt.setText(_translate("tabWidget_rft", "Deduct"))
         self.pushButton_rft_del.setText(_translate("tabWidget_rft", "Delete"))

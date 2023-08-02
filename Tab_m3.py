@@ -662,7 +662,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
         self.comboBox.setItemText(22, _translate("tabWidget_m3", "Y - Mechanical and electrical services measurement"))
 
         self.label_6.setText(_translate("tabWidget_m3", "Code :"))
-        self.label_code.setText(_translate("tabWidget_m3", "\"code shows up here\""))
+        self.label_code.setText(_translate("tabWidget_m3", ""))
         self.pushButton_m3_add.setText(_translate("tabWidget_m3", "Add"))
         self.pushButton_m3_ddt.setText(_translate("tabWidget_m3", "Deduct"))
         self.pushButton_m3_del.setText(_translate("tabWidget_m3", "Delete"))
