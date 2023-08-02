@@ -556,7 +556,7 @@ class Tab_nr_Widget(QtWidgets.QWidget):
         item.setText(_translate("tabWidget_nr", "trade"))
         self.tableWidget_nr.setColumnWidth(1, 40)
         item = self.tableWidget_nr.horizontalHeaderItem(2)
-        item.setText(_translate("tabWidget_nr", "desc"))
+        item.setText(_translate("tabWidget_nr", "description"))
         self.tableWidget_nr.setColumnWidth(2, 250)
         item = self.tableWidget_nr.horizontalHeaderItem(3)
         item.setText(_translate("tabWidget_nr", "ref"))

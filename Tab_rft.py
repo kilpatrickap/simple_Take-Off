@@ -579,7 +579,7 @@ class Tab_rft_Widget(QtWidgets.QWidget):
         item.setText(_translate("tabWidget_rft", "trade"))
         self.tableWidget_rft.setColumnWidth(1, 40)
         item = self.tableWidget_rft.horizontalHeaderItem(2)
-        item.setText(_translate("tabWidget_rft", "desc"))
+        item.setText(_translate("tabWidget_rft", "description"))
         self.tableWidget_rft.setColumnWidth(2, 250)
         item = self.tableWidget_rft.horizontalHeaderItem(3)
         item.setText(_translate("tabWidget_rft", "ref"))
