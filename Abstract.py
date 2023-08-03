@@ -22,6 +22,12 @@ class Abstract_Dialog(object):
         font.setPointSize(12)
         Dialog.setFont(font)
 
+        # Icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon1)
+
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
