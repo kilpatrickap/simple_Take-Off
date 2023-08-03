@@ -161,7 +161,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 1 day from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(days=2)  # TODO change the expiration_date
+        expiration_date = datetime.now() + timedelta(days=30)  # TODO change the expiration_date
 
         # Calculate the time remaining (in days) between installation and expiration
         time_remaining_days = (expiration_date - installation_date).days
