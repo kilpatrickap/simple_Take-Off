@@ -19,6 +19,12 @@ class Edit_nr_Dialog(object):
         font.setPointSize(12)
         Dialog.setFont(font)
 
+        # Icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon1)
+
         self.groupBox_nr = QtWidgets.QGroupBox(parent=Dialog)
         self.groupBox_nr.setGeometry(QtCore.QRect(10, 10, 751, 501))
         self.groupBox_nr.setObjectName("groupBox_nr")
@@ -564,6 +570,12 @@ class Edit_nr_Dialog(object):
         msg_box.setWindowTitle("Insert")
         msg_box.setText("Click OK to update the Take Off sheet and click Refresh to show.")
 
+        # Icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        msg_box.setWindowIcon(icon1)
+
         # Add button icon with relative path
         icon_path = os.path.join(os.path.dirname(__file__), "images", "info.png")
         icon_pixmap = QtGui.QPixmap(icon_path)
@@ -606,6 +618,12 @@ class Edit_nr_Dialog(object):
             msg_box = QtWidgets.QMessageBox()
             msg_box.setWindowTitle("Destroy")
             msg_box.setText("Click OK to PERMANENTLY DELETE the measurement.")
+
+            # Icon with relative path
+            icon1 = QtGui.QIcon()
+            image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
+            icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+            msg_box.setWindowIcon(icon1)
 
             # Add button icon with relative path
             icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-red.png")
