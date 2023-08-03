@@ -572,6 +572,9 @@ class Edit_nr_Dialog(object):
         # Set the window modality to ApplicationModal
         msg_box.setWindowModality(QtCore.Qt.WindowModality.ApplicationModal)
 
+        # Set the WindowStaysOnTopHint flag
+        msg_box.setWindowFlag(QtCore.Qt.WindowType.WindowStaysOnTopHint)
+
         msg_box.setStandardButtons(
             QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
         )
@@ -608,6 +611,12 @@ class Edit_nr_Dialog(object):
             icon_path = os.path.join(os.path.dirname(__file__), "images", "exclamation-red.png")
             icon_pixmap = QtGui.QPixmap(icon_path)
             msg_box.setIconPixmap(icon_pixmap)
+
+            # Set the window modality to ApplicationModal
+            msg_box.setWindowModality(QtCore.Qt.WindowModality.ApplicationModal)
+
+            # Set the WindowStaysOnTopHint flag
+            msg_box.setWindowFlag(QtCore.Qt.WindowType.WindowStaysOnTopHint)
 
             msg_box.setStandardButtons(
                 QtWidgets.QMessageBox.StandardButton.Ok | QtWidgets.QMessageBox.StandardButton.Cancel
