@@ -17,6 +17,13 @@ class NewProject_Dialog(object):
         font.setFamily("Helvetica")
         font.setPointSize(12)
         Dialog.setFont(font)
+
+        # Icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Dialog.setWindowIcon(icon1)
+
         self.label = QtWidgets.QLabel(parent=Dialog)
         self.label.setGeometry(QtCore.QRect(10, 10, 131, 21))
         self.label.setObjectName("label")

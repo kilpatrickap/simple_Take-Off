@@ -141,14 +141,20 @@ class Ui_MainWindow(object):
         dialog = QtWidgets.QMessageBox()
         dialog.setWindowTitle("About")
 
+        # Icon with relative path
+        icon1 = QtGui.QIcon()
+        image_path_to_icon1 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
+        icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        dialog.setWindowIcon(icon1)
+
         icon5 = QtGui.QIcon()
-        image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "MetiQs.png")
+        image_path_to_icon5 = os.path.join(os.path.dirname(__file__), "images", "STO_IconPix.png")
         icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
 
         dialog.setIconPixmap(icon5.pixmap(64, 64))  # Set the icon pixmap
         dialog.setText("Simple Take-Off\n\n"
-                       "Simply and quickly perform taking-off measurments for building projects. \n\n"
-                       "www.metiqs.com"
+                       "Simply and quickly perform Take-Off measurements for building projects. \n\n"
+                       "Get more information from https//:www.metiqs.com"
                        )
         dialog.addButton(QtWidgets.QMessageBox.StandardButton.Close)
         dialog.exec()
