@@ -1,7 +1,7 @@
 import os
 import random
 from datetime import datetime, timedelta
-
+import keyboard
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import pyqtSignal, Qt
 
@@ -16,6 +16,10 @@ class User_license(QtWidgets.QDialog):
 
         # Hide the close button and window frame
         Dialog.setWindowFlags(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
+
+        # Block the escape key to prevent users from closing license Dialog to open app.
+        keyboard.block_key("Esc")
+        # print("You pressed 'Esc'.")
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
