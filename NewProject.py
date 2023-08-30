@@ -225,7 +225,7 @@ class NewProject_Dialog(object):
         self.label.setText(_translate("Dialog", "Project Name :"))
         self.label_2.setText(_translate("Dialog", "Project Folder :"))
         self.toolButton_openFolder.setText(_translate("Dialog", "..."))
-        self.checkBox.setText(_translate("Dialog", "Create a new folder for this project"))
+        self.checkBox.setText(_translate("Dialog", "Create new folder for this job."))
         self.groupBox.setTitle(_translate("Dialog", "Project Details"))
         self.radioButton_NRM2.setText(_translate("Dialog", "NRM2"))
         self.radioButton_SMM7.setText(_translate("Dialog", "SMM7"))
