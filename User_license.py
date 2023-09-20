@@ -19,7 +19,6 @@ class User_license(QtWidgets.QDialog):
 
         # Block the escape key to prevent users from closing license Dialog to open app.
         keyboard.block_key("Esc")
-        # print("You pressed 'Esc'.")
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -165,7 +164,7 @@ class User_license(QtWidgets.QDialog):
         installation_date = datetime.now()
 
         # Set the expiration date to 1 day from the current time for testing purposes
-        expiration_date = datetime.now() + timedelta(days=30)  # TODO change the expiration_date
+        expiration_date = datetime.now() + timedelta(days=1)  # TODO change the expiration_date
 
         # Calculate the time remaining (in days) between installation and expiration
         time_remaining_days = (expiration_date - installation_date).days
@@ -445,6 +444,9 @@ class User_license(QtWidgets.QDialog):
 
     def proceed(self):
         self.Dialog.close()
+
+        # Unblock the escape key.
+        keyboard.unblock_key("Esc")
 
     def onCancelClicked(self):
         # Emit the custom signal when the "Cancel" button is clicked
