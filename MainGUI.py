@@ -21,26 +21,10 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        # Create a QVBoxLayout for the central widget
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-
-        # Create a vertical spacer item
-        spacer_item = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
-                                            QtWidgets.QSizePolicy.Policy.Expanding)
-
-        # Add the vertical spacer to the layout
-        self.verticalLayout.addItem(spacer_item)
-
         #---TAB_M WIDGET STARTS HERE---
-        # self.tabWidget = QtWidgets.QTabWidget(parent=self)
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        # self.tabWidget.setGeometry(QtCore.QRect(10, 327, 810, 561))
+        self.tabWidget = QtWidgets.QTabWidget(parent=self)
+        self.tabWidget.setGeometry(QtCore.QRect(10, 327, 810, 561))
         self.tabWidget.setObjectName("tabWidget")
-
-        # Add the tabWidget to the verticalLayout
-        self.verticalLayout.addWidget(self.tabWidget)
-
         # #---TAB_M WIDGET ENDS HERE---
 
         # Current working directory label
