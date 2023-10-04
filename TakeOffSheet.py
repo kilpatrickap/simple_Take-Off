@@ -114,6 +114,9 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.tableWidget_takeOff.setHorizontalHeaderItem(8, item)
         self.verticalLayout_2.addWidget(self.tableWidget_takeOff)
 
+        # Connect the resize event to the method for dynamic column widths
+        self.resizeEvent = self.on_resize
+
         # #---TAKE OFF SHEET ENDS HERE---
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -157,6 +160,29 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         item = self.tableWidget_takeOff.horizontalHeaderItem(8)
         item.setText(_translate("groupBox", "sign post"))
         self.tableWidget_takeOff.setColumnWidth(8, 160)
+
+    def on_resize(self, event):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        # Define the proportions for each column (half of the original width)
+        original_column_widths = [60, 40, 300, 60, 60, 60, 60, 30, 160]
+
+        if screen_width < 1920 or screen_height < 1080:
+            # Reduce the column widths by half if the resolution is less than 1920x1080
+            column_widths = [width // 2 for width in original_column_widths]
+        else:
+            column_widths = original_column_widths
+
+        # Distribute the available width among columns proportionally
+        for col, width in enumerate(column_widths):
+            self.tableWidget_takeOff.setColumnWidth(col, width)
+
+        # Call the base class's resize event handler
+        super().resizeEvent(event)
 
     def load_table_data(self):
         # Connect to the SQLite database
