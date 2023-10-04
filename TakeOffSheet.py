@@ -174,6 +174,18 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         if screen_width < 1920 or screen_height < 1080:
             # Reduce the column widths by half if the resolution is less than 1920x1080
             column_widths = [width // 2 for width in original_column_widths]
+
+            # Set the font size to 8
+            font = QtGui.QFont()
+            font.setPointSize(8)
+            self.tableWidget_takeOff.setFont(font)
+
+            # Reduce the size of the groupBox geometry by half
+            current_geometry = self.groupBox.geometry()
+            new_geometry = QtCore.QRect(current_geometry.x(), current_geometry.y(),
+                                        current_geometry.width() // 2, current_geometry.height())
+            self.groupBox.setGeometry(new_geometry)
+
         else:
             column_widths = original_column_widths
 
