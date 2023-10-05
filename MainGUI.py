@@ -191,5 +191,5 @@ class Ui_MainWindow(object):
         screen_height = screen_geometry.height()
 
         if screen_width < 1920 or screen_height < 1080:
-            # self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(30, 9, 1750, 900))
+            # reduce left alignment to zero
             self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(0, 9, 1750, 900))
