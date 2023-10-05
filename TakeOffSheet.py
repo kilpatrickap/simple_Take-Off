@@ -172,18 +172,22 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         original_column_widths = [60, 40, 300, 60, 60, 60, 60, 30, 160]
 
         if screen_width < 1920 or screen_height < 1080:
-            # Reduce the column widths by half if the resolution is less than 1920x1080
-            column_widths = [width // 2 for width in original_column_widths]
+            # Calculate the reduction factor based on screen resolution
+            reduction_factor = min(screen_width / 1920, screen_height / 1080)
+
+            # Reduce the column widths by applying the reduction factor
+            column_widths = [int(width * reduction_factor) for width in original_column_widths]
 
             # Set the font size to 8
             font = QtGui.QFont()
             font.setPointSize(8)
             self.tableWidget_takeOff.setFont(font)
 
-            # Reduce the size of the groupBox geometry by half
+            # Reduce the size of the groupBox geometry by applying the reduction factor
             current_geometry = self.groupBox.geometry()
-            new_geometry = QtCore.QRect(current_geometry.x(), current_geometry.y(),
-                                        current_geometry.width() // 2, current_geometry.height())
+            new_width = int(current_geometry.width() * reduction_factor)
+            new_height = int(current_geometry.height() * reduction_factor)
+            new_geometry = QtCore.QRect(current_geometry.x(), current_geometry.y(), new_width, new_height)
             self.groupBox.setGeometry(new_geometry)
 
         else:
@@ -195,7 +199,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Call the base class's resize event handler
         super().resizeEvent(event)
-
     def load_table_data(self):
         # Connect to the SQLite database
         conn = sqlite3.connect('data.db')
