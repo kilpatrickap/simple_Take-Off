@@ -603,15 +603,15 @@ class Tab_m_Widget(QtWidgets.QWidget):
             # Reduce the column widths by applying the reduction factor
             column_widths = [int(width * reduction_factor * 1.15) for width in original_column_widths]
 
-            # Set the font size to 8
-            font = QtGui.QFont()
-            font.setPointSize(8)
-            self.tableWidget_m.setFont(font)
+            # # Set the font size to 8
+            # font = QtGui.QFont()
+            # font.setPointSize(8)
+            # self.tableWidget_m.setFont(font)
 
             # Reduce the size of the groupBox geometry by applying the reduction factor
             current_geometry = self.groupBox_m.geometry()
             new_width = int(current_geometry.width() * reduction_factor * 1.3)
-            new_height = int(current_geometry.height() * reduction_factor * 1.1)    # TODO: To make responsive
+            new_height = int(current_geometry.height() * reduction_factor * 1.15)    # TODO: To make responsive
             new_geometry = QtCore.QRect(current_geometry.x(), current_geometry.y(), new_width, new_height)
             self.groupBox_m.setGeometry(new_geometry)
 

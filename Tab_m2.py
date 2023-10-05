@@ -190,6 +190,9 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
 
+        # Connect the resize event to the method for dynamic column widths
+        self.resizeEvent = self.on_resize
+
         # Horizontal spacer
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
                                             QtWidgets.QSizePolicy.Policy.Minimum)
@@ -324,11 +327,11 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         # Set the code in the code column of the tableWidget_m2
         code_item = QtWidgets.QTableWidgetItem(code_string)
 
-        row = 0     # Initialize row for first row
+        row = 0  # Initialize row for first row
         self.tableWidget_m2.setItem(row, 0, code_item)  # set row
 
-        row += 1    # Increment row by 1
-        code_item_clone = code_item.clone()     # Create a clone of code_item
+        row += 1  # Increment row by 1
+        code_item_clone = code_item.clone()  # Create a clone of code_item
         self.tableWidget_m2.setItem(row, 0, code_item_clone)  # set row
 
         return code_string  # returns e.g m2_M1, m2_D1 etc as type str
@@ -641,7 +644,8 @@ class Tab_m2_Widget(QtWidgets.QWidget):
         self.comboBox.setItemText(14, _translate("tabWidget_m2", "Q - Paving/Planting/Fencing/Site furniture"))
         self.comboBox.setItemText(15, _translate("tabWidget_m2", "R - Disposal systems"))
         self.comboBox.setItemText(16, _translate("tabWidget_m2", "S - Piped Supply systems"))
-        self.comboBox.setItemText(17, _translate("tabWidget_m2", "T - Mechanical heating/Cooling/Refrigeration systems"))
+        self.comboBox.setItemText(17,
+                                  _translate("tabWidget_m2", "T - Mechanical heating/Cooling/Refrigeration systems"))
         self.comboBox.setItemText(18, _translate("tabWidget_m2", "U - Ventilation/Air conditioning systems"))
         self.comboBox.setItemText(19, _translate("tabWidget_m2", "V - Electrical supply/power/lighting systems"))
         self.comboBox.setItemText(20, _translate("tabWidget_m2", "W - Communications/Security/Control systems"))
@@ -684,6 +688,45 @@ class Tab_m2_Widget(QtWidgets.QWidget):
 
         self.pushButton_m2_clear.setText(_translate("tabWidget_m2", "Clear"))
         self.pushButton_m2_insert.setText(_translate("tabWidget_m2", "Insert"))
+
+    def on_resize(self, event):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        # Define the proportions for each column (half of the original width)
+        original_column_widths = [60, 40, 250, 60, 60, 60, 60, 30, 100]
+
+        if screen_width < 1920 or screen_height < 1080:
+            # Calculate the reduction factor based on screen resolution
+            reduction_factor = min(screen_width / 1920, screen_height / 1080)
+
+            # Reduce the column widths by applying the reduction factor
+            column_widths = [int(width * reduction_factor * 1.15) for width in original_column_widths]
+
+            # # Set the font size to 8
+            # font = QtGui.QFont()
+            # font.setPointSize(8)
+            # self.tableWidget_m2.setFont(font)
+
+            # Reduce the size of the groupBox geometry by applying the reduction factor
+            current_geometry = self.groupBox_m2.geometry()
+            new_width = int(current_geometry.width() * reduction_factor * 1.199)
+            new_height = int(current_geometry.height() * reduction_factor * 0.94)  # TODO: To make responsive
+            new_geometry = QtCore.QRect(current_geometry.x(), current_geometry.y(), new_width, new_height)
+            self.groupBox_m2.setGeometry(new_geometry)
+
+        else:
+            column_widths = original_column_widths
+
+        # Distribute the available width among columns proportionally
+        for col, width in enumerate(column_widths):
+            self.tableWidget_m2.setColumnWidth(col, width)
+
+        # Call the base class's resize event handler
+        super().resizeEvent(event)
 
     def save_table_data(self):
         # Import the return of self.code here as code_string
