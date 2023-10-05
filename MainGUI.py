@@ -21,15 +21,13 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        #---TAB_M WIDGET STARTS HERE---
+        # ---TAB_M WIDGET STARTS HERE---
         self.tabWidget = QtWidgets.QTabWidget(parent=self)
         self.tabWidget.setGeometry(QtCore.QRect(10, 327, 810, 561))
         self.tabWidget.setObjectName("tabWidget")
 
         # Connect the resize event to the method for dynamic column widths
         self.resize_tabWidget()
-
-
 
         # #---TAB_M WIDGET ENDS HERE---
 
@@ -47,6 +45,9 @@ class Ui_MainWindow(object):
         self.layoutWidget_takeOffSheet = QtWidgets.QWidget(parent=self.centralwidget)
         self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(30, 9, 1750, 900))
         self.layoutWidget_takeOffSheet.setObjectName("layoutWidget_takeOffSheet")
+
+        # Connect the resize event to the method for dynamic column widths
+        self.resize_takeOffSheet_Widget()
 
         self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.layoutWidget_takeOffSheet)
         self.verticalLayout_1.setObjectName("verticalLayout_1")
@@ -172,7 +173,6 @@ class Ui_MainWindow(object):
         # Resize the label to accommodate the full text
         self.label_cwd.adjustSize()
 
-
     def resize_tabWidget(self):
         # Get the screen resolution
         screen = QtWidgets.QApplication.primaryScreen()
@@ -182,3 +182,14 @@ class Ui_MainWindow(object):
 
         if screen_width < 1920 or screen_height < 1080:
             self.tabWidget.setGeometry(QtCore.QRect(10, 327, 710, 561))
+
+    def resize_takeOffSheet_Widget(self):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        if screen_width < 1920 or screen_height < 1080:
+            # self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(30, 9, 1750, 900))
+            self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(0, 9, 1750, 900))
