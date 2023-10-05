@@ -212,7 +212,6 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         if screen_width < 1920 or screen_height < 1080:
             # reduce left alignment to zero
-            # self.groupBox.setGeometry(QtCore.QRect(779, 0, 921, 830))
             self.groupBox.setGeometry(QtCore.QRect(679, 0, 921, 830))
 
     def load_table_data(self):
