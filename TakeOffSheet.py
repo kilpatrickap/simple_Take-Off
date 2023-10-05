@@ -199,6 +199,7 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Call the base class's resize event handler
         super().resizeEvent(event)
+
     def load_table_data(self):
         # Connect to the SQLite database
         conn = sqlite3.connect('data.db')
