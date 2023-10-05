@@ -178,10 +178,10 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
             # Reduce the column widths by applying the reduction factor
             column_widths = [int(width * reduction_factor) for width in original_column_widths]
 
-            # Set the font size to 8
-            font = QtGui.QFont()
-            font.setPointSize(8)
-            self.tableWidget_takeOff.setFont(font)
+            # # Set the font size to 8
+            # font = QtGui.QFont()
+            # font.setPointSize(8)
+            # self.tableWidget_takeOff.setFont(font)
 
             # Reduce the size of the groupBox geometry by applying the reduction factor
             current_geometry = self.groupBox.geometry()
