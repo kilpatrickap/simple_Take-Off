@@ -18,6 +18,9 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
         self.groupBox.setGeometry(QtCore.QRect(779, 0, 921, 830))
         self.groupBox.setObjectName("groupBox")
 
+        # Connect the resize event to the method for dynamic sizes
+        self.resize_groupBox()
+
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -199,6 +202,18 @@ class TakeOffSheet_Widget(QtWidgets.QWidget):
 
         # Call the base class's resize event handler
         super().resizeEvent(event)
+
+    def resize_groupBox(self):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        if screen_width < 1920 or screen_height < 1080:
+            # reduce left alignment to zero
+            # self.groupBox.setGeometry(QtCore.QRect(779, 0, 921, 830))
+            self.groupBox.setGeometry(QtCore.QRect(679, 0, 921, 830))
 
     def load_table_data(self):
         # Connect to the SQLite database
