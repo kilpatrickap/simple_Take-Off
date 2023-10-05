@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setGeometry(QtCore.QRect(10, 327, 810, 561))
         self.tabWidget.setObjectName("tabWidget")
 
-        # Connect the resize event to the method for dynamic column widths
+        # Connect the resize event to the method for dynamic sizes
         self.resize_tabWidget()
 
         # #---TAB_M WIDGET ENDS HERE---
@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(30, 9, 1750, 900))
         self.layoutWidget_takeOffSheet.setObjectName("layoutWidget_takeOffSheet")
 
-        # Connect the resize event to the method for dynamic column widths
+        # Connect the resize event to the method for dynamic left alignment
         self.resize_takeOffSheet_Widget()
 
         self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.layoutWidget_takeOffSheet)
@@ -55,6 +55,10 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 771, 261))
         self.layoutWidget.setObjectName("layoutWidget")
+
+        # Connect the resize event to the method for dynamic left alignment
+        self.resize_layoutWidget()
+
 
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -193,3 +197,15 @@ class Ui_MainWindow(object):
         if screen_width < 1920 or screen_height < 1080:
             # reduce left alignment to zero
             self.layoutWidget_takeOffSheet.setGeometry(QtCore.QRect(0, 9, 1750, 900))
+
+    def resize_layoutWidget(self):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        if screen_width < 1920 or screen_height < 1080:
+            # reduce left alignment to zero
+            # self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 771, 261))
+            self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 700, 230))
