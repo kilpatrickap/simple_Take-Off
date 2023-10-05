@@ -25,6 +25,12 @@ class Ui_MainWindow(object):
         self.tabWidget = QtWidgets.QTabWidget(parent=self)
         self.tabWidget.setGeometry(QtCore.QRect(10, 327, 810, 561))
         self.tabWidget.setObjectName("tabWidget")
+
+        # Connect the resize event to the method for dynamic column widths
+        self.resize_tabWidget()
+
+
+
         # #---TAB_M WIDGET ENDS HERE---
 
         # Current working directory label
@@ -165,3 +171,14 @@ class Ui_MainWindow(object):
 
         # Resize the label to accommodate the full text
         self.label_cwd.adjustSize()
+
+
+    def resize_tabWidget(self):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        if screen_width < 1920 or screen_height < 1080:
+            self.tabWidget.setGeometry(QtCore.QRect(10, 327, 710, 561))
