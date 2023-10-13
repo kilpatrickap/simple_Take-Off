@@ -154,6 +154,9 @@ class Abstract_Dialog(object):
         self.horizontalLayout.addItem(spacerItem3)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
+        # Connect the resize event to the method for dynamic column widths
+        self.resizeEvent = self.resize_tableWidget_takeOff
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -207,6 +210,16 @@ class Abstract_Dialog(object):
 
         # apply table style sheet
         self.apply_table_stylesheet()
+
+    def resize_tableWidget_takeOff(self, event):
+        # Get the screen resolution
+        screen = QtWidgets.QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        if screen_width < 1920 or screen_height < 1080:
+            self.Dialog.setGeometry(QtCore.QRect(10, 260, 1011, 500))
 
     def load_table_data(self):
         # Connect to the SQLite database
