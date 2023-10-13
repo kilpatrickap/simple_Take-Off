@@ -186,7 +186,7 @@ class Ui_MainWindow(object):
 
         if screen_width < 1920 or screen_height < 1080:
             # self.tabWidget.setGeometry(QtCore.QRect(10, 327, 710, 561))
-            self.tabWidget.setGeometry(QtCore.QRect(10, 300, 680, 561))
+            self.tabWidget.setGeometry(QtCore.QRect(10, 260, 680, 561))
 
     def resize_takeOffSheet_Widget(self):
         # Get the screen resolution
@@ -208,4 +208,4 @@ class Ui_MainWindow(object):
 
         if screen_width < 1920 or screen_height < 1080:
             # reduce left alignment to zero
-            self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 680, 230))
+            self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 680, 200))
