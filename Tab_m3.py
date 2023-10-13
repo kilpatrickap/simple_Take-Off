@@ -726,7 +726,7 @@ class Tab_m3_Widget(QtWidgets.QWidget):
             # Reduce the size of the groupBox geometry by applying the reduction factor
             current_geometry = self.groupBox_m3.geometry()
             new_width = int(current_geometry.width() * reduction_factor * 1.199)
-            new_height = int(current_geometry.height() * reduction_factor * 0.94)  # TODO: To make responsive
+            new_height = int(current_geometry.height() * reduction_factor * 1.11)  # TODO: To make responsive
             new_geometry = QtCore.QRect(current_geometry.x(), current_geometry.y(), new_width, new_height)
             self.groupBox_m3.setGeometry(new_geometry)
 
