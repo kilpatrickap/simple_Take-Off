@@ -7,7 +7,7 @@
 import json
 import os
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTreeWidgetItem, QTreeWidget, QLineEdit
+from PyQt6.QtWidgets import QTreeWidgetItem, QTreeWidget, QLineEdit, QMenu
 
 
 class TakeOffList_Widget(QtWidgets.QWidget):
@@ -18,7 +18,6 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.setupUi()
 
     def setupUi(self):
-        # self.setObjectName("self")
         self.setObjectName("TakeOffList_Widget")
         self.resize(400, 600)
         icon = QtGui.QIcon()
@@ -33,7 +32,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         # Alternate the colors of the rows for better User Experience (UX)
         self.treeWidget.setAlternatingRowColors(True)
 
-        # connect the double click event to a method that
+        # Connect the double click event to a method that
         # gets the currently selected item and replaces it
         # with a QLineEdit Widget
         self.treeWidget.itemDoubleClicked.connect(self.edit_item)
@@ -82,6 +81,19 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         self.horizontalLayout.addWidget(self.pushButton_delete)
         self.verticalLayout.addLayout(self.horizontalLayout)
+
+        # Create a context menu for right-click actions
+        context_menu = QMenu(self)
+        mark_completed_action = context_menu.addAction("Mark as Completed")
+        mark_uncompleted_action = context_menu.addAction("Mark as Uncompleted")
+
+        # Connect context menu actions to methods
+        mark_completed_action.triggered.connect(self.mark_completed)
+        mark_uncompleted_action.triggered.connect(self.mark_uncompleted)
+
+        # Set the context menu for the tree widget
+        self.treeWidget.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
+        self.treeWidget.customContextMenuRequested.connect(self.show_context_menu)
 
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -258,3 +270,34 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.lineEdit.setPlaceholderText(_translate("TakeOffList_Widget", "Type in work item and hit enter."))
         self.pushButton_insertSubItem.setText(_translate("TakeOffList_Widget", "Insert Sub-Item"))
         self.pushButton_delete.setText(_translate("TakeOffList_Widget", "    Delete Item    "))
+
+    def mark_completed(self):
+        item = self.treeWidget.currentItem()
+        if item:
+            item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(0, QtCore.Qt.CheckState.Checked)
+
+    def mark_uncompleted(self):
+        item = self.treeWidget.currentItem()
+        if item:
+            item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+
+    def show_context_menu(self, position):
+        # Show the context menu at the cursor's position
+        context_menu = QMenu(self)
+        mark_completed_action = context_menu.addAction("Mark as Completed")
+        mark_uncompleted_action = context_menu.addAction("Mark as Uncompleted")
+
+        # Connect context menu actions to methods
+        mark_completed_action.triggered.connect(self.mark_completed)
+        mark_uncompleted_action.triggered.connect(self.mark_uncompleted)
+
+        # Execute the context menu at the specified position
+        action = context_menu.exec(self.treeWidget.mapToGlobal(position))
+
+        # Handle the selected action
+        if action == mark_completed_action:
+            self.mark_completed()
+        elif action == mark_uncompleted_action:
+            self.mark_uncompleted()
