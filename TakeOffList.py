@@ -189,7 +189,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Construct the file path relative to the current directory
         file_path = os.path.join(current_dir, file_name)
-        print("file_path from load_database(): ", file_path)
+        # print("file_path from load_database(): ", file_path)
 
         try:
             with open(file_path, 'r') as file:
@@ -309,11 +309,29 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             self.save_check_state()
 
     def save_check_state(self):
+        # Get the currently selected item
+        item = self.treeWidget.currentItem()
 
-        # Access the tree_data
+        if item:
+            checked_state = item.checkState(0)
+            text = item.text(0)
+            # Assuming you want to save the checked state and the text of the current item
+            checked_data = {'text': text, 'checked_state': checked_state}
 
-        # Create a field for True if checked, False if unchecked
+            # File name
+            file_name = 'Items_checked_states.json'
 
-        # Save the tree_data
+            # Get the current directory
+            current_dir = os.getcwd()
 
-        pass
+            # Construct the file path relative to the current directory
+            file_path = os.path.join(current_dir, file_name)
+
+            # Write the data to the JSON file
+            with open(file_path, 'w') as file:
+                json.dump(checked_data, file)
+
+            # If you want to print the checked state for debugging
+            print(f'Text: {text}, Checked State: {checked_state}')
+
+
