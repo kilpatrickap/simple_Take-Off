@@ -313,7 +313,13 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         item = self.treeWidget.currentItem()
 
         if item:
+
+            """The checked_state is converted to a boolean value (True or False) based on 
+            whether the item's check state is QtCore.Qt.CheckState.Checked. 
+            This boolean value should be easily serializable to JSON."""
+
             checked_state = item.checkState(0) == QtCore.Qt.CheckState.Checked
+
             text = item.text(0)
 
             # Create a dictionary with the text and checked state as a boolean
