@@ -312,13 +312,8 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         # Create a list to store item data
         item_data_list = []
 
-        # Iterate through all items in the tree widget
-        for i in range(self.root_item.childCount()):
-            item = self.root_item.child(i)
-            checked_state = item.checkState(0) == QtCore.Qt.CheckState.Checked
-            text = item.text(0)
-            item_data = {'text': text, 'checked_state': checked_state}
-            item_data_list.append(item_data)
+        # Start the recursive traversal from the root item
+        self.collect_item_data(self.root_item, item_data_list)
 
         # File name
         file_name = 'Items_checked_states.json'
@@ -334,3 +329,16 @@ class TakeOffList_Widget(QtWidgets.QWidget):
                 json.dump(item_data_list, file)
         except Exception as e:
             print(f"Error writing to file: {e}")
+
+    def collect_item_data(self, parent_item, item_data_list):
+        # Iterate through all child items of the parent_item
+        for i in range(parent_item.childCount()):
+            item = parent_item.child(i)
+            checked_state = item.checkState(0) == QtCore.Qt.CheckState.Checked
+            text = item.text(0)
+            item_data = {'text': text, 'checked_state': checked_state}
+            item_data_list.append(item_data)
+
+            # If the item has sub-items, recursively collect their data
+            if item.childCount() > 0:
+                self.collect_item_data(item, item_data_list)
