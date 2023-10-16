@@ -271,18 +271,6 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.pushButton_insertSubItem.setText(_translate("TakeOffList_Widget", "Insert Sub-Item"))
         self.pushButton_delete.setText(_translate("TakeOffList_Widget", "    Delete Item    "))
 
-    def mark_completed(self):
-        item = self.treeWidget.currentItem()
-        if item:
-            item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
-            item.setCheckState(0, QtCore.Qt.CheckState.Checked)
-
-    def mark_uncompleted(self):
-        item = self.treeWidget.currentItem()
-        if item:
-            item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
-            item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
-
     def show_context_menu(self, position):
         # Show the context menu at the cursor's position
         context_menu = QMenu(self)
@@ -301,3 +289,15 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             self.mark_completed()
         elif action == mark_uncompleted_action:
             self.mark_uncompleted()
+
+    def mark_completed(self):
+        item = self.treeWidget.currentItem()
+        if item:
+            item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(0, QtCore.Qt.CheckState.Checked)
+
+    def mark_uncompleted(self):
+        item = self.treeWidget.currentItem()
+        if item:
+            item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
