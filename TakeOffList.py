@@ -313,9 +313,10 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         item = self.treeWidget.currentItem()
 
         if item:
-            checked_state = item.checkState(0)
+            checked_state = item.checkState(0) == QtCore.Qt.CheckState.Checked
             text = item.text(0)
-            # Assuming you want to save the checked state and the text of the current item
+
+            # Create a dictionary with the text and checked state as a boolean
             checked_data = {'text': text, 'checked_state': checked_state}
 
             # File name
@@ -327,11 +328,11 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             # Construct the file path relative to the current directory
             file_path = os.path.join(current_dir, file_name)
 
-            # Write the data to the JSON file
-            with open(file_path, 'w') as file:
-                json.dump(checked_data, file)
+            try:
+                with open(file_path, 'w') as file:
+                    json.dump(checked_data, file)
+            except Exception as e:
+                print(f"Error writing to file: {e}")
 
             # If you want to print the checked state for debugging
             print(f'Text: {text}, Checked State: {checked_state}')
-
-
