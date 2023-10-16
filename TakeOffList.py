@@ -152,8 +152,8 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             child_items = [parent_item.child(j).text(0) for j in range(parent_item.childCount())]
             tree_data[parent_text] = child_items
 
-        # Print the updated tree_data dict
-        print(tree_data)
+        # # Print the updated tree_data dict
+        # print(tree_data)
 
         # Get the current directory
         current_dir = os.getcwd()
@@ -296,10 +296,24 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
             item.setCheckState(0, QtCore.Qt.CheckState.Checked)
 
+            # Save check state
+            self.save_check_state()
+
     def mark_uncompleted(self):
         item = self.treeWidget.currentItem()
         if item:
             item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
             item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
 
-    # Lets end for today
+            # Save check state
+            self.save_check_state()
+
+    def save_check_state(self):
+
+        # Access the tree_data
+
+        # Create a field for True if checked, False if unchecked
+
+        # Save the tree_data
+
+        pass
