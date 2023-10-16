@@ -309,36 +309,28 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             self.save_check_state()
 
     def save_check_state(self):
-        # Get the currently selected item
-        item = self.treeWidget.currentItem()
+        # Create a list to store item data
+        item_data_list = []
 
-        if item:
-
-            """The checked_state is converted to a boolean value (True or False) based on 
-            whether the item's check state is QtCore.Qt.CheckState.Checked. 
-            This boolean value should be easily serializable to JSON."""
-
+        # Iterate through all items in the tree widget
+        for i in range(self.root_item.childCount()):
+            item = self.root_item.child(i)
             checked_state = item.checkState(0) == QtCore.Qt.CheckState.Checked
-
             text = item.text(0)
+            item_data = {'text': text, 'checked_state': checked_state}
+            item_data_list.append(item_data)
 
-            # Create a dictionary with the text and checked state as a boolean
-            checked_data = {'text': text, 'checked_state': checked_state}
+        # File name
+        file_name = 'Items_checked_states.json'
 
-            # File name
-            file_name = 'Items_checked_states.json'
+        # Get the current directory
+        current_dir = os.getcwd()
 
-            # Get the current directory
-            current_dir = os.getcwd()
+        # Construct the file path relative to the current directory
+        file_path = os.path.join(current_dir, file_name)
 
-            # Construct the file path relative to the current directory
-            file_path = os.path.join(current_dir, file_name)
-
-            try:
-                with open(file_path, 'w') as file:
-                    json.dump(checked_data, file)
-            except Exception as e:
-                print(f"Error writing to file: {e}")
-
-            # If you want to print the checked state for debugging
-            print(f'Text: {text}, Checked State: {checked_state}')
+        try:
+            with open(file_path, 'w') as file:
+                json.dump(item_data_list, file)
+        except Exception as e:
+            print(f"Error writing to file: {e}")
