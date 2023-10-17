@@ -274,12 +274,12 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
             selected_directory = dialog.selectedFiles()[0]
-            print("cwd from open_folder_dialog(): ", selected_directory)
+            # print("cwd from open_folder_dialog(): ", selected_directory)
 
             # Load takeOffList_widget
             file_name = 'takeOffList_DB.json'
             file_path = os.path.join(selected_directory, file_name)
-            print("file_path from open_folder_dialog(): ", file_path)
+            # print("file_path from open_folder_dialog(): ", file_path)
 
             # Set the new folder path as the current working directory for the TakeOffList_Widget
             try:

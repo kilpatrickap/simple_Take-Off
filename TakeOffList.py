@@ -45,6 +45,9 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         # Load database in treeWidget when App runs.
         self.load_database()
 
+        # Load database in treeWidget when App runs.
+        self.update_check_states()
+
         self.verticalLayout.addWidget(self.treeWidget)
         self.lineEdit = QtWidgets.QLineEdit(parent=self)
         self.lineEdit.setObjectName("lineEdit")
@@ -215,6 +218,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         except Exception:
             pass
+
     def edit_item(self):
         item = self.treeWidget.itemFromIndex(self.treeWidget.selectedIndexes()[0])
         column = self.treeWidget.currentColumn()
@@ -329,7 +333,6 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         except Exception as e:
             print(f"Error writing to file: {e}")
 
-
     def collect_item_data(self, parent_item, item_data_list):
         # Iterate through all child items of the parent_item
         for i in range(parent_item.childCount()):
@@ -342,3 +345,57 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             # If the item has sub-items, recursively collect their data
             if item.childCount() > 0:
                 self.collect_item_data(item, item_data_list)
+
+    def update_check_states(self):
+
+        # File name
+        file_name = 'Items_checked_states.json'
+
+        # Get the current directory
+        current_dir = os.getcwd()
+
+        # Construct the file path relative to the current directory
+        file_path = os.path.join(current_dir, file_name)
+
+        # Error handling
+        print("Check_states filepath is : " + file_path)
+
+        # Load the check states from the JSON file
+        try:
+            with open(file_path, 'r') as file:
+                item_data_list = json.load(file)
+
+            # Clear the tree widget to refresh its contents
+            self.root_item.takeChildren()
+
+            # Create a dictionary to look up items by their text
+            item_dict = {}
+            self.create_item_dict(self.root_item, item_dict)
+
+            # Iterate through the loaded data and set the check states and add items
+            for item_data in item_data_list:
+                text = item_data['text']
+                checked_state = item_data['checked_state']
+
+                # Create the item if it doesn't exist
+                if text not in item_dict:
+                    item = QtWidgets.QTreeWidgetItem(self.root_item)
+                    item.setText(0, text)
+                else:
+                    item = item_dict[text]
+
+                item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+                item.setCheckState(0, QtCore.Qt.CheckState.Checked if checked_state else QtCore.Qt.CheckState.Unchecked)
+        except Exception as e:
+            print(f"Error loading check states from file: {e}")
+
+    def create_item_dict(self, parent_item, item_dict):
+        # Iterate through all child items of the parent_item
+        for i in range(parent_item.childCount()):
+            item = parent_item.child(i)
+            text = item.text(0)
+            item_dict[text] = item
+
+            # If the item has sub-items, recursively create a dictionary for them
+            if item.childCount() > 0:
+                self.create_item_dict(item, item_dict)
