@@ -183,38 +183,64 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
             parent_item.setExpanded(True)  # Expand the parent item to show child items
 
-    def load_database(self, file_name='takeOffList_DB.json'):
+    def load_database(self, file_name='takeOffList_DB.json', checked_states_file='Items_checked_states.json'):
         # Get the current directory
         current_dir = os.getcwd()
 
-        # Construct the file path relative to the current directory
-        file_path = os.path.join(current_dir, file_name)
-        # print("file_path from load_database(): ", file_path)
+        # Construct the file paths relative to the current directory
+        data_file_path = os.path.join(current_dir, file_name)
+        checked_states_file_path = os.path.join(current_dir, checked_states_file)
 
         try:
-            with open(file_path, 'r') as file:
-                tree_data = json.load(file)
+            with open(data_file_path, 'r') as data_file:
+                tree_data = json.load(data_file)
 
-            # Replace data list with parent items from tree_data
-            self.data = list(tree_data.keys())
+            with open(checked_states_file_path, 'r') as checked_states_file:
+                checked_states_data = json.load(checked_states_file)
+
+            # Debug: Print loaded data and checked states
+            print("Loaded data:", tree_data)
+            print("Loaded checked states:", checked_states_data)
 
             # Clear the tree widget
             self.root_item.takeChildren()
 
-            # Add data items to tree widget
             for parent_text, child_items in tree_data.items():
                 parent_item = QtWidgets.QTreeWidgetItem(self.root_item)
                 parent_item.setText(0, parent_text)
+
+                # Check the checked states in the loaded data
+                if parent_text in checked_states_data:
+                    is_checked = checked_states_data[parent_text]
+                    print(f"Item '{parent_text}' is checked: {is_checked}")
+                    if is_checked:
+                        parent_item.setCheckState(0, QtCore.Qt.CheckState.Checked)
+                    else:
+                        parent_item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+                else:
+                    print(f"Item '{parent_text}' not found in checked states data.")
+
+                parent_item.setFlags(parent_item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+
                 for child_text in child_items:
                     child_item = QtWidgets.QTreeWidgetItem(parent_item)
                     child_item.setText(0, child_text)
-                    parent_item.addChild(child_item)
 
-                # Expand all the parent items when app loads
+                    # Check the checked states in the loaded data
+                    if child_text in checked_states_data:
+                        is_checked = checked_states_data[child_text]
+                        print(f"Sub-item '{child_text}' is checked: {is_checked}")
+                        if is_checked:
+                            child_item.setCheckState(0, QtCore.Qt.CheckState.Checked)
+                        else:
+                            child_item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+                    else:
+                        print(f"Sub-item '{child_text}' not found in checked states data.")
+
+                # Expand all the parent items when the app loads
                 parent_item.setExpanded(True)
-
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Error loading data: {e}")
 
     def edit_item(self):
         item = self.treeWidget.itemFromIndex(self.treeWidget.selectedIndexes()[0])
