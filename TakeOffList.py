@@ -359,6 +359,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         except Exception as e:
             print(f"Error writing to file: {e}")
 
+
     def collect_item_data(self, parent_item, item_data_list):
         # Iterate through all child items of the parent_item
         for i in range(parent_item.childCount()):
