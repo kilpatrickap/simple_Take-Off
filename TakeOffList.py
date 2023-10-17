@@ -1,7 +1,7 @@
 import json
 import os
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTreeWidgetItem, QTreeWidget, QLineEdit, QMenu
+from PyQt6.QtWidgets import QTreeWidgetItem, QTreeWidget, QLineEdit, QMenu, QCheckBox
 
 
 class TakeOffList_Widget(QtWidgets.QWidget):
@@ -82,9 +82,12 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Only add non-empty strings
         if text.strip() != '':
-            # Add the text as a child item of the parent root_item
-            child_item = QtWidgets.QTreeWidgetItem(self.root_item)
-            child_item.setText(0, text)
+            # Create a new QTreeWidgetItem
+            child_item = QTreeWidgetItem(self.root_item, [text])
+
+            # Set the item's flags to make it checkable
+            child_item.setFlags(child_item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+            child_item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
 
             # Clear lineEdit
             self.lineEdit.clear()
@@ -174,6 +177,10 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             # Expand the parent item to show the new sub-item
             selected_item.setExpanded(True)
 
+            # Set the item's flags to make it checkable
+            child_item.setFlags(child_item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+            child_item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+
             # Update the database
             self.update_database()
 
@@ -194,6 +201,3 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.lineEdit.setPlaceholderText(_translate("TakeOffList_Widget", "Type in work item and hit enter."))
         self.pushButton_insertSubItem.setText(_translate("TakeOffList_Widget", "Insert Sub-Item"))
         self.pushButton_delete.setText(_translate("TakeOffList_Widget", "    Delete Item    "))
-
-
-
