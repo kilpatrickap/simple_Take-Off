@@ -373,3 +373,5 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             if item.childCount() > 0:
                 self.collect_item_data(item, item_data_list)
 
+    def test(self):
+        pass
