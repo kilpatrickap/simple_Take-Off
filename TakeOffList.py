@@ -42,12 +42,6 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         self.root_item.setText(0, "Work items :")
         self.root_item.setExpanded(True)
 
-        # Load database in treeWidget when App runs.
-        self.load_database()
-
-        # Load database in treeWidget when App runs.
-        self.update_check_states()
-
         self.verticalLayout.addWidget(self.treeWidget)
         self.lineEdit = QtWidgets.QLineEdit(parent=self)
         self.lineEdit.setObjectName("lineEdit")
@@ -155,69 +149,18 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             child_items = [parent_item.child(j).text(0) for j in range(parent_item.childCount())]
             tree_data[parent_text] = child_items
 
-        # # Print the updated tree_data dict
-        # print(tree_data)
-
         # Get the current directory
         current_dir = os.getcwd()
 
         # Construct the file path relative to the current directory
         file_path = os.path.join(current_dir, file_name)
+
+        # Debugging
+        print("file_path from update_database(): ", file_path)
 
         # Write the tree data to the JSON file
         with open(file_path, 'w') as file:
             json.dump(tree_data, file)
-
-    def update_tree_widget(self):
-        self.root_item.takeChildren()  # Remove all previous child items
-
-        # Add data items to tree widget
-        for key, value in self.data.items():  # Iterate over key-value pairs using items()
-            parent_item = QtWidgets.QTreeWidgetItem(self.root_item)
-            parent_item.setText(0, str(key))  # Convert key to string before setting it as the text
-
-            if isinstance(value, list):
-                for item in value:
-                    child_item = QtWidgets.QTreeWidgetItem(parent_item)
-                    child_item.setText(0, str(item))  # Convert item to string before setting it as the text
-            else:
-                child_item = QtWidgets.QTreeWidgetItem(parent_item)
-                child_item.setText(0, str(value))  # Convert value to string before setting it as the text
-
-            parent_item.setExpanded(True)  # Expand the parent item to show child items
-
-    def load_database(self, file_name='takeOffList_DB.json'):
-        # Get the current directory
-        current_dir = os.getcwd()
-
-        # Construct the file path relative to the current directory
-        file_path = os.path.join(current_dir, file_name)
-        # print("file_path from load_database(): ", file_path)
-
-        try:
-            with open(file_path, 'r') as file:
-                tree_data = json.load(file)
-
-            # Replace data list with parent items from tree_data
-            self.data = list(tree_data.keys())
-
-            # Clear the tree widget
-            self.root_item.takeChildren()
-
-            # Add data items to tree widget
-            for parent_text, child_items in tree_data.items():
-                parent_item = QtWidgets.QTreeWidgetItem(self.root_item)
-                parent_item.setText(0, parent_text)
-                for child_text in child_items:
-                    child_item = QtWidgets.QTreeWidgetItem(parent_item)
-                    child_item.setText(0, child_text)
-                    parent_item.addChild(child_item)
-
-                # Expand all the parent items when app loads
-                parent_item.setExpanded(True)
-
-        except Exception:
-            pass
 
     def edit_item(self):
         item = self.treeWidget.itemFromIndex(self.treeWidget.selectedIndexes()[0])
@@ -236,9 +179,6 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Update the database
         self.update_database()
-
-        # Load the database
-        self.load_database()
 
     def new_sub_item(self):
         # Get the currently selected item in the tree widget
@@ -346,56 +286,3 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             if item.childCount() > 0:
                 self.collect_item_data(item, item_data_list)
 
-    def update_check_states(self):
-
-        # File name
-        file_name = 'Items_checked_states.json'
-
-        # Get the current directory
-        current_dir = os.getcwd()
-
-        # Construct the file path relative to the current directory
-        file_path = os.path.join(current_dir, file_name)
-
-        # Error handling
-        print("Check_states filepath is : " + file_path)
-
-        # Load the check states from the JSON file
-        try:
-            with open(file_path, 'r') as file:
-                item_data_list = json.load(file)
-
-            # Clear the tree widget to refresh its contents
-            self.root_item.takeChildren()
-
-            # Create a dictionary to look up items by their text
-            item_dict = {}
-            self.create_item_dict(self.root_item, item_dict)
-
-            # Iterate through the loaded data and set the check states and add items
-            for item_data in item_data_list:
-                text = item_data['text']
-                checked_state = item_data['checked_state']
-
-                # Create the item if it doesn't exist
-                if text not in item_dict:
-                    item = QtWidgets.QTreeWidgetItem(self.root_item)
-                    item.setText(0, text)
-                else:
-                    item = item_dict[text]
-
-                item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
-                item.setCheckState(0, QtCore.Qt.CheckState.Checked if checked_state else QtCore.Qt.CheckState.Unchecked)
-        except Exception as e:
-            print(f"Error loading check states from file: {e}")
-
-    def create_item_dict(self, parent_item, item_dict):
-        # Iterate through all child items of the parent_item
-        for i in range(parent_item.childCount()):
-            item = parent_item.child(i)
-            text = item.text(0)
-            item_dict[text] = item
-
-            # If the item has sub-items, recursively create a dictionary for them
-            if item.childCount() > 0:
-                self.create_item_dict(item, item_dict)
