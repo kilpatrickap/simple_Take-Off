@@ -188,8 +188,11 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         current_dir = os.getcwd()
 
         # Construct the file paths relative to the current directory
-        data_file_path = os.path.join(current_dir, file_name)
-        checked_states_file_path = os.path.join(current_dir, checked_states_file)
+        data_file_path = os.path.join(current_dir, "Data", "Storages", "Local", "Jobs", file_name)
+        print(data_file_path)
+
+        checked_states_file_path = os.path.join(current_dir, "Data", "Storages", "Local", "Jobs", checked_states_file)
+        print(checked_states_file_path)
 
         try:
             with open(data_file_path, 'r') as data_file:
