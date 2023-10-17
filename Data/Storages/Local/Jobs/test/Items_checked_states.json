@@ -1,1 +1,1 @@
-[{"text": "a", "checked_state": false}, {"text": "1", "checked_state": false}, {"text": "b", "checked_state": false}, {"text": "c", "checked_state": false}, {"text": "d", "checked_state": true}]
+[{"text": "a", "checked_state": true}, {"text": "b", "checked_state": false}, {"text": "c", "checked_state": true}, {"text": "1", "checked_state": true}]
