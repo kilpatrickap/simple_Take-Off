@@ -372,6 +372,3 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             # If the item has sub-items, recursively collect their data
             if item.childCount() > 0:
                 self.collect_item_data(item, item_data_list)
-
-    def test(self):
-        pass
