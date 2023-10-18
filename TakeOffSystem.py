@@ -352,10 +352,8 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             if matching_data:
                 checked_state = matching_data['checked_state']
                 if checked_state:
-                    item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
                     item.setCheckState(0, QtCore.Qt.CheckState.Checked)
                 else:
-                    item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
                     item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
 
             # Recursively update sub-items
