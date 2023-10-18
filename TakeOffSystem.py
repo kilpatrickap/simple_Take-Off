@@ -93,6 +93,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
 
         # Connect signal to open_folder_dialog
         self.actionOpen.triggered.connect(self.open_folder_dialog)
+        self.actionOpen.triggered.connect(self.load_check_state)  # Load the check_states in the TreeWidget
 
         # Connect signal to close_project
         self.actionClose.triggered.connect(self.close_project)
@@ -272,12 +273,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         dialog.setOption(QtWidgets.QFileDialog.Option.ShowDirsOnly, True)
         dialog.setDirectory(os.path.join(os.getcwd(), "Data", "Storages", "Local", "Jobs"))
 
-        # # Create an instance of the TakeOffList_Widget class and load the saved item states from the JSON file
-        # takeOffListWidget = TakeOffList_Widget()
-        # takeOffListWidget.load_check_state()
-
-        self.load_check_state()
-
         if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
             selected_directory = dialog.selectedFiles()[0]
             # print("cwd from open_folder_dialog(): ", selected_directory)
@@ -338,7 +333,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         # Close the main window
         sys.exit()
 
-
     def load_check_state(self):
         # File name
         file_name = 'Items_checked_states.json'
@@ -350,7 +344,7 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         file_path = os.path.join(current_dir, file_name)
 
         # Debugging
-        print("file_path from load_check_state(): ", file_path)
+        # print("file_path from load_check_state(): ", file_path)
 
         try:
             with open(file_path, 'r') as file:
