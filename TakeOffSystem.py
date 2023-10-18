@@ -319,20 +319,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                 # Update the label with the current working directory
                 self.update_cwd_label("   " + selected_directory)
 
-    def user_license_validation(self):
-        dialog = QDialog()
-        ui = User_license(dialog)
-
-        # Show the User_license dialog when app loads
-        ui.setupUi(dialog)
-        ui.cancelClicked.connect(self.close_system)  # Connect signal to close main window
-
-        dialog.exec()
-
-    def close_system(self):
-        # Close the main window
-        sys.exit()
-
     def load_check_state(self):
         # File name
         file_name = 'Items_checked_states.json'
@@ -375,3 +361,17 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
             # Recursively update sub-items
             if item.childCount() > 0:
                 self.update_tree_widget_with_checked_states(item, item_data_list)
+
+    def user_license_validation(self):
+        dialog = QDialog()
+        ui = User_license(dialog)
+
+        # Show the User_license dialog when app loads
+        ui.setupUi(dialog)
+        ui.cancelClicked.connect(self.close_system)  # Connect signal to close main window
+
+        dialog.exec()
+
+    def close_system(self):
+        # Close the main window
+        sys.exit()
