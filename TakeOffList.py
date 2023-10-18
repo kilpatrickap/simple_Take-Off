@@ -11,8 +11,8 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         self.setupUi()
 
-        # Load the saved item states from the JSON file
-        self.load_check_state()
+        # # Load the saved item states from the JSON file
+        # self.load_check_state()
 
     def setupUi(self):
         self.setObjectName("TakeOffList_Widget")
@@ -300,6 +300,9 @@ class TakeOffList_Widget(QtWidgets.QWidget):
         # Construct the file path relative to the current directory
         file_path = os.path.join(current_dir, file_name)
 
+        # Debugging
+        print("file_path from load_check_state(): ", file_path)
+
         try:
             with open(file_path, 'r') as file:
                 item_data_list = json.load(file)
@@ -320,11 +323,12 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             if matching_data:
                 checked_state = matching_data['checked_state']
                 if checked_state:
+                    item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
                     item.setCheckState(0, QtCore.Qt.CheckState.Checked)
                 else:
+                    item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
                     item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
 
             # Recursively update sub-items
             if item.childCount() > 0:
                 self.update_tree_widget_with_checked_states(item, item_data_list)
-

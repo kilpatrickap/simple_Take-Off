@@ -293,6 +293,10 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                     self.root_item = self.takeOffListWidget.root_item
                     self.root_item.takeChildren()
 
+                    # # Create an instance of the TakeOffList_Widget class and load the saved item states from the JSON file
+                    # takeOffListWidget = TakeOffList_Widget()
+                    # takeOffListWidget.load_check_state()
+
                     # Add data items to tree widget
                     for parent_text, child_items in tree_data.items():
                         parent_item = QtWidgets.QTreeWidgetItem(self.root_item)
