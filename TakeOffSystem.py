@@ -272,6 +272,12 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         dialog.setOption(QtWidgets.QFileDialog.Option.ShowDirsOnly, True)
         dialog.setDirectory(os.path.join(os.getcwd(), "Data", "Storages", "Local", "Jobs"))
 
+        # # Create an instance of the TakeOffList_Widget class and load the saved item states from the JSON file
+        # takeOffListWidget = TakeOffList_Widget()
+        # takeOffListWidget.load_check_state()
+
+        self.load_check_state()
+
         if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
             selected_directory = dialog.selectedFiles()[0]
             # print("cwd from open_folder_dialog(): ", selected_directory)
@@ -292,10 +298,6 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
                     # Clear the tree widget
                     self.root_item = self.takeOffListWidget.root_item
                     self.root_item.takeChildren()
-
-                    # # Create an instance of the TakeOffList_Widget class and load the saved item states from the JSON file
-                    # takeOffListWidget = TakeOffList_Widget()
-                    # takeOffListWidget.load_check_state()
 
                     # Add data items to tree widget
                     for parent_text, child_items in tree_data.items():
@@ -335,3 +337,47 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
     def close_system(self):
         # Close the main window
         sys.exit()
+
+
+    def load_check_state(self):
+        # File name
+        file_name = 'Items_checked_states.json'
+
+        # Get the current directory
+        current_dir = os.getcwd()
+
+        # Construct the file path relative to the current directory
+        file_path = os.path.join(current_dir, file_name)
+
+        # Debugging
+        print("file_path from load_check_state(): ", file_path)
+
+        try:
+            with open(file_path, 'r') as file:
+                item_data_list = json.load(file)
+
+                # Call a recursive method to update the tree widget
+                self.update_tree_widget_with_checked_states(self.root_item, item_data_list)
+        except Exception as e:
+            print(f"Error reading from file: {e}")
+
+    def update_tree_widget_with_checked_states(self, parent_item, item_data_list):
+        for i in range(parent_item.childCount()):
+            item = parent_item.child(i)
+            text = item.text(0)
+
+            # Find a matching item in the loaded data
+            matching_data = next((data for data in item_data_list if data['text'] == text), None)
+
+            if matching_data:
+                checked_state = matching_data['checked_state']
+                if checked_state:
+                    item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+                    item.setCheckState(0, QtCore.Qt.CheckState.Checked)
+                else:
+                    item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
+                    item.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
+
+            # Recursively update sub-items
+            if item.childCount() > 0:
+                self.update_tree_widget_with_checked_states(item, item_data_list)
