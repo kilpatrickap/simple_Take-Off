@@ -56,12 +56,18 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         icon1.addPixmap(QtGui.QPixmap(image_path_to_icon1), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_m_widget, icon1, "m")
 
+        # Automatically add row
+        self.tab_m_widget.add_row()
+
         # Insert Tab_m2_Widget() class and add widget to tabWidget
         self.tab_m2_widget = Tab_m2_Widget()
         icon4 = QtGui.QIcon()  # Add button icon with relative path
         image_path_to_icon4 = os.path.join(os.path.dirname(__file__), "images", "area.png")
         icon4.addPixmap(QtGui.QPixmap(image_path_to_icon4), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_m2_widget, icon4, "m2")
+
+        # Automatically add row
+        self.tab_m2_widget.add_row()
 
         # Insert Tab_m3_Widget() class and add widget to tabWidget
         self.tab_m3_widget = Tab_m3_Widget()
@@ -70,6 +76,9 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         icon5.addPixmap(QtGui.QPixmap(image_path_to_icon5), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_m3_widget, icon5, "m3")
 
+        # Automatically add row
+        self.tab_m3_widget.add_row()
+
         # Insert Tab_nr_Widget() class and add widget to tabWidget
         self.tab_nr_widget = Tab_nr_Widget()
         icon2 = QtGui.QIcon()  # Add button icon with relative path
@@ -77,12 +86,18 @@ class TakeOffSystem(QMainWindow, Ui_MainWindow):
         icon2.addPixmap(QtGui.QPixmap(image_path_to_icon2), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_nr_widget, icon2, "nr")
 
+        # Automatically add row
+        self.tab_nr_widget.add_row()
+
         # Insert Tab_rft_Widget() class and add widget to tabWidget
         self.tab_rft_widget = Tab_rft_Widget()
         icon3 = QtGui.QIcon()  # Add button icon with relative path
         image_path_to_icon3 = os.path.join(os.path.dirname(__file__), "images", "rft.png")
         icon3.addPixmap(QtGui.QPixmap(image_path_to_icon3), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.tab_rft_widget, icon3, "rft")
+
+        # Automatically add row
+        self.tab_rft_widget.add_row()
 
         # Create an instance of the TakeOffSheet_Widget() class
         self.takeOff_sheet_widget = TakeOffSheet_Widget()
