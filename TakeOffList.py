@@ -78,8 +78,8 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Create a context menu for right-click actions
         context_menu = QMenu(self)
-        mark_completed_action = context_menu.addAction("Mark as Completed")
-        mark_uncompleted_action = context_menu.addAction("Mark as Uncompleted")
+        mark_completed_action = context_menu.addAction("Tick as Completed")
+        mark_uncompleted_action = context_menu.addAction("Tick as Uncompleted")
 
         # Connect context menu actions to methods
         mark_completed_action.triggered.connect(self.mark_completed)
@@ -221,8 +221,8 @@ class TakeOffList_Widget(QtWidgets.QWidget):
     def show_context_menu(self, position):
         # Show the context menu at the cursor's position
         context_menu = QMenu(self)
-        mark_completed_action = context_menu.addAction("Mark as Completed")
-        mark_uncompleted_action = context_menu.addAction("Mark as Uncompleted")
+        mark_completed_action = context_menu.addAction("Tick as Completed")
+        mark_uncompleted_action = context_menu.addAction("Tick as Uncompleted")
 
         # Connect context menu actions to methods
         mark_completed_action.triggered.connect(self.mark_completed)
