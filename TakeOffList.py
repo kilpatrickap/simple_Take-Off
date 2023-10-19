@@ -78,12 +78,12 @@ class TakeOffList_Widget(QtWidgets.QWidget):
 
         # Create a context menu for right-click actions
         context_menu = QMenu(self)
-        mark_completed_action = context_menu.addAction("Tick as Completed")
-        mark_uncompleted_action = context_menu.addAction("Tick as Uncompleted")
+        tick_completed_action = context_menu.addAction("Tick as Completed")
+        tick_uncompleted_action = context_menu.addAction("Tick as Uncompleted")
 
         # Connect context menu actions to methods
-        mark_completed_action.triggered.connect(self.mark_completed)
-        mark_uncompleted_action.triggered.connect(self.mark_uncompleted)
+        tick_completed_action.triggered.connect(self.tick_completed)
+        tick_uncompleted_action.triggered.connect(self.tick_uncompleted)
 
         # Set the context menu for the tree widget
         self.treeWidget.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
@@ -221,23 +221,23 @@ class TakeOffList_Widget(QtWidgets.QWidget):
     def show_context_menu(self, position):
         # Show the context menu at the cursor's position
         context_menu = QMenu(self)
-        mark_completed_action = context_menu.addAction("Tick as Completed")
-        mark_uncompleted_action = context_menu.addAction("Tick as Uncompleted")
+        tick_completed_action = context_menu.addAction("Tick as Completed")
+        tick_uncompleted_action = context_menu.addAction("Tick as Uncompleted")
 
         # Connect context menu actions to methods
-        mark_completed_action.triggered.connect(self.mark_completed)
-        mark_uncompleted_action.triggered.connect(self.mark_uncompleted)
+        tick_completed_action.triggered.connect(self.tick_completed)
+        tick_uncompleted_action.triggered.connect(self.tick_uncompleted)
 
         # Execute the context menu at the specified position
         action = context_menu.exec(self.treeWidget.mapToGlobal(position))
 
         # Handle the selected action
-        if action == mark_completed_action:
-            self.mark_completed()
-        elif action == mark_uncompleted_action:
-            self.mark_uncompleted()
+        if action == tick_completed_action:
+            self.tick_completed()
+        elif action == tick_uncompleted_action:
+            self.tick_uncompleted()
 
-    def mark_completed(self):
+    def tick_completed(self):
         item = self.treeWidget.currentItem()
         if item:
             item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
@@ -246,7 +246,7 @@ class TakeOffList_Widget(QtWidgets.QWidget):
             # Save check state
             self.save_check_state()
 
-    def mark_uncompleted(self):
+    def tick_uncompleted(self):
         item = self.treeWidget.currentItem()
         if item:
             item.setFlags(item.flags() | QtCore.Qt.ItemFlag.ItemIsUserCheckable)
